@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 
 const JobPosting = () => {
+  const Joi = require("joi");
+
+  const schema = Joi.object({
+    jobTitle: Joi.string().required(),
+    // jobDuration: Joi.string().required(),
+    jobLocation: Joi.string().required(),
+    jobDescription: Joi.string().min(500).max(2000).required(),
+  });
+
   const [input, Setinput] = useState();
 
   const onInput = (e) => {
