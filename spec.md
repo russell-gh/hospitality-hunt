@@ -52,5 +52,13 @@ Could
 
 ---
 
-9. How will we build it
-   - tech stack
+9. How will we build it - tech stack
+
+   - Javascript
+   - React
+     - Redux
+     - Redux Toolkit
+     - Joi
+     - Axios
+     - Screens rather than router
+     - Styling bootstrap
