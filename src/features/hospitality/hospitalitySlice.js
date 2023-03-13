@@ -28,21 +28,3 @@ export const { increment, decrement, setUserProfile } =
 export const selectCount = (state) => state.hospitality.value;
 
 export default hospitalitySlice.reducer;
-
-// const initialState = {
-//   value = {},
-//   user: {firstname: "", lastname: "", email: ""}
-// };
-
-// export const {userInfoSlice} = createSlice({
-//   name: "userinfo",
-//   initialState,
-//   reducers: {
-//     getUserInfo: (state) =>
-
-//   }
-// });
-
-// const getUserInfo = userInfoSlice.actions;
-
-// export default userInfoSlice.reducer;
