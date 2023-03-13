@@ -1,6 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCount, increment, decrement } from "./features/hospitality/hospitalitySlice";
+import Signup from "./components/Signup";
+import {
+  selectCount,
+  increment,
+  decrement,
+} from "./features/hospitality/hospitalitySlice";
+
+import "./App.css";
 
 export default function App() {
   const count = useSelector(selectCount);
@@ -8,16 +15,13 @@ export default function App() {
 
   return (
     <div>
-      <div >
-        <button onClick={() => dispatch(increment())}>
-          +
-        </button>
-        <button onClick={() => dispatch(decrement())}>
-          -
-        </button>
-        <span >{count}</span>
+      <div>
+        <button onClick={() => dispatch(increment())}>+</button>
+        <button onClick={() => dispatch(decrement())}>-</button>
+        <span>{count}</span>
       </div>
-      
+
+      <Signup />
     </div>
   );
 }

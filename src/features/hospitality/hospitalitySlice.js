@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 const initialState = {
   value: 10,
-  user: {email: "", password: ''}
+  user: { email: "f", password: "" },
 };
 
 export const hospitalitySlice = createSlice({
@@ -15,10 +16,15 @@ export const hospitalitySlice = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
+    SIGNUP: (state, action) => {
+      console.log(action);
+      state.user.email = action.payload;
+      state.user.password = action.payload.passwordFirst;
+    },
   },
 });
 
-export const { increment, decrement } = hospitalitySlice.actions;
+export const { increment, decrement, SIGNUP } = hospitalitySlice.actions;
 
 export const selectCount = (state) => state.hospitality.value;
 
