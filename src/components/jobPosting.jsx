@@ -15,9 +15,7 @@ const JobPosting = () => {
       <form onInput={onInput} onSubmit={onSubmit}>
         <div className="row mb-2">
           <h5>Job Details</h5>
-          <p>
-            Please add as much detailed as possible describing the job opening.
-          </p>
+          <p>Please be detailed as possible describing the job opening.</p>
         </div>
         <div className="row mb-2">
           <div className="col-md-6">
