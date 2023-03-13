@@ -4,25 +4,49 @@ MOSCOW
 
 Must
 
+Stuart
+
 1. Signup
    - collect email, password
    - data specific to the type of user
-2. Login
-   - users user data
-3. List a person
-   - take a photo
-   - collect various information
-   - validate data sent by user
-4. List an opportunity
-   - collect info
-   - validate data
+
+Yahya 2. Login
+
+- users user data
+
+Amelia 3. List a person
+
+- take a photo
+- collect various information
+- validate data sent by user
+
+Yusuf 4. List an opportunity
+
+- collect info
+- validate data
+
+- Dan - Create some fake data
+
+- Bernie
+
 5. Each side to find each other
+
    - search
    - search by criteria, location, experience
+
 6. Contact each other
+
    - email/phone
+
 7. Listing status
 8. Signout
+
+Luca 9. Create profile for employer
+
+Time permitting, add joi validation
+Time permiting, create reducers.
+
+RULES: NEVER WORK ON MASTER OR MAIN
 
 Should
 

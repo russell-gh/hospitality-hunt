@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 10,
+  user: {email: "", password: ''}
 };
 
 export const hospitalitySlice = createSlice({
