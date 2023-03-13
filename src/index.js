@@ -7,7 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 const container = document.getElementById('root');
-const root = createRoot(container);
+const root = createRoot(container, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 root.render(
   <React.StrictMode>
