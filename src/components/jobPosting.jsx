@@ -10,12 +10,13 @@ const JobPosting = () => {
     jobDescription: Joi.string().min(500).max(2000).required(),
   });
 
-  const [input, Setinput] = useState();
+  const [input, Setinput] = useState({});
 
   const onInput = (e) => {
-    Setinput({ ...input, [e.tartget.name]: e.target.value });
+    Setinput({ ...input, [e.target.name]: e.target.value });
   };
 
+  console.log(input);
   const onSubmit = (e) => {
     e.preventDefault();
   };
