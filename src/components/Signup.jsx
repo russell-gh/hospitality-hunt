@@ -1,75 +1,71 @@
-import React from "react";
+import React, { useState, useEffect, etc } from "react";
 
 import { useDispatch } from "react-redux";
 import { SIGNUP } from "../features/hospitality/hospitalitySlice";
 
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-// Notes: GET info from form instead of individual data, pull data from payload instead
-
-/**
- * On button click
- *  - validate email
- *      - is valid email
- *      - does not already exist in logins
- *  - validate password
- *      - check both passwords are the same
- * Collect email
- * Collect password
- * Store in state
- * Confirm it is stored
- *
- * @returns
- */
+import "./Signup.scss";
 
 const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState();
+  const [passwordConfirm, setPasswordConfirm] = useState();
+
   const dispatch = useDispatch();
 
   const submitSignupDate = (e) => {
     e.preventDefault();
+    dispatch(SIGNUP({ email: email, password: password }));
+  };
 
-    const email = document.getElementById("signupFormEmail").value;
-    const passwordFirst = document.getElementById("signupFormPassword").value;
-    const passwordSecond = document.getElementById(
-      "signupFormPasswordSecond"
-    ).value;
-
-    dispatch(SIGNUP({ email, passwordFirst, passwordSecond }));
+  const handleChange = (e) => {
+    if (e.target.type === "email") {
+      setEmail(e.target.value);
+    } else if (e.target.type === "password") {
+      e.target.id === "signupPassword"
+        ? setPassword(e.target.value)
+        : setPasswordConfirm(e.target.value);
+    }
   };
 
   return (
     <>
+      <h1>Signup!</h1>
       <div className="signupContainer">
-        <h1>Signup!</h1>
+        <Form onSubmit={submitSignupDate}>
+          <Form.Group controlId="signupEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter your email.."
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-        <form
-          // onSubmit={submitSignupDate}
-          className="signupForm"
-        >
-          <input
-            type="email"
-            name="email"
-            id="signupFormEmail"
-            value="Enter your email.."
-          />
+          <Form.Group controlId="signupPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-          <input
-            type="password"
-            name="password"
-            id="signupFormPassword"
-            value="11"
-          />
-          <input
-            type="password"
-            name="password"
-            id="signupFormPasswordSecond"
-            value="22"
-          />
+          <Form.Group controlId="signupPasswordConfirm">
+            <Form.Label>Confirm your Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-          <Button variant="primary" onClick={submitSignupDate}>
-            Test
+          <Button variant="primary" type="submit">
+            Submit
           </Button>
-        </form>
+        </Form>
       </div>
     </>
   );

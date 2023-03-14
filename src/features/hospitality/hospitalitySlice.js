@@ -17,9 +17,8 @@ export const hospitalitySlice = createSlice({
       state.value -= 1;
     },
     SIGNUP: (state, action) => {
-      console.log(action);
-      state.user.email = action.payload;
-      state.user.password = action.payload.passwordFirst;
+      state.user.email = action.payload.email;
+      state.user.password = action.payload.password;
     },
   },
 });
