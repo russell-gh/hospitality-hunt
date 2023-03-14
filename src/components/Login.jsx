@@ -35,7 +35,7 @@ const Loginpage = () => {
         />
         <input
           type="email"
-          placeholder="Y.yusuf@outlook.com"
+          placeholder="enter email"
           value={email}
           onInput={(e) => setEmail(e.target.value)}
         />
