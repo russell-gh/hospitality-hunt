@@ -10,7 +10,7 @@ export default function App() {
     </>
   );
 }
-//employer name
+//employer name.
 //location
 //type of business
 //number
