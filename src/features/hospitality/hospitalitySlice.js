@@ -54,6 +54,7 @@ const initialState = {
       skills: "bartender,server",
       email: "beatricemiddleton@email.com",
     },
+
     {
       ID: 6,
       type: "Business",
@@ -105,11 +106,13 @@ const initialState = {
       about: "",
     },
   ],
+
 };
 
 export const hospitalitySlice = createSlice({
   name: "hospitality",
   initialState,
+
   reducers: {
     increment: (state) => {
       state.value += 1;
@@ -117,11 +120,19 @@ export const hospitalitySlice = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
+
+    setUserProfile: (state, payload) => {
+      state.userProfile = payload;
+    },
   },
 });
 
-export const { increment, decrement } = hospitalitySlice.actions;
+export const { increment, decrement, setUserProfile } =
+  hospitalitySlice.actions;
 
-export const selectCount = (state) => state.hospitality.value;
+
+export const selectCount = (state) => state.hospitality.users;
+//----- tell computer what you select
+//----- can see the dev tool to get some hint
 
 export default hospitalitySlice.reducer;
