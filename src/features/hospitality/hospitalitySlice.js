@@ -109,7 +109,6 @@ const initialState = {
       email: "beatricemiddleton@email.com",
     },
   ],
-
 };
 
 export const hospitalitySlice = createSlice({
@@ -127,24 +126,20 @@ export const hospitalitySlice = createSlice({
     SIGNUP: (state, action) => {
       state.user.email = action.payload.email;
       state.user.password = action.payload.password;
-
+    },
 
     setUserProfile: (state, payload) => {
       state.userProfile = payload;
-
     },
   },
 });
 
-
 export const { increment, decrement, setUserProfile, SIGNUP } =
   hospitalitySlice.actions;
-
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 //----- tell computer what you select
 //----- can see the dev tool to get some hint
-
 
 export default hospitalitySlice.reducer;
