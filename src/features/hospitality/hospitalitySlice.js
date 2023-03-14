@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 const initialState = {
+  screenMode: 1,
   value: 10,
   user: { email: "", password: "" },
 
@@ -142,11 +142,12 @@ export const hospitalitySlice = createSlice({
 
 
 
-export const { increment, decrement, setUserProfile, SIGNUP,login  } =
+export const { increment, decrement, setUserProfile, SIGNUP, login } =
   hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
+export const selectScreenMode = (state) => state.hospitality.screenMode
 //----- tell computer what you select
 //----- can see the dev tool to get some hint
 
