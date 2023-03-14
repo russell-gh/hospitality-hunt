@@ -5,7 +5,7 @@ import { SIGNUP } from "../features/hospitality/hospitalitySlice";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import "./Signup.scss";
+import "./Signup.css";
 
 /**
  * Email and password stored in local store.
