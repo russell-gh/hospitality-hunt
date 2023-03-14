@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,10 +8,10 @@ import {
 } from "./features/hospitality/hospitalitySlice";
 import UserProfiles from "./components/UserProfiles";
 
-export default function App() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
+import FreelancersSearch from "./components/FreelancersSearch";
+import "./App.css";
 
+export default function App() {
   return (
     <div>
       <div>
@@ -21,6 +20,7 @@ export default function App() {
         <span>{count}</span>
       </div>
       <UserProfiles />
+      <FreelancersSearch />
     </div>
   );
 }
