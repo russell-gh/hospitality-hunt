@@ -5,24 +5,23 @@ const JobPosting = () => {
 
   const schema = Joi.object({
     jobTitle: Joi.string().required(),
-    // jobDuration: Joi.string().required(),
+    jobDuration: Joi.string().required(),
     jobLocation: Joi.string().required(),
     jobDescription: Joi.string().min(500).max(2000).required(),
   });
 
-  const [input, Setinput] = useState({});
+  const [postJob, setPostJob] = useState({});
 
-  const onInput = (e) => {
-    Setinput({ ...input, [e.target.name]: e.target.value });
+  const onJobPost = (e) => {
+    setPostJob({ ...postJob, [e.target.name]: e.target.value });
   };
 
-  console.log(input);
   const onSubmit = (e) => {
     e.preventDefault();
   };
   return (
     <div className="container mt-5">
-      <form onInput={onInput} onSubmit={onSubmit}>
+      <form onInput={onJobPost} onSubmit={onSubmit}>
         <div className="row mb-2">
           <h5>Job Details</h5>
           <p>Please be detailed as possible describing the job opening.</p>
