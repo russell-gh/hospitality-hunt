@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
 import { SIGNUP } from "../features/hospitality/hospitalitySlice";
 
@@ -8,6 +7,10 @@ import Form from "react-bootstrap/Form";
 
 import "./Signup.scss";
 
+/**
+ * Email and password stored in local store.
+ * On button submit, email and password send and stored in store.
+ */
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
