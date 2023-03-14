@@ -2,13 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 10,
-  user: {email: "", password: ''}
+  user: { email: "", password: "" },
 };
 
 export const hospitalitySlice = createSlice({
   name: "hospitality",
   initialState,
   reducers: {
+    login: (state, action) => {
+      state.user = action.playload;
+    },
+
     increment: (state) => {
       state.value += 1;
     },
@@ -18,7 +22,7 @@ export const hospitalitySlice = createSlice({
   },
 });
 
-export const { increment, decrement } = hospitalitySlice.actions;
+export const { increment, decrement, login } = hospitalitySlice.actions;
 
 export const selectCount = (state) => state.hospitality.value;
 
