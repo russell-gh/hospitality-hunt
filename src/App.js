@@ -1,5 +1,10 @@
 import React from "react";
 
+import Loginpage from "./components/Loginpage";
+
+
+ 
+
 import { useSelector, useDispatch } from "react-redux";
 
 import Signup from "./components/Signup";
@@ -25,10 +30,12 @@ export default function App() {
 
 
       <Signup />
+       <Loginpage />
 
       <UserProfiles />
       <FreelancersSearch />
          <Data />
+
 
     </div>
 

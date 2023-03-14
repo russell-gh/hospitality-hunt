@@ -5,6 +5,7 @@ const initialState = {
   value: 10,
   user: { email: "", password: "" },
 
+
   businesses: [
     {
       ID: 6,
@@ -109,6 +110,7 @@ const initialState = {
       email: "beatricemiddleton@email.com",
     },
   ],
+
 };
 
 export const hospitalitySlice = createSlice({
@@ -116,6 +118,10 @@ export const hospitalitySlice = createSlice({
   initialState,
 
   reducers: {
+    login: (state, action) => {
+      state.user = action.playload;
+    },
+
     increment: (state) => {
       state.value += 1;
     },
@@ -134,7 +140,9 @@ export const hospitalitySlice = createSlice({
   },
 });
 
-export const { increment, decrement, setUserProfile, SIGNUP } =
+
+
+export const { increment, decrement, setUserProfile, SIGNUP,login  } =
   hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
