@@ -19,14 +19,19 @@ const Signup = () => {
 
   const submitSignupDate = (e) => {
     e.preventDefault();
-    dispatch(SIGNUP({ email: email, password: password }));
+
+    if (email && password) {
+      dispatch(SIGNUP({ email: email, password: password }));
+    } else {
+      console.log("At least one of email or password is empty.");
+    }
   };
 
   const handleChange = (e) => {
     if (e.target.type === "email") {
       setEmail(e.target.value);
     } else if (e.target.type === "password") {
-      e.target.id === "signupPassword"
+      e.target.id === "signupFormPassword"
         ? setPassword(e.target.value)
         : setPasswordConfirm(e.target.value);
     }
