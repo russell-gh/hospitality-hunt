@@ -1,14 +1,14 @@
 import React from "react";
 
 const Results = (props) => {
-  const { business_name, location, business_type, position } = props;
+  const { freelancer_name, location, role, skills } = props;
   return (
     <div>
       <div className="eachJob">
-        <h2>{business_name}</h2>
+        <h2>{freelancer_name}</h2>
         <p>Location: {location}</p>
-        <p>Type: {business_type}</p>
-        <p>Position: {position}</p>
+        <p>Role: {role}</p>
+        <p>Skills: {skills}</p>
       </div>
     </div>
   );

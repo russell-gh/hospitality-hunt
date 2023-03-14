@@ -1,7 +1,12 @@
-import React from 'react';
+import React from "react";
+import Controls from "./SearchForFreelancer/Controls";
 
 const SearchForFreelancer = () => {
-    return ( <></> );
-}
- 
+  return (
+    <>
+      <Controls />
+    </>
+  );
+};
+
 export default SearchForFreelancer;

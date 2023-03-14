@@ -1,44 +1,44 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectJob } from "../../features/hospitality/hospitalitySlice";
+import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
 import Results from "./Results";
 
 const Controls = () => {
-  const job = useSelector(selectJob);
+  const freelancers = useSelector(selectFreelancers);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("");
 
-  if (!job) {
+  if (!freelancers) {
     return <p>Loading...</p>;
   }
 
-  let filtered = job;
+  let filtered = freelancers;
   if (userSelect === "Location") {
-    filtered = job.filter((job) => {
+    filtered = freelancers.filter((freelancers) => {
       return (
-        job.location.toLowerCase().includes(userInput) ||
-        job.location.toUpperCase().includes(userInput)
+        freelancers.location.toLowerCase().includes(userInput) ||
+        freelancers.location.toUpperCase().includes(userInput)
       );
     });
-  } else if (userSelect === "Job-type") {
-    filtered = job.filter((job) => {
+  } else if (userSelect === "Role") {
+    filtered = freelancers.filter((freelancers) => {
       return (
-        job.business_type.toLowerCase().includes(userInput) ||
-        job.business_type.toUpperCase().includes(userInput)
+        freelancers.role.toLowerCase().includes(userInput) ||
+        freelancers.role.toUpperCase().includes(userInput)
       );
     });
   } else {
-    filtered = job.filter((job) => {
+    filtered = freelancers.filter((freelancers) => {
       return (
-        job.position.toLowerCase().includes(userInput) ||
-        job.position.toUpperCase().includes(userInput)
+        freelancers.skills.toLowerCase().includes(userInput) ||
+        freelancers.skills.toUpperCase().includes(userInput)
       );
     });
   }
 
   return (
     <>
-      <h1>Search for a job</h1>
+      <h1>Search For Freelancer</h1>
       <div>
         <label>
           Search by:
@@ -48,8 +48,8 @@ const Controls = () => {
             }}
           >
             <option value="Location">Location</option>
-            <option value="Job-type">Job type</option>
-            <option value="Position">Position</option>
+            <option value="Job-type">Role</option>
+            <option value="Position">Skills</option>
           </select>
         </label>
       </div>
@@ -59,17 +59,17 @@ const Controls = () => {
             setUserInput(e.target.value);
           }}
           type="text"
-          placeholder="Search for a job"
+          placeholder="Search for a freelancer"
         ></input>
       </div>
       <div>
         {filtered.map((item) => (
           <Results
             key={item.ID}
-            business_name={item.business_name}
+            freelancer_name={item.freelancer_name}
             location={item.location}
-            business_type={item.business_type}
-            position={item.position}
+            role={item.role}
+            skills={item.skills}
           />
         ))}
       </div>
