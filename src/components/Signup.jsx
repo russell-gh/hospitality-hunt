@@ -1,4 +1,4 @@
-import React, { useState, useEffect, etc } from "react";
+import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
 import { SIGNUP } from "../features/hospitality/hospitalitySlice";

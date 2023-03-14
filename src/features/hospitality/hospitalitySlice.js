@@ -3,7 +3,7 @@ import { act } from "react-dom/test-utils";
 
 const initialState = {
   value: 10,
-  user: { email: "f", password: "" },
+  user: { email: "", password: "" },
 };
 
 export const hospitalitySlice = createSlice({
@@ -26,5 +26,7 @@ export const hospitalitySlice = createSlice({
 export const { increment, decrement, SIGNUP } = hospitalitySlice.actions;
 
 export const selectCount = (state) => state.hospitality.value;
+
+export const selectUser = (state) => state.hospitality.user;
 
 export default hospitalitySlice.reducer;
