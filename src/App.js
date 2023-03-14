@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
+import Data from "./component/Data";
 import {
   selectCount,
   increment,
@@ -17,6 +18,14 @@ export default function App() {
     <div>
       <UserProfiles />
       <FreelancersSearch />
+         <Data />
     </div>
+
   );
 }
+//employer name.
+//location
+//type of business
+//number
+//emails
+//about...
