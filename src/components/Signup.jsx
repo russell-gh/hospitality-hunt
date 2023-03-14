@@ -35,48 +35,46 @@ const Signup = () => {
   return (
     <>
       <h1>Signup!</h1>
-      <div className="signupContainer">
-        <form onSubmit={submitSignupDate}>
-          <div className="form-group">
-            <label for="singupFormEmail">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="signupFormEmail"
-              placeholder="Enter your email.."
-              onChange={handleChange}
-            />
-          </div>
+      <form onSubmit={submitSignupDate}>
+        <div className="form-group">
+          <label for="singupFormEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="signupFormEmail"
+            placeholder="Enter your email.."
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="signupFormPassword">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="signupFormPassword"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label for="signupFormPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="signupFormPassword"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+        </div>
 
-          <div className="form-group">
-            <label for="signupFormPasswordConfirmation">
-              Confirm your Password
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="signupFormPasswordConfirmation"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </div>
+        <div className="form-group">
+          <label for="signupFormPasswordConfirmation">
+            Confirm your Password
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            id="signupFormPasswordConfirmation"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+        </div>
 
-          <button type="submit" class="btn btn-default">
-            Submit
-          </button>
-        </form>
-      </div>
+        <button type="submit" class="btn btn-success">
+          Submit
+        </button>
+      </form>
     </>
   );
 };
