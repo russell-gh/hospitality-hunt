@@ -3,58 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   value: 10,
   user: { email: "", password: "" },
-  users: [
-    {
-      ID: 1,
-      type: "Freelancer",
-      freelancer_name: "Joe Bloggs",
-      location: "TW1 1AH",
-      about: "",
-      role: "server",
-      skills: "bartending, server",
-      email: "joebloggs@email.com",
-    },
-    {
-      ID: 2,
-      type: "Freelancer",
-      freelancer_name: "Luna Estrada",
-      location: "E17 8PQ",
-      about: "",
-      role: "server",
-      skills: "server",
-      email: "lunaestrada@email.com",
-    },
-    {
-      ID: 3,
-      type: "Freelancer",
-      freelancer_name: "Natasha Schmidt",
-      location: "N17 0TG",
-      about: "",
-      role: "server",
-      skills: "bartender, host",
-      email: "natashaschmidt@email.com",
-    },
-    {
-      ID: 4,
-      type: "Freelancer",
-      freelancer_name: "Peter Gordon",
-      location: "SE16 5HL",
-      about: "",
-      role: "bartender",
-      skills: "bartender,manager",
-      email: "petergordon@email.com",
-    },
-    {
-      ID: 5,
-      type: "Freelancer",
-      freelancer_name: "Beatrice Middleton",
-      location: "W2 3NJ",
-      about: "",
-      role: "bartender, server",
-      skills: "bartender,server",
-      email: "beatricemiddleton@email.com",
-    },
-
+  businesses: [
     {
       ID: 6,
       type: "Business",
@@ -106,7 +55,58 @@ const initialState = {
       about: "",
     },
   ],
-
+  freelancers: [
+    {
+      ID: 1,
+      type: "Freelancer",
+      freelancer_name: "Joe Bloggs",
+      location: "TW1 1AH",
+      about: "",
+      role: "server",
+      skills: "bartending, server",
+      email: "joebloggs@email.com",
+    },
+    {
+      ID: 2,
+      type: "Freelancer",
+      freelancer_name: "Luna Estrada",
+      location: "E17 8PQ",
+      about: "",
+      role: "server",
+      skills: "server",
+      email: "lunaestrada@email.com",
+    },
+    {
+      ID: 3,
+      type: "Freelancer",
+      freelancer_name: "Natasha Schmidt",
+      location: "N17 0TG",
+      about: "",
+      role: "server",
+      skills: "bartender, host",
+      email: "natashaschmidt@email.com",
+    },
+    {
+      ID: 4,
+      type: "Freelancer",
+      freelancer_name: "Peter Gordon",
+      location: "SE16 5HL",
+      about: "",
+      role: "bartender",
+      skills: "bartender,manager",
+      email: "petergordon@email.com",
+    },
+    {
+      ID: 5,
+      type: "Freelancer",
+      freelancer_name: "Beatrice Middleton",
+      location: "W2 3NJ",
+      about: "",
+      role: "bartender, server",
+      skills: "bartender,server",
+      email: "beatricemiddleton@email.com",
+    },
+  ],
 };
 
 export const hospitalitySlice = createSlice({
@@ -130,8 +130,8 @@ export const hospitalitySlice = createSlice({
 export const { increment, decrement, setUserProfile } =
   hospitalitySlice.actions;
 
-
-export const selectCount = (state) => state.hospitality.users;
+export const selectBusinesses = (state) => state.hospitality.businesses;
+export const selectFreelancers = (state) => state.hospitality.freelancers;
 //----- tell computer what you select
 //----- can see the dev tool to get some hint
 

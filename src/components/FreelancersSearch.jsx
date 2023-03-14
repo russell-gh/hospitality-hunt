@@ -1,33 +1,34 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCount } from "../features/hospitality/hospitalitySlice";
+import { selectBusinesses } from "../features/hospitality/hospitalitySlice";
 
 const FreelancersSearch = () => {
-  const users = useSelector(selectCount);
+  const businesses = useSelector(selectBusinesses);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("");
 
-  if (!users) {
+  console.log(businesses);
+  if (!businesses) {
     return <p>Loading...</p>;
   }
 
-  let filtered = users;
+  let filtered = businesses;
   if (userSelect === "Location") {
-    filtered = users.filter((users) => {
+    filtered = businesses.filter((users) => {
       return (
         users.location.toLowerCase().includes(userInput) ||
         users.location.toUpperCase().includes(userInput)
       );
     });
   } else if (userSelect === "Job-type") {
-    filtered = users.filter((users) => {
+    filtered = businesses.filter((users) => {
       return (
         users.business_type.toLowerCase().includes(userInput) ||
         users.business_type.toUpperCase().includes(userInput)
       );
     });
   } else {
-    filtered = users.filter((users) => {
+    filtered = businesses.filter((users) => {
       return (
         users.position.toLowerCase().includes(userInput) ||
         users.position.toUpperCase().includes(userInput)

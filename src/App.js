@@ -12,13 +12,9 @@ import FreelancersSearch from "./components/FreelancersSearch";
 import "./App.css";
 
 export default function App() {
+  const dispatch = useDispatch();
   return (
     <div>
-      <div>
-        <button onClick={() => dispatch(increment())}>+</button>
-        <button onClick={() => dispatch(decrement())}>-</button>
-        <span>{count}</span>
-      </div>
       <UserProfiles />
       <FreelancersSearch />
     </div>

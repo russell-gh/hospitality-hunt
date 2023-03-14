@@ -3,22 +3,22 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserProfile } from "../features/hospitality/hospitalitySlice";
 
-const Joi = require("joi");
+// const Joi = require("joi");
 
-const schema = Joi.object({
-  firstname: Joi.string().required(),
-  lastname: Joi.string().required(),
-  email: Joi.string().email().required(),
-  phone: Joi.string().optional(),
-});
+// const schema = Joi.object({
+//   firstname: Joi.string().required(),
+//   lastname: Joi.string().required(),
+//   email: Joi.string().email().required(),
+//   phone: Joi.string().optional(),
+// });
 
-const { error } = schema.validate({});
+// const { error } = schema.validate({});
 
-const validateForm = (e) => {
-  if (error) {
-    return "Non valid input";
-  }
-};
+// const validateForm = (e) => {
+//   if (error) {
+//     return "Non valid input";
+//   }
+// };
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
