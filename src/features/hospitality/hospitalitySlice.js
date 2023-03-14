@@ -103,15 +103,30 @@ const initialState = {
       about: "",
     },
   ],
+
 };
 
 export const hospitalitySlice = createSlice({
   name: "hospitality",
   initialState,
-  reducers: {},
+
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+
+    setUserProfile: (state, payload) => {
+      state.userProfile = payload;
+    },
+  },
 });
 
-export const { users } = hospitalitySlice.actions;
+export const { increment, decrement, setUserProfile } =
+  hospitalitySlice.actions;
+
 
 export const selectCount = (state) => state.hospitality.users;
 //----- tell computer what you select
