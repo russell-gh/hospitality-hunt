@@ -14,9 +14,6 @@ export default function App() {
   return (
     <div>
       <div>
-        <button onClick={() => dispatch(increment())}>+</button>
-        <button onClick={() => dispatch(decrement())}>-</button>
-        <span>{count}</span>
         <JobPosting />
       </div>
     </div>
