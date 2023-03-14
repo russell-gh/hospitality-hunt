@@ -48,8 +48,8 @@ const Controls = () => {
             }}
           >
             <option value="Location">Location</option>
-            <option value="Job-type">Role</option>
-            <option value="Position">Skills</option>
+            <option value="Role">Role</option>
+            <option value="Skills">Skills</option>
           </select>
         </label>
       </div>
