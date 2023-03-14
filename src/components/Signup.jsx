@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { SIGNUP } from "../features/hospitality/hospitalitySlice";
 
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-
-import "./Signup.css";
-
 /**
  * Email and password stored in local store.
  * On button submit, email and password send and stored in store.
@@ -41,38 +36,46 @@ const Signup = () => {
     <>
       <h1>Signup!</h1>
       <div className="signupContainer">
-        <Form onSubmit={submitSignupDate}>
-          <Form.Group controlId="signupEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
+        <form onSubmit={submitSignupDate}>
+          <div className="form-group">
+            <label for="singupFormEmail">Email</label>
+            <input
               type="email"
+              class="form-control"
+              id="signupFormEmail"
               placeholder="Enter your email.."
               onChange={handleChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group controlId="signupPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+          <div className="form-group">
+            <label for="signupFormPassword">Password</label>
+            <input
               type="password"
+              class="form-control"
+              id="signupFormPassword"
               placeholder="Password"
               onChange={handleChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group controlId="signupPasswordConfirm">
-            <Form.Label>Confirm your Password</Form.Label>
-            <Form.Control
+          <div className="form-group">
+            <label for="signupFormPasswordConfirmation">
+              Confirm your Password
+            </label>
+            <input
               type="password"
+              class="form-control"
+              id="signupFormPasswordConfirmation"
               placeholder="Password"
               onChange={handleChange}
             />
-          </Form.Group>
+          </div>
 
-          <Button variant="primary" type="submit">
+          <button type="submit" class="btn btn-default">
             Submit
-          </Button>
-        </Form>
+          </button>
+        </form>
       </div>
     </>
   );
