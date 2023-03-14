@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import JobPosting from "./components/jobPosting";
 import {
   selectCount,
   increment,
@@ -16,6 +17,7 @@ export default function App() {
         <button onClick={() => dispatch(increment())}>+</button>
         <button onClick={() => dispatch(decrement())}>-</button>
         <span>{count}</span>
+        <JobPosting />
       </div>
     </div>
   );
