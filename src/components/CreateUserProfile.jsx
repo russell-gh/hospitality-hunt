@@ -41,7 +41,7 @@ const UserProfiles = (props) => {
       <form onInput={onInput} onSubmit={sendUserInfo} action="" method="post">
         <ul>
           <li>
-            <label for="firstname">First name: </label>
+            <label htmlFor="firstname">First name: </label>
             <input
               type="text"
               id="firstname"
@@ -50,7 +50,7 @@ const UserProfiles = (props) => {
             />
           </li>
           <li>
-            <label for="lastname">Last name: </label>
+            <label htmlFor="lastname">Last name: </label>
             <input
               type="text"
               id="lastname"
@@ -59,7 +59,7 @@ const UserProfiles = (props) => {
             />
           </li>
           <li>
-            <label for="email">Email: </label>
+            <label htmlFor="email">Email: </label>
             <input
               type="email"
               id="email"
@@ -68,16 +68,16 @@ const UserProfiles = (props) => {
             />
           </li>
           <li>
-            <label for="email">Confirm email: </label>
+            <label htmlFor="email">Confirm email: </label>
             <input
               type="email"
-              id="email"
+              id="cemail"
               name="email"
               placeholder="example@example.com"
             />
           </li>
           <li>
-            <label for="password">Password: </label>
+            <label htmlFor="password">Password: </label>
             <input
               type="password"
               id="password"
@@ -86,16 +86,16 @@ const UserProfiles = (props) => {
             ></input>
           </li>
           <li>
-            <label for="password">Confirm password: </label>
+            <label htmlFor="password">Confirm password: </label>
             <input
               type="password"
-              id="password"
+              id="cpassword"
               name="password"
               placeholder="Password"
             ></input>
           </li>
           <li>
-            <label for="phone">Phone number: </label>
+            <label htmlFor="phone">Phone number: </label>
             <input
               type="tel"
               id="phone"
@@ -106,7 +106,7 @@ const UserProfiles = (props) => {
           {/* To be added: */}
           <li>Take a photo:</li>
           <li>
-            <label for="experience">
+            <label htmlFor="experience">
               Please provide some details about your experience in hospitality:
             </label>
             <textarea

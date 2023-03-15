@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 6,
+  screenMode: 1,
   value: 10,
   user: { email: "", password: "" },
 
@@ -116,7 +116,7 @@ const initialState = {
       jobDuration: "Part-Time",
       jobLocation: "london",
       jobDescription:
-        "this position is to fill in for a waiter on leave you will becovering weekend shifts and  tuesday's",
+        "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
   ],
 };
