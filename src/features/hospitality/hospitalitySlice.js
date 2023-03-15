@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 1,
+  screenMode: 6,
   value: 10,
   user: { email: "", password: "" },
 
@@ -146,7 +146,7 @@ export const hospitalitySlice = createSlice({
       state.userProfile = payload;
     },
     addJobListing: (state, payload) => {
-      state.jobListing = payload;
+      state.jobListing = [...state.jobListing, payload.payload];
     },
   },
 });
