@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 2,
 
-  screenMode: 6,
+  screenMode: 3,
 
   value: 10,
   user: { email: "", password: "" },
@@ -113,6 +112,7 @@ const initialState = {
     },
   ],
 
+
   jobListing: [
     {
       ID: "j1",
@@ -123,6 +123,7 @@ const initialState = {
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
   ],
+
 };
 
 export const hospitalitySlice = createSlice({
@@ -146,10 +147,16 @@ export const hospitalitySlice = createSlice({
       state.user.email = action.payload.email;
       state.user.password = action.payload.password;
     },
+    ONBOARDING: (state, action) => {
+      // isFreelancer is a boolean.
+      // True = is freelancer, False = is business.
+      state.user.isFreelancer = action.payload;
+    },
 
     setUserProfile: (state, payload) => {
       state.userProfile = payload;
     },
+
 
     setScreenMode: (state, payload) => {
       state.screenMode = payload;
@@ -168,6 +175,7 @@ export const {
   decrement,
   setUserProfile,
   SIGNUP,
+  ONBOARDING,
   login,
   addJobListing,
 } = hospitalitySlice.actions;
@@ -176,7 +184,9 @@ export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 
+
 //----- tella  computer what you select
+
 
 //----- tell computer what you select
 
