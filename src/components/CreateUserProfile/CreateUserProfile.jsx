@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserProfile } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
+import { validate } from "../../validation/joi";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
@@ -11,9 +12,16 @@ const UserProfiles = (props) => {
     setUserData({ ...userData, [e.target.id]: e.target.value });
   };
 
-  const sendUserInfo = (e) => {
+  const sendUserInfo = async (e) => {
     e.preventDefault();
-    dispatch(setUserProfile(userData));
+    const result = await validate("createUserProfile", userData);
+    console.log(result);
+    if (result === true) {
+      dispatch(setUserProfile(userData));
+    } else {
+      console.log("Didn't work");
+      // return "Please complete missing information";
+    }
   };
 
   console.log(userData);
@@ -87,8 +95,35 @@ const UserProfiles = (props) => {
               placeholder="00447111111111"
             ></input>
           </li>
+          <li>
+            <label htmlFor="postcode">Postcode: </label>
+            <input
+              type="text"
+              id="postcode"
+              name="postcode"
+              placeholder="SW1A 2AA"
+            />
+          </li>
           {/* To be added: */}
           <li>Take a photo:</li>
+          <li>
+            <label htmlFor="contract">Type of contract: </label>
+            <select id="contract" name="contract" size="2" multiple>
+              <option value="fulltime">Full-time</option>
+              <option value="parttime">Part-time</option>
+            </select>
+          </li>
+          <li>
+            <label htmlFor="position">Type of position: </label>
+            <select id="position" name="position" size="6" multiple>
+              <option value="fulltime">Waiter/waitress</option>
+              <option value="parttime">Bartender</option>
+              <option value="fulltime">Porter</option>
+              <option value="parttime">Housekeeper</option>
+              <option value="fulltime">General Manager</option>
+              <option value="parttime">Chef</option>
+            </select>
+          </li>
           <li>
             <label htmlFor="experience">
               Please provide some details about your experience in hospitality:
@@ -97,6 +132,26 @@ const UserProfiles = (props) => {
               id="experience"
               name="experience"
               placeholder="Your experience in hospitality"
+            ></textarea>
+          </li>
+          <li>
+            <label htmlFor="skills">
+              Please provide some details about your skills:
+            </label>
+            <textarea
+              id="skills"
+              name="skills"
+              placeholder="Your skills"
+            ></textarea>
+          </li>
+          <li>
+            <label htmlFor="aboutyou">
+              Please provide some more details about you:
+            </label>
+            <textarea
+              id="aboutyou"
+              name="aboutyou"
+              placeholder="About you"
             ></textarea>
           </li>
           <li className="button">

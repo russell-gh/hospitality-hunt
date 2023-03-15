@@ -32,6 +32,12 @@ input {
   border: 1px solid grey;
 }
 
+select {
+  width: 250px;
+  border: 1px solid grey;
+  vertical-align: top;
+}
+
 textarea {
   height: 7em;
   width: 250px;
