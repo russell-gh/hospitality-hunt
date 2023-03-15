@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 9,
 
+  screenMode: 9,
 
   value: 10,
   user: { email: "", password: "" },
@@ -113,7 +113,6 @@ const initialState = {
     },
   ],
 
-
   jobListing: [
     {
       ID: "j1",
@@ -176,27 +175,23 @@ export const hospitalitySlice = createSlice({
   },
 });
 
-
 export const {
   increment,
   decrement,
   setUserProfile,
   SIGNUP,
-
   login,
   setBusinessProfile,
   setFreelancerDetails,
-
   ONBOARDING,
-
   addJobListing,
 } = hospitalitySlice.actions;
+
 
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
-
 
 //----- tella  computer what you select
 
