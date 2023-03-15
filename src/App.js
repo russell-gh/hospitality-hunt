@@ -14,12 +14,19 @@ import SearchForFreelancer from "./components/SearchForFreelancer";
 import FreelancerDetails from "./components/FreelancerDetails";
 import Onboarding from "./components/Onboarding";
 import Footer from "./components/Footer";
+import { validate } from "./validation/joi";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
 
+  const demo = async () => {
+    const result = await validate("signUp", { email: 'a@b767676767.c', password: '123456' });
+    console.log(result)
+  }
+
   return (
     <div>
+      <button onClick={demo}>Validate</button>
       <Navigation /* Yahya */ />
       <main>
         {screenMode === 1 && <Signup /> /* Stuart tidy up*/}
