@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ONBOARDING } from "../features/hospitality/hospitalitySlice";
+import {
+  ONBOARDING,
+  setScreenMode,
+} from "../features/hospitality/hospitalitySlice";
 
 const Onboarding = () => {
   const [isFreelancer, setIsFreelancer] = useState();
@@ -8,6 +11,7 @@ const Onboarding = () => {
 
   const handleSubmit = (e) => {
     dispatch(ONBOARDING(isFreelancer));
+    isFreelancer ? dispatch(setScreenMode(4)) : dispatch(setScreenMode(5));
     e.preventDefault();
   };
 
@@ -17,7 +21,7 @@ const Onboarding = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <button
-            class="btn btn-default"
+            class="btn btn-primary"
             type="submit"
             onClick={() => {
               setIsFreelancer(true);
@@ -26,10 +30,10 @@ const Onboarding = () => {
             Looking for a job?
           </button>
         </div>
-        <p> or wanting too..</p>
+        <div> or wanting too..</div>
         <div className="form-group">
           <button
-            class="btn btn-default"
+            class="btn btn-primary"
             type="submit"
             onClick={() => {
               setIsFreelancer(false);
