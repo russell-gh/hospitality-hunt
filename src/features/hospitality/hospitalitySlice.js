@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 10,
+  screenMode: 9,
 
 
   value: 10,
@@ -17,6 +17,7 @@ const initialState = {
       position: "bartender",
       email: "redlion@email.com",
       about: "",
+      salar: '100,000'
     },
     {
       ID: 7,
