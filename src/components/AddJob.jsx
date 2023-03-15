@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addJobListing } from "../features/hospitality/hospitalitySlice";
+import { randomId } from "../utils";
 
 const AddJob = () => {
   const Joi = require("joi");
@@ -21,6 +22,7 @@ const AddJob = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    postJob.id = randomId();
     dispatch(addJobListing(postJob));
   };
   return (
