@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 3,
+  screenMode: 1,
   value: 10,
   user: { email: "", password: "" },
 
