@@ -117,7 +117,7 @@ export const hospitalitySlice = createSlice({
 
   reducers: {
     login: (state, action) => {
-      state.user = action.playload;
+      state.user = action.payload;
     },
 
     increment: (state) => {
@@ -141,19 +141,7 @@ export const hospitalitySlice = createSlice({
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
     },
-    onChange: (e) => {
-      let file = e.target.file;
-
-      let reader = new FileReader();
-      reader.readAsDataURL(file[0]);
-
-      reader.onLoad = (e) => {
-        const url = "";
-        const formData = { file: e.target.result };
-        return 
-    },
   },
-},
 });
 
 export const {
@@ -164,7 +152,6 @@ export const {
   login,
   setBusinessProfile,
   setFreelancerDetails,
-  onChange,
 } = hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;

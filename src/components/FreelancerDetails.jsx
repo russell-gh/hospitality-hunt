@@ -1,9 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {
-  setFreelancerDetails,
-  onChange,
-} from "../features/hospitality/hospitalitySlice";
+import { setFreelancerDetails } from "../features/hospitality/hospitalitySlice";
 import { useDispatch } from "react-redux";
 
 const FreelancerDetails = (props) => {
@@ -13,15 +10,23 @@ const FreelancerDetails = (props) => {
     setFreelancerData({ ...freelancerData, [e.target.id]: e.target.value });
   };
 
-  const sendFreelancerInfo = (e) => {
+  const setFreelancerDetails = (e) => {
     e.preventDefault();
     dispatch(setFreelancerData(freelancerData));
   };
+
+  // const onChange = (e) => {
+  //   let files = e.target.files;
+
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(files[0]);
+  //   console.log(reader);
+  // };
   return (
     <>
       <h1>Freelancer Profile</h1>
       <div>
-        <img src="#" alt="photo" />
+        <img src="#" alt="" />
       </div>
       <form
         onInput={onInput}
@@ -35,7 +40,7 @@ const FreelancerDetails = (props) => {
               type="text"
               id="first-name"
               name="first-name"
-              plaeholder="First Name"
+              placeholder="First Name"
             />
           </li>
           <li>
@@ -72,7 +77,7 @@ const FreelancerDetails = (props) => {
           </li>
           <li>
             <label for="cv-link"></label>
-            <input type="file" name="file" onChange={() => onChange(e)}></input>
+            <input type="file" name="file" /*onChange={onChange}*/></input>
           </li>
           <li>
             <label for="about"></label>
