@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addJobListing } from "../features/hospitality/hospitalitySlice";
+import { randomId } from "../utils";
 
-const JobPosting = () => {
+const AddJob = () => {
   const Joi = require("joi");
 
   const schema = Joi.object({
@@ -10,6 +13,7 @@ const JobPosting = () => {
     jobDescription: Joi.string().min(500).max(2000).required(),
   });
 
+  const dispatch = useDispatch();
   const [postJob, setPostJob] = useState({});
 
   const onJobPost = (e) => {
@@ -18,6 +22,8 @@ const JobPosting = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    postJob.id = randomId();
+    dispatch(addJobListing(postJob));
   };
   return (
     <div className="container mt-5">
@@ -78,4 +84,4 @@ const JobPosting = () => {
   );
 };
 
-export default JobPosting;
+export default AddJob;
