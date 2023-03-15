@@ -6,7 +6,7 @@ import Results from "./Results";
 const Controls = () => {
   const businesses = useSelector(selectBusinesses);
   const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("");
+  const [userSelect, setUserSelect] = useState("Location");
 
   if (!businesses) {
     return <p>Loading...</p>;
@@ -15,10 +15,9 @@ const Controls = () => {
   let filtered = businesses;
   if (userSelect === "Location") {
     filtered = businesses.filter((businesses) => {
-      return (
-        businesses.location.toLowerCase().includes(userInput) ||
-        businesses.location.toUpperCase().includes(userInput)
-      );
+      return businesses.location
+        .toLowerCase()
+        .includes(userInput.toLowerCase());
     });
   } else if (userSelect === "Job-type") {
     filtered = businesses.filter((businesses) => {

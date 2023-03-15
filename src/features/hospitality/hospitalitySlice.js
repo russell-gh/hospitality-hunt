@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-
-  screenMode: 9,
+  screenMode: 8,
 
   value: 10,
   user: { email: "", password: "" },
@@ -17,7 +16,7 @@ const initialState = {
       position: "bartender",
       email: "redlion@email.com",
       about: "",
-      salar: '100,000'
+      salar: "100,000",
     },
     {
       ID: 7,
@@ -123,7 +122,6 @@ const initialState = {
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
   ],
-
 };
 
 export const hospitalitySlice = createSlice({
@@ -186,8 +184,6 @@ export const {
   ONBOARDING,
   addJobListing,
 } = hospitalitySlice.actions;
-
-
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
