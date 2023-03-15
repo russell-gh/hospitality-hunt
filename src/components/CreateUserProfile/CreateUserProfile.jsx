@@ -1,24 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUserProfile } from "../features/hospitality/hospitalitySlice";
-
-// const Joi = require("joi");
-
-// const schema = Joi.object({
-//   firstname: Joi.string().required(),
-//   lastname: Joi.string().required(),
-//   email: Joi.string().email().required(),
-//   phone: Joi.string().optional(),
-// });
-
-// const { error } = schema.validate({});
-
-// const validateForm = (e) => {
-//   if (error) {
-//     return "Non valid input";
-//   }
-// };
+import { setUserProfile } from "../../features/hospitality/hospitalitySlice";
+import "./CreateUserProfile.css";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
@@ -41,7 +25,7 @@ const UserProfiles = (props) => {
       <form onInput={onInput} onSubmit={sendUserInfo} action="" method="post">
         <ul>
           <li>
-            <label for="firstname">First name: </label>
+            <label htmlFor="firstname">First name: </label>
             <input
               type="text"
               id="firstname"
@@ -50,7 +34,7 @@ const UserProfiles = (props) => {
             />
           </li>
           <li>
-            <label for="lastname">Last name: </label>
+            <label htmlFor="lastname">Last name: </label>
             <input
               type="text"
               id="lastname"
@@ -58,44 +42,44 @@ const UserProfiles = (props) => {
               placeholder="Last name"
             />
           </li>
-          <li>
-            <label for="email">Email: </label>
+          {/* <li>
+            <label htmlFor="email">Email: </label>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="example@example.com"
             />
-          </li>
-          <li>
-            <label for="email">Confirm email: </label>
+          </li> */}
+          {/* <li>
+            <label htmlFor="email">Confirm email: </label>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="example@example.com"
             />
-          </li>
-          <li>
-            <label for="password">Password: </label>
+          </li> */}
+          {/* <li>
+            <label htmlFor="password">Password: </label>
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Password"
             ></input>
-          </li>
-          <li>
-            <label for="password">Confirm password: </label>
+          </li> */}
+          {/* <li>
+            <label htmlFor="password">Confirm password: </label>
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Password"
             ></input>
-          </li>
+          </li> */}
           <li>
-            <label for="phone">Phone number: </label>
+            <label htmlFor="phone">Phone number: </label>
             <input
               type="tel"
               id="phone"
@@ -106,7 +90,7 @@ const UserProfiles = (props) => {
           {/* To be added: */}
           <li>Take a photo:</li>
           <li>
-            <label for="experience">
+            <label htmlFor="experience">
               Please provide some details about your experience in hospitality:
             </label>
             <textarea

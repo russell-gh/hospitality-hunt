@@ -3,7 +3,7 @@ import Login from "./components/Login";
 import AddJob from "./components/AddJob";
 import Signup from "./components/Signup";
 import CreateBusinessProfile from "./components/CreateBusinessProfile";
-import CreateUserProfile from "./components/CreateUserProfile";
+import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile";
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
 import { useSelector } from "react-redux";
