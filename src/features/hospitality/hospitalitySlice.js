@@ -5,7 +5,7 @@ const initialState = {
   value: 10,
   user: { email: "", password: "" },
 
-  job: [
+  businesses: [
     {
       ID: 6,
       type: "Business",
@@ -141,7 +141,7 @@ export const hospitalitySlice = createSlice({
 export const { increment, decrement, setUserProfile, SIGNUP, login } =
   hospitalitySlice.actions;
 
-export const selectJob = (state) => state.hospitality.job;
+export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 //----- tell computer what you select

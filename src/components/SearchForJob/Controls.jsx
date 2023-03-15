@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectJob } from "../../features/hospitality/hospitalitySlice";
+import { selectBusinesses } from "../../features/hospitality/hospitalitySlice";
 import Results from "./Results";
 
 const Controls = () => {
-  const job = useSelector(selectJob);
+  const businesses = useSelector(selectBusinesses);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("");
 
-  if (!job) {
+  if (!businesses) {
     return <p>Loading...</p>;
   }
 
-  let filtered = job;
+  let filtered = businesses;
   if (userSelect === "Location") {
-    filtered = job.filter((job) => {
+    filtered = businesses.filter((businesses) => {
       return (
-        job.location.toLowerCase().includes(userInput) ||
-        job.location.toUpperCase().includes(userInput)
+        businesses.location.toLowerCase().includes(userInput) ||
+        businesses.location.toUpperCase().includes(userInput)
       );
     });
   } else if (userSelect === "Job-type") {
-    filtered = job.filter((job) => {
+    filtered = businesses.filter((businesses) => {
       return (
-        job.business_type.toLowerCase().includes(userInput) ||
-        job.business_type.toUpperCase().includes(userInput)
+        businesses.business_type.toLowerCase().includes(userInput) ||
+        businesses.business_type.toUpperCase().includes(userInput)
       );
     });
   } else {
-    filtered = job.filter((job) => {
+    filtered = businesses.filter((businesses) => {
       return (
-        job.position.toLowerCase().includes(userInput) ||
-        job.position.toUpperCase().includes(userInput)
+        businesses.position.toLowerCase().includes(userInput) ||
+        businesses.position.toUpperCase().includes(userInput)
       );
     });
   }
