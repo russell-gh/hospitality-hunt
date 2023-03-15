@@ -149,7 +149,7 @@ export const { increment, decrement, setUserProfile, SIGNUP, login } =
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
-//----- tell computer what you select
+//----- tella  computer what you select
 //----- can see the dev tool to get some hint
 
 export default hospitalitySlice.reducer;
