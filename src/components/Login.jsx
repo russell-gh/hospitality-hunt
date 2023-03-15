@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "./loginpage.css";
+import "./login.css";
 import { login } from "../features/hospitality/hospitalitySlice";
+import Button from "react-bootstrap/Button";
 
 const Loginpage = () => {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ const Loginpage = () => {
   return (
     <div className="login">
       <form className="login__form" onSubmit={(e) => handleSubmit(e)}>
-        <h1>Login Here</h1>
+        <h1>Login</h1>
         <input
           type="name"
           placeholder="Name"
@@ -45,9 +46,9 @@ const Loginpage = () => {
           value={password}
           onInput={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="submit__btn">
-          Submit
-        </button>
+        <Button type="submit" variant="primary" size="lg">
+          Log in
+        </Button>
       </form>
     </div>
   );

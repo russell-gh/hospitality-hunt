@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+
   screenMode: 3,
+
   value: 10,
   user: { email: "", password: "" },
 
@@ -109,6 +111,19 @@ const initialState = {
       email: "beatricemiddleton@email.com",
     },
   ],
+
+
+  jobListing: [
+    {
+      ID: "j1",
+      jobTitle: "waiter",
+      jobDuration: "Part-Time",
+      jobLocation: "london",
+      jobDescription:
+        "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
+    },
+  ],
+
 };
 
 export const hospitalitySlice = createSlice({
@@ -118,6 +133,7 @@ export const hospitalitySlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.user = action.playload;
+      state.screenMode = 3;
     },
 
     increment: (state) => {
@@ -140,6 +156,17 @@ export const hospitalitySlice = createSlice({
     setUserProfile: (state, payload) => {
       state.userProfile = payload;
     },
+
+
+    setScreenMode: (state, payload) => {
+      state.screenMode = payload;
+    },
+
+    addJobListing: (state, payload) => {
+      state.jobListing = [...state.jobListing, payload.payload];
+      state.screenMode = 9;
+      state.lastAddedJobId = payload.payload.id;
+    },
   },
 });
 
@@ -150,12 +177,19 @@ export const {
   SIGNUP,
   ONBOARDING,
   login,
+  addJobListing,
 } = hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
+
+
+//----- tella  computer what you select
+
+
 //----- tell computer what you select
+
 //----- can see the dev tool to get some hint
 
 export default hospitalitySlice.reducer;
