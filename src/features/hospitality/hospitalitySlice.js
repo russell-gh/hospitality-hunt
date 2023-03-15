@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 
-  screenMode: 3,
+  screenMode: 10,
+
+
+  
+
 
   value: 10,
   user: { email: "", password: "" },
@@ -113,6 +117,7 @@ const initialState = {
   ],
 
 
+
   jobListing: [
     {
       ID: "j1",
@@ -124,6 +129,7 @@ const initialState = {
     },
   ],
 
+
 };
 
 export const hospitalitySlice = createSlice({
@@ -132,8 +138,10 @@ export const hospitalitySlice = createSlice({
 
   reducers: {
     login: (state, action) => {
+
       state.user = action.playload;
       state.screenMode = 3;
+
     },
 
     increment: (state) => {
@@ -154,8 +162,15 @@ export const hospitalitySlice = createSlice({
     },
 
     setUserProfile: (state, payload) => {
-      state.userProfile = payload;
+      state.businessProfile = payload;
     },
+    setBusinessProfile: (state, payload) => {
+      state.createBusinessProfile = payload;
+    },
+    setFreelancerDetails: (state, payload) => {
+      state.freelancerDetails = payload;
+    },
+
 
 
     setScreenMode: (state, payload) => {
@@ -170,14 +185,21 @@ export const hospitalitySlice = createSlice({
   },
 });
 
+
 export const {
   increment,
   decrement,
   setUserProfile,
   SIGNUP,
+
+  login,
+  setBusinessProfile,
+  setFreelancerDetails,
+
   ONBOARDING,
   login,
   addJobListing,
+
 } = hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
@@ -185,7 +207,9 @@ export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 
 
+
 //----- tella  computer what you select
+
 
 
 //----- tell computer what you select
