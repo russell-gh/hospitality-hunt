@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { SIGNUP } from "../features/hospitality/hospitalitySlice";
 
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-
-import "./Signup.css";
-
 /**
  * Email and password stored in local store.
  * On button submit, email and password send and stored in store.
  *
  * TODO - Stuart
  *  - Validation on inputs on submit
- *  - Styling with bootstrap
  */
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -24,14 +18,19 @@ const Signup = () => {
 
   const submitSignupDate = (e) => {
     e.preventDefault();
-    dispatch(SIGNUP({ email: email, password: password }));
+
+    if (email && password) {
+      dispatch(SIGNUP({ email: email, password: password }));
+    } else {
+      console.log("At least one of email or password is empty.");
+    }
   };
 
   const handleChange = (e) => {
     if (e.target.type === "email") {
       setEmail(e.target.value);
     } else if (e.target.type === "password") {
-      e.target.id === "signupPassword"
+      e.target.id === "signupFormPassword"
         ? setPassword(e.target.value)
         : setPasswordConfirm(e.target.value);
     }
@@ -40,40 +39,46 @@ const Signup = () => {
   return (
     <>
       <h1>Signup!</h1>
-      <div className="signupContainer">
-        <Form onSubmit={submitSignupDate}>
-          <Form.Group controlId="signupEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter your email.."
-              onChange={handleChange}
-            />
-          </Form.Group>
+      <form onSubmit={submitSignupDate}>
+        <div className="form-group">
+          <label for="singupFormEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="signupFormEmail"
+            placeholder="Enter your email.."
+            onChange={handleChange}
+          />
+        </div>
 
-          <Form.Group controlId="signupPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </Form.Group>
+        <div className="form-group">
+          <label for="signupFormPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="signupFormPassword"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+        </div>
 
-          <Form.Group controlId="signupPasswordConfirm">
-            <Form.Label>Confirm your Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </Form.Group>
+        <div className="form-group">
+          <label for="signupFormPasswordConfirmation">
+            Confirm your Password
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            id="signupFormPasswordConfirmation"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+        </div>
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </div>
+        <button type="submit" class="btn btn-success">
+          Submit
+        </button>
+      </form>
     </>
   );
 };
