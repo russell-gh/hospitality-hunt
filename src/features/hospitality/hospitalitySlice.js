@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-
   screenMode: 2,
 
   screenMode: 6,
@@ -114,7 +113,6 @@ const initialState = {
     },
   ],
 
-
   jobListing: [
     {
       ID: "j1",
@@ -125,7 +123,6 @@ const initialState = {
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
   ],
-
 };
 
 export const hospitalitySlice = createSlice({
@@ -154,22 +151,17 @@ export const hospitalitySlice = createSlice({
       state.userProfile = payload;
     },
 
-
     setScreenMode: (state, payload) => {
       state.screenMode = payload;
+    },
 
     addJobListing: (state, payload) => {
       state.jobListing = [...state.jobListing, payload.payload];
       state.screenMode = 9;
       state.lastAddedJobId = payload.payload.id;
-
     },
   },
 });
-
-
-export const { increment, decrement, setUserProfile, SIGNUP, login } =
-  hospitalitySlice.actions;
 
 export const {
   increment,
@@ -179,7 +171,6 @@ export const {
   login,
   addJobListing,
 } = hospitalitySlice.actions;
-
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
