@@ -132,6 +132,8 @@ export const hospitalitySlice = createSlice({
       state.user.password = action.payload.password;
     },
     ONBOARDING: (state, action) => {
+      // isFreelancer is a boolean.
+      // True = is freelancer, False = is business.
       state.user.isFreelancer = action.payload;
     },
 

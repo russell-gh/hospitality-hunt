@@ -8,7 +8,6 @@ import { SIGNUP } from "../features/hospitality/hospitalitySlice";
  *
  * TODO - Stuart
  *  - Validation on inputs on submit
- *  - Styling with bootstrap
  */
 const Signup = () => {
   const [email, setEmail] = useState("");
