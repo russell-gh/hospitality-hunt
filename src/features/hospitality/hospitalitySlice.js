@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 1,
+  screenMode: 10,
   value: 10,
   user: { email: "", password: "" },
-
 
   businesses: [
     {
@@ -110,7 +109,6 @@ const initialState = {
       email: "beatricemiddleton@email.com",
     },
   ],
-
 };
 
 export const hospitalitySlice = createSlice({
@@ -135,19 +133,43 @@ export const hospitalitySlice = createSlice({
     },
 
     setUserProfile: (state, payload) => {
-      state.userProfile = payload;
+      state.businessProfile = payload;
+    },
+    setBusinessProfile: (state, payload) => {
+      state.createBusinessProfile = payload;
+    },
+    setFreelancerDetails: (state, payload) => {
+      state.freelancerDetails = payload;
+    },
+    onChange: (e) => {
+      let file = e.target.file;
+
+      let reader = new FileReader();
+      reader.readAsDataURL(file[0]);
+
+      reader.onLoad = (e) => {
+        const url = "";
+        const formData = { file: e.target.result };
+        return 
     },
   },
+},
 });
 
-
-
-export const { increment, decrement, setUserProfile, SIGNUP, login } =
-  hospitalitySlice.actions;
+export const {
+  increment,
+  decrement,
+  setUserProfile,
+  SIGNUP,
+  login,
+  setBusinessProfile,
+  setFreelancerDetails,
+  onChange,
+} = hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
-export const selectScreenMode = (state) => state.hospitality.screenMode
+export const selectScreenMode = (state) => state.hospitality.screenMode;
 //----- tell computer what you select
 //----- can see the dev tool to get some hint
 
