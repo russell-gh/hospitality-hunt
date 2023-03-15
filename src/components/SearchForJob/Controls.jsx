@@ -39,7 +39,7 @@ const Controls = () => {
   return (
     <>
       <h1>Search for a job</h1>
-      <div>
+      <div className="controlBar">
         <label>
           Search by:
           <select
@@ -53,7 +53,7 @@ const Controls = () => {
           </select>
         </label>
       </div>
-      <div>
+      <div className="inputBar">
         <input
           onInput={(e) => {
             setUserInput(e.target.value);

@@ -4,7 +4,7 @@ const Results = (props) => {
   const { freelancer_name, location, role, skills } = props;
   return (
     <div>
-      <div className="eachJob">
+      <div className="eachFreelancer">
         <h2>{freelancer_name}</h2>
         <p>Location: {location}</p>
         <p>Role: {role}</p>

@@ -4,7 +4,7 @@ const Results = (props) => {
   const { business_name, location, business_type, position } = props;
   return (
     <div>
-      <div className="eachJob">
+      <div>
         <h2>{business_name}</h2>
         <p>Location: {location}</p>
         <p>Type: {business_type}</p>
