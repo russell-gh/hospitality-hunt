@@ -4,6 +4,7 @@ import {
   ONBOARDING,
   setScreenMode,
 } from "../features/hospitality/hospitalitySlice";
+import "./Onboarding.css";
 
 const Onboarding = () => {
   const [isFreelancer, setIsFreelancer] = useState();
@@ -18,7 +19,7 @@ const Onboarding = () => {
   return (
     <>
       <h1>Are you...</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="onboarding" onSubmit={handleSubmit}>
         <div className="form-group">
           <button
             class="btn btn-primary"

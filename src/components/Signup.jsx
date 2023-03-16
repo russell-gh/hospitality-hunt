@@ -38,8 +38,6 @@ const Signup = () => {
       repeat_password: passwordConfirm,
     });
 
-    console.log(result);
-
     if (result === true) {
       dispatch(SIGNUP({ email: email, password: password }));
       dispatch(setScreenMode(3));
