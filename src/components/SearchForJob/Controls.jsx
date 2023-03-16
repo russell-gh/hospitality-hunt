@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectBusinesses } from "../../features/hospitality/hospitalitySlice";
+import { selectJobListing } from "../../features/hospitality/hospitalitySlice";
 import Results from "./Results";
 
 const Controls = () => {
-  const businesses = useSelector(selectBusinesses);
+  const businesses = useSelector(selectJobListing);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Location");
 
