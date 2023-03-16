@@ -62,8 +62,8 @@ const BusinessProfile = (props) => {
             <label for="confirm-email"></label>
             <input
               type="text"
-              id="c-email"
-              name="c-email"
+              id="confirm-email"
+              name="confirm-email"
               placeholder="Confirm-Email"></input>
           </li>
           <li>
@@ -86,9 +86,8 @@ const BusinessProfile = (props) => {
               name="about"
               placeholder="Tell us About your Business"></textarea>
           </li>
-          <li className="button">
-            <button type="submit">Submit</button>
-          </li>
+
+          <button type="submit">Submit</button>
         </ul>
       </form>
     </>

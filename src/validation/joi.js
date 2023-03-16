@@ -1,5 +1,8 @@
 import Joi from "joi";
 import { signUp } from "./schemas";
+
+import { freelancerDetails } from "./schemas";
+
 import { createUserProfile } from "./schemas";
 
 export const validate = async (valType, data) => {
@@ -16,6 +19,18 @@ export const validate = async (valType, data) => {
     }
   }
 
+  // if (valType === "freelancerDetails") {
+  //   const _joiInstance = Joi.object(freelancerDetails);
+
+  //   try {
+  //     await _joiInstance.validateAsync(data);
+  //     return true;
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // }
+
+
   if (valType === "createUserProfile") {
     const _joiInstance = Joi.object(createUserProfile);
 
@@ -26,4 +41,5 @@ export const validate = async (valType, data) => {
       return error;
     }
   }
+
 };
