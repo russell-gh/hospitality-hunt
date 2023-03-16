@@ -34,7 +34,7 @@ const AddJob = () => {
         </div>
         <div className="row mb-2">
           <div className="col-md-6">
-            <label>Job Title</label>
+            <label>Job Title </label>
             <input
               name="jobtitle"
               type="text"
