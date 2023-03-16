@@ -1,10 +1,6 @@
 import Joi from "joi";
 
-
-export const signUp = { email: Joi.string().min(10), password: Joi.required() };
 export const logIn = { email: Joi.string().min(10), password: Joi.required() };
-
-
 
 export const signUp = {
   email: Joi.string().min(10),
@@ -14,9 +10,6 @@ export const signUp = {
     "any.required": "Please confirm your password.",
   }),
 };
-
-
-
 
 // export const freelancerDetails = {
 //   firstName: Joi.required().string().min(2),
@@ -40,8 +33,5 @@ export const createUserProfile = {
   skills: Joi.string(),
   aboutyou: Joi.string(),
 };
-
-
-
 
 // export const login = {}
