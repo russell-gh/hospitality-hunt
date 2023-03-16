@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 6,
+  screenMode: 1,
 
   value: 10,
   user: { email: "", password: "" },
@@ -153,8 +153,8 @@ export const hospitalitySlice = createSlice({
     },
 
     SIGNUP: (state, action) => {
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user.email = action.payload.signupFormEmail;
+      state.user.password = action.payload.signupFormPassword;
     },
     ONBOARDING: (state, action) => {
       // isFreelancer is a boolean.

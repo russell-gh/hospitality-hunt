@@ -11,10 +11,15 @@ export const validate = async (valType, data) => {
     const _joiInstance = Joi.object(signUp);
 
     try {
-      await _joiInstance.validateAsync(data);
+      await _joiInstance.validateAsync(data, { abortEarly: false });
       return true;
     } catch (error) {
-      return error;
+      const errorsMod = {};
+      error.details.forEach((e) => {
+        errorsMod[e.context.key] = e.message;
+      });
+
+      return errorsMod;
     }
   }
   let _joiInstance;
