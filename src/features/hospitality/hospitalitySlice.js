@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 4,
+
+  screenMode: 7,
 
   value: 10,
   user: { email: "", password: "" },
@@ -185,7 +186,9 @@ export const {
   addJobListing,
 } = hospitalitySlice.actions;
 
-export const selectBusinesses = (state) => state.hospitality.businesses;
+
+export const selectJobListing = (state) => state.hospitality.jobListing;
+
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 

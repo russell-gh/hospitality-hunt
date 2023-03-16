@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectBusinesses } from "../../features/hospitality/hospitalitySlice";
-import Results from "./Results";
+import { selectJobListing } from "../../features/hospitality/hospitalitySlice";
+// import Results from "./Results";
 
 const Controls = () => {
-  const businesses = useSelector(selectBusinesses);
+  const businesses = useSelector(selectJobListing);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Location");
 
@@ -13,27 +13,25 @@ const Controls = () => {
   }
 
   let filtered = businesses;
-  if (userSelect === "Location") {
-    filtered = businesses.filter((businesses) => {
-      return businesses.location
-        .toLowerCase()
-        .includes(userInput.toLowerCase());
-    });
-  } else if (userSelect === "Job-type") {
-    filtered = businesses.filter((businesses) => {
-      return (
-        businesses.business_type.toLowerCase().includes(userInput) ||
-        businesses.business_type.toUpperCase().includes(userInput)
-      );
-    });
-  } else {
-    filtered = businesses.filter((businesses) => {
-      return (
-        businesses.position.toLowerCase().includes(userInput) ||
-        businesses.position.toUpperCase().includes(userInput)
-      );
-    });
-  }
+  // if (userSelect === "Location") {
+  //   filtered = businesses.filter((businesses) => {
+  //     return businesses.location
+  //       .toLowerCase()
+  //       .includes(userInput.toLowerCase());
+  //   });
+  // } else if (userSelect === "Job-type") {
+  //   filtered = businesses.filter((businesses) => {
+  //     return businesses.business_type
+  //       .toLowerCase()
+  //       .includes(userInput.toLowerCase());
+  //   });
+  // } else {
+  //   filtered = businesses.filter((businesses) => {
+  //     return businesses.position
+  //       .toLowerCase()
+  //       .includes(userInput.toLowerCase());
+  //   });
+  // }
 
   return (
     <>
@@ -62,15 +60,29 @@ const Controls = () => {
         ></input>
       </div>
       <div>
-        {filtered.map((item) => (
-          <Results
-            key={item.ID}
-            business_name={item.business_name}
-            location={item.location}
-            business_type={item.business_type}
-            position={item.position}
-          />
-        ))}
+        {filtered.map(
+          (item) => {
+            const quickViewJob = Object.entries(item);
+
+            return quickViewJob.map((item) => {
+              return (
+                <div>
+                  <p>
+                    {item[0]}: {item[1]}
+                  </p>
+                </div>
+              );
+            });
+          }
+
+          // <Results
+          //   key={item.ID}
+          //   business_name={item.business_name}
+          //   location={item.location}
+          //   business_type={item.business_type}
+          //   position={item.position}
+          // />
+        )}
       </div>
     </>
   );
