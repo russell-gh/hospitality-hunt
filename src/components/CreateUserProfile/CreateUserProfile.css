@@ -1,3 +1,10 @@
+.html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 h1,
 p {
   margin-left: 20px;
@@ -9,6 +16,7 @@ form {
   padding: 1em;
   width: 500px;
   margin-left: 1em;
+  box-shadow: 10px 10px 5px gray;
 }
 
 ul {
@@ -20,6 +28,8 @@ ul {
 
 li {
   margin-top: 1em;
+  display: flex;
+  flex-direction: row;
 }
 
 label {
@@ -44,7 +54,12 @@ textarea {
   vertical-align: top;
 }
 
+ul > li > button {
+  display: flex;
+  justify-content: center;
+}
+
 li > button {
-  margin-left: 200px;
   font-weight: bold;
+  justify-content: center;
 }

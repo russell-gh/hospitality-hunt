@@ -32,7 +32,7 @@ const UserProfiles = (props) => {
 
   console.log(userData);
   return (
-    <>
+    <div className="html">
       <h1>Your profile</h1>
       <p>Please fill in the information below:</p>
 
@@ -173,7 +173,7 @@ const UserProfiles = (props) => {
           </li>
         </ul>
       </form>
-    </>
+    </div>
   );
 };
 
