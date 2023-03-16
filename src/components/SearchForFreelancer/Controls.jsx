@@ -6,26 +6,26 @@ import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
 const Controls = () => {
   const freelancers = useSelector(selectFreelancers);
   const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("Location");
+  const [userSelect, setUserSelect] = useState("Postcode");
 
   if (!freelancers) {
     return <p>Loading...</p>;
   }
 
   let filtered = freelancers;
-  if (userSelect === "Location") {
-    filtered = freelancers.filter((freelancers) => {
-      return freelancers.location
-        .toLowerCase()
-        .includes(userInput.toLowerCase());
+  if (userSelect === "Postcode") {
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Postcode.toLowerCase().includes(
+        userInput.toLowerCase()
+      );
     });
   } else if (userSelect === "Role") {
-    filtered = freelancers.filter((freelancers) => {
-      return freelancers.role.toLowerCase().includes(userInput.toLowerCase());
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Role.toLowerCase().includes(userInput.toLowerCase());
     });
   } else {
-    filtered = freelancers.filter((freelancers) => {
-      return freelancers.skills.toLowerCase().includes(userInput.toLowerCase());
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Skill.toLowerCase().includes(userInput.toLowerCase());
     });
   }
 
@@ -40,9 +40,9 @@ const Controls = () => {
               setUserSelect(e.target.value);
             }}
           >
-            <option value="Location">Location</option>
             <option value="Role">Role</option>
-            <option value="Skills">Skills</option>
+            <option value="Skills">Skill</option>{" "}
+            <option value="Postcode">Postcode</option>
           </select>
         </label>
       </div>
@@ -61,10 +61,11 @@ const Controls = () => {
 
           return quickViewFreelancer.map((item) => {
             if (
-              (item[0] === "Experience",
-              item[0] === "Email",
-              item[0] === "Phone",
-              item[0] === "About")
+              item[0] === "Email" ||
+              item[0] === "Phone" ||
+              item[0] === "id" ||
+              item[0] === "About" ||
+              item[0] === "Experience"
             )
               return;
             return (
@@ -89,11 +90,3 @@ const Controls = () => {
 };
 
 export default Controls;
-
-// Freelancer: [
-//   Name
-//   Postcode
-//   Contract (e.g. full or part time)
-//   Skill
-//   Role (what role looking for)
-//   ]

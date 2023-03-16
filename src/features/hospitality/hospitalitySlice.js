@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 7,
+  screenMode: 8,
 
   value: 10,
   user: { email: "", password: "" },
@@ -12,11 +12,11 @@ const initialState = {
     {
       id: 1,
       Name: "Joe Bloggs",
-      Postcode: "TW1 1AH",
-      Experience: "3 years chef",
-      Contract: "Full-time",
-      Skill: "strong knife skill",
       Role: "chef",
+      Experience: "3 years chef",
+      Skill: "strong knife skill",
+      Contract: "Full-time",
+      Postcode: "TW1 1AH",
       Email: "joebloggs@email.com",
       Phone: "089-93746328",
       About:
@@ -25,11 +25,11 @@ const initialState = {
     {
       id: 2,
       Name: "Luna Estrada",
-      Postcode: "E17 8PQ",
-      Experience: "0 year hospitality",
-      Contract: "Part-time",
-      Skill: "time management",
       Role: "waitress, assistance",
+      Experience: "0 year hospitality",
+      Skill: "time management",
+      Contract: "Part-time",
+      Postcode: "E17 8PQ",
       Email: "lunaestrada@email.com",
       Phone: "089-93746328",
       About: "Full-time student looking for part-time on weekend",
@@ -37,11 +37,11 @@ const initialState = {
     {
       id: 3,
       Name: "Peter Gordon",
-      Postcode: "SE16 5HL",
-      Experience: "1 years bartender",
-      Contract: "Full-time",
-      Skill: "serves drinks",
       Role: "bartender, server",
+      Experience: "1 years bartender",
+      Skill: "bartending",
+      Contract: "Full-time",
+      Postcode: "SE16 5HL",
       Email: "petergordon@email.com",
       Phone: "089-93746328",
       About:
@@ -50,11 +50,11 @@ const initialState = {
     {
       id: 4,
       Name: "Beatrice Middleton",
-      Postcode: "W2 3NJ",
-      Experience: "7 years kitchen management",
-      Contract: "Full-time",
-      Skill: "management",
       Role: "manager",
+      Experience: "7 years kitchen management",
+      Skill: "management",
+      Contract: "Full-time",
+      Postcode: "W2 3NJ",
       Email: "beatricemiddleton@email.com",
       Phone: "012-55375537",
       About:
@@ -66,11 +66,11 @@ const initialState = {
     {
       id: 1,
       Name: "London Sushi",
-      Postcode: "N4 7HA",
       Type: "Japanese restaurant",
       Title: "waiter",
       Salary: "£10/hr",
       Contract: "Part-time",
+      Postcode: "N4 7HA",
       Email: "londonsuhsi@email.com",
       Phone: "034-653125",
       Description:
@@ -79,11 +79,11 @@ const initialState = {
     {
       id: 2,
       Name: "The Red Lion",
-      Postcode: "S2 3TR",
       Type: "Pub",
       Title: "Cocktail bartender",
       Salary: "£13.5/hr",
       Contract: "Part-time",
+      Postcode: "S2 3TR",
       Email: "redlion@email.com",
       Phone: "56-65312465",
       Description: "Provide a high level of customer service at all times",
@@ -91,11 +91,11 @@ const initialState = {
     {
       id: 3,
       Name: "The Steakhouse",
-      Postcode: "SE11 5EQ",
       Type: "Restaurant",
       Title: "server, host",
       Salary: "£11/hr",
       Contract: "Full-time",
+      Postcode: "SE11 5EQ",
       Email: "thesteakhouse@email.com",
       Phone: "111-64442465",
       Description:
@@ -104,11 +104,11 @@ const initialState = {
     {
       id: 4,
       Name: "The Kings Head",
-      Postcode: "SE28 0PB",
       Type: "Restaurant",
       Title: "bartender",
       Salary: "£12/hr",
       Contract: "Full-time",
+      Postcode: "SE28 0PB",
       Email: "thekingshead@email.com",
       Phone: "111-64442465",
       Description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",

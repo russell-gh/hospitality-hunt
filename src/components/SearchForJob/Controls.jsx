@@ -46,9 +46,9 @@ const Controls = () => {
               setUserSelect(e.target.value);
             }}
           >
-            <option value="Location">Location</option>
-            <option value="Job-type">Job type</option>
-            <option value="Position">Position</option>
+            <option value="Type">Type</option>
+            <option value="Title">Title</option>
+            <option value="Postcode">Postcode</option>
           </select>
         </label>
       </div>
@@ -67,6 +67,13 @@ const Controls = () => {
             const quickViewJob = Object.entries(job);
 
             return quickViewJob.map((item) => {
+              if (
+                item[0] === "Email" ||
+                item[0] === "Phone" ||
+                item[0] === "id" ||
+                item[0] === "Description"
+              )
+                return;
               return (
                 <div key={item[0]}>
                   <p>
