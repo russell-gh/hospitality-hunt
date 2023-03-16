@@ -19,13 +19,8 @@ import { validate } from "./validation/joi";
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
 
-
-   
-
-
   return (
     <div>
-      <button onClick={demo}>Validate</button>
       <Navigation /* Yahya */ />
       <main>
         {screenMode === 1 && <Signup /> /* Stuart tidy up*/}
