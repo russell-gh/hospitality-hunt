@@ -7,7 +7,8 @@ import { validate } from "../validation/joi";
 const AddJob = () => {
   const dispatch = useDispatch();
   const [postJob, setPostJob] = useState({});
-
+  const [errors, setErrors] = useState({});
+  console.log(errors);
   const onJobPost = (e) => {
     setPostJob({ ...postJob, [e.target.name]: e.target.value });
   };
@@ -20,7 +21,7 @@ const AddJob = () => {
       postJob.ID = randomId();
       dispatch(addJobListing(postJob));
     } else {
-      console.log(result);
+      setErrors(result);
     }
   };
 
@@ -40,6 +41,7 @@ const AddJob = () => {
               className="form-control"
               placeholder="Job Title"
             />
+            <p>{errors.jobtitle}</p>
           </div>
 
           <div className="col-md-4">
@@ -49,6 +51,7 @@ const AddJob = () => {
               <option>Part-Time</option>
               <option>Contract</option>
             </select>
+            <p>{errors.jobduration}</p>
           </div>
         </div>
 
