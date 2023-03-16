@@ -112,7 +112,7 @@ const initialState = {
     },
   ],
 
-  jobListing: [
+  jobListings: [
     {
       ID: "j1",
       jobTitle: "waiter",
@@ -166,8 +166,8 @@ export const hospitalitySlice = createSlice({
     },
 
     addJobListing: (state, payload) => {
-      state.jobListing = [...state.jobListing, payload.payload];
-      // state.screenMode = 9;
+      state.jobListings = [...state.jobListings, payload.payload];
+      state.screenMode = 9;
       state.lastAddedJobId = payload.payload.id;
     },
   },

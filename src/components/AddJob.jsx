@@ -14,10 +14,14 @@ const AddJob = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    postJob.id = randomId();
+
     const result = await validate("addJob", postJob);
-    dispatch(addJobListing(postJob));
-    console.log(result);
+    if (result === true) {
+      postJob.id = randomId();
+      dispatch(addJobListing(postJob));
+    } else {
+      console.log(result);
+    }
   };
 
   return (
