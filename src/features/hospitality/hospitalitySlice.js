@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+
   screenMode: 2,
 
   value: 10,
   user: { email: "", password: "" },
+
+  lastAddedJobId: 2,
 
   businesses: [
     {
@@ -112,15 +115,34 @@ const initialState = {
     },
   ],
 
-  jobListing: [
+
+
+  jobListings: [
+
     {
-      ID: "j1",
+      ID: 1,
       jobTitle: "waiter",
       jobDuration: "Part-Time",
       jobLocation: "london",
       jobDescription:
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
+
+
+
+
+    {
+      ID: 2,
+      jobTitle: "bartender",
+      jobDuration: "Part-Time",
+      jobLocation: "london",
+      jobDescription:
+        "this position is to fill in for a bartender on leave you will be covering weekend shifts and  tuesday's",
+    },
+
+
+
+
   ],
 };
 
@@ -157,6 +179,7 @@ export const hospitalitySlice = createSlice({
     setBusinessProfile: (state, payload) => {
       state.createBusinessProfile = payload;
     },
+
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
     },
@@ -169,6 +192,12 @@ export const hospitalitySlice = createSlice({
       state.jobListing = [...state.jobListing, payload.payload];
       state.screenMode = 9;
       state.lastAddedJobId = payload.payload.id;
+    },
+
+    setFreelancerDetails: (state, payload) => {
+      state.freelancers = [...state.freelancers, payload.payload];
+      // state.screenMode = 10;
+      // state.freelancerDetails;
     },
   },
 });
@@ -184,13 +213,26 @@ export const {
   setFreelancerDetails,
   ONBOARDING,
   addJobListing,
+  setScreenMode,
 } = hospitalitySlice.actions;
 
 export const selectBusinesses = (state) => state.hospitality.businesses;
+
+
+export const selectJobListings = (state) => state.hospitality.jobListings;
+
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 
+
 //----- tella  computer what you select
+
+
+export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
+
+
+//----- tella  computer what you select
+
 
 //----- tell computer what you select
 
