@@ -4,8 +4,8 @@ import {
   SIGNUP,
   setScreenMode,
 } from "../features/hospitality/hospitalitySlice";
-
 import { validate } from "../validation/joi";
+import "./Signup.scss";
 
 /**
  * Email and password stored in local store.
@@ -43,7 +43,6 @@ const Signup = () => {
     if (result === true) {
       dispatch(SIGNUP({ email: email, password: password }));
       dispatch(setScreenMode(3));
-      // TODO: Load next page
     } else {
       setValidationMessage(result + " ");
     }
@@ -62,7 +61,7 @@ const Signup = () => {
   return (
     <>
       <h1>Signup!</h1>
-      <form onSubmit={submitSignupDate}>
+      <form className="signUp" onSubmit={submitSignupDate}>
         <div className="form-group">
           <label for="singupFormEmail">Email</label>
           <input
@@ -101,12 +100,13 @@ const Signup = () => {
         <div className="form-group">
           <input type="submit" class="btn btn-success" />
         </div>
+
+        {validationMessage && (
+          <div class="alert alert-danger" role="alert">
+            {validationMessage}
+          </div>
+        )}
       </form>
-      {validationMessage && (
-        <div class="alert alert-danger" role="alert">
-          {validationMessage}
-        </div>
-      )}
     </>
   );
 };
