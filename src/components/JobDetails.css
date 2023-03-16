@@ -5,4 +5,10 @@
   align-items: center;
   margin: auto;
   font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
+  /* text-align: center; */
+}
+
+.btn {
+  margin: auto;
+  text-align: center;
 }
