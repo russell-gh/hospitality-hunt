@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-
-  screenMode: 8,
-
+  screenMode: 10,
 
   value: 10,
   user: { email: "", password: "" },
@@ -114,7 +112,6 @@ const initialState = {
     },
   ],
 
-
   jobListing: [
     {
       ID: "j1",
@@ -125,7 +122,6 @@ const initialState = {
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
   ],
-
 };
 
 export const hospitalitySlice = createSlice({
@@ -161,10 +157,6 @@ export const hospitalitySlice = createSlice({
     setBusinessProfile: (state, payload) => {
       state.createBusinessProfile = payload;
     },
-    setFreelancerDetails: (state, payload) => {
-      state.freelancerDetails = payload;
-    },
-
 
     setScreenMode: (state, payload) => {
       state.screenMode = payload;
@@ -174,6 +166,12 @@ export const hospitalitySlice = createSlice({
       state.jobListing = [...state.jobListing, payload.payload];
       state.screenMode = 9;
       state.lastAddedJobId = payload.payload.id;
+    },
+
+    setFreelancerDetails: (state, payload) => {
+      state.freelancers = [...state.freelancers, payload.payload];
+      // state.screenMode = 10;
+      // state.freelancerDetails;
     },
   },
 });
@@ -190,14 +188,11 @@ export const {
   addJobListing,
 } = hospitalitySlice.actions;
 
-
 export const selectBusinesses = (state) => state.hospitality.businesses;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 
-
 //----- tella  computer what you select
-
 
 //----- tell computer what you select
 
