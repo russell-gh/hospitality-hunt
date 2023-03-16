@@ -1,4 +1,5 @@
 import React from "react";
+
 import { selectJobListings } from "../features/hospitality/hospitalitySlice";
 import { useSelector } from "react-redux";
 import "./JobDetails.css";
@@ -26,6 +27,7 @@ const JobDetails = () => {
         </p>
       </div>
     );
+
   });
 };
 

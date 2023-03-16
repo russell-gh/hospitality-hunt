@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+
 import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
 import Results from "./Results";
 
 const Controls = () => {
   const businesses = useSelector(selectJobListings);
+
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Location");
 
@@ -13,27 +15,25 @@ const Controls = () => {
   }
 
   let filtered = businesses;
-  if (userSelect === "Location") {
-    filtered = businesses.filter((businesses) => {
-      return businesses.location
-        .toLowerCase()
-        .includes(userInput.toLowerCase());
-    });
-  } else if (userSelect === "Job-type") {
-    filtered = businesses.filter((businesses) => {
-      return (
-        businesses.business_type.toLowerCase().includes(userInput) ||
-        businesses.business_type.toUpperCase().includes(userInput)
-      );
-    });
-  } else {
-    filtered = businesses.filter((businesses) => {
-      return (
-        businesses.position.toLowerCase().includes(userInput) ||
-        businesses.position.toUpperCase().includes(userInput)
-      );
-    });
-  }
+  // if (userSelect === "Location") {
+  //   filtered = businesses.filter((businesses) => {
+  //     return businesses.location
+  //       .toLowerCase()
+  //       .includes(userInput.toLowerCase());
+  //   });
+  // } else if (userSelect === "Job-type") {
+  //   filtered = businesses.filter((businesses) => {
+  //     return businesses.business_type
+  //       .toLowerCase()
+  //       .includes(userInput.toLowerCase());
+  //   });
+  // } else {
+  //   filtered = businesses.filter((businesses) => {
+  //     return businesses.position
+  //       .toLowerCase()
+  //       .includes(userInput.toLowerCase());
+  //   });
+  // }
 
   return (
     <>
@@ -62,15 +62,29 @@ const Controls = () => {
         ></input>
       </div>
       <div>
-        {filtered.map((item) => (
-          <Results
-            key={item.ID}
-            business_name={item.business_name}
-            location={item.location}
-            business_type={item.business_type}
-            position={item.position}
-          />
-        ))}
+        {filtered.map(
+          (job) => {
+            const quickViewJob = Object.entries(job);
+
+            return quickViewJob.map((item) => {
+              return (
+                <div key={item[0]}>
+                  <p>
+                    {item[0]}: {item[1]}
+                  </p>
+                </div>
+              );
+            });
+          }
+
+          // <Results
+          //   key={item.ID}
+          //   business_name={item.business_name}
+          //   location={item.location}
+          //   business_type={item.business_type}
+          //   position={item.position}
+          // />
+        )}
       </div>
     </>
   );

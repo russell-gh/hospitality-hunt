@@ -1,0 +1,17 @@
+* {
+  font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
+}
+
+h1,
+.controlBar,
+.inputBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 17px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+h1 {
+  padding-top: 30px;
+}

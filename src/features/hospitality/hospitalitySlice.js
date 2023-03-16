@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+
   screenMode: 9,
+
 
   value: 10,
   user: { email: "", password: "" },
@@ -114,7 +116,10 @@ const initialState = {
     },
   ],
 
+
   jobListings: [
+
+
     {
       ID: 1,
       jobTitle: "waiter",
@@ -124,6 +129,7 @@ const initialState = {
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
 
+
     {
       ID: 2,
       jobTitle: "bartender",
@@ -132,6 +138,8 @@ const initialState = {
       jobDescription:
         "this position is to fill in for a bartender on leave you will be covering weekend shifts and  tuesday's",
     },
+
+
   ],
 };
 
@@ -196,10 +204,12 @@ export const {
   addJobListing,
 } = hospitalitySlice.actions;
 
+
 export const selectJobListings = (state) => state.hospitality.jobListings;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
+
 
 //----- tella  computer what you select
 
