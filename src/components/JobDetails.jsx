@@ -16,18 +16,16 @@ const JobDetails = () => {
   const result = jobListings.filter((item) => {
     return item.ID === lastAddedJobId;
   });
-
   const bArray = Object.entries(result[0]);
 
   return bArray.map((item) => {
     return (
-      <div className="job-details">
+      <div className="job-details" key={item[0]}>
         <p>
           {item[0]}: {item[1]}
         </p>
       </div>
     );
-
   });
 };
 
