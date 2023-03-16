@@ -3,37 +3,48 @@ import { useDispatch } from "react-redux";
 import "./login.css";
 import { login } from "../features/hospitality/hospitalitySlice";
 import Button from "react-bootstrap/Button";
+import { validate } from "../validation/joi";
+import { logIn } from "../validation/schemas";
 
 const Loginpage = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.prevantDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    dispatch(
-      login({
-        name: name,
-        email: email,
-        password: password,
-        logIn: true,
-      })
-    );
+    // if (email && password) {
+    //   dispatch(logIn({ email: email, password: password }));
+    // } else {
+    //   console.log("loged in");
+    // }
+
+    const result = await validate("logIn", {
+      email: email,
+      password: password,
+    });
+    console.log(result);
+
+    if (result === true) {
+      dispatch(
+        login({
+          email: email,
+          password: password,
+          logIn: true,
+        })
+      );
+    } else {
+      console.log("your credentials are bad");
+    }
   };
 
   return (
     <div className="login">
       <form className="login__form" onSubmit={(e) => handleSubmit(e)}>
         <h1>Login</h1>
-        <input
-          type="name"
-          placeholder="Name"
-          value={name}
-          onInput={(e) => setName(e.target.value)}
-        />
+
         <input
           type="email"
           placeholder="enter email"
