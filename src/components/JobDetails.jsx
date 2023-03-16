@@ -1,31 +1,31 @@
 import React from "react";
-import { selectJobListing } from "../features/hospitality/hospitalitySlice";
+import { selectJobListings } from "../features/hospitality/hospitalitySlice";
 import { useSelector } from "react-redux";
 import "./JobDetails.css";
 import { listingText } from "../language/english";
+import { selectLastAddedJobId } from "../features/hospitality/hospitalitySlice";
 
 const JobDetails = () => {
-  const businesses = useSelector(selectJobListing);
-  console.log(businesses);
-  if (!businesses) {
+  const jobListings = useSelector(selectJobListings);
+  const lastAddedJobId = useSelector(selectLastAddedJobId);
+  console.log(jobListings);
+  if (!jobListings) {
     return <p>Loading...</p>;
   }
+  const result = jobListings.filter((item) => {
+    return item.ID === lastAddedJobId;
+  });
 
-  return businesses.map((business) => {
-    const { business_name, location, business_type, position, email, about } =
-      business;
+  const bArray = Object.entries(result[0]);
 
-    const bArray = Object.entries(business);
-
-    return bArray.map((item) => {
-      return (
-        <div className="job-details">
-          <p>
-            {item[0]}: {item[1]}
-          </p>
-        </div>
-      );
-    });
+  return bArray.map((item) => {
+    return (
+      <div className="job-details">
+        <p>
+          {item[0]}: {item[1]}
+        </p>
+      </div>
+    );
   });
 };
 

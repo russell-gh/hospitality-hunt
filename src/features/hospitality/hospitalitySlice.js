@@ -6,6 +6,8 @@ const initialState = {
   value: 10,
   user: { email: "", password: "" },
 
+  lastAddedJobId: 2,
+
   businesses: [
     {
       ID: 6,
@@ -112,14 +114,23 @@ const initialState = {
     },
   ],
 
-  jobListing: [
+  jobListings: [
     {
-      ID: "j1",
+      ID: 1,
       jobTitle: "waiter",
       jobDuration: "Part-Time",
       jobLocation: "london",
       jobDescription:
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
+    },
+
+    {
+      ID: 2,
+      jobTitle: "bartender",
+      jobDuration: "Part-Time",
+      jobLocation: "london",
+      jobDescription:
+        "this position is to fill in for a bartender on leave you will be covering weekend shifts and  tuesday's",
     },
   ],
 };
@@ -185,9 +196,10 @@ export const {
   addJobListing,
 } = hospitalitySlice.actions;
 
-export const selectJobListing = (state) => state.hospitality.jobListing;
+export const selectJobListings = (state) => state.hospitality.jobListings;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
+export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
 
 //----- tella  computer what you select
 
