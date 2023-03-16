@@ -1,5 +1,9 @@
 import Joi from "joi";
-import { signUp, addJob } from "./schemas";
+
+import { signUp, addJob, logIn } from "./schemas";
+import { freelancerDetails } from "./schemas";
+import { createUserProfile } from "./schemas";
+
 
 export const validate = async (valType, data) => {
   console.log(valType, data);
@@ -15,8 +19,18 @@ export const validate = async (valType, data) => {
     }
   }
 
+
   if (valType === "addJob") {
-    const _joiInstance = Joi.object(addJob);
+    const _joiInstance = Joi.object(addJob);}
+
+
+  if (valType === "logIn") {
+    const _joiInstance = Joi.object(logIn);
+  }
+
+  if (valType === "createUserProfile") {
+    const _joiInstance = Joi.object(createUserProfile);}
+
 
     try {
       await _joiInstance.validateAsync(data);

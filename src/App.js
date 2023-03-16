@@ -19,10 +19,9 @@ import { validate } from "./validation/joi";
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
 
-  const demo = async () => {
-    const result = await validate("signUp", { email: "", password: "123456" });
-    console.log(result);
-  };
+
+   
+
 
   return (
     <div>

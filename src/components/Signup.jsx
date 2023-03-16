@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { SIGNUP } from "../features/hospitality/hospitalitySlice";
+import {
+  SIGNUP,
+  setScreenMode,
+} from "../features/hospitality/hospitalitySlice";
+import { validate } from "../validation/joi";
+import "./Signup.scss";
 
 /**
  * Email and password stored in local store.
@@ -13,16 +18,31 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
   const [passwordConfirm, setPasswordConfirm] = useState();
+  const [validationMessage, setValidationMessage] = useState();
 
   const dispatch = useDispatch();
 
   const submitSignupDate = (e) => {
     e.preventDefault();
 
-    if (email && password) {
+    validateEmailPassword();
+  };
+
+  const validateEmailPassword = async () => {
+    // if true then pass, can be saved
+    // if false, display error message, dont save
+
+    const result = await validate("signUp", {
+      email: email,
+      password: password,
+      repeat_password: passwordConfirm,
+    });
+
+    if (result === true) {
       dispatch(SIGNUP({ email: email, password: password }));
+      dispatch(setScreenMode(3));
     } else {
-      console.log("At least one of email or password is empty.");
+      setValidationMessage(result + " ");
     }
   };
 
@@ -39,7 +59,7 @@ const Signup = () => {
   return (
     <>
       <h1>Signup!</h1>
-      <form onSubmit={submitSignupDate}>
+      <form className="signUp" onSubmit={submitSignupDate}>
         <div className="form-group">
           <label for="singupFormEmail">Email</label>
           <input
@@ -75,9 +95,15 @@ const Signup = () => {
           />
         </div>
 
-        <button type="submit" class="btn btn-success">
-          Submit
-        </button>
+        <div className="form-group">
+          <input type="submit" class="btn btn-success" />
+        </div>
+
+        {validationMessage && (
+          <div class="alert alert-danger" role="alert">
+            {validationMessage}
+          </div>
+        )}
       </form>
     </>
   );
