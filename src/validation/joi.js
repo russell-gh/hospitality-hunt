@@ -1,4 +1,11 @@
 import Joi from "joi";
+
+import { signUp, logIn } from "./schemas";
+
+export const validate = async (valType, data) => {
+  console.log(valType, data);
+
+
 import { signUp } from "./schemas";
 
 import { freelancerDetails } from "./schemas";
@@ -7,6 +14,7 @@ import { createUserProfile } from "./schemas";
 
 export const validate = async (valType, data) => {
   console.log(valType, data);
+
 
   if (valType === "signUp") {
     const _joiInstance = Joi.object(signUp);
@@ -18,6 +26,11 @@ export const validate = async (valType, data) => {
       return error;
     }
   }
+
+  if (valType === "logIn") {
+    const _joiInstance = Joi.object(logIn);}
+
+
 
   // if (valType === "freelancerDetails") {
   //   const _joiInstance = Joi.object(freelancerDetails);
@@ -34,6 +47,7 @@ export const validate = async (valType, data) => {
   if (valType === "createUserProfile") {
     const _joiInstance = Joi.object(createUserProfile);
 
+
     try {
       await _joiInstance.validateAsync(data);
       return true;
@@ -41,5 +55,7 @@ export const validate = async (valType, data) => {
       return error;
     }
   }
+
+
 
 };
