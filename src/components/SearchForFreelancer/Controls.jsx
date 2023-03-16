@@ -56,8 +56,8 @@ const Controls = () => {
         ></input>
       </div>
       <div>
-        {filtered.map((item) => {
-          const quickViewFreelancer = Object.entries(item);
+        {filtered.map((freelancer) => {
+          const quickViewFreelancer = Object.entries(freelancer);
 
           return quickViewFreelancer.map((item) => {
             if (
@@ -67,9 +67,8 @@ const Controls = () => {
               item[0] === "About")
             )
               return;
-
             return (
-              <div>
+              <div key={item[0]}>
                 <p>
                   {item[0]}: {item[1]}
                 </p>

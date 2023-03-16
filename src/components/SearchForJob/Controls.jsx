@@ -61,12 +61,12 @@ const Controls = () => {
       </div>
       <div>
         {filtered.map(
-          (item) => {
-            const quickViewJob = Object.entries(item);
+          (job) => {
+            const quickViewJob = Object.entries(job);
 
             return quickViewJob.map((item) => {
               return (
-                <div>
+                <div key={item[0]}>
                   <p>
                     {item[0]}: {item[1]}
                   </p>
