@@ -1,48 +1,33 @@
 import React from "react";
-import { selectJobListing } from "../features/hospitality/hospitalitySlice";
+
+import { selectJobListings } from "../features/hospitality/hospitalitySlice";
 import { useSelector } from "react-redux";
 import "./JobDetails.css";
 import { listingText } from "../language/english";
+import { selectLastAddedJobId } from "../features/hospitality/hospitalitySlice";
 
 const JobDetails = () => {
-  const businesses = useSelector(selectJobListing);
-  console.log(businesses);
-  if (!businesses) {
+  const jobListings = useSelector(selectJobListings);
+  const lastAddedJobId = useSelector(selectLastAddedJobId);
+  console.log(jobListings);
+  if (!jobListings) {
     return <p>Loading...</p>;
   }
+  const result = jobListings.filter((item) => {
+    return item.ID === lastAddedJobId;
+  });
 
-  return businesses.map((business) => {
-    const { business_name, location, business_type, position, email, about } =
-      business;
+  const bArray = Object.entries(result[0]);
 
-    const bArray = Object.entries(business);
+  return bArray.map((item) => {
+    return (
+      <div className="job-details">
+        <p>
+          {item[0]}: {item[1]}
+        </p>
+      </div>
+    );
 
-    return bArray.map((item) => {
-      return (
-        <div style={{ display: "flex" }}>
-          <p>{listingText[item[0]] ? listingText[item[0]] : item[0]}</p>
-          <p>{item[1]}</p>
-        </div>
-      );
-    });
-
-    // return (
-    //     <div className="job-details">
-    //         <h1>Job Details</h1>
-    //         <h2>Type of Role</h2>
-    //         <p>{business_name}</p>
-    //         <h2>Location of Restaurant:</h2>
-    //         <p>{location}</p>
-    //         <h2>Type of Business:</h2>
-    //         <p>{business_type}</p>
-    //         <h2>Type of Role:</h2>
-    //         <p>{position}</p>
-    //         <h2>Contact information:</h2>
-    //         <p>{email}</p>
-    //         <h2>Further information:</h2>
-    //         <p>{about}</p>
-    // //    </div>
-    // );
   });
 };
 
