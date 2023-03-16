@@ -52,7 +52,7 @@ const Controls = () => {
             setUserInput(e.target.value);
           }}
           type="text"
-          placeholder="Search for a freelancer"
+          placeholder="Enter something ..."
         ></input>
       </div>
       <div>
