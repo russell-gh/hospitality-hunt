@@ -11,31 +11,11 @@ export const validate = async (valType, data) => {
 
   if (valType === "signUp") {
     _joiInstance = Joi.object(signUp);
-
-    // try {
-    //   await _joiInstance.validateAsync(data, { abortEarly: false });
-    //   return true;
-    // } catch (error) {
-    //   const errorsMod = {};
-    //   error.details.forEach((e) => {
-    //     errorsMod[e.context.key] = e.message;
-    //   });
-
-    //   return errorsMod;
-    // }
-  }
-
-  // let _joiInstance;
-
-  if (valType === "addJob") {
+  } else if (valType === "addJob") {
     _joiInstance = Joi.object(addJob);
-  }
-
-  if (valType === "logIn") {
+  } else if (valType === "logIn") {
     _joiInstance = Joi.object(logIn);
-  }
-
-  if (valType === "createUserProfile") {
+  } else if (valType === "createUserProfile") {
     _joiInstance = Joi.object(createUserProfile);
   }
 

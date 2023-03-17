@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 7,
-
+  screenMode: 1,
   value: 10,
   user: { email: "", password: "" },
-
   lastAddedJobId: 1,
 
   freelancers: [
@@ -125,19 +123,11 @@ export const hospitalitySlice = createSlice({
       state.user = action.payload;
       state.screenMode = 3;
     },
-
-    increment: (state) => {
-      state.value += 1;
+    signUp: (state, action) => {
+      state.user.email = action.payload.email;
+      state.user.password = action.payload.password;
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-
-    SIGNUP: (state, action) => {
-      state.user.email = action.payload.signupFormEmail;
-      state.user.password = action.payload.signupFormPassword;
-    },
-    ONBOARDING: (state, action) => {
+    onboarding: (state, action) => {
       // isFreelancer is a boolean.
       // True = is freelancer, False = is business.
       state.user.isFreelancer = action.payload;
@@ -176,11 +166,11 @@ export const {
   increment,
   decrement,
   setUserProfile,
-  SIGNUP,
+  signUp,
   login,
   setBusinessProfile,
   setFreelancerDetails,
-  ONBOARDING,
+  onboarding,
   addJobListing,
   setScreenMode,
 } = hospitalitySlice.actions;
