@@ -4,13 +4,35 @@
 
 h1,
 .controlBar,
-.inputBar,
-.contractBar {
+.inputBar {
   display: flex;
   justify-content: center;
   margin-top: 17px;
   margin-left: 20%;
   margin-right: 20%;
+}
+
+.contractBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 17px;
+}
+
+.controlBar {
+  font-size: 20px;
+}
+
+.inputBar {
+  height: 35px;
+}
+
+.btn {
+  margin: 0px;
+}
+
+.btn:focus {
+  background-color: #0d6efd;
+  color: white;
 }
 
 h1 {
@@ -19,4 +41,18 @@ h1 {
 
 select {
   width: 200px;
+}
+
+.eachResult {
+  width: 300px;
+  margin: 10px;
+}
+
+.allResult {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 70px;
 }

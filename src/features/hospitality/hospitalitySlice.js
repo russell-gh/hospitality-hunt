@@ -188,13 +188,6 @@ export const {
 export const selectJobListings = (state) => state.hospitality.jobListings;
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
-
-//----- tella  computer what you select
-
 export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
-
-//----- tell computer what you select
-
-//----- can see the dev tool to get some hint
 
 export default hospitalitySlice.reducer;

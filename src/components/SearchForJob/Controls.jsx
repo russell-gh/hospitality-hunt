@@ -6,28 +6,41 @@ import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
 
 const Controls = () => {
   const JobListings = useSelector(selectJobListings);
-
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Type");
+  const [contractButtonSelect, setContractButtonSelect] = useState("Any");
 
   if (!JobListings) {
     return <p>Loading...</p>;
   }
 
-  let filtered = JobListings;
+  let filtered = [...JobListings];
   if (userSelect === "Type") {
-    filtered = JobListings.filter((JobListing) => {
+    filtered = filtered.filter((JobListing) => {
       return JobListing.Type.toLowerCase().includes(userInput.toLowerCase());
     });
   } else if (userSelect === "Title") {
-    filtered = JobListings.filter((JobListing) => {
+    filtered = filtered.filter((JobListing) => {
       return JobListing.Title.toLowerCase().includes(userInput.toLowerCase());
     });
-  } else {
-    filtered = JobListings.filter((JobListing) => {
+  } else if (userSelect === "Postcode") {
+    filtered = filtered.filter((JobListing) => {
       return JobListing.Postcode.toLowerCase().includes(
         userInput.toLowerCase()
       );
+    });
+  }
+  if (contractButtonSelect === "Full-time") {
+    filtered = filtered.filter((JobListing) => {
+      return JobListing.Contract.includes(contractButtonSelect);
+    });
+  } else if (contractButtonSelect === "Part-time") {
+    filtered = filtered.filter((JobListing) => {
+      return JobListing.Contract.includes(contractButtonSelect);
+    });
+  } else if (contractButtonSelect === "Any") {
+    filtered = filtered.filter((JobListing) => {
+      return JobListing;
     });
   }
 
@@ -48,6 +61,37 @@ const Controls = () => {
           </select>
         </label>
       </div>
+
+      <div className="contractBar">
+        <button
+          type="radio"
+          id="Any"
+          name="Contract"
+          value="Any"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Any
+        </button>
+        <button
+          type="radio"
+          id="Full-time"
+          name="Contract"
+          value="Full-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Full-time
+        </button>
+        <button
+          type="radio"
+          id="Part-time"
+          name="Contract"
+          value="Part-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Part-time
+        </button>
+      </div>
+
       <div className="inputBar">
         <input
           onInput={(e) => {
@@ -62,22 +106,27 @@ const Controls = () => {
           (job) => {
             const quickViewJob = Object.entries(job);
 
-            return quickViewJob.map((item) => {
-              if (
-                item[0] === "Email" ||
-                item[0] === "Phone" ||
-                item[0] === "id" ||
-                item[0] === "Description"
-              )
-                return;
-              return (
-                <div key={item[0]}>
-                  <p>
-                    {item[0]}: {item[1]}
-                  </p>
-                </div>
-              );
-            });
+            return (
+              <div className="eachResult">
+                {quickViewJob.map((item) => {
+                  if (
+                    item[0] === "Email" ||
+                    item[0] === "Phone" ||
+                    item[0] === "id" ||
+                    item[0] === "Description"
+                  )
+                    return;
+
+                  return (
+                    <div key={item[0]}>
+                      <p>
+                        {item[0]}: {item[1]}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            );
           }
 
           // <Results

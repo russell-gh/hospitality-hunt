@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
 // import Results from "./Results";
@@ -8,7 +8,12 @@ const Controls = () => {
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Role");
   const [contractButtonSelect, setContractButtonSelect] = useState("Any");
-  console.log(userSelect, contractButtonSelect);
+  const inputBox = useRef();
+
+  useEffect(() => {
+    if (freelancers) inputBox.current.focus();
+  }, [freelancers]);
+
   if (!freelancers) {
     return <p>Loading...</p>;
   }
@@ -46,6 +51,38 @@ const Controls = () => {
   return (
     <>
       <h1>Search For Freelancer</h1>
+      <div className="contractBar">
+        <button
+          className="btn btn-outline-primary"
+          type="radio"
+          id="Any"
+          name="Contract"
+          value="Any"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Any
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          type="radio"
+          id="Full-time"
+          name="Contract"
+          value="Full-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Full-time
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          type="radio"
+          id="Part-time"
+          name="Contract"
+          value="Part-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Part-time
+        </button>
+      </div>
       <div className="controlBar">
         <label>
           Search by:
@@ -61,38 +98,9 @@ const Controls = () => {
         </label>
       </div>
 
-      <div className="contractBar">
-        <button
-          type="radio"
-          id="Any"
-          name="Contract"
-          value="Any"
-          onClick={(e) => setContractButtonSelect(e.target.value)}
-        >
-          Any
-        </button>
-        <button
-          type="radio"
-          id="Full-time"
-          name="Contract"
-          value="Full-time"
-          onClick={(e) => setContractButtonSelect(e.target.value)}
-        >
-          Full-time
-        </button>
-        <button
-          type="radio"
-          id="Part-time"
-          name="Contract"
-          value="Part-time"
-          onClick={(e) => setContractButtonSelect(e.target.value)}
-        >
-          Part-time
-        </button>
-      </div>
-
       <div className="inputBar">
         <input
+          ref={inputBox}
           onInput={(e) => {
             setUserInput(e.target.value);
           }}
@@ -101,12 +109,12 @@ const Controls = () => {
         ></input>
       </div>
 
-      <div>
+      <div className="allResult">
         {filtered.map((freelancer) => {
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
-            <div className="eachResult">
+            <form className="eachResult">
               {quickViewFreelancer.map((item) => {
                 if (
                   item[0] === "Email" ||
@@ -116,6 +124,7 @@ const Controls = () => {
                   item[0] === "Experience"
                 )
                   return;
+
                 return (
                   <div key={item[0]}>
                     <p>
@@ -124,16 +133,8 @@ const Controls = () => {
                   </div>
                 );
               })}
-            </div>
+            </form>
           );
-
-          // <Results
-          //   key={item.ID}
-          //   freelancer_name={item.freelancer_name}
-          //   location={item.location}
-          //   role={item.role}
-          //   skills=  {item.skills}
-          // />
         })}
       </div>
     </>
