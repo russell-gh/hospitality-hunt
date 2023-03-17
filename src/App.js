@@ -15,12 +15,14 @@ import FreelancerDetails from "./components/FreelancerDetails";
 import Onboarding from "./components/Onboarding";
 import Footer from "./components/Footer";
 import { validate } from "./validation/joi";
+import WebcamContainer from "./components/react-webcam/WebcamContainer";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
 
   return (
     <div>
+      <WebcamContainer />
       <Navigation /* Yahya */ />
       <main>
         {screenMode === 1 && <Signup /> /* Stuart tidy up*/}
