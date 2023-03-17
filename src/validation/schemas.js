@@ -16,11 +16,11 @@ export const addJob = {
 export const logIn = { email: Joi.string().min(10), password: Joi.required() };
 
 export const signUp = {
-  email: Joi.string().min(10),
+  email: Joi.string().min(10).required(),
   password: Joi.required(),
   repeat_password: Joi.string().required().valid(Joi.ref("password")).messages({
     "any.only": "The two passwords do not match.",
-    "any.required": "Please confirm your password.",
+    "any.required": "Password confirmation is required.",
   }),
 };
 

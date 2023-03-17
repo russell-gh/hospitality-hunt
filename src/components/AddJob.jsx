@@ -41,7 +41,7 @@ const AddJob = () => {
               className="form-control"
               placeholder="Job Title"
             />
-            <p>{errors.jobtitle}</p>
+            <p style={{ color: "red" }}>{errors.jobtitle}</p>
           </div>
 
           <div className="col-md-4">
@@ -51,7 +51,7 @@ const AddJob = () => {
               <option>Part-Time</option>
               <option>Contract</option>
             </select>
-            <p>{errors.jobduration}</p>
+            <p style={{ color: "red" }}>{errors.jobduration}</p>
           </div>
         </div>
 
@@ -64,6 +64,7 @@ const AddJob = () => {
               className="form-control"
               placeholder="PostCode"
             />
+            <p style={{ color: "red" }}>{errors.postcode}</p>
           </div>
 
           <div className="col-md-4">
@@ -75,6 +76,7 @@ const AddJob = () => {
               <option>Night-Club</option>
               <option>Cinema</option>
             </select>
+            <p style={{ color: "red" }}>{errors.businesssector}</p>
           </div>
 
           <div className="col-md-10 ">
@@ -84,6 +86,7 @@ const AddJob = () => {
               <option>Part-Time</option>
               <option>Contract</option>
             </select>
+            <p style={{ color: "red" }}>{errors.salaryrange}</p>
           </div>
         </div>
 
@@ -96,6 +99,7 @@ const AddJob = () => {
               className="form-control"
               placeholder="Business Email"
             />
+            <p style={{ color: "red" }}>{errors.businessemail}</p>
           </div>
         </div>
 
@@ -108,6 +112,7 @@ const AddJob = () => {
               className="form-control"
               placeholder="Phone Numer"
             />
+            <p style={{ color: "red" }}>{errors.businessphone}</p>
           </div>
         </div>
 
@@ -119,6 +124,7 @@ const AddJob = () => {
               className="form-control"
               rows="5"
             ></textarea>
+            <p style={{ color: "red" }}>{errors.jobdescription}</p>
           </div>
         </div>
 

@@ -4,7 +4,8 @@
 
 h1,
 .controlBar,
-.inputBar {
+.inputBar,
+.contractBar {
   display: flex;
   justify-content: center;
   margin-top: 17px;
@@ -14,4 +15,8 @@ h1,
 
 h1 {
   padding-top: 30px;
+}
+
+select {
+  width: 200px;
 }
