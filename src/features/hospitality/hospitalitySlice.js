@@ -134,8 +134,8 @@ export const hospitalitySlice = createSlice({
     },
 
     SIGNUP: (state, action) => {
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user.email = action.payload.signupFormEmail;
+      state.user.password = action.payload.signupFormPassword;
     },
     ONBOARDING: (state, action) => {
       // isFreelancer is a boolean.
@@ -192,8 +192,6 @@ export const selectScreenMode = (state) => state.hospitality.screenMode;
 //----- tella  computer what you select
 
 export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
-
-//----- tella  computer what you select
 
 //----- tell computer what you select
 

@@ -2,25 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .login__form {
   display: flex;
-
+  margin-top: 40px;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
   border: none;
 }
 
-.login__form > h1 {
+.login__form > svg {
   display: flex;
-  justify-content: center;
-  font-size: 35px;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  letter-spacing: -1;
+  margin-bottom: 30px;
 }
 
 .login__form > input {
@@ -29,7 +26,7 @@
   min-width: 465px;
   padding: 15px 0;
   padding-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   outline: none;
   border: 1px solid rgba(133, 131, 131, 0.24);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -38,9 +35,9 @@
 }
 
 .submit__btn {
-  padding: 17px 30px;
+  padding: 10px 50px 10px 50px;
   margin-top: 10px;
-  background: black;
+  background: #0d6efd;
   border: none;
   color: white;
   font-size: 14px;
