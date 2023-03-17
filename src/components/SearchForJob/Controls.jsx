@@ -2,38 +2,34 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
-import Results from "./Results";
+// import Results from "./Results";
 
 const Controls = () => {
-  const businesses = useSelector(selectJobListings);
+  const JobListings = useSelector(selectJobListings);
 
   const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("Location");
+  const [userSelect, setUserSelect] = useState("Type");
 
-  if (!businesses) {
+  if (!JobListings) {
     return <p>Loading...</p>;
   }
 
-  let filtered = businesses;
-  // if (userSelect === "Location") {
-  //   filtered = businesses.filter((businesses) => {
-  //     return businesses.location
-  //       .toLowerCase()
-  //       .includes(userInput.toLowerCase());
-  //   });
-  // } else if (userSelect === "Job-type") {
-  //   filtered = businesses.filter((businesses) => {
-  //     return businesses.business_type
-  //       .toLowerCase()
-  //       .includes(userInput.toLowerCase());
-  //   });
-  // } else {
-  //   filtered = businesses.filter((businesses) => {
-  //     return businesses.position
-  //       .toLowerCase()
-  //       .includes(userInput.toLowerCase());
-  //   });
-  // }
+  let filtered = JobListings;
+  if (userSelect === "Type") {
+    filtered = JobListings.filter((JobListing) => {
+      return JobListing.Type.toLowerCase().includes(userInput.toLowerCase());
+    });
+  } else if (userSelect === "Title") {
+    filtered = JobListings.filter((JobListing) => {
+      return JobListing.Title.toLowerCase().includes(userInput.toLowerCase());
+    });
+  } else {
+    filtered = JobListings.filter((JobListing) => {
+      return JobListing.Postcode.toLowerCase().includes(
+        userInput.toLowerCase()
+      );
+    });
+  }
 
   return (
     <>
@@ -46,9 +42,9 @@ const Controls = () => {
               setUserSelect(e.target.value);
             }}
           >
-            <option value="Location">Location</option>
-            <option value="Job-type">Job type</option>
-            <option value="Position">Position</option>
+            <option value="Type">Type</option>
+            <option value="Title">Title</option>
+            <option value="Postcode">Postcode</option>
           </select>
         </label>
       </div>
@@ -67,6 +63,13 @@ const Controls = () => {
             const quickViewJob = Object.entries(job);
 
             return quickViewJob.map((item) => {
+              if (
+                item[0] === "Email" ||
+                item[0] === "Phone" ||
+                item[0] === "id" ||
+                item[0] === "Description"
+              )
+                return;
               return (
                 <div key={item[0]}>
                   <p>

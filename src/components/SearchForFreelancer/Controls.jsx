@@ -6,26 +6,41 @@ import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
 const Controls = () => {
   const freelancers = useSelector(selectFreelancers);
   const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("Location");
+  const [userSelect, setUserSelect] = useState("Role");
+  const [contractButtonSelect, setContractButtonSelect] = useState("Any");
 
   if (!freelancers) {
     return <p>Loading...</p>;
   }
 
   let filtered = freelancers;
-  if (userSelect === "Location") {
-    filtered = freelancers.filter((freelancers) => {
-      return freelancers.location
-        .toLowerCase()
-        .includes(userInput.toLowerCase());
+  if (userSelect === "Postcode") {
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Postcode.toLowerCase().includes(
+        userInput.toLowerCase()
+      );
     });
   } else if (userSelect === "Role") {
-    filtered = freelancers.filter((freelancers) => {
-      return freelancers.role.toLowerCase().includes(userInput.toLowerCase());
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Role.toLowerCase().includes(userInput.toLowerCase());
     });
   } else {
-    filtered = freelancers.filter((freelancers) => {
-      return freelancers.skills.toLowerCase().includes(userInput.toLowerCase());
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Skill.toLowerCase().includes(userInput.toLowerCase());
+    });
+  }
+
+  if (contractButtonSelect === "Full-time") {
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Contract.includes(contractButtonSelect);
+    });
+  } else if (contractButtonSelect === "Part-time") {
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer.Contract.includes(contractButtonSelect);
+    });
+  } else {
+    filtered = freelancers.filter((freelancer) => {
+      return freelancer;
     });
   }
 
@@ -40,31 +55,64 @@ const Controls = () => {
               setUserSelect(e.target.value);
             }}
           >
-            <option value="Location">Location</option>
             <option value="Role">Role</option>
-            <option value="Skills">Skills</option>
+            <option value="Skills">Skill</option>
+            <option value="Postcode">Postcode</option>
           </select>
         </label>
       </div>
+
+      <div className="contractBar">
+        <button
+          type="radio"
+          id="Any"
+          name="Contract"
+          value="Any"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Any
+        </button>
+        <button
+          type="radio"
+          id="Full-time"
+          name="Contract"
+          value="Full-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Full-time
+        </button>
+        <button
+          type="radio"
+          id="Part-time"
+          name="Contract"
+          value="Part-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Part-time
+        </button>
+      </div>
+
       <div className="inputBar">
         <input
           onInput={(e) => {
             setUserInput(e.target.value);
           }}
           type="text"
-          placeholder="Search for a freelancer"
+          placeholder="Enter something ..."
         ></input>
       </div>
+
       <div>
         {filtered.map((freelancer) => {
           const quickViewFreelancer = Object.entries(freelancer);
 
           return quickViewFreelancer.map((item) => {
             if (
-              (item[0] === "Experience",
-              item[0] === "Email",
-              item[0] === "Phone",
-              item[0] === "About")
+              item[0] === "Email" ||
+              item[0] === "Phone" ||
+              item[0] === "id" ||
+              item[0] === "About" ||
+              item[0] === "Experience"
             )
               return;
             return (
@@ -89,11 +137,3 @@ const Controls = () => {
 };
 
 export default Controls;
-
-// Freelancer: [
-//   Name
-//   Postcode
-//   Contract (e.g. full or part time)
-//   Skill
-//   Role (what role looking for)
-//   ]
