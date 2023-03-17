@@ -1,45 +1,45 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { SIGNUP } from "../features/hospitality/hospitalitySlice";
+import {
+  SIGNUP,
+  setScreenMode,
+} from "../features/hospitality/hospitalitySlice";
+import { validate } from "../validation/joi";
+import "./Signup.scss";
 
-/**
- * Email and password stored in local store.
- * On button submit, email and password send and stored in store.
- *
- * TODO - Stuart
- *  - Validation on inputs on submit
- */
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState();
-  const [passwordConfirm, setPasswordConfirm] = useState();
-
+  const [userData, setUserData] = useState({});
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
 
   const submitSignupDate = (e) => {
     e.preventDefault();
+    validateEmailPassword();
+  };
 
-    if (email && password) {
-      dispatch(SIGNUP({ email: email, password: password }));
+  const validateEmailPassword = async () => {
+    const result = await validate("signUp", {
+      email: userData.signupFormEmail,
+      password: userData.signupFormPassword,
+      repeat_password: userData.signupFormPasswordConfirmation,
+    });
+
+    if (result === true) {
+      dispatch(SIGNUP(userData));
+      dispatch(setScreenMode(3));
     } else {
-      console.log("At least one of email or password is empty.");
+      setErrors(result);
     }
   };
 
-  const handleChange = (e) => {
-    if (e.target.type === "email") {
-      setEmail(e.target.value);
-    } else if (e.target.type === "password") {
-      e.target.id === "signupFormPassword"
-        ? setPassword(e.target.value)
-        : setPasswordConfirm(e.target.value);
-    }
+  const onChange = (e) => {
+    setUserData({ ...userData, [e.target.id]: e.target.value });
   };
 
   return (
     <>
       <h1>Signup!</h1>
-      <form onSubmit={submitSignupDate}>
+      <form className="signUp" onChange={onChange} onSubmit={submitSignupDate}>
         <div className="form-group">
           <label for="singupFormEmail">Email</label>
           <input
@@ -47,8 +47,12 @@ const Signup = () => {
             class="form-control"
             id="signupFormEmail"
             placeholder="Enter your email.."
-            onChange={handleChange}
           />
+          {errors.email && (
+            <div class="alert alert-danger" role="alert">
+              {errors.email}
+            </div>
+          )}
         </div>
 
         <div className="form-group">
@@ -57,9 +61,13 @@ const Signup = () => {
             type="password"
             class="form-control"
             id="signupFormPassword"
-            placeholder="Password"
-            onChange={handleChange}
+            placeholder="..."
           />
+          {errors.password && (
+            <div class="alert alert-danger" role="alert">
+              {errors.password}
+            </div>
+          )}
         </div>
 
         <div className="form-group">
@@ -70,14 +78,19 @@ const Signup = () => {
             type="password"
             class="form-control"
             id="signupFormPasswordConfirmation"
-            placeholder="Password"
-            onChange={handleChange}
+            placeholder="..."
           />
+
+          {errors.repeat_password && (
+            <div class="alert alert-danger" role="alert">
+              {errors.repeat_password}
+            </div>
+          )}
         </div>
 
-        <button type="submit" class="btn btn-success">
-          Submit
-        </button>
+        <div className="form-group">
+          <input type="submit" class="btn btn-success" />
+        </div>
       </form>
     </>
   );

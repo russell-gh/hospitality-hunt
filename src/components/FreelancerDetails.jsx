@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { setFreelancerDetails } from "../features/hospitality/hospitalitySlice";
 import { useDispatch } from "react-redux";
+import { validate } from "../validation/joi";
 
 const FreelancerDetails = (props) => {
   const dispatch = useDispatch();
@@ -12,7 +13,8 @@ const FreelancerDetails = (props) => {
 
   const setFreelancerDetails = (e) => {
     e.preventDefault();
-    dispatch(setFreelancerData(freelancerData));
+    // validate("valType", freelancerData);
+    dispatch(setFreelancerDetails(freelancerData));
   };
 
   // const onChange = (e) => {
@@ -30,26 +32,34 @@ const FreelancerDetails = (props) => {
       </div>
       <form
         onInput={onInput}
-        onSubmit={"send to search page"}
+        onSubmit={setFreelancerDetails}
         action=""
         method="post">
         <ul>
           <li>
-            <label for="first-name"> </label>
+            <label for="firstName"> </label>
             <input
               type="text"
-              id="first-name"
-              name="first-name"
+              id="firstName"
+              name="firstName"
               placeholder="First Name"
             />
           </li>
           <li>
-            <label for="surname-name"> </label>
+            <label for="surName"> </label>
             <input
               type="text"
-              id="surname-name"
-              name="surname-name"
-              placeholder="Surname Name"></input>
+              id="surName"
+              name="surName"
+              placeholder="SurName"></input>
+          </li>
+          <li>
+            <label for="post-code"></label>
+            <input
+              type="text"
+              id="postCode"
+              name="postCode"
+              placeholder="Poste Code"></input>
           </li>
           <li>
             <label for="email"></label>
@@ -60,12 +70,20 @@ const FreelancerDetails = (props) => {
               placeholder="Email"></input>
           </li>
           <li>
-            <label for="contact-number"></label>
+            <label for="contactNumber"></label>
             <input
               type="text"
-              id="number"
-              name="number"
+              id="contactNumber"
+              name="contactNumber"
               placeholder="Contact Number"></input>
+          </li>
+          <li>
+            <label for="role"></label>
+            <input
+              type="text"
+              id="role"
+              name="role"
+              placholder="Role you are appling for"></input>
           </li>
           <li>
             <label for="years-of-experience"></label>
@@ -80,12 +98,29 @@ const FreelancerDetails = (props) => {
             <input type="file" name="file" /*onChange={onChange}*/></input>
           </li>
           <li>
+            <laebel for="skills"></laebel>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              placholder="Skills"></input>
+          </li>
+          <li>
+            <label for="contract"></label>
+            <input
+              type="contract"
+              id="contract"
+              name="contract"
+              plcheolder="Contract you are looking for"></input>
+          </li>
+          <li>
             <label for="about"></label>
             <textarea
               id="about"
               name="about"
               placeholder="Introduce Yourself"></textarea>
           </li>
+          <button type="submit">Submit</button>
         </ul>
       </form>
     </>

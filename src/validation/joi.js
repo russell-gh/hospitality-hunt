@@ -1,29 +1,53 @@
 import Joi from "joi";
-import { signUp } from "./schemas";
+
+import { signUp, addJob, logIn } from "./schemas";
+import { freelancerDetails } from "./schemas";
 import { createUserProfile } from "./schemas";
 
 export const validate = async (valType, data) => {
   console.log(valType, data);
 
-  if (valType === "signUp") {
-    const _joiInstance = Joi.object(signUp);
+  let _joiInstance;
 
-    try {
-      await _joiInstance.validateAsync(data);
-      return true;
-    } catch (error) {
-      return error;
-    }
+  if (valType === "signUp") {
+    _joiInstance = Joi.object(signUp);
+
+    // try {
+    //   await _joiInstance.validateAsync(data, { abortEarly: false });
+    //   return true;
+    // } catch (error) {
+    //   const errorsMod = {};
+    //   error.details.forEach((e) => {
+    //     errorsMod[e.context.key] = e.message;
+    //   });
+
+    //   return errorsMod;
+    // }
+  }
+
+  // let _joiInstance;
+
+  if (valType === "addJob") {
+    _joiInstance = Joi.object(addJob);
+  }
+
+  if (valType === "logIn") {
+    _joiInstance = Joi.object(logIn);
   }
 
   if (valType === "createUserProfile") {
-    const _joiInstance = Joi.object(createUserProfile);
+    _joiInstance = Joi.object(createUserProfile);
+  }
 
-    try {
-      await _joiInstance.validateAsync(data);
-      return true;
-    } catch (error) {
-      return error;
-    }
+  try {
+    await _joiInstance.validateAsync(data, { abortEarly: false });
+    return true;
+  } catch (error) {
+    const errorsMod = {};
+    error.details.forEach((e) => {
+      errorsMod[e.context.key] = e.message;
+    });
+
+    return errorsMod;
   }
 };

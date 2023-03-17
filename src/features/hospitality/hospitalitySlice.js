@@ -1,14 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-
-  screenMode: 9,
-
+  screenMode: 1,
 
   value: 10,
   user: { email: "", password: "" },
 
-  lastAddedJobId: 2,
+  lastAddedJobId: 1,
 
   businesses: [
     {
@@ -116,10 +114,7 @@ const initialState = {
     },
   ],
 
-
   jobListings: [
-
-
     {
       ID: 1,
       jobTitle: "waiter",
@@ -129,7 +124,6 @@ const initialState = {
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and  tuesday's",
     },
 
-
     {
       ID: 2,
       jobTitle: "bartender",
@@ -138,8 +132,6 @@ const initialState = {
       jobDescription:
         "this position is to fill in for a bartender on leave you will be covering weekend shifts and  tuesday's",
     },
-
-
   ],
 };
 
@@ -149,7 +141,7 @@ export const hospitalitySlice = createSlice({
 
   reducers: {
     login: (state, action) => {
-      state.user = action.playload;
+      state.user = action.payload;
       state.screenMode = 3;
     },
 
@@ -161,8 +153,8 @@ export const hospitalitySlice = createSlice({
     },
 
     SIGNUP: (state, action) => {
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user.email = action.payload.signupFormEmail;
+      state.user.password = action.payload.signupFormPassword;
     },
     ONBOARDING: (state, action) => {
       // isFreelancer is a boolean.
@@ -176,18 +168,25 @@ export const hospitalitySlice = createSlice({
     setBusinessProfile: (state, payload) => {
       state.createBusinessProfile = payload;
     },
+
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
     },
 
     setScreenMode: (state, payload) => {
-      state.screenMode = payload;
+      state.screenMode = payload.payload;
     },
 
     addJobListing: (state, payload) => {
-      state.jobListing = [...state.jobListing, payload.payload];
+      state.jobListings = [...state.jobListings, payload.payload];
       state.screenMode = 9;
-      state.lastAddedJobId = payload.payload.id;
+      state.lastAddedJobId = payload.payload.ID;
+    },
+
+    setFreelancerDetails: (state, payload) => {
+      state.freelancers = [...state.freelancers, payload.payload];
+      // state.screenMode = 10;
+      // state.freelancerDetails;
     },
   },
 });
@@ -202,16 +201,19 @@ export const {
   setFreelancerDetails,
   ONBOARDING,
   addJobListing,
+  setScreenMode,
 } = hospitalitySlice.actions;
 
+export const selectBusinesses = (state) => state.hospitality.businesses;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
+
 export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
-export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
-
 
 //----- tella  computer what you select
+
+export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
 
 //----- tell computer what you select
 
