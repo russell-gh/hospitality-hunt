@@ -105,23 +105,28 @@ const Controls = () => {
         {filtered.map((freelancer) => {
           const quickViewFreelancer = Object.entries(freelancer);
 
-          return quickViewFreelancer.map((item) => {
-            if (
-              item[0] === "Email" ||
-              item[0] === "Phone" ||
-              item[0] === "id" ||
-              item[0] === "About" ||
-              item[0] === "Experience"
-            )
-              return;
-            return (
-              <div key={item[0]}>
-                <p>
-                  {item[0]}: {item[1]}
-                </p>
-              </div>
-            );
-          });
+          return (
+            <div className="eachResult">
+              {quickViewFreelancer.map((item) => {
+                if (
+                  item[0] === "Email" ||
+                  item[0] === "Phone" ||
+                  item[0] === "id" ||
+                  item[0] === "About" ||
+                  item[0] === "Experience"
+                )
+                  return;
+                return (
+                  <div key={item[0]}>
+                    <p>
+                      {item[0]}: {item[1]}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          );
+
           // <Results
           //   key={item.ID}
           //   freelancer_name={item.freelancer_name}
