@@ -8,38 +8,37 @@ const Controls = () => {
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Role");
   const [contractButtonSelect, setContractButtonSelect] = useState("Any");
-
+  console.log(userSelect, contractButtonSelect);
   if (!freelancers) {
     return <p>Loading...</p>;
   }
 
-  let filtered = freelancers;
+  let filtered = [...freelancers];
   if (userSelect === "Postcode") {
-    filtered = freelancers.filter((freelancer) => {
+    filtered = filtered.filter((freelancer) => {
       return freelancer.Postcode.toLowerCase().includes(
         userInput.toLowerCase()
       );
     });
   } else if (userSelect === "Role") {
-    filtered = freelancers.filter((freelancer) => {
+    filtered = filtered.filter((freelancer) => {
       return freelancer.Role.toLowerCase().includes(userInput.toLowerCase());
     });
-  } else {
-    filtered = freelancers.filter((freelancer) => {
+  } else if (userSelect === "Skill") {
+    filtered = filtered.filter((freelancer) => {
       return freelancer.Skill.toLowerCase().includes(userInput.toLowerCase());
     });
   }
-
   if (contractButtonSelect === "Full-time") {
-    filtered = freelancers.filter((freelancer) => {
+    filtered = filtered.filter((freelancer) => {
       return freelancer.Contract.includes(contractButtonSelect);
     });
   } else if (contractButtonSelect === "Part-time") {
-    filtered = freelancers.filter((freelancer) => {
+    filtered = filtered.filter((freelancer) => {
       return freelancer.Contract.includes(contractButtonSelect);
     });
-  } else {
-    filtered = freelancers.filter((freelancer) => {
+  } else if (contractButtonSelect === "Any") {
+    filtered = filtered.filter((freelancer) => {
       return freelancer;
     });
   }
@@ -56,7 +55,7 @@ const Controls = () => {
             }}
           >
             <option value="Role">Role</option>
-            <option value="Skills">Skill</option>
+            <option value="Skill">Skill</option>
             <option value="Postcode">Postcode</option>
           </select>
         </label>
@@ -128,7 +127,7 @@ const Controls = () => {
           //   freelancer_name={item.freelancer_name}
           //   location={item.location}
           //   role={item.role}
-          //   skills={item.skills}
+          //   skills=  {item.skills}
           // />
         })}
       </div>
