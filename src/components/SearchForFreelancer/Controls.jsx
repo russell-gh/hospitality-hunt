@@ -127,7 +127,7 @@ const Controls = () => {
           //   freelancer_name={item.freelancer_name}
           //   location={item.location}
           //   role={item.role}
-          //   skills={item.skills}
+          //   skills=  {item.skills}
           // />
         })}
       </div>
