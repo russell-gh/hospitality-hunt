@@ -4,7 +4,8 @@
 
 h1,
 .controlBar,
-.inputBar {
+.inputBar,
+.contractBar {
   display: flex;
   justify-content: center;
   margin-top: 17px;

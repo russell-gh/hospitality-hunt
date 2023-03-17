@@ -2,38 +2,34 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
-import Results from "./Results";
+// import Results from "./Results";
 
 const Controls = () => {
-  const businesses = useSelector(selectJobListings);
+  const JobListings = useSelector(selectJobListings);
 
   const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("Location");
+  const [userSelect, setUserSelect] = useState("Type");
 
-  if (!businesses) {
+  if (!JobListings) {
     return <p>Loading...</p>;
   }
 
-  let filtered = businesses;
-  // if (userSelect === "Location") {
-  //   filtered = businesses.filter((businesses) => {
-  //     return businesses.location
-  //       .toLowerCase()
-  //       .includes(userInput.toLowerCase());
-  //   });
-  // } else if (userSelect === "Job-type") {
-  //   filtered = businesses.filter((businesses) => {
-  //     return businesses.business_type
-  //       .toLowerCase()
-  //       .includes(userInput.toLowerCase());
-  //   });
-  // } else {
-  //   filtered = businesses.filter((businesses) => {
-  //     return businesses.position
-  //       .toLowerCase()
-  //       .includes(userInput.toLowerCase());
-  //   });
-  // }
+  let filtered = JobListings;
+  if (userSelect === "Type") {
+    filtered = JobListings.filter((JobListing) => {
+      return JobListing.Type.toLowerCase().includes(userInput.toLowerCase());
+    });
+  } else if (userSelect === "Title") {
+    filtered = JobListings.filter((JobListing) => {
+      return JobListing.Title.toLowerCase().includes(userInput.toLowerCase());
+    });
+  } else {
+    filtered = JobListings.filter((JobListing) => {
+      return JobListing.Postcode.toLowerCase().includes(
+        userInput.toLowerCase()
+      );
+    });
+  }
 
   return (
     <>
