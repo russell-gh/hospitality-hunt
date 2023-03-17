@@ -215,8 +215,6 @@ export const selectScreenMode = (state) => state.hospitality.screenMode;
 
 export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
 
-//----- tella  computer what you select
-
 //----- tell computer what you select
 
 //----- can see the dev tool to get some hint
