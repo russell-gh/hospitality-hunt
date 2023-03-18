@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
+import {
+  selectJobListings,
+  setScreenMode,
+} from "../../features/hospitality/hospitalitySlice";
 // import Results from "./Results";
 
 const Controls = () => {
@@ -9,6 +12,16 @@ const Controls = () => {
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("Type");
   const [contractButtonSelect, setContractButtonSelect] = useState("Any");
+  const inputBox = useRef();
+  const dispatch = useDispatch();
+
+  const seeJobDetails = () => {
+    dispatch(setScreenMode(9));
+  };
+
+  useEffect(() => {
+    if (JobListings) inputBox.current.focus();
+  }, [JobListings]);
 
   if (!JobListings) {
     return <p>Loading...</p>;
@@ -47,6 +60,39 @@ const Controls = () => {
   return (
     <>
       <h1>Search for a job</h1>
+      <div className="contractBar">
+        <button
+          className="btn btn-outline-primary"
+          type="radio"
+          id="Any"
+          name="Contract"
+          value="Any"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Any
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          type="radio"
+          id="Full-time"
+          name="Contract"
+          value="Full-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Full-time
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          type="radio"
+          id="Part-time"
+          name="Contract"
+          value="Part-time"
+          onClick={(e) => setContractButtonSelect(e.target.value)}
+        >
+          Part-time
+        </button>
+      </div>
+
       <div className="controlBar">
         <label>
           Search by:
@@ -62,38 +108,9 @@ const Controls = () => {
         </label>
       </div>
 
-      <div className="contractBar">
-        <button
-          type="radio"
-          id="Any"
-          name="Contract"
-          value="Any"
-          onClick={(e) => setContractButtonSelect(e.target.value)}
-        >
-          Any
-        </button>
-        <button
-          type="radio"
-          id="Full-time"
-          name="Contract"
-          value="Full-time"
-          onClick={(e) => setContractButtonSelect(e.target.value)}
-        >
-          Full-time
-        </button>
-        <button
-          type="radio"
-          id="Part-time"
-          name="Contract"
-          value="Part-time"
-          onClick={(e) => setContractButtonSelect(e.target.value)}
-        >
-          Part-time
-        </button>
-      </div>
-
       <div className="inputBar">
         <input
+          ref={inputBox}
           onInput={(e) => {
             setUserInput(e.target.value);
           }}
@@ -101,13 +118,18 @@ const Controls = () => {
           placeholder="Search for a job"
         ></input>
       </div>
-      <div>
-        {filtered.map(
-          (job) => {
-            const quickViewJob = Object.entries(job);
 
-            return (
-              <div className="eachResult">
+      <div className="allResult">
+        {filtered.map((job) => {
+          const quickViewJob = Object.entries(job);
+
+          return (
+            <button
+              className="btn-outline-dark"
+              onClick={seeJobDetails}
+              key={job.id}
+            >
+              <form className="eachResult">
                 {quickViewJob.map((item) => {
                   if (
                     item[0] === "Email" ||
@@ -125,18 +147,10 @@ const Controls = () => {
                     </div>
                   );
                 })}
-              </div>
-            );
-          }
-
-          // <Results
-          //   key={item.ID}
-          //   business_name={item.business_name}
-          //   location={item.location}
-          //   business_type={item.business_type}
-          //   position={item.position}
-          // />
-        )}
+              </form>
+            </button>
+          );
+        })}
       </div>
     </>
   );

@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectFreelancers,
+  setScreenMode,
+} from "../../features/hospitality/hospitalitySlice";
 // import Results from "./Results";
 
 const Controls = () => {
@@ -9,6 +12,11 @@ const Controls = () => {
   const [userSelect, setUserSelect] = useState("Role");
   const [contractButtonSelect, setContractButtonSelect] = useState("Any");
   const inputBox = useRef();
+  const dispatch = useDispatch();
+
+  const seeJobDetails = () => {
+    dispatch(setScreenMode(10));
+  };
 
   useEffect(() => {
     if (freelancers) inputBox.current.focus();
@@ -83,6 +91,7 @@ const Controls = () => {
           Part-time
         </button>
       </div>
+
       <div className="controlBar">
         <label>
           Search by:
@@ -114,26 +123,32 @@ const Controls = () => {
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
-            <form className="eachResult">
-              {quickViewFreelancer.map((item) => {
-                if (
-                  item[0] === "Email" ||
-                  item[0] === "Phone" ||
-                  item[0] === "id" ||
-                  item[0] === "About" ||
-                  item[0] === "Experience"
-                )
-                  return;
+            <button
+              className="btn-outline-dark"
+              onClick={seeJobDetails}
+              key={freelancer.id}
+            >
+              <form className="eachResult">
+                {quickViewFreelancer.map((item) => {
+                  if (
+                    item[0] === "Email" ||
+                    item[0] === "Phone" ||
+                    item[0] === "id" ||
+                    item[0] === "About" ||
+                    item[0] === "Experience"
+                  )
+                    return;
 
-                return (
-                  <div key={item[0]}>
-                    <p>
-                      {item[0]}: {item[1]}
-                    </p>
-                  </div>
-                );
-              })}
-            </form>
+                  return (
+                    <div key={item[0]}>
+                      <p>
+                        {item[0]}: {item[1]}
+                      </p>
+                    </div>
+                  );
+                })}
+              </form>
+            </button>
           );
         })}
       </div>
