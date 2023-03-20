@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  SIGNUP,
+  signUp,
   setScreenMode,
 } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
@@ -14,82 +14,75 @@ const Signup = () => {
 
   const submitSignupDate = (e) => {
     e.preventDefault();
-    validateEmailPassword();
-  };
-
-  const validateEmailPassword = async () => {
-    const result = await validate("signUp", {
-      email: userData.signupFormEmail,
-      password: userData.signupFormPassword,
-      repeat_password: userData.signupFormPasswordConfirmation,
-    });
-
-    if (result === true) {
-      dispatch(SIGNUP(userData));
+    if (errors === true) {
+      dispatch(signUp(userData));
       dispatch(setScreenMode(3));
-    } else {
-      setErrors(result);
     }
   };
 
-  const onChange = (e) => {
-    setUserData({ ...userData, [e.target.id]: e.target.value });
+  const validateEmailPassword = async (newInputData) => {
+    const result = await validate("signUp", newInputData);
+    setErrors(result);
+  };
+
+  const onInput = (e) => {
+    const newInputData = { ...userData, [e.target.id]: e.target.value };
+    setUserData(newInputData);
+    validateEmailPassword(newInputData);
   };
 
   return (
     <>
       <h1>Signup!</h1>
-      <form className="signUp" onChange={onChange} onSubmit={submitSignupDate}>
+      <form className="signUp" onInput={onInput} onSubmit={submitSignupDate}>
         <div className="form-group">
-          <label for="singupFormEmail">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
-            class="form-control"
-            id="signupFormEmail"
+            className="form-control"
+            id="email"
             placeholder="Enter your email.."
           />
           {errors.email && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               {errors.email}
             </div>
           )}
         </div>
 
         <div className="form-group">
-          <label for="signupFormPassword">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
-            class="form-control"
-            id="signupFormPassword"
+            className="form-control"
+            id="password"
             placeholder="..."
           />
           {errors.password && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               {errors.password}
             </div>
           )}
         </div>
 
         <div className="form-group">
-          <label for="signupFormPasswordConfirmation">
-            Confirm your Password
-          </label>
+          <label htmlFor="repeat_password">Confirm your Password</label>
           <input
             type="password"
-            class="form-control"
-            id="signupFormPasswordConfirmation"
+            className="form-control"
+            id="repeat_password"
             placeholder="..."
           />
 
           {errors.repeat_password && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               {errors.repeat_password}
             </div>
           )}
         </div>
 
         <div className="form-group">
-          <input type="submit" class="btn btn-success" />
+          <input type="submit" className="btn btn-success" />
         </div>
       </form>
     </>

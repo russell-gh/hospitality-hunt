@@ -2,143 +2,215 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  setUserProfile,
+  setFreelancerDetails,
   setScreenMode,
 } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
+import { customMessages } from "../../language/english";
+
 import WebcamContainer from "../react-webcam/WebcamContainer";
+
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
+
   const onInput = (e) => {
-    setUserData({ ...userData, [e.target.id]: e.target.value });
+    const newInputData = { ...userData, [e.target.id]: e.target.value };
+    setUserData(newInputData);
+    validateData(newInputData);
   };
 
-  const sendUserInfo = async (e) => {
+  const validateData = async (newInputData) => {
+    const result = await validate("createUserProfile", newInputData);
+    setErrors(result);
+  };
+
+  const submitData = async (e) => {
     e.preventDefault();
-    const result = await validate("createUserProfile", userData);
-    console.log(result);
-    if (result === true) {
-      dispatch(setUserProfile(userData));
+
+    if (errors === true) {
+      dispatch(setFreelancerDetails(userData));
       dispatch(setScreenMode(10));
-    } else {
-      setErrors(result);
-      // console.log("Didn't work");
-      // return "Please complete missing information";
     }
   };
 
-  console.log(userData);
+  //stuart testing
+  const setCustomErrors = (inErrors) => {
+    const test = Object.entries(inErrors);
+
+    test.map((item) => {
+      console.log(item);
+      return item;
+    });
+
+    console.log(test);
+  };
+
   return (
     <div className="html">
       <h1>Your profile</h1>
       <p>Please fill in the information below:</p>
+      <form
+        className="createUserProfile"
+        onInput={onInput}
+        onSubmit={submitData}
+      >
+        <div className="form-group">
+          <label htmlFor="firstName">First name: </label>
+          <input
+            type="text"
+            className="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="First name"
+          />
+          {errors.firstName && (
+            <div className="alert alert-danger" role="alert">
+              {errors.firstName}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Last name: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="Last name"
+          />
+          {errors.lastName && (
+            <div className="alert alert-danger" role="alert">
+              {errors.lastName}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="phoneNumber">Phone number: </label>
+          <input
+            type="number"
+            className="form-control"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="00447111111111"
+          ></input>
+          {errors.phoneNumber && (
+            <div className="alert alert-danger" role="alert">
+              {errors.phoneNumber}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="postcode">Postcode: </label>
+          <input
+            type="text"
+            className="form-control"
+            id="postcode"
+            name="postcode"
+            placeholder="SW1A 2AA"
+          />
+          {errors.postcode && (
+            <div className="alert alert-danger" role="alert">
+              {errors.postcode}
+            </div>
+          )}
+        </div>
+        <WebcamContainer />
+        <div className="form-group">
+          <label htmlFor="contract">Type of contract: </label>
+          <select
+            id="contract"
+            className="form-control"
+            name="contract"
+            size="2"
+            multiple
+          >
+            <option value="fulltime">Full-time</option>
+            <option value="parttime">Part-time</option>
+          </select>
+          {errors.contract && (
+            <div className="alert alert-danger" role="alert">
+              {errors.contract}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="position">Type of position: </label>
+          <select
+            id="position"
+            className="form-control"
+            name="position"
+            size="6"
+            multiple
+          >
+            <option value="waiter/waitress">Waiter/waitress</option>
+            <option value="bartender">Bartender</option>
+            <option value="porter">Porter</option>
+            <option value="housekeeper">Housekeeper</option>
+            <option value="generalManager">General Manager</option>
+            <option value="chef">Chef</option>
+          </select>
+          {errors.position && (
+            <div className="alert alert-danger" role="alert">
+              {errors.position}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="experience">
+            Please provide some details about your experience in hospitality:
+          </label>
+          <textarea
+            id="experience"
+            className="form-control"
+            name="experience"
+            placeholder="Your experience in hospitality"
+          ></textarea>
+          {errors.experience && (
+            <div className="alert alert-danger" role="alert">
+              {errors.experience}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="skills">
+            Please provide some details about your skills:
+          </label>
+          <textarea
+            id="skills"
+            className="form-control"
+            name="skills"
+            placeholder="Your skills"
+          ></textarea>
+          {errors.skills && (
+            <div className="alert alert-danger" role="alert">
+              {errors.skills}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="aboutYou">
+            Please provide some more details about you:
+          </label>
+          <textarea
+            id="aboutYou"
+            className="form-control"
+            name="aboutYou"
+            placeholder="About you"
+          ></textarea>
+          {errors.aboutYou && (
+            <div className="alert alert-danger" role="alert">
+              {errors.aboutYou}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <input type="submit" className="btn btn-success" />
+        </div>
 
-      <form onInput={onInput} onSubmit={sendUserInfo} action="" method="post">
-        <ul>
-          <li>
-            <label htmlFor="firstName">First name: </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="First name"
-            />
-            <p>{errors.firstName}</p>
-          </li>
-          <li>
-            <label htmlFor="lastName">Last name: </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Last name"
-            />
-            <p>{errors.lastName}</p>
-          </li>
-
-          <li>
-            <label htmlFor="phoneNumber">Phone number: </label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="00447111111111"
-            ></input>
-            <p>{errors.phoneNumber}</p>
-          </li>
-          <li>
-            <label htmlFor="postcode">Postcode: </label>
-            <input
-              type="text"
-              id="postcode"
-              name="postcode"
-              placeholder="SW1A 2AA"
-            />
-            <p>{errors.postcode}</p>
-          </li>
-          {/* To be added: */}
-          <li>Take a photo:</li>
-          <WebcamContainer />
-          <li>
-            <label htmlFor="contract">Type of contract: </label>
-            <select id="contract" name="contract" size="2" multiple>
-              <option value="fulltime">Full-time</option>
-              <option value="parttime">Part-time</option>
-            </select>
-          </li>
-          <li>
-            <label htmlFor="position">Type of position: </label>
-            <select id="position" name="position" size="6" multiple>
-              <option value="fulltime">Waiter/waitress</option>
-              <option value="parttime">Bartender</option>
-              <option value="fulltime">Porter</option>
-              <option value="parttime">Housekeeper</option>
-              <option value="fulltime">General Manager</option>
-              <option value="parttime">Chef</option>
-            </select>
-            <p>{errors.position}</p>
-          </li>
-          <li>
-            <label htmlFor="experience">
-              Please provide some details about your experience in hospitality:
-            </label>
-            <textarea
-              id="experience"
-              name="experience"
-              placeholder="Your experience in hospitality"
-            ></textarea>
-            <p>{errors.experience}</p>
-          </li>
-          <li>
-            <label htmlFor="skills">
-              Please provide some details about your skills:
-            </label>
-            <textarea
-              id="skills"
-              name="skills"
-              placeholder="Your skills"
-            ></textarea>
-            <p>{errors.skills}</p>
-          </li>
-          <li>
-            <label htmlFor="aboutYou">
-              Please provide some more details about you:
-            </label>
-            <textarea
-              id="aboutYou"
-              name="aboutYou"
-              placeholder="About you"
-            ></textarea>
-            <p>{errors.aboutYou}</p>
-          </li>
-          <li className="button">
-            <button type="submit">Submit</button>
-          </li>
-        </ul>
       </form>
     </div>
   );
