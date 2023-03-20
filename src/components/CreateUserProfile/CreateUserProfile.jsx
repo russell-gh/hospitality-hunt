@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  setUserProfile,
+  setFreelancerDetails,
   setScreenMode,
 } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
@@ -29,7 +29,7 @@ const UserProfiles = (props) => {
     e.preventDefault();
 
     if (errors === true) {
-      dispatch(setUserProfile(userData));
+      dispatch(setFreelancerDetails(userData));
       dispatch(setScreenMode(10));
     }
   };
@@ -143,12 +143,12 @@ const UserProfiles = (props) => {
             size="6"
             multiple
           >
-            <option value="fulltime">Waiter/waitress</option>
-            <option value="parttime">Bartender</option>
-            <option value="fulltime">Porter</option>
-            <option value="parttime">Housekeeper</option>
-            <option value="fulltime">General Manager</option>
-            <option value="parttime">Chef</option>
+            <option value="waiter/waitress">Waiter/waitress</option>
+            <option value="bartender">Bartender</option>
+            <option value="porter">Porter</option>
+            <option value="housekeeper">Housekeeper</option>
+            <option value="generalManager">General Manager</option>
+            <option value="chef">Chef</option>
           </select>
           {errors.position && (
             <div className="alert alert-danger" role="alert">

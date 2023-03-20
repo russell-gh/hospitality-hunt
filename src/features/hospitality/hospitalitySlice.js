@@ -131,9 +131,7 @@ export const hospitalitySlice = createSlice({
       // True = is freelancer, False = is business.
       state.user.isFreelancer = action.payload;
     },
-    setUserProfile: (state, payload) => {
-      state.businessProfile = payload;
-    },
+
     setBusinessProfile: (state, payload) => {
       state.createBusinessProfile = payload;
     },
