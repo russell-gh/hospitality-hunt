@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 
+
+
   screenMode: 11,
 
   value: 10,
