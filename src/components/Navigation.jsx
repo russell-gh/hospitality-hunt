@@ -52,7 +52,7 @@ const Navigation = () => {
               onClick={() => {
                 dispatch(setScreenMode(7));
               }}>
-              Skill search
+              Freelancer Search
             </a>
           </li>
           <li class="nav-item">
