@@ -15,6 +15,7 @@ import FreelancerDetails from "./components/FreelancerDetails";
 import Onboarding from "./components/Onboarding";
 import Footer from "./components/Footer";
 import { validate } from "./validation/joi";
+import UserProfile from "./components/UserProfile";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
@@ -41,6 +42,7 @@ export default function App() {
         {screenMode === 8 && <SearchForJob /* Bernie tidy this up */ />}
         {screenMode === 9 && <JobDetails /> /* Dan */}
         {screenMode === 10 && <FreelancerDetails /> /* Yahya and Luca */}
+        {screenMode === 11 && <UserProfile /> /* Bernie */}
       </main>
       <Footer />
     </div>

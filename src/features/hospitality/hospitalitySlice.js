@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 8,
+  screenMode: 11,
 
   value: 10,
   user: { email: "", password: "" },
@@ -21,6 +21,7 @@ const initialState = {
       Phone: "089-93746328",
       About:
         "Creating new recipes, or adhering to specific food preparation and standards set by the restaurant and local laws.",
+      // isEdit: false,
     },
     {
       id: 2,
@@ -33,6 +34,7 @@ const initialState = {
       Email: "lunaestrada@email.com",
       Phone: "089-93746328",
       About: "Full-time student looking for part-time on weekend",
+      // isEdit: false,
     },
     {
       id: 3,
@@ -46,6 +48,7 @@ const initialState = {
       Phone: "089-93746328",
       About:
         "I work directly with customers by mixing and serving drink orders. My responsibilities include verifying age requirements, knowing alcohol pairing and tastes, knowing how to make traditional and classy drinks, processing payments, managing inventory and cleaning bar supplies.",
+      // isEdit: false,
     },
     {
       id: 4,
@@ -59,6 +62,7 @@ const initialState = {
       Phone: "012-55375537",
       About:
         "In charge of coordinating and supervising a restaurant's kitchen staff according to food safety standards. My duties include hiring, training and scheduling Cooks, performing quality control on food leaving the kitchen and ordering inventory to keep up with demand",
+      // isEdit: false,
     },
   ],
 
@@ -169,6 +173,8 @@ export const hospitalitySlice = createSlice({
       // state.screenMode = 10;
       // state.freelancerDetails;
     },
+
+    // editFormData: (state) => (state.isEdit = true),
   },
 });
 
@@ -183,6 +189,7 @@ export const {
   ONBOARDING,
   addJobListing,
   setScreenMode,
+  // editFormData,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
