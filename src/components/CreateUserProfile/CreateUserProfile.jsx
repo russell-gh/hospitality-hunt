@@ -89,7 +89,7 @@ const UserProfiles = (props) => {
         <div className="form-group">
           <label htmlFor="phoneNumber">Phone number: </label>
           <input
-            type="tel"
+            type="number"
             className="form-control"
             id="phoneNumber"
             name="phoneNumber"

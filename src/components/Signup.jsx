@@ -26,7 +26,6 @@ const Signup = () => {
   };
 
   const onInput = (e) => {
-    // if updating the state,
     const newInputData = { ...userData, [e.target.id]: e.target.value };
     setUserData(newInputData);
     validateEmailPassword(newInputData);
