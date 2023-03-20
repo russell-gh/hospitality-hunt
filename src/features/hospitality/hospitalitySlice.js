@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  screenMode: 1,
+  screenMode: 4,
   value: 10,
   user: { email: "", password: "" },
   lastAddedJobId: 1,
@@ -117,7 +117,6 @@ const initialState = {
 export const hospitalitySlice = createSlice({
   name: "hospitality",
   initialState,
-
   reducers: {
     login: (state, action) => {
       state.user = action.payload;
@@ -132,7 +131,6 @@ export const hospitalitySlice = createSlice({
       // True = is freelancer, False = is business.
       state.user.isFreelancer = action.payload;
     },
-
     setUserProfile: (state, payload) => {
       state.businessProfile = payload;
     },

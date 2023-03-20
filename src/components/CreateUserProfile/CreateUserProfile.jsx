@@ -7,6 +7,7 @@ import {
 } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
+import { customMessages } from "../../language/english";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
@@ -14,20 +15,45 @@ const UserProfiles = (props) => {
   const [errors, setErrors] = useState({});
 
   const onInput = (e) => {
-    setUserData({ ...userData, [e.target.id]: e.target.value });
+    const newInputData = { ...userData, [e.target.id]: e.target.value };
+    setUserData(newInputData);
+    validateData(newInputData);
   };
 
-  const sendUserInfo = async (e) => {
+  const validateData = async (newInputData) => {
+    const result = await validate("createUserProfile", newInputData);
+    setErrors(result);
+
+    console.log(errors);
+  };
+
+  const submitData = async (e) => {
     e.preventDefault();
-    const result = await validate("createUserProfile", userData);
-    console.log(result);
-    if (result === true) {
+
+    if (errors === true) {
       dispatch(setUserProfile(userData));
       dispatch(setScreenMode(10));
-    } else {
-      setErrors(result);
     }
   };
+
+  const setCustomErrors = (inErrors) => {
+    const test = Object.entries(inErrors);
+
+    test.map((item) => {
+      console.log(item);
+      return item;
+    });
+
+    console.log(test);
+  };
+
+  /*
+    Errors
+    Store possible errors with custom messages in file
+    if result we got back is in custoemr message
+      display custom message
+      otherwise display standard
+  */
 
   return (
     <div className="html">
@@ -37,7 +63,7 @@ const UserProfiles = (props) => {
       <form
         className="createUserProfile"
         onInput={onInput}
-        onSubmit={sendUserInfo}
+        onSubmit={submitData}
       >
         <ul>
           <div className="form-group">
