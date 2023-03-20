@@ -45,7 +45,7 @@ export const createUserProfile = {
       "string.pattern.base": "Phone number doesn't match expected pattern.",
     }),
 
-  postcode: Joi.string()
+  postCode: Joi.string()
     .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
     .required(),
   experience: Joi.string().required(),
