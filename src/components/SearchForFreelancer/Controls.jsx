@@ -29,26 +29,27 @@ const Controls = () => {
   let filtered = [...freelancers];
   if (userSelect === "Postcode") {
     filtered = filtered.filter((freelancer) => {
-      return freelancer.Postcode.toLowerCase().includes(
+      return freelancer.Postcode && freelancer.Postcode.toLowerCase().includes(
         userInput.toLowerCase()
       );
     });
   } else if (userSelect === "Role") {
     filtered = filtered.filter((freelancer) => {
-      return freelancer.Role.toLowerCase().includes(userInput.toLowerCase());
+      console.log(freelancer.Role)
+      return freelancer.Role && freelancer.Role.toLowerCase().includes(userInput.toLowerCase());
     });
   } else if (userSelect === "Skill") {
     filtered = filtered.filter((freelancer) => {
-      return freelancer.Skill.toLowerCase().includes(userInput.toLowerCase());
+      return freelancer.Skill && freelancer.Skill.toLowerCase().includes(userInput.toLowerCase());
     });
   }
   if (contractButtonSelect === "Full-time") {
     filtered = filtered.filter((freelancer) => {
-      return freelancer.Contract.includes(contractButtonSelect);
+      return freelancer.Contract && freelancer.Contract.includes(contractButtonSelect);
     });
   } else if (contractButtonSelect === "Part-time") {
     filtered = filtered.filter((freelancer) => {
-      return freelancer.Contract.includes(contractButtonSelect);
+      return freelancer.Contract && freelancer.Contract.includes(contractButtonSelect);
     });
   } else if (contractButtonSelect === "Any") {
     filtered = filtered.filter((freelancer) => {
@@ -120,6 +121,7 @@ const Controls = () => {
 
       <div className="allResult">
         {filtered.map((freelancer) => {
+          console.log(freelancer)
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
