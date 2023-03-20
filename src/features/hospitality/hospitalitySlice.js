@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-
-  screenMode: 11,
+  screenMode: 4,
 
   value: 10,
   user: { email: "", password: "" },
@@ -12,56 +11,60 @@ const initialState = {
   freelancers: [
     {
       id: 1,
-      Name: "Joe Bloggs",
-      Role: "chef",
-      Experience: "3 years chef",
-      Skill: "strong knife skill",
-      Contract: "Full-time",
-      Postcode: "TW1 1AH",
-      Email: "joebloggs@email.com",
-      Phone: "089-93746328",
-      About:
+      firstName: "Joe",
+      lastName: "Bloggs",
+      position: "chef",
+      experience: "3 years chef",
+      skill: "strong knife skill",
+      contract: "Full-time",
+      postCode: "TW1 1AH",
+      email: "joebloggs@email.com",
+      phoneNumber: "089-93746328",
+      aboutYou:
         "Creating new recipes, or adhering to specific food preparation and standards set by the restaurant and local laws.",
       // isEdit: false,
     },
     {
       id: 2,
-      Name: "Luna Estrada",
-      Role: "waitress, assistance",
-      Experience: "0 year hospitality",
-      Skill: "time management",
-      Contract: "Part-time",
-      Postcode: "E17 8PQ",
-      Email: "lunaestrada@email.com",
-      Phone: "089-93746328",
-      About: "Full-time student looking for part-time on weekend",
+      firstName: "Luna",
+      lastName: "Estrada",
+      position: "waitress, assistance",
+      experience: "0 year hospitality",
+      skill: "time management",
+      contract: "Part-time",
+      postCode: "E17 8PQ",
+      email: "lunaestrada@email.com",
+      phoneNumber: "089-93746328",
+      aboutYou: "Full-time student looking for part-time on weekend",
       // isEdit: false,
     },
     {
       id: 3,
-      Name: "Peter Gordon",
-      Role: "bartender, server",
-      Experience: "1 years bartender",
-      Skill: "bartending",
-      Contract: "Full-time",
-      Postcode: "SE16 5HL",
-      Email: "petergordon@email.com",
-      Phone: "089-93746328",
-      About:
+      firstName: "Peter",
+      lastName: "Gordon",
+      position: "bartender, server",
+      experience: "1 years bartender",
+      skill: "bartending",
+      contract: "Full-time",
+      postCode: "SE16 5HL",
+      email: "petergordon@email.com",
+      phoneNumber: "089-93746328",
+      aboutYou:
         "I work directly with customers by mixing and serving drink orders. My responsibilities include verifying age requirements, knowing alcohol pairing and tastes, knowing how to make traditional and classy drinks, processing payments, managing inventory and cleaning bar supplies.",
       // isEdit: false,
     },
     {
       id: 4,
-      Name: "Beatrice Middleton",
-      Role: "manager",
-      Experience: "7 years kitchen management",
-      Skill: "management",
-      Contract: "Full-time",
-      Postcode: "W2 3NJ",
-      Email: "beatricemiddleton@email.com",
-      Phone: "012-55375537",
-      About:
+      firstName: "Beatrice",
+      lastName: "Middleton",
+      position: "manager",
+      experience: "7 years kitchen management",
+      skill: "management",
+      contract: "Full-time",
+      postCode: "W2 3NJ",
+      email: "beatricemiddleton@email.com",
+      phoneNumber: "012-55375537",
+      aboutYou:
         "In charge of coordinating and supervising a restaurant's kitchen staff according to food safety standards. My duties include hiring, training and scheduling Cooks, performing quality control on food leaving the kitchen and ordering inventory to keep up with demand",
       // isEdit: false,
     },
@@ -175,13 +178,11 @@ export const hospitalitySlice = createSlice({
       // state.freelancerDetails;
     },
 
-
     // editFormData: (state) => (state.isEdit = true),
 
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
     },
-
   },
 });
 
