@@ -63,3 +63,17 @@ li > button {
   font-weight: bold;
   justify-content: center;
 }
+
+.photoContainer {
+  border: 10px black;
+
+  position: relative;
+}
+
+.photo {
+  width: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 30px;
+}

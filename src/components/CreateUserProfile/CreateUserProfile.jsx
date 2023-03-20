@@ -7,6 +7,7 @@ import {
 } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
+import WebcamContainer from "../react-webcam/WebcamContainer";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
@@ -58,42 +59,7 @@ const UserProfiles = (props) => {
             />
             <p>{errors.lastName}</p>
           </li>
-          {/* <li>
-            <label htmlFor="email">Email: </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="example@example.com"
-            />
-          </li> */}
-          {/* <li>
-            <label htmlFor="email">Confirm email: </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="example@example.com"
-            />
-          </li> */}
-          {/* <li>
-            <label htmlFor="password">Password: </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-            ></input>
-          </li> */}
-          {/* <li>
-            <label htmlFor="password">Confirm password: </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-            ></input>
-          </li> */}
+
           <li>
             <label htmlFor="phoneNumber">Phone number: </label>
             <input
@@ -116,6 +82,7 @@ const UserProfiles = (props) => {
           </li>
           {/* To be added: */}
           <li>Take a photo:</li>
+          <WebcamContainer />
           <li>
             <label htmlFor="contract">Type of contract: </label>
             <select id="contract" name="contract" size="2" multiple>
