@@ -9,6 +9,9 @@ import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
 import { customMessages } from "../../language/english";
 
+import WebcamContainer from "../react-webcam/WebcamContainer";
+
+
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
@@ -50,7 +53,6 @@ const UserProfiles = (props) => {
     <div className="html">
       <h1>Your profile</h1>
       <p>Please fill in the information below:</p>
-
       <form
         className="createUserProfile"
         onInput={onInput}
@@ -116,6 +118,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
+        <WebcamContainer />
         <div className="form-group">
           <label htmlFor="contract">Type of contract: </label>
           <select
@@ -207,6 +210,7 @@ const UserProfiles = (props) => {
         <div className="form-group">
           <input type="submit" className="btn btn-success" />
         </div>
+
       </form>
     </div>
   );
