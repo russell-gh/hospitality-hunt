@@ -11,7 +11,6 @@ import { customMessages } from "../../language/english";
 
 import WebcamContainer from "../react-webcam/WebcamContainer";
 
-
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
@@ -104,17 +103,17 @@ const UserProfiles = (props) => {
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="postcode">Postcode: </label>
+          <label htmlFor="postCode">Postcode: </label>
           <input
             type="text"
             className="form-control"
-            id="postcode"
-            name="postcode"
+            id="postCode"
+            name="postCode"
             placeholder="SW1A 2AA"
           />
-          {errors.postcode && (
+          {errors.postCode && (
             <div className="alert alert-danger" role="alert">
-              {errors.postcode}
+              {errors.postCode}
             </div>
           )}
         </div>
@@ -128,8 +127,8 @@ const UserProfiles = (props) => {
             size="2"
             multiple
           >
-            <option value="fulltime">Full-time</option>
-            <option value="parttime">Part-time</option>
+            <option value="fullTime">Full-time</option>
+            <option value="partTime">Part-time</option>
           </select>
           {errors.contract && (
             <div className="alert alert-danger" role="alert">
@@ -210,7 +209,6 @@ const UserProfiles = (props) => {
         <div className="form-group">
           <input type="submit" className="btn btn-success" />
         </div>
-
       </form>
     </div>
   );
