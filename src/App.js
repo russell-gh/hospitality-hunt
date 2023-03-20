@@ -24,6 +24,7 @@ export default function App() {
 
   return (
     <div>
+      <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
       {/* <WebcamContainer /> */}
       <Navigation /* Yahya */ />
       <main>

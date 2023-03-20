@@ -1,4 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getData, storeData } from '../../storage'
+
+const dataFromDisk = getData("redux-store");
 
 const initialState = {
   screenMode: 4,
@@ -120,28 +123,33 @@ const initialState = {
 
 export const hospitalitySlice = createSlice({
   name: "hospitality",
-  initialState,
+  initialState: dataFromDisk || initialState, /* if data from the disk exists, use it, else use the initial state */
   reducers: {
     login: (state, action) => {
       state.user = action.payload;
       state.screenMode = 3;
+      storeData("redux-store", state)
     },
     signUp: (state, action) => {
       state.user.email = action.payload.email;
       state.user.password = action.payload.password;
+      storeData("redux-store", state)
     },
     onboarding: (state, action) => {
       // isFreelancer is a boolean.
       // True = is freelancer, False = is business.
       state.user.isFreelancer = action.payload;
+      storeData("redux-store", state)
     },
 
     setBusinessProfile: (state, payload) => {
       state.createBusinessProfile = payload;
+      storeData("redux-store", state)
     },
 
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
+      storeData("redux-store", state)
     },
 
     setScreenMode: (state, payload) => {
@@ -152,12 +160,14 @@ export const hospitalitySlice = createSlice({
       state.jobListings = [...state.jobListings, payload.payload];
       state.screenMode = 9;
       state.lastAddedJobId = payload.payload.ID;
+      storeData("redux-store", state)
     },
 
     setFreelancerDetails: (state, payload) => {
       state.freelancers = [...state.freelancers, payload.payload];
       // state.screenMode = 10;
       // state.freelancerDetails;
+      storeData("redux-store", state)
     },
 
 
@@ -165,6 +175,7 @@ export const hospitalitySlice = createSlice({
 
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
+      storeData("redux-store", state)
     },
 
   },
