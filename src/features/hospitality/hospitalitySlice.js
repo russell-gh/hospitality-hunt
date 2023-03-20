@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+
   screenMode: 11,
 
   value: 10,
@@ -174,7 +175,13 @@ export const hospitalitySlice = createSlice({
       // state.freelancerDetails;
     },
 
+
     // editFormData: (state) => (state.isEdit = true),
+
+    setUserImage: (state, payload) => {
+      state.userImage = payload.payload;
+    },
+
   },
 });
 
@@ -190,6 +197,7 @@ export const {
   addJobListing,
   setScreenMode,
   // editFormData,
+  setUserImage,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
