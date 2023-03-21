@@ -9,8 +9,9 @@ import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
 
 import WebcamContainer from "../react-webcam/WebcamContainer";
+import { randomId } from "../../utils";
 
-const UserProfiles = () => {
+const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
@@ -29,8 +30,9 @@ const UserProfiles = () => {
   const submitData = async (e) => {
     e.preventDefault();
     if (errors === true) {
+      userData.id = randomId();
       dispatch(setFreelancerDetails(userData));
-      dispatch(setScreenMode(10));
+      // dispatch(setScreenMode(10));
     }
   };
 
