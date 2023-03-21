@@ -17,6 +17,7 @@ import Home from "./components/Home";
 import Footer from "./components/Footer";
 import { validate } from "./validation/joi";
 import UserProfile from "./components/UserProfile";
+import EmployerJobListing from "./components/EmployerJobListing";
 // import WebcamContainer from "./components/react-webcam/WebcamContainer";
 
 export default function App() {
@@ -48,6 +49,7 @@ export default function App() {
         {screenMode === 10 && <FreelancerDetails /> /* Yahya and Luca */}
         {screenMode === 11 && <Home />}
         {screenMode === 12 && <UserProfile /> /* Bernie */}
+        {screenMode === 13 && <EmployerJobListing />}
       </main>
       <Footer />
     </div>

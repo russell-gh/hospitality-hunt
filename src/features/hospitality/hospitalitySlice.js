@@ -4,7 +4,9 @@ import { getData, storeData } from "../../storage";
 const dataFromDisk = getData("redux-store");
 
 const initialState = {
-  screenMode: 12,
+
+  screenMode: 6,
+
   value: 10,
   user: { email: "", password: "" },
   lastAddedJobId: 1,
@@ -113,7 +115,7 @@ const initialState = {
       title: "bartender",
       salary: "£12/hr",
       contract: "Full-time",
-      postCode: "SE28 0PB",
+      postCode: "SE28 0PB"
       email: "thekingshead@email.com",
       phoneNumber: "111-64442465",
       description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
@@ -158,15 +160,27 @@ export const hospitalitySlice = createSlice({
 
     addJobListing: (state, payload) => {
       state.jobListings = [...state.jobListings, payload.payload];
-      state.screenMode = 9;
+      state.screenMode = 13;
       state.lastAddedJobId = payload.payload.ID;
       storeData("redux-store", state);
+
+    },
+
+    // setFreelancerDetails: (state, payload) => {
+    //   state.freelancers = [...state.freelancers, payload.payload];
+    //   // state.screenMode = 10;
+    //   // state.freelancerDetails;
+    //   storeData("redux-store", state)
+    // },
+
+
     },
 
     setFreelancerDetails: (state, payload) => {
       state.freelancers = [...state.freelancers, payload.payload];
       storeData("redux-store", state);
     },
+
 
     // editFormData: (state) => (state.isEdit = true),
       // state.screenMode = 10;
@@ -179,14 +193,14 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
 
+
     setEditData: (state, payload) => {},
+
 
   },
 });
 
 export const {
-  increment,
-  decrement,
   setUserProfile,
   signUp,
   login,
