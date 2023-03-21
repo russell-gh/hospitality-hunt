@@ -4,7 +4,7 @@ import { getData, storeData } from "../../storage";
 const dataFromDisk = getData("redux-store");
 
 const initialState = {
-  screenMode: 6,
+  screenMode: 4,
 
   value: 10,
   user: { email: "", password: "" },
@@ -149,10 +149,6 @@ export const hospitalitySlice = createSlice({
       state.createBusinessProfile = payload;
       storeData("redux-store", state);
     },
-    setFreelancerDetails: (state, payload) => {
-      state.freelancerDetails = payload;
-      storeData("redux-store", state);
-    },
     setScreenMode: (state, payload) => {
       state.screenMode = payload.payload;
     },
@@ -166,6 +162,7 @@ export const hospitalitySlice = createSlice({
 
     setFreelancerDetails: (state, payload) => {
       state.freelancers = [...state.freelancers, payload.payload];
+      state.currentUserId = payload.payload.id;
       // state.screenMode = 10;
       // state.freelancerDetails;
       storeData("redux-store", state);
