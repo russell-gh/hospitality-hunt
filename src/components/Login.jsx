@@ -31,10 +31,7 @@ const Loginpage = () => {
     }
 
     //if everything passes, log user in
-    dispatch(login(password));
-    dispatch(setScreenMode(3));
-
-
+    dispatch(login());
 
   };
 

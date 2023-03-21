@@ -17,8 +17,8 @@ export const hospitalitySlice = createSlice({
     initialState /* if data from the disk exists, use it, else use the initial state */,
   reducers: {
     login: (state, action) => {
-      state.user = action.payload;
       state.screenMode = 3;
+      state.loggedIn = true;
       storeData("redux-store", state);
     },
     signUp: (state, action) => {
@@ -28,7 +28,9 @@ export const hospitalitySlice = createSlice({
     onboarding: (state, action) => {
       // If is freelancer is true, they are a person that is looking for a job.
       // otherwise, it is a company that is advertising a job.
-      state.user.isFreelancer = action.payload;
+      state.isFreelancer = action.payload;
+
+      state.screenMode = action.payload ? 4 : 5;
       storeData("redux-store", state);
     },
 
@@ -73,7 +75,7 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
 
-    setEditData: (state, payload) => {},
+    setEditData: (state, payload) => { },
   },
 });
 

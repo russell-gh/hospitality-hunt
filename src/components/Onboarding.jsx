@@ -11,9 +11,8 @@ const Onboarding = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    dispatch(onboarding(isFreelancer));
-    isFreelancer ? dispatch(setScreenMode(4)) : dispatch(setScreenMode(5));
     e.preventDefault();
+    dispatch(onboarding(isFreelancer));
   };
 
   return (
