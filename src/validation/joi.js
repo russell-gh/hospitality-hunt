@@ -3,6 +3,7 @@ import Joi from "joi";
 import { signUp, addJob, logIn } from "./schemas";
 import { freelancerDetails } from "./schemas";
 import { createUserProfile } from "./schemas";
+
 import { userProfile } from "./schemas";
 
 export const validate = async (valType, data) => {
@@ -18,6 +19,8 @@ export const validate = async (valType, data) => {
     _joiInstance = Joi.object(logIn);
   } else if (valType === "createUserProfile") {
     _joiInstance = Joi.object(createUserProfile);
+  } else if (valType === "createBusinessProfile") {
+    _joiInstance = Joi.object(createBusinessProfile);
   } else if (valType === "userProfile") {
     _joiInstance = Joi.object(userProfile);
   }

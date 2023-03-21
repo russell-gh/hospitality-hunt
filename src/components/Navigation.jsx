@@ -58,7 +58,7 @@ const Navigation = () => {
             <a
               class="nav-link "
               onClick={() => {
-                dispatch(setScreenMode(7));
+                dispatch(setScreenMode(5));
               }}>
               Profile
             </a>
