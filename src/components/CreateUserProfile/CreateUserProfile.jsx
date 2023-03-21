@@ -7,12 +7,10 @@ import {
 } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
-import { customMessages } from "../../language/english";
 
 import WebcamContainer from "../react-webcam/WebcamContainer";
 
-
-const UserProfiles = (props) => {
+const UserProfiles = () => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
@@ -30,28 +28,15 @@ const UserProfiles = (props) => {
 
   const submitData = async (e) => {
     e.preventDefault();
-
     if (errors === true) {
       dispatch(setFreelancerDetails(userData));
       dispatch(setScreenMode(10));
     }
   };
 
-  //stuart testing
-  const setCustomErrors = (inErrors) => {
-    const test = Object.entries(inErrors);
-
-    test.map((item) => {
-      console.log(item);
-      return item;
-    });
-
-    console.log(test);
-  };
-
   return (
     <div className="html">
-      <h1>Your profile</h1>
+      <h1>Create your job seeker profile</h1>
       <p>Please fill in the information below:</p>
       <form
         className="createUserProfile"
@@ -74,17 +59,17 @@ const UserProfiles = (props) => {
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="lastName">Last name: </label>
+          <label htmlFor="secondName">Last name: </label>
           <input
             type="text"
-            class="form-control"
-            id="lastName"
-            name="lastName"
-            placeholder="Last name"
+            className="form-control"
+            id="secondName"
+            name="secondName"
+            placeholder="Second name"
           />
-          {errors.lastName && (
+          {errors.secondName && (
             <div className="alert alert-danger" role="alert">
-              {errors.lastName}
+              {errors.secondName}
             </div>
           )}
         </div>
@@ -104,17 +89,17 @@ const UserProfiles = (props) => {
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="postcode">Postcode: </label>
+          <label htmlFor="postCode">Postcode: </label>
           <input
             type="text"
             className="form-control"
-            id="postcode"
-            name="postcode"
+            id="postCode"
+            name="postCode"
             placeholder="SW1A 2AA"
           />
-          {errors.postcode && (
+          {errors.postCode && (
             <div className="alert alert-danger" role="alert">
-              {errors.postcode}
+              {errors.postCode}
             </div>
           )}
         </div>
@@ -123,13 +108,13 @@ const UserProfiles = (props) => {
           <label htmlFor="contract">Type of contract: </label>
           <select
             id="contract"
-            className="form-control"
+            className="form-select"
             name="contract"
             size="2"
             multiple
           >
-            <option value="fulltime">Full-time</option>
-            <option value="parttime">Part-time</option>
+            <option value="fullTime">Full-time</option>
+            <option value="partTime">Part-time</option>
           </select>
           {errors.contract && (
             <div className="alert alert-danger" role="alert">
@@ -141,15 +126,15 @@ const UserProfiles = (props) => {
           <label htmlFor="position">Type of position: </label>
           <select
             id="position"
-            className="form-control"
+            className="form-select"
             name="position"
             size="6"
             multiple
           >
-            <option value="waiter/waitress">Waiter/waitress</option>
+            <option value="waiterWaitress">Waiter/waitress</option>
             <option value="bartender">Bartender</option>
             <option value="porter">Porter</option>
-            <option value="housekeeper">Housekeeper</option>
+            <option value="houseKeeper">Housekeeper</option>
             <option value="generalManager">General Manager</option>
             <option value="chef">Chef</option>
           </select>
@@ -210,7 +195,6 @@ const UserProfiles = (props) => {
         <div className="form-group">
           <input type="submit" className="btn btn-success" />
         </div>
-
       </form>
     </div>
   );
