@@ -10,7 +10,7 @@ import { validate } from "../../validation/joi";
 
 import WebcamContainer from "../react-webcam/WebcamContainer";
 
-const UserProfiles = () => {
+const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
