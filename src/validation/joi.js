@@ -3,7 +3,7 @@ import Joi from "joi";
 import { signUp, addJob, logIn } from "./schemas";
 import { freelancerDetails } from "./schemas";
 import { createUserProfile } from "./schemas";
-
+import { createBusinessProfile } from "./schemas";
 import { userProfile } from "./schemas";
 
 export const validate = async (valType, data) => {

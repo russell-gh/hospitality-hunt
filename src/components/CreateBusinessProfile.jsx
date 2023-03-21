@@ -7,7 +7,7 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import { customMessages } from "../language/english";
-import "./createbusinsessprofile.css";
+import "./createBusinsessProfile.css";
 
 const BusinessProfile = (props) => {
   const dispatch = useDispatch();
@@ -41,7 +41,8 @@ const BusinessProfile = (props) => {
       <form
         className="createBusinessProfile"
         onInput={onInput}
-        onSubmit={submitData}>
+        onSubmit={submitData}
+      >
         <div className="form-group">
           <label htmlFor="businessName">Business name: </label>
           <input
@@ -65,7 +66,8 @@ const BusinessProfile = (props) => {
             className="form-control"
             id="businessNumber"
             name="businessNumber"
-            placeholder="00447111111111"></input>
+            placeholder="00447111111111"
+          ></input>
           {errors.businessNumber && (
             <div className="alert alert-danger" role="alert">
               {errors.businessNumber}
@@ -94,7 +96,8 @@ const BusinessProfile = (props) => {
             className="form-control"
             name="contract"
             size="2"
-            multiple>
+            multiple
+          >
             <option value="fulltime">Full-time</option>
             <option value="parttime">Part-time</option>
           </select>
@@ -111,7 +114,8 @@ const BusinessProfile = (props) => {
             className="form-control"
             name="businessType"
             size="6"
-            multiple>
+            multiple
+          >
             <option value="hotel">Hotel</option>
             <option value="cleaning">Cleaning</option>
             <option value="carwash">car Detailer</option>
@@ -132,7 +136,8 @@ const BusinessProfile = (props) => {
             id="yourBusiness"
             className="form-control"
             name="yourbusiness"
-            placeholder="Information about your business"></textarea>
+            placeholder="Information about your business"
+          ></textarea>
           {errors.yourBusiness && (
             <div className="alert alert-danger" role="alert">
               {errors.yourBusiness}
