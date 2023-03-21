@@ -138,8 +138,8 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
     onboarding: (state, action) => {
-      // isFreelancer is a boolean.
-      // True = is freelancer, False = is business.
+      // If is freelancer is true, they are a person that is looking for a job.
+      // otherwise, it is a company that is advertising a job.
       state.user.isFreelancer = action.payload;
       storeData("redux-store", state);
     },
@@ -148,12 +148,10 @@ export const hospitalitySlice = createSlice({
       state.createBusinessProfile = payload;
       storeData("redux-store", state);
     },
-
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
       storeData("redux-store", state);
     },
-
     setScreenMode: (state, payload) => {
       state.screenMode = payload.payload;
     },
@@ -167,10 +165,14 @@ export const hospitalitySlice = createSlice({
 
     setFreelancerDetails: (state, payload) => {
       state.freelancers = [...state.freelancers, payload.payload];
-      // state.screenMode = 10;
-      // state.freelancerDetails;
       storeData("redux-store", state);
     },
+
+    // editFormData: (state) => (state.isEdit = true),
+      // state.screenMode = 10;
+      // state.freelancerDetails;
+   //   storeData("redux-store", state);
+  //  },
 
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
