@@ -5,7 +5,6 @@ const dataFromDisk = getData("redux-store");
 
 const initialState = {
   screenMode: 12,
-
   value: 10,
   user: { email: "", password: "" },
   lastAddedJobId: 1,
@@ -179,6 +178,7 @@ export const hospitalitySlice = createSlice({
     },
 
     setEditData: (state, payload) => {},
+
   },
 });
 
