@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addJobListing } from "../features/hospitality/hospitalitySlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addJobListing,
+  selectCurrentUserId,
+} from "../features/hospitality/hospitalitySlice";
 import { randomId } from "../utils";
 import { validate } from "../validation/joi";
 
@@ -8,6 +11,7 @@ const AddJob = () => {
   const dispatch = useDispatch();
   const [postJob, setPostJob] = useState({});
   const [errors, setErrors] = useState({});
+  const currentUserId = useSelector(selectCurrentUserId);
   console.log(errors);
   const onJobPost = (e) => {
     setPostJob({ ...postJob, [e.target.name]: e.target.value });
@@ -19,6 +23,7 @@ const AddJob = () => {
     const result = await validate("addJob", postJob);
     if (result === true) {
       postJob.id = randomId();
+      postJob.userId = currentUserId;
       dispatch(addJobListing(postJob));
     } else {
       setErrors(result);
