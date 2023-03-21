@@ -60,17 +60,17 @@ export const createUserProfile = {
 export const userProfile = {
   firstName: Joi.string().min(3).max(30).required(),
   lastName: Joi.string().required(),
-  phoneNumber: Joi.string()
-    .regex(
-      /^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/
-    )
-    .required(),
-  postCode: Joi.string()
-    .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
-    .required(),
-  experience: Joi.string().required(),
-  contract: Joi.string().required(),
-  position: Joi.string().required(),
-  skills: Joi.string().required(),
-  aboutYou: Joi.string().required(),
+  // phoneNumber: Joi.string()
+  //   .regex(
+  //     /^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/
+  //   )
+  //   .required(),
+  // postCode: Joi.string()
+  //   .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
+  //   .required(),
+  // experience: Joi.string().required(),
+  // contract: Joi.string().required(),
+  // position: Joi.string().required(),
+  // skills: Joi.string().required(),
+  // aboutYou: Joi.string().required(),
 };

@@ -1,53 +1,68 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  setFreelancerDetails,
-  setScreenMode,
+  selectFreelancers,
+  setEditData,
 } from "../features/hospitality/hospitalitySlice";
 // import "./CreateUserProfile.css";
 import { validate } from "../validation/joi";
-
 import WebcamContainer from "./react-webcam/WebcamContainer";
+import { selectLastAddedJobId } from "../features/hospitality/hospitalitySlice";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
-  const [userData, setUserData] = useState({});
+  const freelancers = useSelector(selectFreelancers);
+  const [userData, setUserData] = useState(freelancers[0]);
   const [errors, setErrors] = useState({});
-  // const freelancers = useSelector(selectFreelancers);
-  // const isEdit = useSelector((state) => state.freelancers);
+  const lastAddedJobId = useSelector(selectLastAddedJobId);
+  const [isEdit, setIsEdit] = useState(false);
+
+  // useEffect(() => {
+  //   setUserData(freelancers[0]);
+  //   console.log(freelancers[0]);
+  // }, []);
 
   const onInput = (e) => {
+    // setUserData(e.target.value);
     const newInputData = { ...userData, [e.target.id]: e.target.value };
     setUserData(newInputData);
     validateData(newInputData);
   };
 
   const validateData = async (newInputData) => {
-    const result = await validate("createUserProfile", newInputData);
+    const result = await validate("userProfile", newInputData);
+    console.log(result);
+
     setErrors(result);
   };
 
+  //change a bit
   const submitData = async (e) => {
     e.preventDefault();
-
+    console.log(errors);
     if (errors === true) {
-      dispatch(setFreelancerDetails(userData));
-      dispatch(setScreenMode(10));
+      dispatch(setEditData(userData));
+      setIsEdit(false);
     }
   };
 
-  //stuart testing
-  const setCustomErrors = (inErrors) => {
-    const test = Object.entries(inErrors);
+  const freelancer = freelancers.filter((item) => {
+    return item.id === lastAddedJobId;
+  });
 
-    test.map((item) => {
-      console.log(item);
-      return item;
-    });
+  // //stuart testing
+  // const setCustomErrors = (inErrors) => {
+  //   const test = Object.entries(inErrors);
 
-    console.log(test);
-  };
+  //   test.map((item) => {
+  //     console.log(item);
+  //     return item;
+  //   });
+
+  //   console.log(test);
+  // };
 
   return (
     <div className="html">
@@ -55,16 +70,22 @@ const UserProfiles = (props) => {
       <form
         className="createUserProfile"
         onInput={onInput}
+        // onInput={(e) => {
+        //   setUserData(e.target.value);
+        // }}
         onSubmit={submitData}
       >
         <div className="form-group">
           <label htmlFor="firstName">First name: </label>
+
           <input
             type="text"
             className="form-control"
             id="firstName"
             name="firstName"
-            placeholder="First name"
+            // placeholder={freelancer[0].firstName}
+            value={userData.firstName}
+            disabled={!isEdit}
           />
           {errors.firstName && (
             <div className="alert alert-danger" role="alert">
@@ -72,6 +93,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
+
         <div className="form-group">
           <label htmlFor="lastName">Last name: </label>
           <input
@@ -79,7 +101,9 @@ const UserProfiles = (props) => {
             class="form-control"
             id="lastName"
             name="lastName"
-            placeholder="Last name"
+            // placeholder={freelancer[0].lastName}
+            value={userData.lastName}
+            disabled={!isEdit}
           />
           {errors.lastName && (
             <div className="alert alert-danger" role="alert">
@@ -87,7 +111,19 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
-        <div className="form-group">
+
+        {isEdit ? (
+          <>
+            <button type="submit">Submit</button>
+            <button type="button" onClick={() => setIsEdit(false)}>
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button onClick={() => setIsEdit(true)}>Edit</button>
+        )}
+
+        {/* <div className="form-group">
           <label htmlFor="phoneNumber">Phone number: </label>
           <input
             type="number"
@@ -95,6 +131,9 @@ const UserProfiles = (props) => {
             id="phoneNumber"
             name="phoneNumber"
             placeholder="00447111111111"
+            disabled={!isEdit}
+            value={freelancers[0].phoneNumber}
+            onChange={onInput}
           ></input>
           {errors.phoneNumber && (
             <div className="alert alert-danger" role="alert">
@@ -110,6 +149,9 @@ const UserProfiles = (props) => {
             id="postCode"
             name="postCode"
             placeholder="SW1A 2AA"
+            disabled={!isEdit}
+            value={freelancers[0].postCode}
+            onChange={onInput}
           />
           {errors.postCode && (
             <div className="alert alert-danger" role="alert">
@@ -165,6 +207,9 @@ const UserProfiles = (props) => {
             className="form-control"
             name="experience"
             placeholder="Your experience in hospitality"
+            disabled={!isEdit}
+            value={freelancers[0].experience}
+            onChange={onInput}
           ></textarea>
           {errors.experience && (
             <div className="alert alert-danger" role="alert">
@@ -179,6 +224,9 @@ const UserProfiles = (props) => {
             className="form-control"
             name="skills"
             placeholder="Your skills"
+            disabled={!isEdit}
+            value={freelancers[0].skills}
+            onChange={onInput}
           ></textarea>
           {errors.skills && (
             <div className="alert alert-danger" role="alert">
@@ -193,6 +241,9 @@ const UserProfiles = (props) => {
             className="form-control"
             name="aboutYou"
             placeholder="About you"
+            disabled={!isEdit}
+            value={freelancers[0].aboutYou}
+            onChange={onInput}
           ></textarea>
           {errors.aboutYou && (
             <div className="alert alert-danger" role="alert">
@@ -200,9 +251,11 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
+        <div className="form-group">*
         <div className="form-group">
           <input type="submit" className="btn btn-success" />
         </div>
+        </div> */}
       </form>
     </div>
   );

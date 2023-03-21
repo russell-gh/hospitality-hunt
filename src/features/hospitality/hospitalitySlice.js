@@ -24,7 +24,6 @@ const initialState = {
       phoneNumber: "089-93746328",
       aboutYou:
         "Creating new recipes, or adhering to specific food preparation and standards set by the restaurant and local laws.",
-      // isEdit: false,
     },
     {
       id: 2,
@@ -38,7 +37,6 @@ const initialState = {
       email: "lunaestrada@email.com",
       phoneNumber: "089-93746328",
       aboutYou: "Full-time student looking for part-time on weekend",
-      // isEdit: false,
     },
     {
       id: 3,
@@ -53,7 +51,6 @@ const initialState = {
       phoneNumber: "089-93746328",
       aboutYou:
         "I work directly with customers by mixing and serving drink orders. My responsibilities include verifying age requirements, knowing alcohol pairing and tastes, knowing how to make traditional and classy drinks, processing payments, managing inventory and cleaning bar supplies.",
-      // isEdit: false,
     },
     {
       id: 4,
@@ -68,7 +65,6 @@ const initialState = {
       phoneNumber: "012-55375537",
       aboutYou:
         "In charge of coordinating and supervising a restaurant's kitchen staff according to food safety standards. My duties include hiring, training and scheduling Cooks, performing quality control on food leaving the kitchen and ordering inventory to keep up with demand",
-      // isEdit: false,
     },
   ],
 
@@ -177,12 +173,12 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
 
-    // editFormData: (state) => (state.isEdit = true),
-
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
       storeData("redux-store", state);
     },
+
+    setEditData: (state, payload) => {},
   },
 });
 
@@ -198,6 +194,9 @@ export const {
   addJobListing,
   setScreenMode,
   setUserImage,
+  editFormData,
+  saveEditForm,
+  setEditData,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
