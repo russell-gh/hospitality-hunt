@@ -18,7 +18,7 @@ const AddJob = () => {
 
     const result = await validate("addJob", postJob);
     if (result === true) {
-      postJob.ID = randomId();
+      postJob.id = randomId();
       dispatch(addJobListing(postJob));
     } else {
       setErrors(result);
@@ -36,22 +36,30 @@ const AddJob = () => {
           <div className="col-md-6">
             <label>Job Title </label>
             <input
-              name="jobtitle"
+              name="title"
               type="text"
               className="form-control"
               placeholder="Job Title"
             />
-            <p style={{ color: "red" }}>{errors.jobtitle}</p>
+            {errors.title && (
+              <div className="alert alert-danger"> Job title is required </div>
+            )}
           </div>
 
           <div className="col-md-4">
             <label>Select Duration</label>
-            <select name="jobduration" className="form-control">
+            <select name="contract" className="form-control">
+              <option>Select Option</option>
               <option>Full-Time</option>
               <option>Part-Time</option>
               <option>Contract</option>
             </select>
-            <p style={{ color: "red" }}>{errors.jobduration}</p>
+            {errors.contract && (
+              <div className="alert alert-danger">
+                {" "}
+                Select job duration is required{" "}
+              </div>
+            )}
           </div>
         </div>
 
@@ -59,34 +67,44 @@ const AddJob = () => {
           <div className="col-md-6">
             <label>PostCode</label>
             <input
-              name="postcode"
+              name="postCode"
               type="text"
               className="form-control"
               placeholder="PostCode"
             />
-            <p style={{ color: "red" }}>{errors.postcode}</p>
+            {errors.postCode && (
+              <div className="alert alert-danger"> PostCode is required </div>
+            )}
           </div>
 
           <div className="col-md-4">
             <label>Business Sector</label>
-            <select name="businesssector" className="form-control">
+            <select name="type" className="form-control">
+              <option>Select Option</option>
               <option>Restaurant</option>
               <option>Bar</option>
               <option>Hotel</option>
               <option>Night-Club</option>
               <option>Cinema</option>
             </select>
-            <p style={{ color: "red" }}>{errors.businesssector}</p>
+            {errors.type && (
+              <div className="alert alert-danger">
+                Select a business sector is required
+              </div>
+            )}
           </div>
 
           <div className="col-md-10 ">
-            <label>Salary Range</label>
-            <select name="salaryrange" className="form-control">
-              <option>Full-Time</option>
-              <option>Part-Time</option>
-              <option>Contract</option>
-            </select>
-            <p style={{ color: "red" }}>{errors.salaryrange}</p>
+            <label>Salary </label>
+            <input
+              name="salary"
+              type="text"
+              className="form-control"
+              placeholder="Enter Salary"
+            />
+            {errors.salary && (
+              <div className="alert alert-danger"> Enter salary required </div>
+            )}
           </div>
         </div>
 
@@ -94,12 +112,16 @@ const AddJob = () => {
           <div className="col-md-10">
             <label>Business Email</label>
             <input
-              name="businessemail"
+              name="email"
               type="text"
               className="form-control"
-              placeholder="Business Email"
+              placeholder="Enter Business Email"
             />
-            <p style={{ color: "red" }}>{errors.businessemail}</p>
+            {errors.email && (
+              <div className="alert alert-danger">
+                Business email is required
+              </div>
+            )}
           </div>
         </div>
 
@@ -107,12 +129,16 @@ const AddJob = () => {
           <div className="col-md-10">
             <label>Business Phone Number</label>
             <input
-              name="businessphone"
+              name="phoneNumber"
               type="text"
               className="form-control"
-              placeholder="Phone Numer"
+              placeholder="Enter Business Phone Numer"
             />
-            <p style={{ color: "red" }}>{errors.businessphone}</p>
+            {errors.phoneNumber && (
+              <div className="alert alert-danger">
+                Business phone number is required
+              </div>
+            )}
           </div>
         </div>
 
@@ -120,11 +146,15 @@ const AddJob = () => {
           <div className="col-md-10">
             <label>Job Description</label>
             <textarea
-              name="jobdescription"
+              name="description"
               className="form-control"
               rows="5"
             ></textarea>
-            <p style={{ color: "red" }}>{errors.jobdescription}</p>
+            {errors.description && (
+              <div className="alert alert-danger">
+                Job description is required
+              </div>
+            )}
           </div>
         </div>
 

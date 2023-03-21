@@ -14,7 +14,7 @@ const JobDetails = () => {
     return <p>Loading...</p>;
   }
   const result = jobListings.filter((item) => {
-    return item.ID === lastAddedJobId;
+    return item.id === lastAddedJobId;
   });
   console.log(result[0]);
 
@@ -37,7 +37,6 @@ const JobDetails = () => {
       </div>
     </>
   );
-
 };
 
 export default JobDetails;
