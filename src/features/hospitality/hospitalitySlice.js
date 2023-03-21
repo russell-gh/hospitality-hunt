@@ -77,7 +77,7 @@ const initialState = {
       contract: "Part-time",
       postCode: "N4 7HA",
       email: "londonsuhsi@email.com",
-      phone: "034-653125",
+      phoneNumber: "034-653125",
       description:
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and tuesday's",
     },
@@ -90,7 +90,7 @@ const initialState = {
       contract: "Part-time",
       postCode: "S2 3TR",
       email: "redlion@email.com",
-      phone: "56-65312465",
+      phoneNumber: "56-65312465",
       description: "Provide a high level of customer service at all times",
     },
     {
@@ -102,7 +102,7 @@ const initialState = {
       contract: "Full-time",
       postCode: "SE11 5EQ",
       email: "thesteakhouse@email.com",
-      phone: "111-64442465",
+      phoneNumber: "111-64442465",
       description:
         "Experience of working within, or a desire to work within a high-end restaurant",
     },
@@ -115,7 +115,7 @@ const initialState = {
       contract: "Full-time",
       postcode: "SE28 0PB",
       email: "thekingshead@email.com",
-      phone: "111-64442465",
+      phoneNumber: "111-64442465",
       description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
     },
   ],
