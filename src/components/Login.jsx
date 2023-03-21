@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./login.css";
-import { login, setScreenMode } from "../features/hospitality/hospitalitySlice";
+import { login, setScreenMode, selectUser } from "../features/hospitality/hospitalitySlice";
 import Button from "react-bootstrap/Button";
 import { validate } from "../validation/joi";
 import { logIn } from "../validation/schemas";
+import { useSelector } from "react-redux";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const user = useSelector(selectUser)
   const dispatch = useDispatch();
+  console.log(user)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +24,18 @@ const Loginpage = () => {
     });
     setError(result);
 
-    if (result === true) {
-      dispatch(login(password));
-      dispatch(setScreenMode(3));
+    //check the creds *** just for dev purposes ***
+    if (user.email !== email || user.password !== password) {
+      alert('Bad creds');
+      return;
     }
+
+    //if everything passes, log user in
+    dispatch(login(password));
+    dispatch(setScreenMode(3));
+
+
+
   };
 
   return (
