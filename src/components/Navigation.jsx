@@ -22,7 +22,8 @@ const Navigation = () => {
         data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,7 +33,8 @@ const Navigation = () => {
               class="nav-link"
               onClick={() => {
                 dispatch(setScreenMode(2));
-              }}>
+              }}
+            >
               Home
             </a>
           </li>
@@ -41,7 +43,8 @@ const Navigation = () => {
               class="nav-link"
               onClick={() => {
                 dispatch(setScreenMode(8));
-              }}>
+              }}
+            >
               Job Search
             </a>
           </li>
@@ -50,7 +53,8 @@ const Navigation = () => {
               class="nav-link"
               onClick={() => {
                 dispatch(setScreenMode(7));
-              }}>
+              }}
+            >
               Freelancer Search
             </a>
           </li>
@@ -58,8 +62,10 @@ const Navigation = () => {
             <a
               class="nav-link "
               onClick={() => {
+
                 dispatch(setScreenMode(5));
               }}>
+
               Profile
             </a>
           </li>

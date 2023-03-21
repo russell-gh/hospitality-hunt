@@ -4,7 +4,9 @@ import { getData, storeData } from "../../storage";
 const dataFromDisk = getData("redux-store");
 
 const initialState = {
+
   screenMode: 6,
+
 
   value: 10,
   user: { email: "", password: "" },
@@ -162,20 +164,23 @@ export const hospitalitySlice = createSlice({
       state.screenMode = 13;
       state.lastAddedJobId = payload.payload.ID;
       storeData("redux-store", state);
+
     },
 
-    // setFreelancerDetails: (state, payload) => {
-    //   state.freelancers = [...state.freelancers, payload.payload];
-    //   // state.screenMode = 10;
-    //   // state.freelancerDetails;
-    //   storeData("redux-store", state)
-    // },
-  },
+    setFreelancerDetails: (state, payload) => {
+      state.freelancers = [...state.freelancers, payload.payload];
+      // state.screenMode = 10;
+      // state.freelancerDetails;
+      storeData("redux-store", state);
+    },
 
-  setFreelancerDetails: (state, payload) => {
-    state.freelancers = [...state.freelancers, payload.payload];
-    storeData("redux-store", state);
-  },
+    // editFormData: (state) => (state.isEdit = true),
+
+    setUserImage: (state, payload) => {
+      state.userImage = payload.payload;
+      storeData("redux-store", state);
+    },
+
 
   // editFormData: (state) => (state.isEdit = true),
   // state.screenMode = 10;
@@ -186,6 +191,7 @@ export const hospitalitySlice = createSlice({
   setUserImage: (state, payload) => {
     state.userImage = payload.payload;
     storeData("redux-store", state);
+
   },
 
   setEditData: (state, payload) => {},
