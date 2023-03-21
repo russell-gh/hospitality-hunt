@@ -1,96 +1,157 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setBusinessProfile } from "../features/hospitality/hospitalitySlice";
+import {
+  setBusinessProfile,
+  setScreenMode,
+} from "../features/hospitality/hospitalitySlice";
+import { validate } from "../validation/joi";
+import { customMessages } from "../language/english";
+import "./createBusinsessProfile.css";
 
 const BusinessProfile = (props) => {
   const dispatch = useDispatch();
   const [businessData, setBusinessData] = useState({});
+  const [errors, setErrors] = useState({});
+
   const onInput = (e) => {
-    setBusinessData({ ...businessData, [e.target.id]: e.target.value });
+    const newInputData = { ...businessData, [e.target.id]: e.target.value };
+    setBusinessData(newInputData);
+    validateData(newInputData);
   };
 
-  const sendBusinessInfo = (e) => {
-    e.businessDefault();
-    dispatch(setBusinessProfile(businessData));
+  const validateData = async (newInputData) => {
+    const result = await validate("createBusinessProfile", newInputData);
+    setErrors(result);
   };
 
-  console.log(businessData);
+  const submitData = async (e) => {
+    e.preventDefault();
+
+    if (errors === true) {
+      dispatch(setBusinessProfile(businessData));
+      dispatch(setScreenMode(10));
+    }
+  };
+
   return (
-    <>
-      <h1>Your Business</h1>
+    <div className="html">
+      <h1>Business profile</h1>
       <p>Please fill in the information below:</p>
       <form
+        className="createBusinessProfile"
         onInput={onInput}
-        onSubmit={sendBusinessInfo}
-        action=""
-        method="post">
-        <ul>
-          <li>
-            <label for="business-name"></label>
-            <input
-              type="text"
-              id="b_name"
-              name="b_name"
-              placeholder="Business Name"></input>
-          </li>
-          <li>
-            <label for="location"></label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              placeholder="Location"></input>
-          </li>
-          <li>
-            <label for="type-of-business"></label>
-            <input
-              type="text"
-              id="typeOfBusiness"
-              name="typeOfBusiness"
-              placeholder="Type of Business"></input>
-          </li>
-          <li>
-            <label for="email"></label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email"></input>
-          </li>
-          <li>
-            <label for="confirm-email"></label>
-            <input
-              type="text"
-              id="confirm-email"
-              name="confirm-email"
-              placeholder="Confirm-Email"></input>
-          </li>
-          <li>
-            <label for="phone-number"></label>
-            <input
-              for="text"
-              id="number"
-              name="number"
-              placeholder="Phone Number"></input>
-          </li>
-          <li>
-            <input for="buisness-logo"></input>
-            {/* to be done */}
-          </li>
-          <li>
-            <label for="about"></label>
-            <textarea
-              type="text"
-              id="about"
-              name="about"
-              placeholder="Tell us About your Business"></textarea>
-          </li>
+        onSubmit={submitData}
+      >
+        <div className="form-group">
+          <label htmlFor="businessName">Business name: </label>
+          <input
+            type="text"
+            className="form-control"
+            id="businesstName"
+            name="businesstName"
+            placeholder="Business name"
+          />
+          {errors.busineesName && (
+            <div className="alert alert-danger" role="alert">
+              {errors.businessName}
+            </div>
+          )}
+        </div>
 
-          <button type="submit">Submit</button>
-        </ul>
+        <div className="form-group">
+          <label htmlFor="businessNumber">Businees number : </label>
+          <input
+            type="number"
+            className="form-control"
+            id="businessNumber"
+            name="businessNumber"
+            placeholder="00447111111111"
+          ></input>
+          {errors.businessNumber && (
+            <div className="alert alert-danger" role="alert">
+              {errors.businessNumber}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="postcode">Postcode: </label>
+          <input
+            type="text"
+            className="form-control"
+            id="postcode"
+            name="postcode"
+            placeholder="SW1A 2AA"
+          />
+          {errors.postcode && (
+            <div className="alert alert-danger" role="alert">
+              {errors.postcode}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="contract">Type of contract provided: </label>
+          <select
+            id="contract"
+            className="form-control"
+            name="contract"
+            size="2"
+            multiple
+          >
+            <option value="fulltime">Full-time</option>
+            <option value="parttime">Part-time</option>
+          </select>
+          {errors.contract && (
+            <div className="alert alert-danger" role="alert">
+              {errors.contract}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="position">Type of position: </label>
+          <select
+            id="businessType"
+            className="form-control"
+            name="businessType"
+            size="6"
+            multiple
+          >
+            <option value="hotel">Hotel</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="carwash">car Detailer</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="cater">Catering</option>
+          </select>
+          {errors.businessType && (
+            <div className="alert alert-danger" role="alert">
+              {errors.businessType}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <label htmlFor="yourBusiness">
+            Please provide some details about your business:
+          </label>
+          <textarea
+            id="yourBusiness"
+            className="form-control"
+            name="yourbusiness"
+            placeholder="Information about your business"
+          ></textarea>
+          {errors.yourBusiness && (
+            <div className="alert alert-danger" role="alert">
+              {errors.yourBusiness}
+            </div>
+          )}
+        </div>
+
+        {/* asjkdbfkjdsa */}
+
+        <div className="form-group">
+          <input type="submit" className="btn btn-success" />
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 

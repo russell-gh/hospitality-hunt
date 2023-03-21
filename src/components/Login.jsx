@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./login.css";
-import { login } from "../features/hospitality/hospitalitySlice";
+import { login, setScreenMode } from "../features/hospitality/hospitalitySlice";
 import Button from "react-bootstrap/Button";
 import { validate } from "../validation/joi";
 import { logIn } from "../validation/schemas";
@@ -10,7 +10,6 @@ const Loginpage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -22,24 +21,17 @@ const Loginpage = () => {
     });
     console.log(result);
 
-    if (result === true) {
-      dispatch(
-        login({
-          email: email,
-          password: password,
-          logIn: true,
-        })
-      );
-    } else {
-      console.log("your credentials are bad");
-    }
-
     if (email.length == 0 || password.length == 0) {
       setError(true);
     }
 
     if (email && password) {
       console.log("email:", email, "password:", password);
+    }
+
+    if (error === true) {
+      dispatch(login(password));
+      dispatch(setScreenMode(3));
     }
   };
 

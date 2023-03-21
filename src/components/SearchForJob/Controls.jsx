@@ -5,13 +5,12 @@ import {
   selectJobListings,
   setScreenMode,
 } from "../../features/hospitality/hospitalitySlice";
-// import Results from "./Results";
 
 const Controls = () => {
-  const JobListings = useSelector(selectJobListings);
+  const jobListings = useSelector(selectJobListings);
   const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("Type");
-  const [contractButtonSelect, setContractButtonSelect] = useState("Any");
+  const [userSelect, setUserSelect] = useState("type");
+  const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
   const dispatch = useDispatch();
 
@@ -20,40 +19,40 @@ const Controls = () => {
   };
 
   useEffect(() => {
-    if (JobListings) inputBox.current.focus();
-  }, [JobListings]);
+    if (jobListings) inputBox.current.focus();
+  }, [jobListings]);
 
-  if (!JobListings) {
+  if (!jobListings) {
     return <p>Loading...</p>;
   }
 
-  let filtered = [...JobListings];
-  if (userSelect === "Type") {
-    filtered = filtered.filter((JobListing) => {
-      return JobListing.Type.toLowerCase().includes(userInput.toLowerCase());
+  let filtered = [...jobListings];
+  if (userSelect === "type") {
+    filtered = filtered.filter((jobListing) => {
+      return jobListing.type.toLowerCase().includes(userInput.toLowerCase());
     });
-  } else if (userSelect === "Title") {
-    filtered = filtered.filter((JobListing) => {
-      return JobListing.Title.toLowerCase().includes(userInput.toLowerCase());
+  } else if (userSelect === "title") {
+    filtered = filtered.filter((jobListing) => {
+      return jobListing.title.toLowerCase().includes(userInput.toLowerCase());
     });
-  } else if (userSelect === "Postcode") {
-    filtered = filtered.filter((JobListing) => {
-      return JobListing.Postcode.toLowerCase().includes(
-        userInput.toLowerCase()
-      );
+  } else if (userSelect === "postCode") {
+    filtered = filtered.filter((jobListing) => {
+      return jobListing.postCode
+        .toLowerCase()
+        .includes(userInput.toLowerCase());
     });
   }
-  if (contractButtonSelect === "Full-time") {
-    filtered = filtered.filter((JobListing) => {
-      return JobListing.Contract.includes(contractButtonSelect);
+  if (contractButtonSelect === "fullTime") {
+    filtered = filtered.filter((jobListing) => {
+      return jobListing.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "Part-time") {
-    filtered = filtered.filter((JobListing) => {
-      return JobListing.Contract.includes(contractButtonSelect);
+  } else if (contractButtonSelect === "partTime") {
+    filtered = filtered.filter((jobListing) => {
+      return jobListing.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "Any") {
-    filtered = filtered.filter((JobListing) => {
-      return JobListing;
+  } else if (contractButtonSelect === "any") {
+    filtered = filtered.filter((jobListing) => {
+      return jobListing;
     });
   }
 
@@ -64,9 +63,9 @@ const Controls = () => {
         <button
           className="btn btn-outline-primary"
           type="radio"
-          id="Any"
-          name="Contract"
-          value="Any"
+          id="any"
+          name="contract"
+          value="any"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Any
@@ -74,9 +73,9 @@ const Controls = () => {
         <button
           className="btn btn-outline-primary"
           type="radio"
-          id="Full-time"
-          name="Contract"
-          value="Full-time"
+          id="fullTime"
+          name="contract"
+          value="fullTime"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Full-time
@@ -84,9 +83,9 @@ const Controls = () => {
         <button
           className="btn btn-outline-primary"
           type="radio"
-          id="Part-time"
-          name="Contract"
-          value="Part-time"
+          id="partTime"
+          name="contract"
+          value="partTime"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Part-time
@@ -101,9 +100,9 @@ const Controls = () => {
               setUserSelect(e.target.value);
             }}
           >
-            <option value="Type">Type</option>
-            <option value="Title">Title</option>
-            <option value="Postcode">Postcode</option>
+            <option value="type">Type</option>
+            <option value="title">Title</option>
+            <option value="postCode">Postcode</option>
           </select>
         </label>
       </div>
@@ -121,7 +120,7 @@ const Controls = () => {
 
       <div className="allResult">
         {filtered.map((job) => {
-          console.log(job)
+          console.log(job);
           const quickViewJob = Object.entries(job);
 
           return (
@@ -133,10 +132,10 @@ const Controls = () => {
               <form className="eachResult">
                 {quickViewJob.map((item) => {
                   if (
-                    item[0] === "Email" ||
-                    item[0] === "Phone" ||
+                    item[0] === "email" ||
+                    item[0] === "phoneNumber" ||
                     item[0] === "id" ||
-                    item[0] === "Description"
+                    item[0] === "description"
                   )
                     return;
 
