@@ -15,6 +15,7 @@ const Signup = () => {
   const submitSignupDate = (e) => {
     e.preventDefault();
     if (errors === true) {
+      delete userData.repeat_password;
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
     }

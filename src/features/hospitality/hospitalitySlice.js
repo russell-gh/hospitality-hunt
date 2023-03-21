@@ -4,8 +4,7 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-
-  screenMode: 6,
+  screenMode: 1,
 
   user: { email: "", password: "" },
   freelancers,
@@ -24,8 +23,7 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
     signUp: (state, action) => {
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user = action.payload;
       storeData("redux-store", state);
     },
     onboarding: (state, action) => {
