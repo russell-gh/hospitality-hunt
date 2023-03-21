@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getData, storeData } from '../../storage'
+import { getData, storeData } from "../../storage";
 
 const dataFromDisk = getData("redux-store");
 
 const initialState = {
-  screenMode: 4,
+  screenMode: 11,
   value: 10,
   user: { email: "", password: "" },
   lastAddedJobId: 1,
@@ -70,86 +70,88 @@ const initialState = {
   jobListings: [
     {
       id: 1,
-      Name: "London Sushi",
-      Type: "Japanese restaurant",
-      Title: "waiter",
-      Salary: "£10/hr",
-      Contract: "Part-time",
-      Postcode: "N4 7HA",
-      Email: "londonsuhsi@email.com",
-      Phone: "034-653125",
-      Description:
+      name: "London Sushi",
+      type: "Japanese restaurant",
+      title: "waiter",
+      salary: "£10/hr",
+      contract: "Part-time",
+      postCode: "N4 7HA",
+      email: "londonsuhsi@email.com",
+      phoneNumber: "034-653125",
+      description:
         "this position is to fill in for a waiter on leave you will be covering weekend shifts and tuesday's",
     },
     {
       id: 2,
-      Name: "The Red Lion",
-      Type: "Pub",
-      Title: "Cocktail bartender",
-      Salary: "£13.5/hr",
-      Contract: "Part-time",
-      Postcode: "S2 3TR",
-      Email: "redlion@email.com",
-      Phone: "56-65312465",
-      Description: "Provide a high level of customer service at all times",
+      name: "The Red Lion",
+      type: "Pub",
+      title: "Cocktail bartender",
+      salary: "£13.5/hr",
+      contract: "Part-time",
+      postCode: "S2 3TR",
+      email: "redlion@email.com",
+      phoneNumber: "56-65312465",
+      description: "Provide a high level of customer service at all times",
     },
     {
       id: 3,
-      Name: "The Steakhouse",
-      Type: "Restaurant",
-      Title: "server, host",
-      Salary: "£11/hr",
-      Contract: "Full-time",
-      Postcode: "SE11 5EQ",
-      Email: "thesteakhouse@email.com",
-      Phone: "111-64442465",
-      Description:
+      name: "The Steakhouse",
+      type: "Restaurant",
+      title: "server, host",
+      salary: "£11/hr",
+      contract: "Full-time",
+      postCode: "SE11 5EQ",
+      email: "thesteakhouse@email.com",
+      phoneNumber: "111-64442465",
+      description:
         "Experience of working within, or a desire to work within a high-end restaurant",
     },
     {
       id: 4,
-      Name: "The Kings Head",
-      Type: "Restaurant",
-      Title: "bartender",
-      Salary: "£12/hr",
-      Contract: "Full-time",
-      Postcode: "SE28 0PB",
-      Email: "thekingshead@email.com",
-      Phone: "111-64442465",
-      Description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
+      name: "The Kings Head",
+      type: "Restaurant",
+      title: "bartender",
+      salary: "£12/hr",
+      contract: "Full-time",
+      postCode: "SE28 0PB",
+      email: "thekingshead@email.com",
+      phoneNumber: "111-64442465",
+      description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
     },
   ],
 };
 
 export const hospitalitySlice = createSlice({
   name: "hospitality",
-  initialState: dataFromDisk || initialState, /* if data from the disk exists, use it, else use the initial state */
+  initialState:
+    dataFromDisk ||
+    initialState /* if data from the disk exists, use it, else use the initial state */,
   reducers: {
     login: (state, action) => {
       state.user = action.payload;
       state.screenMode = 3;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
     signUp: (state, action) => {
       state.user.email = action.payload.email;
       state.user.password = action.payload.password;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
     onboarding: (state, action) => {
       // isFreelancer is a boolean.
       // True = is freelancer, False = is business.
       state.user.isFreelancer = action.payload;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
 
     setBusinessProfile: (state, payload) => {
       state.createBusinessProfile = payload;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
 
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
 
     setScreenMode: (state, payload) => {
@@ -160,24 +162,22 @@ export const hospitalitySlice = createSlice({
       state.jobListings = [...state.jobListings, payload.payload];
       state.screenMode = 9;
       state.lastAddedJobId = payload.payload.ID;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
 
     setFreelancerDetails: (state, payload) => {
       state.freelancers = [...state.freelancers, payload.payload];
       // state.screenMode = 10;
       // state.freelancerDetails;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
-
 
     // editFormData: (state) => (state.isEdit = true),
 
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
-      storeData("redux-store", state)
+      storeData("redux-store", state);
     },
-
   },
 });
 
