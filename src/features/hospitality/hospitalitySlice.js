@@ -4,7 +4,9 @@ import { getData, storeData } from "../../storage";
 const dataFromDisk = getData("redux-store");
 
 const initialState = {
+
   screenMode: 6,
+
   value: 10,
   user: { email: "", password: "" },
   lastAddedJobId: 1,
@@ -12,58 +14,58 @@ const initialState = {
   freelancers: [
     {
       id: 1,
-      Name: "Joe Bloggs",
-      Role: "chef",
-      Experience: "3 years chef",
-      Skill: "strong knife skill",
-      Contract: "Full-time",
-      Postcode: "TW1 1AH",
-      Email: "joebloggs@email.com",
-      Phone: "089-93746328",
-      About:
+      firstName: "Joe",
+      lastName: "Bloggs",
+      position: "chef",
+      experience: "3 years chef",
+      skills: "strong knife skill",
+      contract: "fullTime",
+      postCode: "TW1 1AH",
+      email: "joebloggs@email.com",
+      phoneNumber: "089-93746328",
+      aboutYou:
         "Creating new recipes, or adhering to specific food preparation and standards set by the restaurant and local laws.",
-      // isEdit: false,
     },
     {
       id: 2,
-      Name: "Luna Estrada",
-      Role: "waitress, assistance",
-      Experience: "0 year hospitality",
-      Skill: "time management",
-      Contract: "Part-time",
-      Postcode: "E17 8PQ",
-      Email: "lunaestrada@email.com",
-      Phone: "089-93746328",
-      About: "Full-time student looking for part-time on weekend",
-      // isEdit: false,
+      firstName: "Luna",
+      lastName: "Estrada",
+      position: "waitress, assistance",
+      experience: "0 year hospitality",
+      skills: "time management",
+      contract: "partTime",
+      postCode: "E17 8PQ",
+      email: "lunaestrada@email.com",
+      phoneNumber: "089-93746328",
+      aboutYou: "Full-time student looking for part-time on weekend",
     },
     {
       id: 3,
-      Name: "Peter Gordon",
-      Role: "bartender, server",
-      Experience: "1 years bartender",
-      Skill: "bartending",
-      Contract: "Full-time",
-      Postcode: "SE16 5HL",
-      Email: "petergordon@email.com",
-      Phone: "089-93746328",
-      About:
+      firstName: "Peter",
+      lastName: "Gordon",
+      position: "bartender, server",
+      experience: "1 years bartender",
+      skills: "bartending",
+      contract: "fullTime",
+      postCode: "SE16 5HL",
+      email: "petergordon@email.com",
+      phoneNumber: "089-93746328",
+      aboutYou:
         "I work directly with customers by mixing and serving drink orders. My responsibilities include verifying age requirements, knowing alcohol pairing and tastes, knowing how to make traditional and classy drinks, processing payments, managing inventory and cleaning bar supplies.",
-      // isEdit: false,
     },
     {
       id: 4,
-      Name: "Beatrice Middleton",
-      Role: "manager",
-      Experience: "7 years kitchen management",
-      Skill: "management",
-      Contract: "Full-time",
-      Postcode: "W2 3NJ",
-      Email: "beatricemiddleton@email.com",
-      Phone: "012-55375537",
-      About:
+      firstName: "Beatrice",
+      lastName: "Middleton",
+      position: "manager",
+      experience: "7 years kitchen management",
+      skills: "management",
+      contract: "fullTime",
+      postCode: "W2 3NJ",
+      email: "beatricemiddleton@email.com",
+      phoneNumber: "012-55375537",
+      aboutYou:
         "In charge of coordinating and supervising a restaurant's kitchen staff according to food safety standards. My duties include hiring, training and scheduling Cooks, performing quality control on food leaving the kitchen and ordering inventory to keep up with demand",
-      // isEdit: false,
     },
   ],
 
@@ -113,7 +115,7 @@ const initialState = {
       title: "bartender",
       salary: "£12/hr",
       contract: "Full-time",
-      postcode: "SE28 0PB",
+      postCode: "SE28 0PB"
       email: "thekingshead@email.com",
       phoneNumber: "111-64442465",
       description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
@@ -138,8 +140,8 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
     onboarding: (state, action) => {
-      // isFreelancer is a boolean.
-      // True = is freelancer, False = is business.
+      // If is freelancer is true, they are a person that is looking for a job.
+      // otherwise, it is a company that is advertising a job.
       state.user.isFreelancer = action.payload;
       storeData("redux-store", state);
     },
@@ -148,12 +150,10 @@ export const hospitalitySlice = createSlice({
       state.createBusinessProfile = payload;
       storeData("redux-store", state);
     },
-
     setFreelancerDetails: (state, payload) => {
       state.freelancerDetails = payload;
       storeData("redux-store", state);
     },
-
     setScreenMode: (state, payload) => {
       state.screenMode = payload.payload;
     },
@@ -163,6 +163,7 @@ export const hospitalitySlice = createSlice({
       state.screenMode = 13;
       state.lastAddedJobId = payload.payload.ID;
       storeData("redux-store", state);
+
     },
 
     // setFreelancerDetails: (state, payload) => {
@@ -172,12 +173,30 @@ export const hospitalitySlice = createSlice({
     //   storeData("redux-store", state)
     // },
 
+
+    },
+
+    setFreelancerDetails: (state, payload) => {
+      state.freelancers = [...state.freelancers, payload.payload];
+      storeData("redux-store", state);
+    },
+
+
     // editFormData: (state) => (state.isEdit = true),
+      // state.screenMode = 10;
+      // state.freelancerDetails;
+   //   storeData("redux-store", state);
+  //  },
 
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
       storeData("redux-store", state);
     },
+
+
+    setEditData: (state, payload) => {},
+
+
   },
 });
 
@@ -190,8 +209,10 @@ export const {
   onboarding,
   addJobListing,
   setScreenMode,
-  // editFormData,
   setUserImage,
+  editFormData,
+  saveEditForm,
+  setEditData,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;

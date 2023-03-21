@@ -7,7 +7,6 @@ import { setScreenMode } from "../features/hospitality/hospitalitySlice";
 import SearchForJob from "./SearchForJob";
 import { useDispatch } from "react-redux";
 
-
 const Navigation = () => {
   const dispatch = useDispatch();
 
@@ -59,7 +58,7 @@ const Navigation = () => {
             <a
               class="nav-link "
               onClick={() => {
-                dispatch(setScreenMode(4));
+                dispatch(setScreenMode(5));
               }}>
               Profile
             </a>
