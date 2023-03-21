@@ -13,7 +13,10 @@ export const addJob = {
   description: Joi.string().min(10).max(2000).required(),
 };
 
-export const logIn = { email: Joi.string().min(10), password: Joi.required() };
+export const logIn = {
+  email: Joi.string().min(5),
+  password: Joi.string().min(5),
+};
 
 export const signUp = {
   email: Joi.string().min(10).required(),

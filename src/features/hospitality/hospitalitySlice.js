@@ -5,7 +5,6 @@ import { freelancers, jobListings } from "../../sampleData";
 const dataFromDisk = getData("redux-store");
 const initialState = {
   screenMode: 1,
-
   user: { email: "", password: "" },
   freelancers,
   jobListings,
@@ -98,5 +97,6 @@ export const selectFreelancers = (state) => state.hospitality.freelancers;
 export const selectScreenMode = (state) => state.hospitality.screenMode;
 export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
 export const selectCurrentUserId = (state) => state.hospitality.currentUserId;
+export const selectUser = (state) => state.hospitality.user;
 
 export default hospitalitySlice.reducer;

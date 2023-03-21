@@ -19,17 +19,9 @@ const Loginpage = () => {
       email: email,
       password: password,
     });
-    console.log(result);
+    setError(result);
 
-    if (email.length == 0 || password.length == 0) {
-      setError(true);
-    }
-
-    if (email && password) {
-      console.log("email:", email, "password:", password);
-    }
-
-    if (error === true) {
+    if (result === true) {
       dispatch(login(password));
       dispatch(setScreenMode(3));
     }
