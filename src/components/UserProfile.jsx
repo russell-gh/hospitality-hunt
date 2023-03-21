@@ -9,20 +9,22 @@ import {
 // import "./CreateUserProfile.css";
 import { validate } from "../validation/joi";
 import WebcamContainer from "./react-webcam/WebcamContainer";
-import { selectLastAddedJobId } from "../features/hospitality/hospitalitySlice";
+import {
+  selectLastAddedJobId,
+  selectCurrentUserId,
+} from "../features/hospitality/hospitalitySlice";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const freelancers = useSelector(selectFreelancers);
-  const [userData, setUserData] = useState(freelancers[0]);
+  const currentUserId = useSelector(selectCurrentUserId);
+  const freelancer = freelancers.find((item) => {
+    return item.id === currentUserId;
+  });
+  const [userData, setUserData] = useState(freelancer);
   const [errors, setErrors] = useState({});
   const lastAddedJobId = useSelector(selectLastAddedJobId);
   const [isEdit, setIsEdit] = useState(false);
-
-  // useEffect(() => {
-  //   setUserData(freelancers[0]);
-  //   console.log(freelancers[0]);
-  // }, []);
 
   const onInput = (e) => {
     // setUserData(e.target.value);
@@ -47,22 +49,6 @@ const UserProfiles = (props) => {
       setIsEdit(false);
     }
   };
-
-  const freelancer = freelancers.filter((item) => {
-    return item.id === lastAddedJobId;
-  });
-
-  // //stuart testing
-  // const setCustomErrors = (inErrors) => {
-  //   const test = Object.entries(inErrors);
-
-  //   test.map((item) => {
-  //     console.log(item);
-  //     return item;
-  //   });
-
-  //   console.log(test);
-  // };
 
   return (
     <div className="html">
