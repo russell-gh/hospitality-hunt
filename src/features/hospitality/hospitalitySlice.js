@@ -4,7 +4,7 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 6,
+  screenMode: 4,
   user: { email: "", password: "" },
   freelancers,
   jobListings,
@@ -44,7 +44,6 @@ export const hospitalitySlice = createSlice({
 
     addJobListing: (state, payload) => {
       state.jobListings = [...state.jobListings, payload.payload];
-
       state.screenMode = 13;
       state.lastAddedJobId = payload.payload.ID;
       storeData("redux-store", state);
@@ -58,25 +57,22 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
 
-    // editFormData: (state) => (state.isEdit = true),
+    setUserImage: (state, payload) => {
+      state.userImage = payload.payload;
+      storeData("redux-store", state);
+    },
 
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
       storeData("redux-store", state);
     },
 
-    // editFormData: (state) => (state.isEdit = true),
-    // state.screenMode = 10;
-    // state.freelancerDetails;
-    //   storeData("redux-store", state);
-    //  },
-
-    setUserImage: (state, payload) => {
-      state.userImage = payload.payload;
-      storeData("redux-store", state);
+    editedData: (state, action) => {
+      const freelancer = state.freelancers.findIndex(
+        (item) => item.id === state.currentUserId
+      );
+      state.freelancers[freelancer] = action.payload;
     },
-
-    setEditData: (state, payload) => {},
   },
 });
 
@@ -92,7 +88,7 @@ export const {
   setUserImage,
   editFormData,
   saveEditForm,
-  setEditData,
+  editedData,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;

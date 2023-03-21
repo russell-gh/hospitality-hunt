@@ -1,20 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFreelancers,
-  setEditData,
+  editedData,
 } from "../features/hospitality/hospitalitySlice";
 // import "./CreateUserProfile.css";
 import { validate } from "../validation/joi";
-import WebcamContainer from "./react-webcam/WebcamContainer";
-import {
-  selectLastAddedJobId,
-  selectCurrentUserId,
-} from "../features/hospitality/hospitalitySlice";
+// import WebcamContainer from "./react-webcam/WebcamContainer";
+import { selectCurrentUserId } from "../features/hospitality/hospitalitySlice";
 
-const UserProfiles = (props) => {
+const UserProfile = (props) => {
   const dispatch = useDispatch();
   const freelancers = useSelector(selectFreelancers);
   const currentUserId = useSelector(selectCurrentUserId);
@@ -23,11 +19,9 @@ const UserProfiles = (props) => {
   });
   const [userData, setUserData] = useState(freelancer);
   const [errors, setErrors] = useState({});
-  const lastAddedJobId = useSelector(selectLastAddedJobId);
   const [isEdit, setIsEdit] = useState(false);
 
   const onInput = (e) => {
-    // setUserData(e.target.value);
     const newInputData = { ...userData, [e.target.id]: e.target.value };
     setUserData(newInputData);
     validateData(newInputData);
@@ -35,17 +29,14 @@ const UserProfiles = (props) => {
 
   const validateData = async (newInputData) => {
     const result = await validate("userProfile", newInputData);
-    console.log(result);
-
     setErrors(result);
   };
 
-  //change a bit
   const submitData = async (e) => {
     e.preventDefault();
     console.log(errors);
     if (errors === true) {
-      dispatch(setEditData(userData));
+      dispatch(editedData(userData));
       setIsEdit(false);
     }
   };
@@ -56,20 +47,15 @@ const UserProfiles = (props) => {
       <form
         className="createUserProfile"
         onInput={onInput}
-        // onInput={(e) => {
-        //   setUserData(e.target.value);
-        // }}
         onSubmit={submitData}
       >
         <div className="form-group">
           <label htmlFor="firstName">First name: </label>
-
           <input
             type="text"
             className="form-control"
             id="firstName"
             name="firstName"
-            // placeholder={freelancer[0].firstName}
             value={userData.firstName}
             disabled={!isEdit}
           />
@@ -81,35 +67,23 @@ const UserProfiles = (props) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="lastName">Last name: </label>
+          <label htmlFor="secondName">Last name: </label>
           <input
             type="text"
             class="form-control"
-            id="lastName"
-            name="lastName"
-            // placeholder={freelancer[0].lastName}
-            value={userData.lastName}
+            id="secondName"
+            name="secondName"
+            value={userData.secondName}
             disabled={!isEdit}
           />
-          {errors.lastName && (
+          {errors.secondName && (
             <div className="alert alert-danger" role="alert">
-              {errors.lastName}
+              {errors.secondName}
             </div>
           )}
         </div>
 
-        {isEdit ? (
-          <>
-            <button type="submit">Submit</button>
-            <button type="button" onClick={() => setIsEdit(false)}>
-              Cancel
-            </button>
-          </>
-        ) : (
-          <button onClick={() => setIsEdit(true)}>Edit</button>
-        )}
-
-        {/* <div className="form-group">
+        <div className="form-group">
           <label htmlFor="phoneNumber">Phone number: </label>
           <input
             type="number"
@@ -118,8 +92,7 @@ const UserProfiles = (props) => {
             name="phoneNumber"
             placeholder="00447111111111"
             disabled={!isEdit}
-            value={freelancers[0].phoneNumber}
-            onChange={onInput}
+            value={userData.phoneNumber}
           ></input>
           {errors.phoneNumber && (
             <div className="alert alert-danger" role="alert">
@@ -127,6 +100,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
+
         <div className="form-group">
           <label htmlFor="postCode">Postcode: </label>
           <input
@@ -136,8 +110,7 @@ const UserProfiles = (props) => {
             name="postCode"
             placeholder="SW1A 2AA"
             disabled={!isEdit}
-            value={freelancers[0].postCode}
-            onChange={onInput}
+            value={userData.postCode}
           />
           {errors.postCode && (
             <div className="alert alert-danger" role="alert">
@@ -145,47 +118,75 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
-        <WebcamContainer />
+
+        {/* <WebcamContainer /> */}
+
         <div className="form-group">
           <label htmlFor="contract">Type of contract: </label>
-          <select
-            id="contract"
-            className="form-control"
-            name="contract"
-            size="2"
-            multiple
-          >
-            <option value="fullTime">Full-time</option>
-            <option value="partTime">Part-time</option>
-          </select>
+          {isEdit ? (
+            <select
+              id="contract"
+              className="form-control"
+              name="contract"
+              size="2"
+              multiple
+            >
+              <option value="fullTime">Full-time</option>
+              <option value="partTime">Part-time</option>
+            </select>
+          ) : (
+            <input
+              type="text"
+              className="form-control"
+              id="contract"
+              name="contract"
+              placeholder="00447111111111"
+              disabled={!isEdit}
+              value={userData.contract}
+            ></input>
+          )}
           {errors.contract && (
             <div className="alert alert-danger" role="alert">
               {errors.contract}
             </div>
           )}
         </div>
+
         <div className="form-group">
           <label htmlFor="position">Type of position: </label>
-          <select
-            id="position"
-            className="form-control"
-            name="position"
-            size="6"
-            multiple
-          >
-            <option value="waiter/waitress">Waiter/waitress</option>
-            <option value="bartender">Bartender</option>
-            <option value="porter">Porter</option>
-            <option value="housekeeper">Housekeeper</option>
-            <option value="generalManager">General Manager</option>
-            <option value="chef">Chef</option>
-          </select>
+          {isEdit ? (
+            <select
+              id="position"
+              className="form-control"
+              name="position"
+              size="6"
+              multiple
+            >
+              <option value="waiter/waitress">Waiter/waitress</option>
+              <option value="bartender">Bartender</option>
+              <option value="porter">Porter</option>
+              <option value="housekeeper">Housekeeper</option>
+              <option value="generalManager">General Manager</option>
+              <option value="chef">Chef</option>
+            </select>
+          ) : (
+            <input
+              type="text"
+              className="form-control"
+              id="position"
+              name="position"
+              placeholder="00447111111111"
+              disabled={!isEdit}
+              value={userData.position}
+            ></input>
+          )}
           {errors.position && (
             <div className="alert alert-danger" role="alert">
               {errors.position}
             </div>
           )}
         </div>
+
         <div className="form-group">
           <label htmlFor="experience">Your experience in hospitality:</label>
           <textarea
@@ -194,8 +195,7 @@ const UserProfiles = (props) => {
             name="experience"
             placeholder="Your experience in hospitality"
             disabled={!isEdit}
-            value={freelancers[0].experience}
-            onChange={onInput}
+            value={userData.experience}
           ></textarea>
           {errors.experience && (
             <div className="alert alert-danger" role="alert">
@@ -203,6 +203,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
+
         <div className="form-group">
           <label htmlFor="skills">Your skills:</label>
           <textarea
@@ -211,8 +212,7 @@ const UserProfiles = (props) => {
             name="skills"
             placeholder="Your skills"
             disabled={!isEdit}
-            value={freelancers[0].skills}
-            onChange={onInput}
+            value={userData.skills}
           ></textarea>
           {errors.skills && (
             <div className="alert alert-danger" role="alert">
@@ -220,6 +220,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
+
         <div className="form-group">
           <label htmlFor="aboutYou">About you:</label>
           <textarea
@@ -228,8 +229,7 @@ const UserProfiles = (props) => {
             name="aboutYou"
             placeholder="About you"
             disabled={!isEdit}
-            value={freelancers[0].aboutYou}
-            onChange={onInput}
+            value={userData.aboutYou}
           ></textarea>
           {errors.aboutYou && (
             <div className="alert alert-danger" role="alert">
@@ -237,14 +237,22 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
-        <div className="form-group">*
+
         <div className="form-group">
-          <input type="submit" className="btn btn-success" />
+          {isEdit ? (
+            <>
+              <button type="submit">Submit</button>
+              <button type="button" onClick={() => setIsEdit(false)}>
+                Cancel
+              </button>
+            </>
+          ) : (
+            <button onClick={() => setIsEdit(true)}>Edit</button>
+          )}
         </div>
-        </div> */}
       </form>
     </div>
   );
 };
 
-export default UserProfiles;
+export default UserProfile;
