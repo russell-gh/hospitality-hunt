@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectFreelancers,
   editedData,
-} from "../features/hospitality/hospitalitySlice";
-// import "./CreateUserProfile.css";
-import { validate } from "../validation/joi";
+} from "../../features/hospitality/hospitalitySlice";
+import "./UserProfile.css";
+import { validate } from "../../validation/joi";
 // import WebcamContainer from "./react-webcam/WebcamContainer";
-import { selectCurrentUserId } from "../features/hospitality/hospitalitySlice";
+import { selectCurrentUserId } from "../../features/hospitality/hospitalitySlice";
 
 const UserProfile = (props) => {
   const dispatch = useDispatch();
@@ -243,16 +243,24 @@ const UserProfile = (props) => {
           )}
         </div>
 
-        <div className="form-group">
+        <div className="buttons form-group">
           {isEdit ? (
             <>
-              <button type="submit">Submit</button>
-              <button type="button" onClick={cancelClick}>
+              <button type="submit" className="btn btn-success">
+                Submit
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onClick={cancelClick}
+              >
                 Cancel
               </button>
             </>
           ) : (
-            <button onClick={() => setIsEdit(true)}>Edit</button>
+            <button class="btn btn-secondary" onClick={() => setIsEdit(true)}>
+              Edit
+            </button>
           )}
         </div>
       </form>
