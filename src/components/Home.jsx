@@ -7,7 +7,7 @@ import { selectLoggedIn } from "../features/hospitality/hospitalitySlice";
 const Home = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector(selectLoggedIn);
-  console.log(loggedIn);
+  // console.log(loggedIn);
   return (
     <>
       <h1>Welcome to hospitality hunt.</h1>

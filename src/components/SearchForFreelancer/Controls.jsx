@@ -133,7 +133,9 @@ const Controls = () => {
 
       <div className="allResult">
         {filtered.map((freelancer) => {
-          console.log(freelancer);
+          {
+            /* console.log(freelancer); */
+          }
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (

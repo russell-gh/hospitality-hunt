@@ -19,7 +19,7 @@ const WebcamContainer = () => {
 
   const onSave = () => {
     //send to  store
-    console.log(image);
+    // console.log(image);
     dispatch(setUserImage(image));
   };
 

@@ -7,7 +7,7 @@ import { createBusinessProfile } from "./schemas";
 import { userProfile } from "./schemas";
 
 export const validate = async (valType, data) => {
-  console.log(valType, data);
+  // console.log(valType, data);
 
   let _joiInstance;
 

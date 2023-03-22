@@ -34,7 +34,7 @@ const UserProfile = (props) => {
 
   const submitData = async (e) => {
     e.preventDefault();
-    console.log(errors);
+    // console.log(errors);
     if (errors === true) {
       dispatch(editedData(userData));
       setIsEdit(false);
@@ -75,7 +75,7 @@ const UserProfile = (props) => {
           <label htmlFor="secondName">Last name: </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="secondName"
             name="secondName"
             value={userData.secondName}
@@ -251,14 +251,17 @@ const UserProfile = (props) => {
               </button>
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 onClick={cancelClick}
               >
                 Cancel
               </button>
             </>
           ) : (
-            <button class="btn btn-secondary" onClick={() => setIsEdit(true)}>
+            <button
+              className="btn btn-secondary"
+              onClick={() => setIsEdit(true)}
+            >
               Edit
             </button>
           )}

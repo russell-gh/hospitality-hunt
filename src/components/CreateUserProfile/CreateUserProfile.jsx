@@ -26,10 +26,10 @@ const UserProfiles = (props) => {
           values.push(options[i].value);
         }
       }
-      console.log(values);
+      // console.log(values);
       newInputData = { ...userData, [e.target.id]: values };
     } else {
-      console.log("hello");
+      // console.log("hello");
       newInputData = { ...userData, [e.target.id]: e.target.value };
     }
     setUserData(newInputData);

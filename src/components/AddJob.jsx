@@ -12,7 +12,7 @@ const AddJob = () => {
   const [postJob, setPostJob] = useState({});
   const [errors, setErrors] = useState({});
   const currentUserId = useSelector(selectCurrentUserId);
-  console.log(errors);
+  // console.log(errors);
   const onJobPost = (e) => {
     setPostJob({ ...postJob, [e.target.name]: e.target.value });
   };

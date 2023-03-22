@@ -16,7 +16,7 @@ const JobDetails = () => {
   const result = jobListings.filter((item) => {
     return item.id === lastAddedJobId;
   });
-  console.log(result[0]);
+  // console.log(result[0]);
 
   const bArray = Object.entries(result[0]);
 
