@@ -41,6 +41,11 @@ const UserProfile = (props) => {
     }
   };
 
+  const cancelClick = () => {
+    setUserData(freelancer);
+    setIsEdit(false);
+  };
+
   return (
     <div className="html">
       <h1>Your profile</h1>
@@ -242,7 +247,7 @@ const UserProfile = (props) => {
           {isEdit ? (
             <>
               <button type="submit">Submit</button>
-              <button type="button" onClick={() => setIsEdit(false)}>
+              <button type="button" onClick={cancelClick}>
                 Cancel
               </button>
             </>
