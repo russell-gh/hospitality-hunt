@@ -120,9 +120,7 @@ const Controls = () => {
 
       <div className="allResult">
         {filtered.map((job) => {
-          {
-            /* console.log(job); */
-          }
+
           const quickViewJob = Object.entries(job);
 
           return (
@@ -139,7 +137,7 @@ const Controls = () => {
                     item[0] === "id" ||
                     item[0] === "description"
                   )
-                    return;
+                    return null;
 
                   return (
                     <div key={item[0]}>

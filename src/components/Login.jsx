@@ -3,12 +3,9 @@ import { useDispatch } from "react-redux";
 import "./login.css";
 import {
   login,
-  setScreenMode,
   selectUser,
 } from "../features/hospitality/hospitalitySlice";
-import Button from "react-bootstrap/Button";
 import { validate } from "../validation/joi";
-import { logIn } from "../validation/schemas";
 import { useSelector } from "react-redux";
 
 const Loginpage = () => {

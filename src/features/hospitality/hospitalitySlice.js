@@ -60,11 +60,6 @@ export const hospitalitySlice = createSlice({
       storeData("redux-store", state);
     },
 
-    setUserImage: (state, payload) => {
-      state.userImage = payload.payload;
-      storeData("redux-store", state);
-    },
-
     setDeleteJob: (state, payload) => {
       const index = state.jobListings.findIndex(
         (job) => job.id === payload.payload.id

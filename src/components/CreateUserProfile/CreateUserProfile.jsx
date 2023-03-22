@@ -3,11 +3,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   setFreelancerDetails,
-  setScreenMode,
 } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
-
 import WebcamContainer from "../react-webcam/WebcamContainer";
 import { randomId } from "../../utils";
 

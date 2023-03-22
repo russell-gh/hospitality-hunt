@@ -133,9 +133,6 @@ const Controls = () => {
 
       <div className="allResult">
         {filtered.map((freelancer) => {
-          {
-            /* console.log(freelancer); */
-          }
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
@@ -153,7 +150,7 @@ const Controls = () => {
                     item[0] === "aboutYou" ||
                     item[0] === "experience"
                   )
-                    return;
+                    return null;
 
                   return (
                     <div key={item[0]}>

@@ -12,6 +12,7 @@ const Navigation = () => {
 
   return (
     <>
+
       <nav className="navbar navbar-expand-sm navbar-light bg-light ">
         <a className="navbar-brand mx-3 pt-3" href="#">
           Hospitality Hunt
@@ -93,51 +94,51 @@ const Navigation = () => {
               screenMode === 7 ||
               screenMode === 10 ||
               screenMode === 13) && (
-              //AddJob SearchForFreelancer FreelancerDetails EmployerJobListing
-              //TO DO: Edit employer profile
-              <>
-                <li className="nav-item active">
-                  <a
-                    className="nav-link"
-                    onClick={() => {
-                      dispatch(setScreenMode(6));
-                    }}
-                  >
-                    Add a job
-                  </a>
-                </li>
-                <li className="nav-item active">
-                  <a
-                    className="nav-link"
-                    onClick={() => {
-                      dispatch(setScreenMode(7));
-                    }}
-                  >
-                    Search for a freelancer
-                  </a>
-                </li>
-                <li className="nav-item active">
-                  <a
-                    className="nav-link"
-                    onClick={() => {
-                      dispatch(setScreenMode(13));
-                    }}
-                  >
-                    View your job listings
-                  </a>
-                </li>
-                <li className="nav-item active">
-                  <a
-                    className="nav-link"
-                    onClick={() => {
-                      dispatch(setScreenMode(13));
-                    }}
-                  >
-                    TODO - EDIT EMPLOYER PROFILE
-                  </a>
-                </li>
-              </>
-            )}
+                //AddJob SearchForFreelancer FreelancerDetails EmployerJobListing
+                //TO DO: Edit employer profile
+                <>
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link"
+                      onClick={() => {
+                        dispatch(setScreenMode(6));
+                      }}
+                    >
+                      Add a job
+                    </a>
+                  </li>
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link"
+                      onClick={() => {
+                        dispatch(setScreenMode(7));
+                      }}
+                    >
+                      Search for a freelancer
+                    </a>
+                  </li>
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link"
+                      onClick={() => {
+                        dispatch(setScreenMode(13));
+                      }}
+                    >
+                      View your job listings
+                    </a>
+                  </li>
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link"
+                      onClick={() => {
+                        dispatch(setScreenMode(13));
+                      }}
+                    >
+                      TODO - EDIT EMPLOYER PROFILE
+                    </a>
+                  </li>
+                </>
+              )}
           </ul>
         </div>
       </nav>

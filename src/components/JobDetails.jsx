@@ -1,9 +1,7 @@
 import React from "react";
-
 import { selectJobListings } from "../features/hospitality/hospitalitySlice";
 import { useSelector } from "react-redux";
 import "./JobDetails.css";
-import { listingText } from "../language/english";
 import { selectLastAddedJobId } from "../features/hospitality/hospitalitySlice";
 
 const JobDetails = () => {
