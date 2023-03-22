@@ -52,8 +52,8 @@ export const createUserProfile = {
     .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
     .required(),
   experience: Joi.string().required(),
-  contract: Joi.string().required(),
-  position: Joi.string().required(),
+  contract: Joi.array().required(),
+  position: Joi.array().required(),
   skills: Joi.string().required(),
   aboutYou: Joi.string().required(),
 };

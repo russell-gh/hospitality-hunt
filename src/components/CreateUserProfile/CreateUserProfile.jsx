@@ -21,13 +21,15 @@ const UserProfiles = (props) => {
     if (e.target.name === "position" || e.target.name === "contract") {
       var options = e.target.options;
       var values = [];
-      for (var i = 0, l = options.length; i < l; i++) {
+      for (var i = 0; i < options.length; i++) {
         if (options[i].selected) {
           values.push(options[i].value);
         }
       }
+      console.log(values);
       newInputData = { ...userData, [e.target.id]: values };
     } else {
+      console.log("hello");
       newInputData = { ...userData, [e.target.id]: e.target.value };
     }
     setUserData(newInputData);
