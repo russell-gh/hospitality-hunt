@@ -1,13 +1,24 @@
-import React, { useState } from "react";
-import { selectJobListings } from "../features/hospitality/hospitalitySlice";
+import React from "react";
+import {
+  selectJobListings,
+  selectCurrentUserId,
+} from "../features/hospitality/hospitalitySlice";
 import { useSelector } from "react-redux";
-import { setScreenMode } from "../features/hospitality/hospitalitySlice";
+import {
+  setScreenMode,
+  setDeleteJob,
+} from "../features/hospitality/hospitalitySlice";
 import { useDispatch } from "react-redux";
 
 const EmployerJobListing = () => {
   const dispatch = useDispatch();
+  const currentUserId = useSelector(selectCurrentUserId);
   const jobListings = useSelector(selectJobListings);
-  console.log(jobListings);
+
+  const jobListing = jobListings.filter(
+    (job) => job.currentUserId === currentUserId
+  );
+
   return (
     <main className="container  text-center ">
       <h1>Job Listings</h1>
@@ -19,7 +30,13 @@ const EmployerJobListing = () => {
             <li className="list-group-item">{job.title}</li>
             <li className="list-group-item">{job.description}</li>
           </ul>
-          <button type="button" className="btn btn-danger btn-lg">
+          <button
+            onClick={() => {
+              dispatch(setDeleteJob(job));
+            }}
+            type="button"
+            className="btn btn-danger btn-lg"
+          >
             X
           </button>
         </div>
