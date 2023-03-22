@@ -1,10 +1,5 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { setScreenMode } from "../features/hospitality/hospitalitySlice";
-import SearchForJob from "./SearchForJob";
 import { useDispatch } from "react-redux";
 
 const Navigation = () => {
@@ -62,10 +57,9 @@ const Navigation = () => {
             <a
               class="nav-link "
               onClick={() => {
-
                 dispatch(setScreenMode(5));
-              }}>
-
+              }}
+            >
               Profile
             </a>
           </li>

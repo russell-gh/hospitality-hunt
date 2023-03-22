@@ -71,16 +71,20 @@ export const hospitalitySlice = createSlice({
     //   storeData("redux-store", state);
     //  },
 
-    setUserImage: (state, payload) => {
-      state.userImage = payload.payload;
-      storeData("redux-store", state);
-    },
-
     setEditData: (state, payload) => {},
+    setDeleteJob: (state, payload) => {
+      const index = state.jobListings.findIndex(
+        (job) => job.id === payload.payload.id
+      );
+      const jobListings = [...state.jobListings];
+      jobListings.splice(index, 1);
+      return { ...state, jobListings };
+    },
   },
 });
 
 export const {
+  setDeleteJob,
   setUserProfile,
   signUp,
   login,
