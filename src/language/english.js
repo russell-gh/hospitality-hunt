@@ -6,7 +6,7 @@ export const listingText = {
 
 export const searchForFreelancerListingText = {
   firstName: "First Name",
-  lastName: "Last Name",
+  secondName: "Last Name",
   position: "Position",
   skills: "Skill(s)",
   contract: "Contract",

@@ -2,7 +2,7 @@ export const freelancers = [
   {
     id: 1,
     firstName: "Joe",
-    lastName: "Bloggs",
+    secondName: "Bloggs",
     position: "chef",
     experience: "3 years chef",
     skills: "strong knife skill",
@@ -16,7 +16,7 @@ export const freelancers = [
   {
     id: 2,
     firstName: "Luna",
-    lastName: "Estrada",
+    secondName: "Estrada",
     position: "waitress, assistance",
     experience: "0 year hospitality",
     skills: "time management",
@@ -29,7 +29,7 @@ export const freelancers = [
   {
     id: 3,
     firstName: "Peter",
-    lastName: "Gordon",
+    secondName: "Gordon",
     position: "bartender, server",
     experience: "1 years bartender",
     skills: "bartending",
@@ -43,7 +43,7 @@ export const freelancers = [
   {
     id: 4,
     firstName: "Beatrice",
-    lastName: "Middleton",
+    secondName: "Middleton",
     position: "manager",
     experience: "7 years kitchen management",
     skills: "management",

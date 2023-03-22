@@ -17,7 +17,19 @@ const UserProfiles = (props) => {
   const [errors, setErrors] = useState({});
 
   const onInput = (e) => {
-    const newInputData = { ...userData, [e.target.id]: e.target.value };
+    let newInputData = [];
+    if (e.target.name === "position" || e.target.name === "contract") {
+      var options = e.target.options;
+      var values = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          values.push(options[i].value);
+        }
+      }
+      newInputData = { ...userData, [e.target.id]: values };
+    } else {
+      newInputData = { ...userData, [e.target.id]: e.target.value };
+    }
     setUserData(newInputData);
     validateData(newInputData);
   };
