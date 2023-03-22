@@ -6,8 +6,11 @@ import CreateBusinessProfile from "./components/CreateBusinessProfile";
 import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile";
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
-import { useSelector } from "react-redux";
-import { selectScreenMode } from "./features/hospitality/hospitalitySlice";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectScreenMode,
+  setScreenMode,
+} from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation";
 import SearchForFreelancer from "./components/SearchForFreelancer";
@@ -22,9 +25,17 @@ import EmployerJobListing from "./components/EmployerJobListing";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
+  const dispatch = useDispatch();
 
   return (
     <div>
+      <button
+        onClick={() => {
+          dispatch(setScreenMode(11));
+        }}
+      >
+        Go to Home
+      </button>
       <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
       {/* <WebcamContainer /> */}
       <Navigation /* Yahya */ />
