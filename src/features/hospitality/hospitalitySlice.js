@@ -4,7 +4,6 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-
   screenMode: 4,
 
   user: { email: "", password: "" },
@@ -52,9 +51,11 @@ export const hospitalitySlice = createSlice({
     },
 
     setFreelancerDetails: (state, payload) => {
+      payload.payload.image = state.userImage;
       state.freelancers = [...state.freelancers, payload.payload];
       state.currentUserId = payload.payload.id;
       state.screenMode = 12;
+      state.userImage = undefined;
       // state.freelancerDetails;
       storeData("redux-store", state);
     },
