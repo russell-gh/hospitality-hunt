@@ -15,14 +15,14 @@ const EmployerJobListing = () => {
   const currentUserId = useSelector(selectCurrentUserId);
   const jobListings = useSelector(selectJobListings);
 
-  const jobListing = jobListings.filter(
+  const currentUserJobs = jobListings.filter(
     (job) => job.currentUserId === currentUserId
   );
-
+  console.log(currentUserJobs, currentUserId, jobListings);
   return (
     <main className="container  text-center ">
       <h1>Job Listings</h1>
-      {jobListings.map((job) => (
+      {currentUserJobs.map((job) => (
         <div key={job.id} className="job-details my-3">
           <ul className="list-group list-group-flush">
             <li className="list-group-item">{job.contract}</li>

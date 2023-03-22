@@ -4,9 +4,8 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-
   screenMode: 4,
-
+  currentUserId: 1,
   user: { email: "", password: "" },
   freelancers,
   jobListings,
@@ -68,9 +67,8 @@ export const hospitalitySlice = createSlice({
       const index = state.jobListings.findIndex(
         (job) => job.id === payload.payload.id
       );
-      const jobListings = [...state.jobListings];
-      jobListings.splice(index, 1);
-      return { ...state, jobListings };
+      state.jobListings.splice(index, 1);
+      storeData("redux-store", state);
     },
 
     setUserImage: (state, payload) => {

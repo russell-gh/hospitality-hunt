@@ -59,6 +59,7 @@ export const freelancers = [
 export const jobListings = [
   {
     id: 1,
+    currentUserId: 1,
     name: "London Sushi",
     type: "Japanese restaurant",
     title: "waiter",
@@ -72,6 +73,7 @@ export const jobListings = [
   },
   {
     id: 2,
+    currentUserId: 1,
     name: "The Red Lion",
     type: "Pub",
     title: "Cocktail bartender",
