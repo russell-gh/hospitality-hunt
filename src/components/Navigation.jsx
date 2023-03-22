@@ -1,20 +1,27 @@
 import React from "react";
 import {
   setScreenMode,
-  selectScreenMode,
+  selectLoggedIn,
+  selectIsFreelancer,
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
-import TestingNav from "./TestingNav";
 
 const Navigation = () => {
-  const screenMode = useSelector(selectScreenMode);
+  const loggedIn = useSelector(selectLoggedIn);
+  const isFreelancer = useSelector(selectIsFreelancer);
   const dispatch = useDispatch();
 
   return (
     <>
-
       <nav className="navbar navbar-expand-sm navbar-light bg-light ">
-        <a className="navbar-brand mx-3 pt-3" href="#">
+        <a
+          className="navbar-brand mx-3 pt-3"
+          href=" "
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(setScreenMode(11));
+          }}
+        >
           Hospitality Hunt
         </a>
         <button
@@ -28,123 +35,106 @@ const Navigation = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto mx-5 ">
-            <li className="nav-item active">
-              <a
-                className="nav-link"
-                onClick={() => {
-                  dispatch(setScreenMode(11));
-                }}
-              >
-                Home
-              </a>
-            </li>
-            {(screenMode === 11 || screenMode === 1 || screenMode === 2) && (
-              //Home Login Signup
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul className="navbar-nav ms-3 mx-3">
+            {loggedIn && isFreelancer && (
               <>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    onClick={() => {
-                      dispatch(setScreenMode(2));
-                    }}
-                  >
-                    Login
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    onClick={() => {
-                      dispatch(setScreenMode(1));
-                    }}
-                  >
-                    Signup
-                  </a>
-                </li>
-              </>
-            )}
-            {(screenMode === 8 || screenMode === 12 || screenMode === 9) && (
-              //SearchForJob Userprofile
-              <>
-                <li className="nav-item active">
-                  <a
+                <li className="nav-item justify-content-end">
+                  <button
                     className="nav-link"
                     onClick={() => {
                       dispatch(setScreenMode(8));
                     }}
                   >
-                    SearchForJob
-                  </a>
+                    Job Search
+                  </button>
                 </li>
-                <li className="nav-item active">
-                  <a
+                <li className="nav-item justify-content-end">
+                  <button
                     className="nav-link"
                     onClick={() => {
                       dispatch(setScreenMode(12));
                     }}
                   >
                     Your profile
-                  </a>
+                  </button>
                 </li>
               </>
             )}
-            {(screenMode === 6 ||
-              screenMode === 7 ||
-              screenMode === 10 ||
-              screenMode === 13) && (
-                //AddJob SearchForFreelancer FreelancerDetails EmployerJobListing
-                //TO DO: Edit employer profile
-                <>
-                  <li className="nav-item active">
-                    <a
-                      className="nav-link"
-                      onClick={() => {
-                        dispatch(setScreenMode(6));
-                      }}
-                    >
-                      Add a job
-                    </a>
-                  </li>
-                  <li className="nav-item active">
-                    <a
-                      className="nav-link"
-                      onClick={() => {
-                        dispatch(setScreenMode(7));
-                      }}
-                    >
-                      Search for a freelancer
-                    </a>
-                  </li>
-                  <li className="nav-item active">
-                    <a
-                      className="nav-link"
-                      onClick={() => {
-                        dispatch(setScreenMode(13));
-                      }}
-                    >
-                      View your job listings
-                    </a>
-                  </li>
-                  <li className="nav-item active">
-                    <a
-                      className="nav-link"
-                      onClick={() => {
-                        dispatch(setScreenMode(13));
-                      }}
-                    >
-                      TODO - EDIT EMPLOYER PROFILE
-                    </a>
-                  </li>
-                </>
-              )}
+            {loggedIn && !isFreelancer && (
+              <>
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(7));
+                    }}
+                  >
+                    Search for a freelancer
+                  </button>
+                </li>
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(6));
+                    }}
+                  >
+                    Add a job
+                  </button>
+                </li>
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(13));
+                    }}
+                  >
+                    View your job listings
+                  </button>
+                </li>
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(13));
+                    }}
+                  >
+                    TODO - EDIT EMPLOYER PROFILE
+                  </button>
+                </li>
+              </>
+            )}
+            {!loggedIn && (
+              <>
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(2));
+                    }}
+                  >
+                    Login
+                  </button>
+                </li>
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(1));
+                    }}
+                  >
+                    Signup
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>
-      <>
-        <TestingNav />
-      </>
     </>
   );
 };
