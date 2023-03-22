@@ -5,6 +5,7 @@ import {
   selectIsFreelancer,
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
+import "./Navigation.scss";
 
 const Navigation = () => {
   const loggedIn = useSelector(selectLoggedIn);
@@ -25,7 +26,7 @@ const Navigation = () => {
           Hospitality Hunt
         </a>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler me-1"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
