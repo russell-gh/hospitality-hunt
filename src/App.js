@@ -19,7 +19,7 @@ import Onboarding from "./components/Onboarding";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import { validate } from "./validation/joi";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 import EmployerJobListing from "./components/EmployerJobListing";
 // import WebcamContainer from "./components/react-webcam/WebcamContainer";
 
