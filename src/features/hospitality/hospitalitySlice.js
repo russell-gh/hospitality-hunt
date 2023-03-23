@@ -4,7 +4,7 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 1,
+  screenMode: 8,
   currentUserId: 1,
   user: { email: "", password: "" },
   freelancers,

@@ -11,9 +11,9 @@ const Controls = () => {
   const jobListings = useSelector(selectJobListings);
   const lastClickedJobId = useSelector(selectLastClickedJobId);
   const selectedJob = jobListings.find((item) => {
+    console.log(item);
     return item.id === lastClickedJobId;
   });
-  console.log(selectedJob);
 
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("type");
@@ -22,7 +22,7 @@ const Controls = () => {
   const dispatch = useDispatch();
 
   const seeJobDetails = () => {
-    dispatch(jobClicked(lastClickedJobId));
+    dispatch(jobClicked({ selectedJob }));
   };
 
   useEffect(() => {
@@ -132,7 +132,10 @@ const Controls = () => {
           return (
             <div
               className="btn-outline-dark"
-              onClick={seeJobDetails}
+              onClick={() => {
+                seeJobDetails({ id: job.id });
+                // console.log({ id: job.id });
+              }}
               key={job.id}
             >
               <form className="eachResult">
