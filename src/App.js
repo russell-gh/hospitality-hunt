@@ -18,10 +18,9 @@ import FreelancerDetails from "./components/FreelancerDetails";
 import Onboarding from "./components/Onboarding";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import { validate } from "./validation/joi";
 import UserProfile from "./components/UserProfile/UserProfile";
 import EmployerJobListing from "./components/EmployerJobListing";
-// import WebcamContainer from "./components/react-webcam/WebcamContainer";
+import TestingNav from "./components/TestingNav";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
@@ -39,6 +38,8 @@ export default function App() {
       <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
       {/* <WebcamContainer /> */}
       <Navigation /* Yahya */ />
+      <TestingNav />
+
       <main>
         {screenMode === 1 && <Signup /> /* Stuart tidy up*/}
         {screenMode === 2 && <Login /> /* Yahya  tody up*/}

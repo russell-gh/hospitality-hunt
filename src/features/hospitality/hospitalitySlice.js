@@ -4,7 +4,9 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
+
   screenMode: 8,
+
   currentUserId: 1,
   user: { email: "", password: "" },
   freelancers,
@@ -31,7 +33,6 @@ export const hospitalitySlice = createSlice({
       // If is freelancer is true, they are a person that is looking for a job.
       // otherwise, it is a company that is advertising a job.
       state.isFreelancer = action.payload;
-
       state.screenMode = action.payload ? 4 : 5;
       storeData("redux-store", state);
     },
@@ -116,5 +117,6 @@ export const selectUser = (state) => state.hospitality.user;
 export const selectLoggedIn = (state) => state.hospitality.loggedIn;
 export const selectLastClickedJobId = (state) =>
   state.hospitality.lastClickedJobId;
+export const selectIsFreelancer = (state) => state.hospitality.isFreelancer;
 
 export default hospitalitySlice.reducer;

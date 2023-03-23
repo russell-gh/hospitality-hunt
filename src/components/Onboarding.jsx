@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  onboarding,
-  setScreenMode,
-} from "../features/hospitality/hospitalitySlice";
+import { onboarding } from "../features/hospitality/hospitalitySlice";
 import "./Onboarding.css";
 
 const Onboarding = () => {
@@ -21,7 +18,7 @@ const Onboarding = () => {
       <form className="onboarding" onSubmit={handleSubmit}>
         <div className="form-group">
           <button
-            className="btn btn-primary"
+            className="btn btn-success"
             type="submit"
             onClick={() => {
               setIsFreelancer(true);
@@ -33,7 +30,7 @@ const Onboarding = () => {
         <div> or wanting too..</div>
         <div className="form-group">
           <button
-            className="btn btn-primary"
+            className="btn btn-success"
             type="submit"
             onClick={() => {
               setIsFreelancer(false);

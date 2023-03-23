@@ -30,7 +30,7 @@ const WebcamContainer = () => {
           {image && (
             <>
               <img className="photo" src={image} alt="You" />{" "}
-              {/* place the confirm on top of the live image */}
+              {/* place the confirm on top of the  live image */}
               <button onClick={onSave}>Save</button>
               <button onClick={() => onImageClick(undefined)}>Retake</button>
             </>
