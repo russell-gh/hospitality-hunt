@@ -1,128 +1,32 @@
 import React from "react";
-import { useState } from "react";
-import { setFreelancerDetails } from "../features/hospitality/hospitalitySlice";
-import { useDispatch } from "react-redux";
-import { validate } from "../validation/joi";
+// import { useDispatch, useSelector } from "react-redux";
+import { freelancers } from "../sampleData";
+import "./FreelancerDetails.css";
 
-const FreelancerDetails = (props) => {
-  const dispatch = useDispatch();
-  const [freelancerData, setFreelancerData] = useState({});
-  const onInput = (e) => {
-    setFreelancerData({ ...freelancerData, [e.target.id]: e.target.value });
-  };
-
-  const setFreelancerDetails = (e) => {
-    e.preventDefault();
-    // validate("valType", freelancerData);
-    dispatch(setFreelancerDetails(freelancerData));
-  };
-
-  // const onChange = (e) => {
-  //   let files = e.target.files;
-
-  //   let reader = new FileReader();
-  //   reader.readAsDataURL(files[0]);
-  //   console.log(reader);
-  // };
+const FreelancerDetails = () => {
+  const localId = 1;
   return (
     <>
-      <h1>Freelancer Profile</h1>
-      <div>
-        <img src="#" alt="" />
+      <h1>Freelancer details</h1>
+      <div className="freelancerDetails">
+        {freelancers.map((id) => {
+          if (id.id === localId)
+            return (
+              <>
+                <p>{id.firstName}</p>
+                <p>{id.secondName}</p>
+                <p>{id.position}</p>
+                <p>{id.experience}</p>
+                <p>{id.skills}</p>
+                <p>{id.contract}</p>
+                <p>{id.postCode}</p>
+                <p>{id.email}</p>
+                <p>{id.phoneNumber}</p>
+                <p>{id.aboutYou}</p>
+              </>
+            );
+        })}
       </div>
-      <form
-        onInput={onInput}
-        onSubmit={setFreelancerDetails}
-        action=""
-        method="post">
-        <ul>
-          <li>
-            <label for="firstName"> </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="First Name"
-            />
-          </li>
-          <li>
-            <label for="surName"> </label>
-            <input
-              type="text"
-              id="surName"
-              name="surName"
-              placeholder="SurName"></input>
-          </li>
-          <li>
-            <label for="post-code"></label>
-            <input
-              type="text"
-              id="postCode"
-              name="postCode"
-              placeholder="Poste Code"></input>
-          </li>
-          <li>
-            <label for="email"></label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email"></input>
-          </li>
-          <li>
-            <label for="contactNumber"></label>
-            <input
-              type="text"
-              id="contactNumber"
-              name="contactNumber"
-              placeholder="Contact Number"></input>
-          </li>
-          <li>
-            <label for="role"></label>
-            <input
-              type="text"
-              id="role"
-              name="role"
-              placholder="Role you are appling for"></input>
-          </li>
-          <li>
-            <label for="years-of-experience"></label>
-            <input
-              type="text"
-              id="experience"
-              name="experience"
-              placeholder="Years of Experience"></input>
-          </li>
-          <li>
-            <label for="cv-link"></label>
-            <input type="file" name="file" /*onChange={onChange}*/></input>
-          </li>
-          <li>
-            <laebel for="skills"></laebel>
-            <input
-              type="text"
-              id="skills"
-              name="skills"
-              placholder="Skills"></input>
-          </li>
-          <li>
-            <label for="contract"></label>
-            <input
-              type="contract"
-              id="contract"
-              name="contract"
-              plcheolder="Contract you are looking for"></input>
-          </li>
-          <li>
-            <label for="about"></label>
-            <textarea
-              id="about"
-              name="about"
-              placeholder="Introduce Yourself"></textarea>
-          </li>
-          <button type="submit">Submit</button>
-        </ul>
-      </form>
     </>
   );
 };
