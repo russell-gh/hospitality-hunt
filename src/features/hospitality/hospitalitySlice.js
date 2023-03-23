@@ -4,10 +4,11 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 8,
-
+  screenMode: 11,
   currentUserId: 1,
   user: { email: "", password: "" },
+  isFreelancer: undefined,
+  isProfileComplete: false,
   freelancers,
   jobListings,
   lastClickedJobId: 1,
@@ -20,13 +21,34 @@ export const hospitalitySlice = createSlice({
     dataFromDisk ||
     initialState /* if data from the disk exists, use it, else use the initial state */,
   reducers: {
-    login: (state, action) => {
-      state.screenMode = 3;
+    login: (state) => {
+      if (state.isFreelancer) {
+        if (state.isProfileComplete) {
+          state.screenMode = 8; //searchForJob
+        } else {
+          state.screenMode = 4; //createUserProfile
+        }
+      } else if (state.isFreelancer === false) {
+        if (state.isProfileComplete) {
+          state.screenMode = 13; //employerJobListings
+        } else {
+          state.screenMode = 5; //createBusinessProfile
+        }
+      } else if (typeof state.isFreelancer === "undefined") {
+        state.screenMode = 3; //onboarding
+      }
+
       state.loggedIn = true;
+      storeData("redux-store", state);
+    },
+    logout: (state) => {
+      state.screenMode = 11;
+      state.loggedIn = false;
       storeData("redux-store", state);
     },
     signUp: (state, action) => {
       state.user = action.payload;
+      state.loggedIn = true;
       storeData("redux-store", state);
     },
     onboarding: (state, action) => {
@@ -36,23 +58,22 @@ export const hospitalitySlice = createSlice({
       state.screenMode = action.payload ? 4 : 5;
       storeData("redux-store", state);
     },
-
     setBusinessProfile: (state, payload) => {
+      state.isProfileComplete = true;
       state.createBusinessProfile = payload;
       storeData("redux-store", state);
     },
     setScreenMode: (state, payload) => {
       state.screenMode = payload.payload;
     },
-
     addJobListing: (state, payload) => {
       state.jobListings = [...state.jobListings, payload.payload];
       state.screenMode = 13;
       state.lastAddedJobId = payload.payload.ID;
       storeData("redux-store", state);
     },
-
     setFreelancerDetails: (state, payload) => {
+      state.isProfileComplete = true;
       payload.payload.image = state.userImage;
       state.freelancers = [...state.freelancers, payload.payload];
       state.currentUserId = payload.payload.id;
@@ -61,7 +82,6 @@ export const hospitalitySlice = createSlice({
       // state.freelancerDetails;
       storeData("redux-store", state);
     },
-
     setDeleteJob: (state, payload) => {
       const index = state.jobListings.findIndex(
         (job) => job.id === payload.payload.id
@@ -69,12 +89,10 @@ export const hospitalitySlice = createSlice({
       state.jobListings.splice(index, 1);
       storeData("redux-store", state);
     },
-
     setUserImage: (state, payload) => {
       state.userImage = payload.payload;
       storeData("redux-store", state);
     },
-
     editedData: (state, action) => {
       const freelancer = state.freelancers.findIndex(
         (item) => item.id === state.currentUserId
@@ -82,7 +100,6 @@ export const hospitalitySlice = createSlice({
       state.freelancers[freelancer] = action.payload;
       storeData("redux-store", state);
     },
-
     jobClicked: (state, payload) => {
       state.lastClickedJobId = payload.payload;
       state.screenMode = 9;
@@ -106,6 +123,7 @@ export const {
   saveEditForm,
   editedData,
   jobClicked,
+  logout,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;

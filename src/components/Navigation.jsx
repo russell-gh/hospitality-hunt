@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   setScreenMode,
   selectLoggedIn,
   selectIsFreelancer,
+  logout,
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.scss";
@@ -42,6 +43,7 @@ const Navigation = () => {
         >
           <ul className="navbar-nav ms-3 mx-3">
             {loggedIn && isFreelancer && (
+              //Logged in and user is a freelancer
               <>
                 <li className="nav-item justify-content-end">
                   <button
@@ -65,7 +67,8 @@ const Navigation = () => {
                 </li>
               </>
             )}
-            {loggedIn && !isFreelancer && (
+            {loggedIn && isFreelancer === false && (
+              //Logged in and user is a business
               <>
                 <li className="nav-item justify-content-end">
                   <button
@@ -109,7 +112,21 @@ const Navigation = () => {
                 </li>
               </>
             )}
+            {loggedIn && typeof isFreelancer === "undefined" && (
+              //Logged in but user did not finish onboarding
+              <li className="nav-item justify-content-end">
+                <button
+                  className="nav-link"
+                  onClick={() => {
+                    dispatch(setScreenMode(3));
+                  }}
+                >
+                  Onboarding
+                </button>
+              </li>
+            )}
             {!loggedIn && (
+              //User is not logged in
               <>
                 <li className="nav-item justify-content-end">
                   <button
@@ -132,6 +149,19 @@ const Navigation = () => {
                   </button>
                 </li>
               </>
+            )}
+            {loggedIn && (
+              //Logged in, therefore show logout button
+              <li className="nav-item justify-content-end">
+                <button
+                  className="nav-link"
+                  onClick={() => {
+                    dispatch(logout());
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
             )}
           </ul>
         </div>
