@@ -138,7 +138,7 @@ const UserProfile = (props) => {
 
         <div className="form-group">
           <label>Your image:</label>
-          <img src="{userData.image}" alt="freelancer image" />
+          <img src={userData.image} alt="freelancer image" />
         </div>
         {/* <WebcamContainer /> */}
 

@@ -83,7 +83,7 @@ export const hospitalitySlice = createSlice({
     },
 
     jobClicked: (state, payload) => {
-      state.lastClickedJobId = payload.payload.id;
+      state.lastClickedJobId = payload.payload;
       state.screenMode = 4;
       storeData("redux-store", state);
     },

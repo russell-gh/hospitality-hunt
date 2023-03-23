@@ -9,11 +9,11 @@ import { searchForJobListingText } from "../../language/english";
 
 const Controls = () => {
   const jobListings = useSelector(selectJobListings);
-  const lastClickedJobId = useSelector(selectLastClickedJobId);
-  const selectedJob = jobListings.find((item) => {
-    console.log(item);
-    return item.id === lastClickedJobId;
-  });
+  // const lastClickedJobId = useSelector(selectLastClickedJobId);
+  // const selectedJob = jobListings.find((item) => {
+  //   console.log(item);
+  //   return item.id === lastClickedJobId;
+  // });
 
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("type");
@@ -21,9 +21,9 @@ const Controls = () => {
   const inputBox = useRef();
   const dispatch = useDispatch();
 
-  const seeJobDetails = () => {
-    dispatch(jobClicked({ selectedJob }));
-  };
+  // const seeJobDetails = () => {
+  //   dispatch(jobClicked({ selectedJob }));
+  // };
 
   useEffect(() => {
     if (jobListings) inputBox.current.focus();
@@ -133,8 +133,9 @@ const Controls = () => {
             <div
               className="btn-outline-dark"
               onClick={() => {
-                seeJobDetails({ id: job.id });
+                // seeJobDetails({ id: job.id });
                 // console.log({ id: job.id });
+                dispatch(jobClicked(job.id));
               }}
               key={job.id}
             >
