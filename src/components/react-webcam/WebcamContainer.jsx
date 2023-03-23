@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Webcam from "react-webcam";
 import { useDispatch } from "react-redux";
 import { setUserImage } from "../../features/hospitality/hospitalitySlice";
+// import "../../createUserProfile.css";
 
 const videoConstraints = {
   width: 400,
@@ -25,19 +26,33 @@ const WebcamContainer = () => {
 
   return (
     <>
-      <div className="photoContainer">
+      <div className="photoContainer text-center">
         <div>
           {image && (
             <>
-              <img className="photo" src={image} alt="You" />{" "}
+              <img
+                className="photo rounded-circle border border-secondary"
+                src={image}
+                alt="You"
+              />{" "}
               {/* place the confirm on top of the  live image */}
-              <button onClick={onSave}>Save</button>
-              <button onClick={() => onImageClick(undefined)}>Retake</button>
+              <button
+                className="webcamButton btn btn-success mx-2 mb-2"
+                onClick={onSave}
+              >
+                Save
+              </button>
+              <button
+                className="webcamButton btn btn-success mx-2 mb-2"
+                onClick={() => onImageClick(undefined)}
+              >
+                Retake
+              </button>
             </>
           )}
           <div className="webcamBox">
             <Webcam
-              className="webcam"
+              className="webcam rounded-circle border border-secondary"
               audio={false}
               height={300}
               screenshotFormat="image/jpeg"
@@ -47,6 +62,7 @@ const WebcamContainer = () => {
               {({ getScreenshot }) => {
                 return (
                   <button
+                    className="btn btn-success"
                     onClick={() => {
                       const imageSrc = getScreenshot();
                       onImageClick(imageSrc);

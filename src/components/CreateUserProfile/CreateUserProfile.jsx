@@ -1,9 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  setFreelancerDetails,
-} from "../../features/hospitality/hospitalitySlice";
+import { setFreelancerDetails } from "../../features/hospitality/hospitalitySlice";
 import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
 import WebcamContainer from "../react-webcam/WebcamContainer";
@@ -207,6 +205,24 @@ const UserProfiles = (props) => {
           )}
         </div>
         <div className="form-group">
+          {/* let manageSubmit = () => {
+            if {(!errors) {
+              return <input type="submit" className="btn btn-success" disabled />;
+            <div className="alert alert-danger" role="alert">
+              "Please provide missing information"
+            </div>}
+        } else if {
+{(image === undefined) {
+  return <input type="submit" className="btn btn-success" disabled />;
+  <div className="alert alert-danger" role="alert">
+    "Please take a photo before submitting"
+  </div>
+}
+        } else {
+          return <input type="submit" className="btn btn-success" />;
+        }
+          
+          }} */}
           <input type="submit" className="btn btn-success" />
         </div>
       </form>
