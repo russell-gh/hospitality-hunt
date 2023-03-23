@@ -10,6 +10,13 @@ const TestingNav = () => {
       <div className="mainComponents">
         <button
           onClick={() => {
+            dispatch(setScreenMode(11));
+          }}
+        >
+          11 Home
+        </button>
+        <button
+          onClick={() => {
             dispatch(setScreenMode(1));
           }}
         >
