@@ -29,41 +29,31 @@ const Controls = () => {
   let filtered = [...freelancers];
   if (userSelect === "postCode") {
     filtered = filtered.filter((freelancer) => {
-      return (
-        freelancer.postCode &&
-        freelancer.postCode.toLowerCase().includes(userInput.toLowerCase())
-      );
+      return freelancer.postCode
+        .toLowerCase()
+        .includes(userInput.toLowerCase());
     });
   } else if (userSelect === "position") {
     filtered = filtered.filter((freelancer) => {
-      return (
-        freelancer.position &&
-        freelancer.position.toLowerCase().includes(userInput.toLowerCase())
-      );
+      return freelancer.position.some((item) =>
+        item.toLowerCase().includes(userInput.toLowerCase())
+      ); // some() loop over the array for each item to check any of them which is contain userInput in lower case
     });
   } else if (userSelect === "skills") {
     filtered = filtered.filter((freelancer) => {
-      return (
-        freelancer.skills &&
-        freelancer.skills.toLowerCase().includes(userInput.toLowerCase())
-      );
+      return freelancer.skills.toLowerCase().includes(userInput.toLowerCase());
     });
   }
+
   if (contractButtonSelect === "fullTime") {
     filtered = filtered.filter((freelancer) => {
-      return (
-        freelancer.contract &&
-        freelancer.contract.includes(contractButtonSelect)
-      );
+      return freelancer.contract.includes(contractButtonSelect);
     });
   } else if (contractButtonSelect === "partTime") {
     filtered = filtered.filter((freelancer) => {
-      return (
-        freelancer.contract &&
-        freelancer.contract.includes(contractButtonSelect)
-      );
+      return freelancer.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "any") {
+  } else {
     filtered = filtered.filter((freelancer) => {
       return freelancer;
     });
@@ -71,10 +61,10 @@ const Controls = () => {
 
   return (
     <>
-      <h1>Search For Freelancer</h1>
+      <h1 className="title">Search For Freelancer</h1>
       <div className="contractBar">
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           type="radio"
           id="any"
           name="contract"
@@ -84,7 +74,7 @@ const Controls = () => {
           Any
         </button>
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           type="radio"
           id="fullTime"
           name="contract"
@@ -94,7 +84,7 @@ const Controls = () => {
           Full-time
         </button>
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           type="radio"
           id="partTime"
           name="contract"
@@ -105,7 +95,7 @@ const Controls = () => {
         </button>
       </div>
 
-      <div className="controlBar">
+      <div className="searchByBar">
         <label>
           Search by:
           <select
@@ -136,7 +126,7 @@ const Controls = () => {
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
-            <button
+            <div
               className="btn-outline-dark"
               onClick={seeJobDetails}
               key={freelancer.id}
@@ -148,7 +138,8 @@ const Controls = () => {
                     item[0] === "phoneNumber" ||
                     item[0] === "id" ||
                     item[0] === "aboutYou" ||
-                    item[0] === "experience"
+                    item[0] === "experience" ||
+                    item[0] === "image"
                   )
                     return null;
 
@@ -161,7 +152,7 @@ const Controls = () => {
                   );
                 })}
               </form>
-            </button>
+            </div>
           );
         })}
       </div>

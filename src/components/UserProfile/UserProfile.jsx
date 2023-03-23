@@ -7,7 +7,7 @@ import {
 } from "../../features/hospitality/hospitalitySlice";
 import "./UserProfile.css";
 import { validate } from "../../validation/joi";
-// import WebcamContainer from "./react-webcam/WebcamContainer";
+import WebcamContainer from "../react-webcam/WebcamContainer";
 import { selectCurrentUserId } from "../../features/hospitality/hospitalitySlice";
 
 const UserProfile = (props) => {
@@ -22,7 +22,19 @@ const UserProfile = (props) => {
   const [isEdit, setIsEdit] = useState(false);
 
   const onInput = (e) => {
-    const newInputData = { ...userData, [e.target.id]: e.target.value };
+    let newInputData = [];
+    if (e.target.name === "position" || e.target.name === "contract") {
+      var options = e.target.options;
+      var values = [];
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].selected) {
+          values.push(options[i].value);
+        }
+      }
+      newInputData = { ...userData, [e.target.id]: values };
+    } else {
+      newInputData = { ...userData, [e.target.id]: e.target.value };
+    }
     setUserData(newInputData);
     validateData(newInputData);
   };
@@ -34,8 +46,8 @@ const UserProfile = (props) => {
 
   const submitData = async (e) => {
     e.preventDefault();
-    // console.log(errors);
     if (errors === true) {
+      console.log(errors);
       dispatch(editedData(userData));
       setIsEdit(false);
     }
@@ -124,6 +136,10 @@ const UserProfile = (props) => {
           )}
         </div>
 
+        <div className="form-group">
+          <label>Your image:</label>
+          <img src="{userData.image}" alt="freelancer image" />
+        </div>
         {/* <WebcamContainer /> */}
 
         <div className="form-group">
@@ -258,12 +274,9 @@ const UserProfile = (props) => {
               </button>
             </>
           ) : (
-            <button
-              className="btn btn-secondary"
-              onClick={() => setIsEdit(true)}
-            >
+            <div className="btn btn-secondary" onClick={() => setIsEdit(true)}>
               Edit
-            </button>
+            </div>
           )}
         </div>
       </form>

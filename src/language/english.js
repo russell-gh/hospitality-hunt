@@ -12,3 +12,12 @@ export const searchForFreelancerListingText = {
   contract: "Contract",
   postCode: "Postcode",
 };
+
+export const searchForJobListingText = {
+  name: "Name",
+  type: "Type",
+  title: "Title",
+  salary: "Salary(£)",
+  postCode: "Postcode",
+  contract: "Contract",
+};
