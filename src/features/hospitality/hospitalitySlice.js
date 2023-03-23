@@ -4,11 +4,14 @@ import { freelancers, jobListings } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 11,
+
+  screenMode: 8,
+
   currentUserId: 1,
   user: { email: "", password: "" },
   freelancers,
   jobListings,
+  lastClickedJobId: 1,
 };
 
 export const hospitalitySlice = createSlice({
@@ -77,6 +80,13 @@ export const hospitalitySlice = createSlice({
         (item) => item.id === state.currentUserId
       );
       state.freelancers[freelancer] = action.payload;
+      storeData("redux-store", state);
+    },
+
+    jobClicked: (state, payload) => {
+      state.lastClickedJobId = payload.payload;
+      state.screenMode = 4;
+      storeData("redux-store", state);
     },
   },
 });
@@ -95,6 +105,7 @@ export const {
   editFormData,
   saveEditForm,
   editedData,
+  jobClicked,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
@@ -104,6 +115,8 @@ export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
 export const selectCurrentUserId = (state) => state.hospitality.currentUserId;
 export const selectUser = (state) => state.hospitality.user;
 export const selectLoggedIn = (state) => state.hospitality.loggedIn;
+export const selectLastClickedJobId = (state) =>
+  state.hospitality.lastClickedJobId;
 export const selectIsFreelancer = (state) => state.hospitality.isFreelancer;
 
 export default hospitalitySlice.reducer;

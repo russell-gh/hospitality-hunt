@@ -93,8 +93,9 @@ export const userProfile = {
     .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
     .required(),
   experience: Joi.string().required(),
-  contract: Joi.string().required(),
-  position: Joi.string().required(),
+  contract: Joi.required(),
+  position: Joi.required(),
   skills: Joi.string().required(),
   aboutYou: Joi.string().required(),
+  image: Joi.required(),
 };

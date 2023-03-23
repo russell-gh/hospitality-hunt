@@ -1,22 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
+  jobClicked,
   selectJobListings,
-  setScreenMode,
+  selectLastClickedJobId,
 } from "../../features/hospitality/hospitalitySlice";
+import { searchForJobListingText } from "../../language/english";
 
 const Controls = () => {
   const jobListings = useSelector(selectJobListings);
+  // const lastClickedJobId = useSelector(selectLastClickedJobId);
+  // const selectedJob = jobListings.find((item) => {
+  //   console.log(item);
+  //   return item.id === lastClickedJobId;
+  // });
+
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("type");
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
   const dispatch = useDispatch();
 
-  const seeJobDetails = () => {
-    dispatch(setScreenMode(9));
-  };
+  // const seeJobDetails = () => {
+  //   dispatch(jobClicked({ selectedJob }));
+  // };
 
   useEffect(() => {
     if (jobListings) inputBox.current.focus();
@@ -50,7 +57,7 @@ const Controls = () => {
     filtered = filtered.filter((jobListing) => {
       return jobListing.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "any") {
+  } else {
     filtered = filtered.filter((jobListing) => {
       return jobListing;
     });
@@ -58,10 +65,10 @@ const Controls = () => {
 
   return (
     <>
-      <h1>Search for a job</h1>
+      <h1 className="title">Search for a job</h1>
       <div className="contractBar">
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           type="radio"
           id="any"
           name="contract"
@@ -71,7 +78,7 @@ const Controls = () => {
           Any
         </button>
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           type="radio"
           id="fullTime"
           name="contract"
@@ -81,7 +88,7 @@ const Controls = () => {
           Full-time
         </button>
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           type="radio"
           id="partTime"
           name="contract"
@@ -92,7 +99,7 @@ const Controls = () => {
         </button>
       </div>
 
-      <div className="controlBar">
+      <div className="searchByBar">
         <label>
           Search by:
           <select
@@ -120,13 +127,16 @@ const Controls = () => {
 
       <div className="allResult">
         {filtered.map((job) => {
-
           const quickViewJob = Object.entries(job);
 
           return (
-            <button
+            <div
               className="btn-outline-dark"
-              onClick={seeJobDetails}
+              onClick={() => {
+                // seeJobDetails({ id: job.id });
+                // console.log({ id: job.id });
+                dispatch(jobClicked(job.id));
+              }}
               key={job.id}
             >
               <form className="eachResult">
@@ -135,20 +145,22 @@ const Controls = () => {
                     item[0] === "email" ||
                     item[0] === "phoneNumber" ||
                     item[0] === "id" ||
-                    item[0] === "description"
+                    item[0] === "description" ||
+                    item[0] === "currentUserId" ||
+                    item[0] === "userId"
                   )
                     return null;
 
                   return (
                     <div key={item[0]}>
                       <p>
-                        {item[0]}: {item[1]}
+                        {searchForJobListingText[item[0]]}: {item[1]}
                       </p>
                     </div>
                   );
                 })}
               </form>
-            </button>
+            </div>
           );
         })}
       </div>
