@@ -6,6 +6,7 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import "./Signup.scss";
+import sha256 from 'sha256';
 
 const Signup = () => {
   const [userData, setUserData] = useState({});
@@ -16,6 +17,10 @@ const Signup = () => {
     e.preventDefault();
     if (errors === true) {
       delete userData.repeat_password;
+
+      //swap the password for a sha 256 version
+      userData.password = sha256(userData.password + "cohort-ft3")
+
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
     }

@@ -7,6 +7,7 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import { useSelector } from "react-redux";
+import sha256 from "sha256";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const Loginpage = () => {
     setError(result);
 
     //check the creds *** just for dev purposes ***
-    if (user.email !== email || user.password !== password) {
+    if (user.email !== email || user.password !== sha256(password + "cohort-ft3")) {
       alert("Bad creds");
       return;
     }
