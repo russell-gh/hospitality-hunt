@@ -1,0 +1,17 @@
+.h1 {
+  margin-left: 50%;
+}
+
+.freelancerDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20%;
+  margin: auto;
+  font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
+  max-width: 30%;
+  border: solid black 2px;
+  border-radius: 30px;
+  padding: 10px;
+}
