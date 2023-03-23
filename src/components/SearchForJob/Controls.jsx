@@ -1,29 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  jobClicked,
   selectJobListings,
-  selectLastClickedJobId,
+  jobClicked,
 } from "../../features/hospitality/hospitalitySlice";
 import { searchForJobListingText } from "../../language/english";
 
 const Controls = () => {
   const jobListings = useSelector(selectJobListings);
-  // const lastClickedJobId = useSelector(selectLastClickedJobId);
-  // const selectedJob = jobListings.find((item) => {
-  //   console.log(item);
-  //   return item.id === lastClickedJobId;
-  // });
-
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("type");
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
   const dispatch = useDispatch();
-
-  // const seeJobDetails = () => {
-  //   dispatch(jobClicked({ selectedJob }));
-  // };
 
   useEffect(() => {
     if (jobListings) inputBox.current.focus();
@@ -40,7 +29,9 @@ const Controls = () => {
     });
   } else if (userSelect === "title") {
     filtered = filtered.filter((jobListing) => {
-      return jobListing.title.toLowerCase().includes(userInput.toLowerCase());
+      return jobListing.title.some((item) =>
+        item.toLowerCase().includes(userInput.toLowerCase())
+      );
     });
   } else if (userSelect === "postCode") {
     filtered = filtered.filter((jobListing) => {
@@ -133,8 +124,6 @@ const Controls = () => {
             <div
               className="btn-outline-dark"
               onClick={() => {
-                // seeJobDetails({ id: job.id });
-                // console.log({ id: job.id });
                 dispatch(jobClicked(job.id));
               }}
               key={job.id}

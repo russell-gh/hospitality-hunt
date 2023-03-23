@@ -7,8 +7,9 @@ import {
 } from "../../features/hospitality/hospitalitySlice";
 import "./UserProfile.css";
 import { validate } from "../../validation/joi";
-import WebcamContainer from "../react-webcam/WebcamContainer";
+import WebcamForUserPofile from "./WebcamForUserPofile";
 import { selectCurrentUserId } from "../../features/hospitality/hospitalitySlice";
+import { Value } from "sass";
 
 const UserProfile = (props) => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const UserProfile = (props) => {
   const [userData, setUserData] = useState(freelancer);
   const [errors, setErrors] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [isRetake, setIsRetake] = useState(false);
 
   const onInput = (e) => {
     let newInputData = [];
@@ -58,14 +60,48 @@ const UserProfile = (props) => {
     setIsEdit(false);
   };
 
+  const cancelRetakeClick = () => {
+    setIsRetake(false);
+  };
+
+  const handleSetIsEdit = (value) => {
+    setIsEdit(value);
+  };
+
   return (
     <div className="html">
       <h1>Your profile</h1>
-      <form
-        className="createUserProfile"
-        onInput={onInput}
-        onSubmit={submitData}
-      >
+
+      {isRetake ? (
+        <>
+          <WebcamForUserPofile handleSetIsEdit={handleSetIsEdit} />
+          <button
+            type="button"
+            className="btn btn-secondary cancelImg"
+            onClick={cancelRetakeClick}
+          >
+            Cancel
+          </button>
+        </>
+      ) : (
+        <>
+          <div>
+            <img
+              className="userPhoto"
+              src={userData.image}
+              alt="freelancer image"
+            />
+          </div>
+          <div
+            className="btn btn-secondary retake"
+            onClick={() => setIsRetake(true)}
+          >
+            Retake photo
+          </div>
+        </>
+      )}
+
+      <form className="userProfile" onInput={onInput} onSubmit={submitData}>
         <div className="form-group">
           <label htmlFor="firstName">First name: </label>
           <input
@@ -135,12 +171,6 @@ const UserProfile = (props) => {
             </div>
           )}
         </div>
-
-        <div className="form-group">
-          <label>Your image:</label>
-          <img src={userData.image} alt="freelancer image" />
-        </div>
-        {/* <WebcamContainer /> */}
 
         <div className="form-group">
           <label htmlFor="contract">Type of contract: </label>
@@ -275,7 +305,7 @@ const UserProfile = (props) => {
             </>
           ) : (
             <div className="btn btn-secondary" onClick={() => setIsEdit(true)}>
-              Edit
+              Edit Profile
             </div>
           )}
         </div>
