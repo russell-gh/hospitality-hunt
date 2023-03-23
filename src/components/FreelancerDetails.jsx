@@ -1,10 +1,14 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
-import { freelancers } from "../sampleData";
+import {
+  selectLastClickedFreelancerId,
+  selectFreelancers,
+} from "../features/hospitality/hospitalitySlice";
+import { useSelector } from "react-redux";
 import "./FreelancerDetails.css";
 
 const FreelancerDetails = () => {
-  const localId = 1;
+  const localId = useSelector(selectLastClickedFreelancerId);
+  const freelancers = useSelector(selectFreelancers);
   return (
     <>
       <h1>Freelancer details</h1>
@@ -12,7 +16,7 @@ const FreelancerDetails = () => {
         {freelancers.map((id) => {
           if (id.id === localId)
             return (
-              <>
+              <React.Fragment key={id}>
                 <p>{id.firstName}</p>
                 <p>{id.secondName}</p>
                 <p>{id.position}</p>
@@ -23,7 +27,7 @@ const FreelancerDetails = () => {
                 <p>{id.email}</p>
                 <p>{id.phoneNumber}</p>
                 <p>{id.aboutYou}</p>
-              </>
+              </React.Fragment>
             );
         })}
       </div>
