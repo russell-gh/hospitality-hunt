@@ -21,6 +21,7 @@ import Footer from "./components/Footer";
 import UserProfile from "./components/UserProfile/UserProfile";
 import EmployerJobListing from "./components/EmployerJobListing";
 import TestingNav from "./components/TestingNav";
+import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
@@ -62,6 +63,7 @@ export default function App() {
         {screenMode === 11 && <Home />}
         {screenMode === 12 && <UserProfile /> /* Bernie */}
         {screenMode === 13 && <EmployerJobListing />}
+        {screenMode === 14 && <BusinessProfile />}
       </main>
       <Footer />
     </div>

@@ -12,7 +12,7 @@ const initialState = {
   jobListings,
   businesses,
   lastClickedJobId: 1,
-  lastClickedFreelancerId: 2,
+  lastClickedFreelancerId: 1,
 };
 
 export const hospitalitySlice = createSlice({
@@ -88,6 +88,18 @@ export const hospitalitySlice = createSlice({
     jobClicked: (state, payload) => {
       state.lastClickedJobId = payload.payload;
       state.screenMode = 9;
+    },
+
+    freelancerClicked: (state, payload) => {
+      state.lastClickedFreelancerId = payload.payload;
+      state.screenMode = 10;
+    },
+
+    editedUserImage: (state, action) => {
+      const freelancer = state.freelancers.findIndex(
+        (item) => item.id === state.currentUserId
+      );
+      state.freelancers[freelancer].image = action.payload;
       storeData("redux-store", state);
     },
   },
@@ -108,6 +120,8 @@ export const {
   saveEditForm,
   editedData,
   jobClicked,
+  freelancerClicked,
+  editedUserImage,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;

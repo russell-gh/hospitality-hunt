@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFreelancers,
-  setScreenMode,
+  freelancerClicked,
 } from "../../features/hospitality/hospitalitySlice";
 import { searchForFreelancerListingText } from "../../language/english";
 
@@ -13,10 +13,6 @@ const Controls = () => {
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
   const dispatch = useDispatch();
-
-  const seeJobDetails = () => {
-    dispatch(setScreenMode(10));
-  };
 
   useEffect(() => {
     if (freelancers) inputBox.current.focus();
@@ -128,7 +124,9 @@ const Controls = () => {
           return (
             <div
               className="btn-outline-dark"
-              onClick={seeJobDetails}
+              onClick={() => {
+                dispatch(freelancerClicked(freelancer.id));
+              }}
               key={freelancer.id}
             >
               <form className="eachResult">
@@ -146,7 +144,7 @@ const Controls = () => {
                   return (
                     <div key={item[0]}>
                       <p>
-                        {searchForFreelancerListingText[item[0]]}:{" "}
+                        {searchForFreelancerListingText[item[0]]}:
                         {typeof item[1] === "string"
                           ? item[1]
                           : item[1].join(" ")}
