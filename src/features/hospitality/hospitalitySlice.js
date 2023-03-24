@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getData, storeData } from "../../storage";
-import { freelancers, jobListings } from "../../sampleData";
+import { freelancers, jobListings, businesses } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
@@ -11,8 +11,9 @@ const initialState = {
   isProfileComplete: false,
   freelancers,
   jobListings,
+  businesses,
   lastClickedJobId: 1,
-  lastClickedFreelancerId: 2,
+  lastClickedFreelancerId: 1,
 };
 
 export const hospitalitySlice = createSlice({
@@ -72,6 +73,12 @@ export const hospitalitySlice = createSlice({
       state.lastAddedJobId = payload.payload.ID;
       storeData("redux-store", state);
     },
+    addBusiness: (state, payload) => {
+      state.businesses = [...state.businesses, payload.payload];
+      state.screenMode = 6;
+      state.currentUserId = payload.payload.currentUserId;
+      storeData("redux-store", state);
+    },
     setFreelancerDetails: (state, payload) => {
       state.isProfileComplete = true;
       payload.payload.image = state.userImage;
@@ -103,6 +110,18 @@ export const hospitalitySlice = createSlice({
     jobClicked: (state, payload) => {
       state.lastClickedJobId = payload.payload;
       state.screenMode = 9;
+    },
+
+    freelancerClicked: (state, payload) => {
+      state.lastClickedFreelancerId = payload.payload;
+      state.screenMode = 10;
+    },
+
+    editedUserImage: (state, action) => {
+      const freelancer = state.freelancers.findIndex(
+        (item) => item.id === state.currentUserId
+      );
+      state.freelancers[freelancer].image = action.payload;
       storeData("redux-store", state);
     },
   },
@@ -113,7 +132,7 @@ export const {
   setUserProfile,
   signUp,
   login,
-  setBusinessProfile,
+  addBusiness,
   setFreelancerDetails,
   onboarding,
   addJobListing,
@@ -124,6 +143,8 @@ export const {
   editedData,
   jobClicked,
   logout,
+  freelancerClicked,
+  editedUserImage,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;

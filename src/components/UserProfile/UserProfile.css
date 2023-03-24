@@ -1,69 +1,51 @@
-.html {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-form {
-  border: 1px solid black;
-  border-radius: 1em;
-  padding: 1em;
-  width: 500px;
-  margin-left: 1em;
-  box-shadow: 10px 10px 5px gray;
-}
-
-ul {
-  list-style: none;
-  font-weight: bold;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: row;
-}
-
-/* label {
-  display: inline-block;
-  width: 200px;
-} */
-
-input {
-  width: 250px;
-  border: 1px solid grey;
-}
-
-select {
-  width: 250px;
-  border: 1px solid grey;
-  vertical-align: top;
-}
-
-textarea {
-  height: 7em;
-  width: 250px;
-  vertical-align: top;
-}
-
 .buttons {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 12px;
 }
 
-/* .photoContainer {
-  border: 10px black;
+.userPhoto {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: solid 3px black;
+}
+
+.userProfile {
+  margin-bottom: 50px;
+}
+
+.photoButton {
+  margin-bottom: 20px;
+}
+
+.camGrid {
+  display: grid;
+}
+
+.webcam {
   position: relative;
+  margin-bottom: 3px;
 }
 
-.photo {
-  width: 400px;
+.camImage {
   position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 30px;
-} */
+  top: -45px;
+  left: -23px;
+}
+
+.cancelImg {
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
+
+.retake {
+  margin-bottom: 20px;
+}
+
+.captureImg,
+.saveImg,
+.retakeImg {
+  width: 200px;
+  display: flex;
+  justify-self: center;
+}

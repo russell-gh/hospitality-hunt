@@ -1,5 +1,5 @@
 .homepage-menu {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,10 +7,16 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
+.bg-image {
+  margin-top: 5px;
+  max-width: 400px;
+  max-height: 400px;
+}
+
 .signUp_btn {
   padding: 17px;
   margin-top: 25px;
-  background: #0d6efd;
+  background: #198754;
   border: none;
   color: white;
   font-size: 1.5rem;
@@ -21,7 +27,7 @@
   padding: 17px;
   margin-top: 20px;
   margin-bottom: 30px;
-  background: #0d6efd;
+  background: #198754;
   border: none;
   color: white;
   font-size: 1.5rem;
