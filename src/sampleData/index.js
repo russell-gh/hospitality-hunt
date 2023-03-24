@@ -110,3 +110,4 @@ export const jobListings = [
     description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
   },
 ];
+export const businesses = [];

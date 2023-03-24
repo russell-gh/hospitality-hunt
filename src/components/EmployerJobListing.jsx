@@ -30,15 +30,20 @@ const EmployerJobListing = () => {
             <li className="list-group-item">{job.title}</li>
             <li className="list-group-item">{job.description}</li>
           </ul>
-          <button
-            onClick={() => {
-              dispatch(setDeleteJob(job));
-            }}
-            type="button"
-            className="btn btn-danger btn-lg"
-          >
-            X
-          </button>
+          <div className="d-flex">
+            <button
+              onClick={() => {
+                dispatch(setDeleteJob(job));
+              }}
+              type="button"
+              className="btn btn-danger btn-lg"
+            >
+              X
+            </button>
+            <button type="button" className="btn btn-danger btn-lg">
+              edit
+            </button>
+          </div>
         </div>
       ))}
 
