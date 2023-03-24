@@ -29,13 +29,6 @@ export default function App() {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          dispatch(setScreenMode(11));
-        }}
-      >
-        Go to Home
-      </button>
       <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
       {/* <WebcamContainer /> */}
       <Navigation /* Yahya */ />
