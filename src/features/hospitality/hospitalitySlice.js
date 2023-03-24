@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getData, storeData } from "../../storage";
-import { freelancers, jobListings } from "../../sampleData";
+import { freelancers, jobListings, businesses } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
   user: { email: "", password: "" },
   freelancers,
   jobListings,
+  businesses,
   lastClickedJobId: 1,
   lastClickedFreelancerId: 1,
 };
@@ -36,11 +37,6 @@ export const hospitalitySlice = createSlice({
       state.screenMode = action.payload ? 4 : 5;
       storeData("redux-store", state);
     },
-
-    setBusinessProfile: (state, payload) => {
-      state.createBusinessProfile = payload;
-      storeData("redux-store", state);
-    },
     setScreenMode: (state, payload) => {
       state.screenMode = payload.payload;
     },
@@ -49,6 +45,12 @@ export const hospitalitySlice = createSlice({
       state.jobListings = [...state.jobListings, payload.payload];
       state.screenMode = 13;
       state.lastAddedJobId = payload.payload.ID;
+      storeData("redux-store", state);
+    },
+    addBusiness: (state, payload) => {
+      state.businesses = [...state.businesses, payload.payload];
+      state.screenMode = 6;
+      state.currentUserId = payload.payload.currentUserId;
       storeData("redux-store", state);
     },
 
@@ -108,7 +110,7 @@ export const {
   setUserProfile,
   signUp,
   login,
-  setBusinessProfile,
+  addBusiness,
   setFreelancerDetails,
   onboarding,
   addJobListing,

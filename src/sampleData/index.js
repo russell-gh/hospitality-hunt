@@ -139,3 +139,4 @@ const businesses = [
     details: "A night pub open at 20:00",
   },
 ];
+

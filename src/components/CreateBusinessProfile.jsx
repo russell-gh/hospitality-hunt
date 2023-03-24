@@ -1,37 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  setBusinessProfile,
-  setScreenMode,
-} from "../features/hospitality/hospitalitySlice";
+import { addBusiness } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
-import { customMessages } from "../language/english";
 import "./createBusinsessProfile.css";
+import { randomId } from "../utils";
 
 const BusinessProfile = (props) => {
   const dispatch = useDispatch();
   const [businessData, setBusinessData] = useState({});
   const [errors, setErrors] = useState({});
 
-  const onInput = (e) => {
-    const newInputData = { ...businessData, [e.target.id]: e.target.value };
-    setBusinessData(newInputData);
-    validateData(newInputData);
+  const onAddBusiness = (e) => {
+    setBusinessData({ ...businessData, [e.target.id]: e.target.value });
   };
 
-  const validateData = async (newInputData) => {
-    const result = await validate("createBusinessProfile", newInputData);
-    setErrors(result);
-  };
-
-  const submitData = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-
-    if (errors === true) {
-      dispatch(setBusinessProfile(businessData));
-      dispatch(setScreenMode(10));
-    }
+    businessData.currentUserId = randomId();
+    dispatch(addBusiness(businessData));
   };
 
   return (
@@ -40,8 +27,8 @@ const BusinessProfile = (props) => {
       <p>Please fill in the information below:</p>
       <form
         className="createBusinessProfile"
-        onInput={onInput}
-        onSubmit={submitData}
+        onInput={onAddBusiness}
+        onSubmit={onSubmit}
       >
         <div className="form-group">
           <label htmlFor="businessName">Business name: </label>
@@ -89,24 +76,7 @@ const BusinessProfile = (props) => {
             </div>
           )}
         </div>
-        <div className="form-group">
-          <label htmlFor="contract">Type of contract provided: </label>
-          <select
-            id="contract"
-            className="form-control"
-            name="contract"
-            size="2"
-            multiple
-          >
-            <option value="fulltime">Full-time</option>
-            <option value="parttime">Part-time</option>
-          </select>
-          {errors.contract && (
-            <div className="alert alert-danger" role="alert">
-              {errors.contract}
-            </div>
-          )}
-        </div>
+
         <div className="form-group">
           <label htmlFor="position">Type of position: </label>
           <select
