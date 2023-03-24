@@ -3,6 +3,7 @@ import { setScreenMode } from "../features/hospitality/hospitalitySlice";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedIn } from "../features/hospitality/hospitalitySlice";
+import hh1 from "../assets/hh1.png";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,6 @@ const Home = () => {
   // console.log(loggedIn);
   return (
     <>
-      <h1>Welcome to hospitality hunt.</h1>
       {loggedIn ? (
         <p>You are logged in.</p>
       ) : (
@@ -23,7 +23,9 @@ const Home = () => {
           >
             LOGIN
           </button>
-          <h2>Sign up here:</h2>
+          <div class="bg image hover-zoom">
+            <img className="w-100 hover-shadow" src={hh1} alt="logo"></img>
+          </div>
           <button
             className="signUp_btn"
             onClick={() => {

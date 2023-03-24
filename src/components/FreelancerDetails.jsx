@@ -11,8 +11,8 @@ const FreelancerDetails = () => {
   const freelancers = useSelector(selectFreelancers);
   return (
     <>
-      <h1>Freelancer details</h1>
-      <div className="freelancerDetails">
+      <h1 className="title">Freelancer profile:</h1>
+      <form className="freelancerDetails">
         {freelancers.map((id) => {
           if (id.id === localId)
             return (
@@ -30,7 +30,7 @@ const FreelancerDetails = () => {
               </React.Fragment>
             );
         })}
-      </div>
+      </form>
     </>
   );
 };
