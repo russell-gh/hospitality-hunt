@@ -36,7 +36,7 @@ const Loginpage = () => {
     }
 
     //   //if everything passes, log user in
-    //   dispatch(login());
+    dispatch(login());
   };
 
   return (
