@@ -113,7 +113,7 @@ export const jobListings = [
   },
 ];
 
-const businesses = [
+export const businesses = [
   {
     id: 1,
     name: "Burger Queen",
@@ -139,4 +139,3 @@ const businesses = [
     details: "A night pub open at 20:00",
   },
 ];
-
