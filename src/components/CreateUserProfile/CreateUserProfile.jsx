@@ -11,6 +11,7 @@ const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
+  const [image, setImage] = useState();
 
   const onInput = (e) => {
     let newInputData = [];
@@ -115,7 +116,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
-        <WebcamContainer />
+        <WebcamContainer setImage={setImage} image={image} />
         <div className="form-group">
           <label htmlFor="contract">Type of contract: </label>
           <select
@@ -205,25 +206,39 @@ const UserProfiles = (props) => {
           )}
         </div>
         <div className="form-group">
-          {/* let manageSubmit = () => {
+          {/* {let manageSubmit = () => {
             if {(!errors) {
               return <input type="submit" className="btn btn-success" disabled />;
             <div className="alert alert-danger" role="alert">
               "Please provide missing information"
             </div>}
         } else if {
-{(image === undefined) {
-  return <input type="submit" className="btn btn-success" disabled />;
-  <div className="alert alert-danger" role="alert">
-    "Please take a photo before submitting"
-  </div>
-}
-        } else {
-          return <input type="submit" className="btn btn-success" />;
-        }
-          
-          }} */}
-          <input type="submit" className="btn btn-success" />
+          {(image === undefined) {
+              return <input type="submit" className="btn btn-success" disabled />;
+            <div className="alert alert-danger" role="alert">
+           "Please take a photo before submitting"
+        </div>  
+          }
+        } else { */}
+          <input
+            type="submit"
+            className="btn btn-success"
+            disabled={image && errors === true ? false : true}
+          />
+          {!image && (
+            <p className="alert alert-danger" role="alert">
+              Please take a photo before submitting
+            </p>
+          )}
+          {errors !== true && (
+            <p className="alert alert-danger" role="alert">
+              Please fill out all required form elements before submitting
+            </p>
+          )}
+          {/* } */}
+
+          {/* }}} */}
+          {/* <input type="submit" className="btn btn-success" /> */}
         </div>
       </form>
     </div>
