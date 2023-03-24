@@ -9,7 +9,6 @@ import "./UserProfile.css";
 import { validate } from "../../validation/joi";
 import WebcamForUserPofile from "./WebcamForUserPofile";
 import { selectCurrentUserId } from "../../features/hospitality/hospitalitySlice";
-import { Value } from "sass";
 
 const UserProfile = (props) => {
   const dispatch = useDispatch();
@@ -143,7 +142,6 @@ const UserProfile = (props) => {
             className="form-control"
             id="phoneNumber"
             name="phoneNumber"
-            placeholder="00447111111111"
             disabled={!isEdit}
             value={userData.phoneNumber}
           ></input>

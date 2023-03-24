@@ -86,6 +86,7 @@ export const jobListings = [
   },
   {
     id: 3,
+    currentUserId: 2,
     name: "The Steakhouse",
     type: "restaurant",
     title: ["host"],
@@ -99,6 +100,7 @@ export const jobListings = [
   },
   {
     id: 4,
+    currentUserId: 3,
     name: "The Kings Head",
     type: "restaurant",
     title: ["bartender"],
@@ -108,5 +110,32 @@ export const jobListings = [
     email: "thekingshead@email.com",
     phoneNumber: "111-64442465",
     description: "40hrs in a week, time slot: 18:00-02:00 / 22:00-06:00",
+  },
+];
+
+const businesses = [
+  {
+    id: 1,
+    name: "Burger Queen",
+    type: "restaurant",
+    email: "burgerqueen@email.com",
+    phoneNumber: "034-653125",
+    details: "The most famous burger restaurant in UK",
+  },
+  {
+    id: 2,
+    name: "Hey Sushi",
+    type: "restaurant",
+    email: "heysushi@email.com",
+    phoneNumber: "044-33343334",
+    details: "More than 20 stores over London",
+  },
+  {
+    id: 3,
+    name: "The Red Lion",
+    type: "pub",
+    email: "redlion@email.com",
+    phoneNumber: "011-23333333",
+    details: "A night pub open at 20:00",
   },
 ];

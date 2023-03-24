@@ -143,7 +143,10 @@ const Controls = () => {
                   return (
                     <div key={item[0]}>
                       <p>
-                        {searchForJobListingText[item[0]]}: {item[1]}
+                        {searchForJobListingText[item[0]]}:
+                        {typeof item[1] === "string"
+                          ? item[1]
+                          : item[1].join(" ")}
                       </p>
                     </div>
                   );

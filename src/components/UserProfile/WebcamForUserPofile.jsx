@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Webcam from "react-webcam";
 import { useDispatch } from "react-redux";
 import { editedUserImage } from "../../features/hospitality/hospitalitySlice";
-import "./UserProfile.css";
 
 const videoConstraints = {
   width: 400,
@@ -11,16 +10,16 @@ const videoConstraints = {
 };
 
 const WebcamForUserPofile = (props) => {
-  const [image, setImage] = useState();
+  const [newImage, setNewImage] = useState();
   const dispatch = useDispatch();
   const { handleSetIsEdit } = props;
 
-  const onImageClick = (image) => {
-    setImage(image);
+  const onImageClick = (newImage) => {
+    setNewImage(newImage);
   };
 
   const onSave = () => {
-    dispatch(editedUserImage(image));
+    dispatch(editedUserImage(newImage));
     handleSetIsEdit(false);
   };
 
@@ -51,11 +50,11 @@ const WebcamForUserPofile = (props) => {
                       Capture
                     </button>
 
-                    {image && (
+                    {newImage && (
                       <>
                         <img
                           className="photo border border-secondary camImage"
-                          src={image}
+                          src={newImage}
                           alt="You"
                         />
 

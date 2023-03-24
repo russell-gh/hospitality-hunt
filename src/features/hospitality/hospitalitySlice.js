@@ -98,9 +98,6 @@ export const hospitalitySlice = createSlice({
         (item) => item.id === state.currentUserId
       );
       state.freelancers[freelancer].image = action.payload;
-      console.log(action);
-      // console.log(payload);
-
       storeData("redux-store", state);
     },
   },
