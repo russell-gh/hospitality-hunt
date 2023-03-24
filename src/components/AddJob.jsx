@@ -23,7 +23,7 @@ const AddJob = () => {
     const result = await validate("addJob", postJob);
     if (result === true) {
       postJob.id = randomId();
-      postJob.userId = currentUserId;
+      postJob.currentUserId = currentUserId;
       dispatch(addJobListing(postJob));
     } else {
       setErrors(result);
