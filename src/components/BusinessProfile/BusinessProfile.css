@@ -1,0 +1,9 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.businessProfile {
+  margin-bottom: 50px;
+}

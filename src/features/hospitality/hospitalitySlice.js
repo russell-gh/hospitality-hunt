@@ -4,7 +4,7 @@ import { freelancers, jobListings, businesses } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 11,
+  screenMode: 14,
   currentUserId: 1,
   user: { email: "", password: "" },
   isFreelancer: undefined,
@@ -100,7 +100,7 @@ export const hospitalitySlice = createSlice({
       state.userImage = payload.payload;
       storeData("redux-store", state);
     },
-    editedData: (state, action) => {
+    editedFreelancerData: (state, action) => {
       const freelancer = state.freelancers.findIndex(
         (item) => item.id === state.currentUserId
       );
@@ -111,17 +111,22 @@ export const hospitalitySlice = createSlice({
       state.lastClickedJobId = payload.payload;
       state.screenMode = 9;
     },
-
     freelancerClicked: (state, payload) => {
       state.lastClickedFreelancerId = payload.payload;
       state.screenMode = 10;
     },
-
     editedUserImage: (state, action) => {
       const freelancer = state.freelancers.findIndex(
         (item) => item.id === state.currentUserId
       );
       state.freelancers[freelancer].image = action.payload;
+      storeData("redux-store", state);
+    },
+    editedBusinessData: (state, action) => {
+      const business = state.businesses.findIndex(
+        (item) => item.id === state.currentUserId
+      );
+      state.businesses[business] = action.payload;
       storeData("redux-store", state);
     },
   },
@@ -140,11 +145,12 @@ export const {
   setUserImage,
   editFormData,
   saveEditForm,
-  editedData,
+  editedFreelancerData,
   jobClicked,
   logout,
   freelancerClicked,
   editedUserImage,
+  editedBusinessData,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
@@ -159,5 +165,6 @@ export const selectLastClickedJobId = (state) =>
 export const selectIsFreelancer = (state) => state.hospitality.isFreelancer;
 export const selectLastClickedFreelancerId = (state) =>
   state.hospitality.lastClickedFreelancerId;
+export const selectBusinesses = (state) => state.hospitality.businesses;
 
 export default hospitalitySlice.reducer;

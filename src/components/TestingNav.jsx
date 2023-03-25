@@ -103,6 +103,13 @@ const TestingNav = () => {
         >
           13 EmployerJobListing
         </button>
+        <button
+          onClick={() => {
+            dispatch(setScreenMode(14));
+          }}
+        >
+          14 BusinessProfile
+        </button>
       </div>
     </div>
   );

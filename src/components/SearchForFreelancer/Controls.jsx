@@ -122,13 +122,7 @@ const Controls = () => {
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
-            <div
-              className="btn-outline-dark"
-              onClick={() => {
-                dispatch(freelancerClicked(freelancer.id));
-              }}
-              key={freelancer.id}
-            >
+            <div className="btn-outline-dark" key={freelancer.id}>
               <form className="eachResult">
                 {quickViewFreelancer.map((item) => {
                   if (
@@ -144,7 +138,7 @@ const Controls = () => {
                   return (
                     <div key={item[0]}>
                       <p>
-                        {searchForFreelancerListingText[item[0]]}:
+                        {searchForFreelancerListingText[item[0]]}:{" "}
                         {typeof item[1] === "string"
                           ? item[1]
                           : item[1].join(" ")}
@@ -152,6 +146,14 @@ const Controls = () => {
                     </div>
                   );
                 })}
+                <button
+                  className="btn btn-outline-success"
+                  onClick={() => {
+                    dispatch(freelancerClicked(freelancer.id));
+                  }}
+                >
+                  more info
+                </button>
               </form>
             </div>
           );

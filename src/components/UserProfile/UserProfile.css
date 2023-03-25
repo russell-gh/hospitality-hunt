@@ -5,9 +5,7 @@
 }
 
 .userPhoto {
-  margin-top: 8px;
   margin-bottom: 8px;
-  border: solid 3px black;
 }
 
 .userProfile {
@@ -20,31 +18,31 @@
 
 .camGrid {
   display: grid;
+  margin-left: 11px;
 }
 
-.webcam {
+.webcamForUserPofile {
   position: relative;
   margin-bottom: 3px;
 }
 
-.camImage {
+.editedPhoto {
+  width: 300px;
   position: absolute;
-  top: -45px;
-  left: -23px;
 }
 
-.cancelImg {
-  margin-top: -5px;
+.cancelRetakeButton {
   margin-bottom: 20px;
+  margin-left: 11px;
 }
 
 .retake {
   margin-bottom: 20px;
 }
 
-.captureImg,
-.saveImg,
-.retakeImg {
+.captureImgButton,
+.saveImgButton,
+.retakeImgButton {
   width: 200px;
   display: flex;
   justify-self: center;

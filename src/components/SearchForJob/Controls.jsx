@@ -121,13 +121,7 @@ const Controls = () => {
           const quickViewJob = Object.entries(job);
 
           return (
-            <div
-              className="btn-outline-dark"
-              onClick={() => {
-                dispatch(jobClicked(job.id));
-              }}
-              key={job.id}
-            >
+            <div className="btn-outline-dark" key={job.id}>
               <form className="eachResult">
                 {quickViewJob.map((item) => {
                   if (
@@ -151,6 +145,14 @@ const Controls = () => {
                     </div>
                   );
                 })}
+                <button
+                  className="btn btn-outline-success"
+                  onClick={() => {
+                    dispatch(jobClicked(job.id));
+                  }}
+                >
+                  more info
+                </button>
               </form>
             </div>
           );
