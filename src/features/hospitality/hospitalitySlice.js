@@ -42,7 +42,6 @@ export const hospitalitySlice = createSlice({
       } else if (typeof state.isFreelancer === "undefined") {
         state.screenMode = 3; //onboarding
       }
-
       state.loggedIn = true;
       storeData("redux-store", state);
     },
