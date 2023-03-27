@@ -30,7 +30,7 @@ const JobDetails = () => {
           );
         })}
         <button type="button" className="btn btn-primary btn-lg">
-          APPLY
+          Back to listing
         </button>
       </div>
     </>
