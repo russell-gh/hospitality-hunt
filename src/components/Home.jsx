@@ -34,7 +34,7 @@ const Home = () => {
       ) : (
         <div className="homepage-menu">
           <button
-            className="login_btn"
+            className="login_btn "
             onClick={() => {
               dispatch(setScreenMode(2));
             }}
