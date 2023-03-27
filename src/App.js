@@ -26,13 +26,19 @@ import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
   const dispatch = useDispatch();
+  const debugModeOn = false;
 
   return (
     <div>
-      <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
+      {debugModeOn && (
+        <button onClick={() => localStorage.clear()}>
+          Clear Local Storage
+        </button>
+      )}
+
       {/* <WebcamContainer /> */}
       <Navigation /* Yahya */ />
-      <TestingNav />
+      {debugModeOn && <TestingNav />}
 
       <main>
         {screenMode === 1 && <Signup /> /* Stuart tidy up*/}

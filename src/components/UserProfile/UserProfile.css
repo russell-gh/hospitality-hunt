@@ -1,13 +1,16 @@
-.buttons {
+.editButtons {
   display: flex;
   justify-content: center;
   margin-top: 12px;
 }
 
+.userProfileTitle {
+  margin-top: 17px;
+}
+
 .userPhoto {
-  margin-top: 8px;
   margin-bottom: 8px;
-  border: solid 3px black;
+  margin-top: 20px;
 }
 
 .userProfile {
@@ -20,32 +23,41 @@
 
 .camGrid {
   display: grid;
+  margin-left: 11px;
 }
 
-.webcam {
+.webcamForUserPofile {
   position: relative;
   margin-bottom: 3px;
+  margin-top: 20px;
 }
 
-.camImage {
+.editedPhoto {
+  width: 300px;
   position: absolute;
-  top: -45px;
-  left: -23px;
+  margin-top: 20px;
 }
 
-.cancelImg {
-  margin-top: -5px;
+.cancelRetakeButton {
   margin-bottom: 20px;
+  margin-left: 11px;
 }
 
 .retake {
   margin-bottom: 20px;
 }
 
-.captureImg,
-.saveImg,
-.retakeImg {
+.captureImgButton,
+.saveImgButton,
+.retakeImgButton {
   width: 200px;
   display: flex;
   justify-self: center;
+}
+
+.saveNotice {
+  margin-left: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
 }

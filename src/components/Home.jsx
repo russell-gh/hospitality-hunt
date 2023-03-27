@@ -43,6 +43,7 @@ const Home = () => {
           </button>
           <div className="bg image hover-zoom">
             <img className="logo" src={hh1} alt="logo" />
+
           </div>
           <button
             className="signUp_btn"
