@@ -1,0 +1,14 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.businessProfile {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.businessProfileTitle {
+  margin-top: 17px;
+}

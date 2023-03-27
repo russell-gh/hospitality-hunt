@@ -3,17 +3,19 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFreelancers,
-  editedData,
+  selectCurrentUserId,
+  editedFreelancerData,
+  selectUser,
 } from "../../features/hospitality/hospitalitySlice";
 import "./UserProfile.css";
 import { validate } from "../../validation/joi";
 import WebcamForUserPofile from "./WebcamForUserPofile";
-import { selectCurrentUserId } from "../../features/hospitality/hospitalitySlice";
 
-const UserProfile = (props) => {
+const UserProfile = () => {
   const dispatch = useDispatch();
   const freelancers = useSelector(selectFreelancers);
   const currentUserId = useSelector(selectCurrentUserId);
+  const user = useSelector(selectUser);
   const freelancer = freelancers.find((item) => {
     return item.id === currentUserId;
   });
@@ -49,7 +51,7 @@ const UserProfile = (props) => {
     e.preventDefault();
     if (errors === true) {
       console.log(errors);
-      dispatch(editedData(userData));
+      dispatch(editedFreelancerData(userData));
       setIsEdit(false);
     }
   };
@@ -63,20 +65,20 @@ const UserProfile = (props) => {
     setIsRetake(false);
   };
 
-  const handleSetIsEdit = (value) => {
-    setIsEdit(value);
+  const handleSetIsRetake = (value) => {
+    setIsRetake(value);
   };
 
   return (
     <div className="html">
-      <h1>Your profile</h1>
+      <h1 className="userProfileTitle">Your profile</h1>
 
       {isRetake ? (
         <>
-          <WebcamForUserPofile handleSetIsEdit={handleSetIsEdit} />
+          <WebcamForUserPofile handleSetIsRetake={handleSetIsRetake} />
           <button
             type="button"
-            className="btn btn-secondary cancelImg"
+            className="btn btn-secondary cancelRetakeButton "
             onClick={cancelRetakeClick}
           >
             Cancel
@@ -86,7 +88,7 @@ const UserProfile = (props) => {
         <>
           <div>
             <img
-              className="userPhoto"
+              className="userPhoto border border-secondary rounded-circle"
               src={userData.image}
               alt="freelancer image"
             />
@@ -101,13 +103,14 @@ const UserProfile = (props) => {
       )}
 
       <form className="userProfile" onInput={onInput} onSubmit={submitData}>
-        <div className="form-group">
+        <div>
           <label htmlFor="firstName">First name: </label>
           <input
             type="text"
             className="form-control"
             id="firstName"
             name="firstName"
+            placeholder="e.g. Sam"
             value={userData.firstName}
             disabled={!isEdit}
           />
@@ -125,6 +128,7 @@ const UserProfile = (props) => {
             className="form-control"
             id="secondName"
             name="secondName"
+            placeholder="e.g. Smith"
             value={userData.secondName}
             disabled={!isEdit}
           />
@@ -136,12 +140,25 @@ const UserProfile = (props) => {
         </div>
 
         <div className="form-group">
+          <label htmlFor="email">Email: </label>
+          <input
+            type="text"
+            className="form-control"
+            id="email"
+            name="email"
+            disabled
+            value={user.email}
+          ></input>
+        </div>
+
+        <div className="form-group">
           <label htmlFor="phoneNumber">Phone number: </label>
           <input
             type="number"
             className="form-control"
             id="phoneNumber"
             name="phoneNumber"
+            placeholder="0722334456"
             disabled={!isEdit}
             value={userData.phoneNumber}
           ></input>
@@ -159,7 +176,7 @@ const UserProfile = (props) => {
             className="form-control"
             id="postCode"
             name="postCode"
-            placeholder="SW1A 2AA"
+            placeholder="SW1 2AA"
             disabled={!isEdit}
             value={userData.postCode}
           />
@@ -242,7 +259,7 @@ const UserProfile = (props) => {
             id="experience"
             className="form-control"
             name="experience"
-            placeholder="Your experience in hospitality"
+            placeholder="e.g. two years kitchen management"
             disabled={!isEdit}
             value={userData.experience}
           ></textarea>
@@ -259,7 +276,7 @@ const UserProfile = (props) => {
             id="skills"
             className="form-control"
             name="skills"
-            placeholder="Your skills"
+            placeholder="e.g. strong knife skill"
             disabled={!isEdit}
             value={userData.skills}
           ></textarea>
@@ -276,7 +293,7 @@ const UserProfile = (props) => {
             id="aboutYou"
             className="form-control"
             name="aboutYou"
-            placeholder="About you"
+            placeholder="Introduce yourself"
             disabled={!isEdit}
             value={userData.aboutYou}
           ></textarea>
@@ -287,7 +304,7 @@ const UserProfile = (props) => {
           )}
         </div>
 
-        <div className="buttons form-group">
+        <div className="editButtons form-group">
           {isEdit ? (
             <>
               <button type="submit" className="btn btn-success">

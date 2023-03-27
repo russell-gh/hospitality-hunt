@@ -24,7 +24,7 @@ const Home = () => {
             LOGIN
           </button>
           <div class="bg image hover-zoom">
-            <img className="w-100 hover-shadow" src={hh1} alt="logo"></img>
+            <img className="flip-in-hor-bottom" src={hh1} alt="logo"></img>
           </div>
           <button
             className="signUp_btn"
