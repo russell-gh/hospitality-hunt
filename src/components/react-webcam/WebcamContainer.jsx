@@ -5,7 +5,7 @@ import { setUserImage } from "../../features/hospitality/hospitalitySlice";
 // import "../../createUserProfile.css";
 
 const videoConstraints = {
-  width: 400,
+  width: 300,
   height: 300,
   facingMode: "user",
 };
@@ -55,7 +55,7 @@ const WebcamContainer = (props) => {
               audio={false}
               height={300}
               screenshotFormat="image/jpeg"
-              width={400}
+              width={300}
               videoConstraints={videoConstraints}
             >
               {({ getScreenshot }) => {
