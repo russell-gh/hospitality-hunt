@@ -104,10 +104,10 @@ const Navigation = () => {
                   <button
                     className="nav-link"
                     onClick={() => {
-                      dispatch(setScreenMode(13));
+                      dispatch(setScreenMode(14));
                     }}
                   >
-                    TODO - EDIT EMPLOYER PROFILE
+                    Your profile
                   </button>
                 </li>
               </>
