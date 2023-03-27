@@ -1,11 +1,16 @@
-.buttons {
+.editButtons {
   display: flex;
   justify-content: center;
   margin-top: 12px;
 }
 
+.userProfileTitle {
+  margin-top: 17px;
+}
+
 .userPhoto {
   margin-bottom: 8px;
+  margin-top: 20px;
 }
 
 .userProfile {
@@ -24,11 +29,13 @@
 .webcamForUserPofile {
   position: relative;
   margin-bottom: 3px;
+  margin-top: 20px;
 }
 
 .editedPhoto {
   width: 300px;
   position: absolute;
+  margin-top: 20px;
 }
 
 .cancelRetakeButton {
@@ -46,4 +53,11 @@
   width: 200px;
   display: flex;
   justify-self: center;
+}
+
+.saveNotice {
+  margin-left: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
 }

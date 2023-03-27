@@ -11,14 +11,19 @@ const videoConstraints = {
 
 const WebcamForUserPofile = () => {
   const [newImage, setNewImage] = useState();
+  const [isCapture, setIsCapture] = useState(false);
+  const [isSave, setIsSave] = useState(false);
   const dispatch = useDispatch();
 
   const onImageClick = (newImage) => {
     setNewImage(newImage);
+    setIsSave(false);
+    setIsCapture(true);
   };
 
   const onSave = () => {
     dispatch(editedUserImage(newImage));
+    setIsSave(true);
   };
 
   return (
@@ -34,16 +39,20 @@ const WebcamForUserPofile = () => {
         {({ getScreenshot }) => {
           return (
             <>
-              <button
-                type="submit"
-                className="captureImgButton btn btn-success "
-                onClick={() => {
-                  const imageSrc = getScreenshot();
-                  onImageClick(imageSrc);
-                }}
-              >
-                Capture
-              </button>
+              {isCapture ? (
+                <div></div>
+              ) : (
+                <button
+                  type="submit"
+                  className="captureImgButton btn btn-success "
+                  onClick={() => {
+                    const imageSrc = getScreenshot();
+                    onImageClick(imageSrc);
+                  }}
+                >
+                  Capture
+                </button>
+              )}
 
               {newImage && (
                 <>
@@ -63,10 +72,20 @@ const WebcamForUserPofile = () => {
 
                   <button
                     className="retakeImgButton btn btn-success "
-                    onClick={() => onImageClick(undefined)}
+                    onClick={() => {
+                      onImageClick(undefined);
+                      setIsCapture(false);
+                    }}
                   >
                     Retake
                   </button>
+                  <div>
+                    {isSave ? (
+                      <div className="saveNotice">Your photo is saved</div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
                 </>
               )}
             </>

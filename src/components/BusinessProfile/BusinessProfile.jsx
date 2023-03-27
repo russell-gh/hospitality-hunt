@@ -59,13 +59,9 @@ const BusinessProfile = () => {
     setIsEdit(false);
   };
 
-  //   const cancelRetakeClick = () => {
-  //     setIsRetake(false);
-  //   };
-
   return (
     <div className="html">
-      <h1>Your profile</h1>
+      <h1 className="businessProfileTitle">Your profile</h1>
 
       <form className="businessProfile" onInput={onInput} onSubmit={submitData}>
         <div className="form-group">

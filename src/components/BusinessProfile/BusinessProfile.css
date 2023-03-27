@@ -5,5 +5,10 @@
 }
 
 .businessProfile {
+  margin-top: 20px;
   margin-bottom: 50px;
+}
+
+.businessProfileTitle {
+  margin-top: 17px;
 }

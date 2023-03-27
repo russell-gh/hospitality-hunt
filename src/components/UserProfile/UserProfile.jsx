@@ -71,7 +71,7 @@ const UserProfile = () => {
 
   return (
     <div className="html">
-      <h1>Your profile</h1>
+      <h1 className="userProfileTitle">Your profile</h1>
 
       {isRetake ? (
         <>
@@ -88,7 +88,7 @@ const UserProfile = () => {
         <>
           <div>
             <img
-              className="userPhoto  border border-secondary rounded-circle"
+              className="userPhoto border border-secondary rounded-circle"
               src={userData.image}
               alt="freelancer image"
             />
@@ -304,7 +304,7 @@ const UserProfile = () => {
           )}
         </div>
 
-        <div className="buttons form-group">
+        <div className="editButtons form-group">
           {isEdit ? (
             <>
               <button type="submit" className="btn btn-success">
