@@ -4,6 +4,7 @@ import "./login.css";
 import { login, selectUser } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import { useSelector } from "react-redux";
+import sha256 from "sha256";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
@@ -25,9 +26,6 @@ const Loginpage = () => {
     });
     setError(result);
 
-
-
-
     //check the creds *** just for dev purposes ***
     if (
       user.email !== email ||
@@ -36,7 +34,6 @@ const Loginpage = () => {
       setBadCred(true);
       return;
     }
-
 
     //   //if everything passes, log user in
     //   dispatch(login());
