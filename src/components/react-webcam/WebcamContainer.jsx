@@ -10,29 +10,28 @@ const videoConstraints = {
   facingMode: "user",
 };
 
-const WebcamContainer = () => {
-  const [image, setImage] = useState();
+const WebcamContainer = (props) => {
   const dispatch = useDispatch();
 
   const onImageClick = (image) => {
-    setImage(image);
+    props.setImage(image);
   };
 
   const onSave = () => {
     //send to  store
     // console.log(image);
-    dispatch(setUserImage(image));
+    dispatch(setUserImage(props.image));
   };
 
   return (
     <>
       <div className="photoContainer text-center">
         <div>
-          {image && (
+          {props.image && (
             <>
               <img
                 className="photo rounded-circle border border-secondary"
-                src={image}
+                src={props.image}
                 alt="You"
               />{" "}
               {/* place the confirm on top of the  live image */}
