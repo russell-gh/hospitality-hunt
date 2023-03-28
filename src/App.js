@@ -19,13 +19,17 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import EmployerJobListing from "./components/EmployerJobListing";
 import TestingNav from "./components/TestingNav";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
+import Online from './components/Online'
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
-  const debugModeOn = true;
+  const debugModeOn = false;
 
   return (
     <div>
+
+      <Online />
+
       {debugModeOn && (
         <button onClick={() => localStorage.clear()}>
           Clear Local Storage
