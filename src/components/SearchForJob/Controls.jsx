@@ -46,7 +46,7 @@ const Controls = () => {
     filtered = filtered.filter((jobListing) => {
       return jobListing.postCode
         .toLowerCase()
-        .includes(userInput.toLowerCase());
+        .startsWith(userInput.toLowerCase());
     });
   }
   if (contractButtonSelect === "fullTime") {
