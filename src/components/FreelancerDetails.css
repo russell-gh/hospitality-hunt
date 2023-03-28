@@ -3,6 +3,11 @@
   padding-bottom: 20px;
 }
 
+.hh-logo {
+  max-width: 150;
+  max-height: 150;
+}
+
 .freelancerDetails {
   display: flex;
   flex-direction: column;

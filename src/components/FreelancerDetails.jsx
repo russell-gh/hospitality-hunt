@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import {
   selectLastClickedFreelancerId,
   selectFreelancers,
@@ -7,12 +7,20 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import "./FreelancerDetails.css";
 import { setUserImage } from "../features/hospitality/hospitalitySlice";
+import hh1 from "../assets/hh1.png";
+import gsap from "gsap";
 
 const FreelancerDetails = () => {
   const localId = useSelector(selectLastClickedFreelancerId);
   const freelancers = useSelector(selectFreelancers);
   const dispatch = useDispatch();
   // const [userData] = useState(freelancer);
+
+  useLayoutEffect(() => {
+    console.log("Use layout effect,");
+    gsap.to(".hh-logo", { duration: 2, rotation: 360 });
+  }, []);
+
   return (
     <>
       <h1 className="title">Freelancer profile:</h1>
@@ -37,6 +45,7 @@ const FreelancerDetails = () => {
                 <p>{id.phoneNumber}</p>
                 <p>{id.aboutYou}</p>
                 <button
+                  className="back-btn"
                   onClick={() => {
                     console.log("button-clicked");
                     dispatch(setBackToFreelancerListing());
@@ -44,10 +53,18 @@ const FreelancerDetails = () => {
                 >
                   Back to listing
                 </button>
+                <img
+                  className="hh-logo"
+                  src={hh1}
+                  alt="logo"
+                  height="100px"
+                  width="100px"
+                ></img>
               </React.Fragment>
             );
         })}
       </div>
+      <div></div>
     </>
   );
 };
