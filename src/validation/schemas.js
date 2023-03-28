@@ -1,5 +1,9 @@
 import Joi from "joi";
 
+const emailRegex = new RegExp(
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+);
+
 export const addJob = {
   title: Joi.string().required(),
   contract: Joi.string().required(),
@@ -19,7 +23,9 @@ export const logIn = {
 };
 
 export const signUp = {
-  email: Joi.string().min(10).required(),
+  email: Joi.string().regex(emailRegex).required().messages({
+    "string.pattern.base": "Email doesn't match expected pattern.",
+  }),
   password: Joi.required(),
   repeat_password: Joi.string().required().valid(Joi.ref("password")).messages({
     "any.only": "The two passwords do not match.",
@@ -47,7 +53,6 @@ export const createUserProfile = {
     .messages({
       "string.pattern.base": "Phone number doesn't match expected pattern.",
     }),
-
   postCode: Joi.string()
     .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
     .required(),
