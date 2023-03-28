@@ -214,7 +214,7 @@ const UserProfiles = (props) => {
             </div>
           )}
         </div>
-        <div className="form-group">
+        <div className="form-group text-center my-2">
           <input
             type="submit"
             className="btn btn-success"
@@ -228,7 +228,7 @@ const UserProfiles = (props) => {
             }}
           />
           {!image && (
-            <p className="alert alert-danger" role="alert">
+            <p className="alert alert-danger my-2" role="alert">
               Please take a photo before submitting
             </p>
           )}
