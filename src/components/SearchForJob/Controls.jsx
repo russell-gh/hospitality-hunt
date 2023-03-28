@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectJobListings,
   jobClicked,
 } from "../../features/hospitality/hospitalitySlice";
 import { searchForJobListingText } from "../../language/english";
+import gsap from "gsap";
 
 const Controls = () => {
   const jobListings = useSelector(selectJobListings);
@@ -13,6 +14,14 @@ const Controls = () => {
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
   const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      ".eachResult",
+      { y: -1000 },
+      { duration: 2, ease: "bounce.out", y: 0 }
+    );
+  }, []);
 
   useEffect(() => {
     if (jobListings) inputBox.current.focus();

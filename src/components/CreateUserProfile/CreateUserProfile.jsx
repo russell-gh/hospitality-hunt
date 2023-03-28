@@ -53,7 +53,6 @@ const UserProfiles = (props) => {
     if (errors === true) {
       userData.id = randomId();
       dispatch(setFreelancerDetails(userData));
-      // dispatch(setScreenMode(10));
     }
   };
 
