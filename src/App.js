@@ -6,11 +6,8 @@ import CreateBusinessProfile from "./components/CreateBusinessProfile";
 import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile";
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectScreenMode,
-  setScreenMode,
-} from "./features/hospitality/hospitalitySlice";
+import { useSelector } from "react-redux";
+import { selectScreenMode } from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation";
 import SearchForFreelancer from "./components/SearchForFreelancer";
@@ -25,7 +22,6 @@ import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
-  const dispatch = useDispatch();
   const debugModeOn = true;
 
   return (

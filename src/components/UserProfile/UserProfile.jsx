@@ -90,7 +90,7 @@ const UserProfile = () => {
             <img
               className="userPhoto border border-secondary rounded-circle"
               src={userData.image}
-              alt="freelancer image"
+              alt="freelancer"
             />
           </div>
           <div

@@ -35,7 +35,7 @@ export const signUp = {
 //   experience: Joi.required(),
 //   about: Joi.required().min(100).max(500),
 // };
-
+/* eslint-disable */
 export const createUserProfile = {
   firstName: Joi.string().min(3).max(30).required(),
   secondName: Joi.string().required(),
@@ -57,7 +57,8 @@ export const createUserProfile = {
   skills: Joi.string().required(),
   aboutYou: Joi.string().required(),
 };
-
+/* eslint-enable */
+/* eslint-disable */
 export const createBusinessProfile = {
   businessName: Joi.string().min(3).max(30).required(),
   businessNumber: Joi.string()
@@ -77,9 +78,8 @@ export const createBusinessProfile = {
   businessType: Joi.string().required(),
   yourBusiness: Joi.string().required(),
 };
-
-// export const login = {}
-
+/* eslint-enable */
+/* eslint-disable */
 export const userProfile = {
   id: Joi.required(),
   firstName: Joi.string().min(3).max(30).required(),
@@ -99,7 +99,8 @@ export const userProfile = {
   aboutYou: Joi.string().required(),
   image: Joi.required(),
 };
-
+/* eslint-enable */
+/* eslint-disable */
 export const businessProfile = {
   id: Joi.required(),
   name: Joi.string().min(3).max(30).required(),
@@ -111,3 +112,4 @@ export const businessProfile = {
     .required(),
   details: Joi.string().required(),
 };
+/* eslint-enable */

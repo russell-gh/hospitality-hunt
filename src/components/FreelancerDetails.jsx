@@ -6,7 +6,6 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./FreelancerDetails.css";
-import { setUserImage } from "../features/hospitality/hospitalitySlice";
 import hh1 from "../assets/hh1.png";
 import gsap from "gsap";
 
@@ -62,6 +61,7 @@ const FreelancerDetails = () => {
                 ></img>
               </React.Fragment>
             );
+          else return null;
         })}
       </div>
       <div></div>
