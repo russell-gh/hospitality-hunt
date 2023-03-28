@@ -6,12 +6,14 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import "./Signup.scss";
-import sha256 from 'sha256';
+import sha256 from "sha256";
+import gsap from "gsap";
 
 const Signup = () => {
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const wiggleTimeLine = gsap.timeline();
 
   const submitSignupDate = (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ const Signup = () => {
       delete userData.repeat_password;
 
       //swap the password for a sha 256 version
-      userData.password = sha256(userData.password + "cohort-ft3")
+      userData.password = sha256(userData.password + "cohort-ft3");
 
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
@@ -35,6 +37,20 @@ const Signup = () => {
     const newInputData = { ...userData, [e.target.id]: e.target.value };
     setUserData(newInputData);
     validateEmailPassword(newInputData);
+  };
+
+  const mouseEnterSubmit = () => {
+    wiggleTimeLine
+      .to(".btn.btn-success", { rotate: -10, duration: 1 })
+      .to(".btn.btn-success", { rotate: 10, duration: 2 })
+      .to(".btn.btn-success", { rotate: 1, duration: 1 })
+      .repeat(-1);
+
+    wiggleTimeLine.resume();
+  };
+
+  const mouseLeaveSubmit = () => {
+    wiggleTimeLine.pause();
   };
 
   return (
@@ -88,7 +104,12 @@ const Signup = () => {
         </div>
 
         <div className="form-group">
-          <input type="submit" className="btn btn-success" />
+          <input
+            type="submit"
+            className="btn btn-success"
+            onMouseEnter={mouseEnterSubmit}
+            onMouseLeave={mouseLeaveSubmit}
+          />
         </div>
       </form>
     </>
