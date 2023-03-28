@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFreelancerDetails } from "../../features/hospitality/hospitalitySlice";
@@ -6,12 +6,22 @@ import "./CreateUserProfile.css";
 import { validate } from "../../validation/joi";
 import WebcamContainer from "../react-webcam/WebcamContainer";
 import { randomId } from "../../utils";
+import gsap from "gsap";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
   const [image, setImage] = useState();
+  const [hoverButton, setHoverButton] = useState(false);
+
+  useLayoutEffect(() => {
+    if (hoverButton) {
+      gsap.fromTo(".btn", { scale: 1 }, { scale: 1.2 });
+    } else {
+      gsap.fromTo(".btn", { scale: 1.2 }, { scale: 1 });
+    }
+  }, [hoverButton]);
 
   const onInput = (e) => {
     let newInputData = [];
@@ -206,24 +216,17 @@ const UserProfiles = (props) => {
           )}
         </div>
         <div className="form-group">
-          {/* {let manageSubmit = () => {
-            if {(!errors) {
-              return <input type="submit" className="btn btn-success" disabled />;
-            <div className="alert alert-danger" role="alert">
-              "Please provide missing information"
-            </div>}
-        } else if {
-          {(image === undefined) {
-              return <input type="submit" className="btn btn-success" disabled />;
-            <div className="alert alert-danger" role="alert">
-           "Please take a photo before submitting"
-        </div>  
-          }
-        } else { */}
           <input
             type="submit"
             className="btn btn-success"
             disabled={image && errors === true ? false : true}
+            onMouseEnter={() => {
+              console.log("Hello");
+              setHoverButton(true);
+            }}
+            onMouseLeave={() => {
+              setHoverButton(false);
+            }}
           />
           {!image && (
             <p className="alert alert-danger" role="alert">
