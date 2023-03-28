@@ -26,7 +26,7 @@ import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
   const dispatch = useDispatch();
-  const debugModeOn = false;
+  const debugModeOn = true;
 
   return (
     <div>
