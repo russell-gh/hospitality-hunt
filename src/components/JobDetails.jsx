@@ -10,7 +10,7 @@ import { selectLastClickedJobId } from "../features/hospitality/hospitalitySlice
 const JobDetails = () => {
   const jobListings = useSelector(selectJobListings);
   const lastClickedJobId = useSelector(selectLastClickedJobId);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   if (!jobListings) {
     return <p>Loading...</p>;
   }
