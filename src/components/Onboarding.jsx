@@ -27,7 +27,7 @@ const Onboarding = () => {
             Looking for a job?
           </button>
         </div>
-        <div> or wanting too..</div>
+        <div> or wanting to..</div>
         <div className="form-group">
           <button
             className="btn btn-success"
