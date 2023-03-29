@@ -13,8 +13,8 @@ const Onboarding = () => {
   };
 
   return (
-    <>
-      <h1>Are you...</h1>
+    <div className="onboardingContainer">
+      <h1 className="onboardingHeader">Are you...</h1>
       <form className="onboarding" onSubmit={handleSubmit}>
         <div className="form-group">
           <button
@@ -36,11 +36,11 @@ const Onboarding = () => {
               setIsFreelancer(false);
             }}
           >
-            List an oppotunity?
+            List a job oppotunity?
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
