@@ -131,6 +131,9 @@ export const hospitalitySlice = createSlice({
     setBackToFreelancerListing: (state) => {
       state.screenMode = 7;
     },
+    setBackToJobListing: (state) => {
+      state.screenmode = 8;
+    },
   },
 });
 
@@ -154,6 +157,7 @@ export const {
   editedUserImage,
   editedBusinessData,
   setBackToFreelancerListing,
+  setBackToJobListing,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;
