@@ -4,7 +4,8 @@ import { freelancers, jobListings, businesses } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 11,
+  screenMode: 14,
+
   currentUserId: 1,
   user: { email: "", password: "" },
   isFreelancer: undefined,
@@ -131,13 +132,24 @@ export const hospitalitySlice = createSlice({
     setBackToFreelancerListing: (state) => {
       state.screenMode = 7;
     },
+
+    editJobData: (state, payload) => {
+      const index = state.jobListings.findIndex(
+        (job) => job.id === payload.payload.id
+      );
+      state.jobListings[index] = payload.payload;
+
+      storeData("redux-store", state);
+
     setBackToJobListing: (state) => {
       state.screenmode = 8;
+
     },
   },
 });
 
 export const {
+  editJobData,
   setDeleteJob,
   setUserProfile,
   signUp,
