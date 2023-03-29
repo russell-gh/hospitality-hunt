@@ -140,10 +140,10 @@ export const hospitalitySlice = createSlice({
       state.jobListings[index] = payload.payload;
 
       storeData("redux-store", state);
+    },
 
     setBackToJobListing: (state) => {
       state.screenmode = 8;
-
     },
   },
 });
