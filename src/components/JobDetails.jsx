@@ -1,20 +1,23 @@
 import React from "react";
-import { selectJobListings } from "../features/hospitality/hospitalitySlice";
-import { useSelector } from "react-redux";
+import {
+  selectJobListings,
+  setBackToJobListing,
+} from "../features/hospitality/hospitalitySlice";
+import { useSelector, useDispatch } from "react-redux";
 import "./JobDetails.css";
-import { selectLastAddedJobId } from "../features/hospitality/hospitalitySlice";
+import { selectLastClickedJobId } from "../features/hospitality/hospitalitySlice";
 
 const JobDetails = () => {
   const jobListings = useSelector(selectJobListings);
-  const lastAddedJobId = useSelector(selectLastAddedJobId);
-  console.log(jobListings);
+  const lastClickedJobId = useSelector(selectLastClickedJobId);
+  const dispatch = useDispatch;
   if (!jobListings) {
     return <p>Loading...</p>;
   }
   const result = jobListings.filter((item) => {
-    return item.id === lastAddedJobId;
+    return item.id === lastClickedJobId;
   });
-  // console.log(result[0]);
+  console.log(result[0]);
 
   const bArray = Object.entries(result[0]);
 
@@ -29,8 +32,14 @@ const JobDetails = () => {
             </p>
           );
         })}
-        <button type="button" className="btn btn-primary btn-lg">
-          APPLY
+        ;
+        <button
+          className="back-btn"
+          onClick={() => {
+            dispatch(setBackToJobListing());
+          }}
+        >
+          Back to listing
         </button>
       </div>
     </>

@@ -64,9 +64,12 @@ li > button {
   justify-content: center;
 }
 
-/* .webcamBox {
-  margin: 50px;
-} */
+.webcamBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .photoContainer {
   border: 10px black;
@@ -76,12 +79,12 @@ li > button {
 }
 
 .photo {
-  width: 400px;
+  width: 300px;
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 45px;
-  margin-left: 23px;
+  margin-top: 49px;
+  margin-left: 73px;
 }
 
 .webcamButton {

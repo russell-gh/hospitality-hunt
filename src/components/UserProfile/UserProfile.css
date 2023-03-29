@@ -1,69 +1,63 @@
-.html {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-form {
-  border: 1px solid black;
-  border-radius: 1em;
-  padding: 1em;
-  width: 500px;
-  margin-left: 1em;
-  box-shadow: 10px 10px 5px gray;
-}
-
-ul {
-  list-style: none;
-  font-weight: bold;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: row;
-}
-
-/* label {
-  display: inline-block;
-  width: 200px;
-} */
-
-input {
-  width: 250px;
-  border: 1px solid grey;
-}
-
-select {
-  width: 250px;
-  border: 1px solid grey;
-  vertical-align: top;
-}
-
-textarea {
-  height: 7em;
-  width: 250px;
-  vertical-align: top;
-}
-
-.buttons {
+.editButtons {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 12px;
 }
 
-/* .photoContainer {
-  border: 10px black;
+.userProfileTitle {
+  margin-top: 17px;
+}
+
+.userPhoto {
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+.userProfile {
+  margin-bottom: 50px;
+}
+
+.photoButton {
+  margin-bottom: 20px;
+}
+
+.camGrid {
+  display: grid;
+  margin-left: 11px;
+}
+
+.webcamForUserPofile {
   position: relative;
+  margin-bottom: 3px;
+  margin-top: 20px;
 }
 
-.photo {
-  width: 400px;
+.editedPhoto {
+  width: 300px;
   position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 30px;
-} */
+  margin-top: 20px;
+}
+
+.cancelRetakeButton {
+  margin-bottom: 20px;
+  margin-left: 11px;
+}
+
+.retake {
+  margin-bottom: 20px;
+}
+
+.captureImgButton,
+.saveImgButton,
+.retakeImgButton {
+  width: 200px;
+  display: flex;
+  justify-self: center;
+}
+
+.saveNotice {
+  margin-left: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+}

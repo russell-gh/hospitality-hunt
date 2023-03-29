@@ -24,6 +24,9 @@
 .eachResult {
   width: 400px;
   margin: 13px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background-color: white;
 }
 
 .allResult {

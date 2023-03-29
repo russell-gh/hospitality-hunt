@@ -1,5 +1,9 @@
 import Joi from "joi";
 
+const emailRegex = new RegExp(
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+);
+
 export const addJob = {
   title: Joi.string().required(),
   contract: Joi.string().required(),
@@ -19,7 +23,9 @@ export const logIn = {
 };
 
 export const signUp = {
-  email: Joi.string().min(10).required(),
+  email: Joi.string().regex(emailRegex).required().messages({
+    "string.pattern.base": "Email doesn't match expected pattern.",
+  }),
   password: Joi.required(),
   repeat_password: Joi.string().required().valid(Joi.ref("password")).messages({
     "any.only": "The two passwords do not match.",
@@ -35,7 +41,7 @@ export const signUp = {
 //   experience: Joi.required(),
 //   about: Joi.required().min(100).max(500),
 // };
-
+/* eslint-disable */
 export const createUserProfile = {
   firstName: Joi.string().min(3).max(30).required(),
   secondName: Joi.string().required(),
@@ -47,7 +53,6 @@ export const createUserProfile = {
     .messages({
       "string.pattern.base": "Phone number doesn't match expected pattern.",
     }),
-
   postCode: Joi.string()
     .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)
     .required(),
@@ -57,7 +62,8 @@ export const createUserProfile = {
   skills: Joi.string().required(),
   aboutYou: Joi.string().required(),
 };
-
+/* eslint-enable */
+/* eslint-disable */
 export const createBusinessProfile = {
   businessName: Joi.string().min(3).max(30).required(),
   businessNumber: Joi.string()
@@ -77,9 +83,8 @@ export const createBusinessProfile = {
   businessType: Joi.string().required(),
   yourBusiness: Joi.string().required(),
 };
-
-// export const login = {}
-
+/* eslint-enable */
+/* eslint-disable */
 export const userProfile = {
   id: Joi.required(),
   firstName: Joi.string().min(3).max(30).required(),
@@ -99,3 +104,17 @@ export const userProfile = {
   aboutYou: Joi.string().required(),
   image: Joi.required(),
 };
+/* eslint-enable */
+/* eslint-disable */
+export const businessProfile = {
+  id: Joi.required(),
+  name: Joi.string().min(3).max(30).required(),
+  type: Joi.required(),
+  phoneNumber: Joi.string()
+    .regex(
+      /^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/
+    )
+    .required(),
+  details: Joi.string().required(),
+};
+/* eslint-enable */

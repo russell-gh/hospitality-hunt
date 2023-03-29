@@ -6,7 +6,7 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import "./Signup.scss";
-import sha256 from 'sha256';
+import sha256 from "sha256";
 
 const Signup = () => {
   const [userData, setUserData] = useState({});
@@ -19,7 +19,7 @@ const Signup = () => {
       delete userData.repeat_password;
 
       //swap the password for a sha 256 version
-      userData.password = sha256(userData.password + "cohort-ft3")
+      userData.password = sha256(userData.password + "cohort-ft3");
 
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
@@ -38,8 +38,8 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <h1>Signup!</h1>
+    <div className="signUpContainer">
+      <h1 className="signUpHeader">Signup!</h1>
       <form className="signUp" onInput={onInput} onSubmit={submitSignupDate}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -91,7 +91,7 @@ const Signup = () => {
           <input type="submit" className="btn btn-success" />
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

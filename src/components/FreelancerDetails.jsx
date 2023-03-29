@@ -1,36 +1,63 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import {
   selectLastClickedFreelancerId,
   selectFreelancers,
+  setBackToFreelancerListing,
 } from "../features/hospitality/hospitalitySlice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./FreelancerDetails.css";
+import hh1 from "../assets/hh1.png";
+import gsap from "gsap";
 
 const FreelancerDetails = () => {
   const localId = useSelector(selectLastClickedFreelancerId);
   const freelancers = useSelector(selectFreelancers);
+  const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    console.log("Use layout effect,");
+    gsap.to(".hh-logo", { duration: 2, rotation: 360 });
+  }, []);
+
   return (
     <>
-      <h1>Freelancer details</h1>
+      <h1 className="title">Freelancer profile:</h1>
       <div className="freelancerDetails">
         {freelancers.map((id) => {
           if (id.id === localId)
             return (
               <React.Fragment key={id}>
-                <p>{id.firstName}</p>
-                <p>{id.secondName}</p>
-                <p>{id.position}</p>
-                <p>{id.experience}</p>
-                <p>{id.skills}</p>
-                <p>{id.contract}</p>
-                <p>{id.postCode}</p>
-                <p>{id.email}</p>
-                <p>{id.phoneNumber}</p>
-                <p>{id.aboutYou}</p>
+                <p>First Name:{id.firstName}</p>
+                <p>Last Name:{id.secondName}</p>
+                <p>Position:{id.position}</p>
+                <p>Experience{id.experience}</p>
+                <p>Skills:{id.skills}</p>
+                <p>Contract:{id.contract}</p>
+                <p>Post Code:{id.postCode}</p>
+                <p>Email:{id.email}</p>
+                <p>Phone Number{id.phoneNumber}</p>
+                <p>About:{id.aboutYou}</p>
+                <button
+                  className="back-btn"
+                  onClick={() => {
+                    dispatch(setBackToFreelancerListing());
+                  }}
+                >
+                  Back to listing
+                </button>
+                <img
+                  className="hh-logo"
+                  src={hh1}
+                  alt="logo"
+                  height="100px"
+                  width="100px"
+                ></img>
               </React.Fragment>
             );
+          else return null;
         })}
       </div>
+      <div></div>
     </>
   );
 };

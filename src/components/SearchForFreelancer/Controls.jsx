@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFreelancers,
-  setScreenMode,
+  freelancerClicked,
 } from "../../features/hospitality/hospitalitySlice";
 import { searchForFreelancerListingText } from "../../language/english";
+import gsap from "gsap";
 
 const Controls = () => {
   const freelancers = useSelector(selectFreelancers);
@@ -14,9 +15,13 @@ const Controls = () => {
   const inputBox = useRef();
   const dispatch = useDispatch();
 
-  const seeJobDetails = () => {
-    dispatch(setScreenMode(10));
-  };
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      ".eachResult",
+      { y: -1000 },
+      { duration: 2, ease: "bounce.out", y: 0 }
+    );
+  }, []);
 
   useEffect(() => {
     if (freelancers) inputBox.current.focus();
@@ -31,7 +36,7 @@ const Controls = () => {
     filtered = filtered.filter((freelancer) => {
       return freelancer.postCode
         .toLowerCase()
-        .includes(userInput.toLowerCase());
+        .startsWith(userInput.toLowerCase());
     });
   } else if (userSelect === "position") {
     filtered = filtered.filter((freelancer) => {
@@ -126,11 +131,7 @@ const Controls = () => {
           const quickViewFreelancer = Object.entries(freelancer);
 
           return (
-            <div
-              className="btn-outline-dark"
-              onClick={seeJobDetails}
-              key={freelancer.id}
-            >
+            <div className="btn-outline-dark" key={freelancer.id}>
               <form className="eachResult">
                 {quickViewFreelancer.map((item) => {
                   if (
@@ -154,6 +155,14 @@ const Controls = () => {
                     </div>
                   );
                 })}
+                <button
+                  className="moreInfo btn btn-outline-success"
+                  onClick={() => {
+                    dispatch(freelancerClicked(freelancer.id));
+                  }}
+                >
+                  more info
+                </button>
               </form>
             </div>
           );

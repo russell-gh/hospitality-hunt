@@ -6,11 +6,8 @@ import CreateBusinessProfile from "./components/CreateBusinessProfile";
 import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile";
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectScreenMode,
-  setScreenMode,
-} from "./features/hospitality/hospitalitySlice";
+import { useSelector } from "react-redux";
+import { selectScreenMode } from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation";
 import SearchForFreelancer from "./components/SearchForFreelancer";
@@ -21,24 +18,26 @@ import Footer from "./components/Footer";
 import UserProfile from "./components/UserProfile/UserProfile";
 import EmployerJobListing from "./components/EmployerJobListing";
 import TestingNav from "./components/TestingNav";
+import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
+import Online from "./components/Online";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
-  const dispatch = useDispatch();
+  const debugModeOn = true;
 
   return (
     <div>
-      <button
-        onClick={() => {
-          dispatch(setScreenMode(11));
-        }}
-      >
-        Go to Home
-      </button>
-      <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
+      <Online />
+
+      {debugModeOn && (
+        <button onClick={() => localStorage.clear()}>
+          Clear Local Storage
+        </button>
+      )}
+
       {/* <WebcamContainer /> */}
       <Navigation /* Yahya */ />
-      <TestingNav />
+      {debugModeOn && <TestingNav />}
 
       <main>
         {screenMode === 1 && <Signup /> /* Stuart tidy up*/}
@@ -62,6 +61,7 @@ export default function App() {
         {screenMode === 11 && <Home />}
         {screenMode === 12 && <UserProfile /> /* Bernie */}
         {screenMode === 13 && <EmployerJobListing />}
+        {screenMode === 14 && <BusinessProfile />}
       </main>
       <Footer />
     </div>

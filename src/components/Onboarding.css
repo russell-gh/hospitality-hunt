@@ -1,3 +1,12 @@
+.onboardingContainer {
+  margin: 10px 0;
+}
+
+.onboardingHeader {
+  display: flex;
+  justify-content: center;
+}
+
 .onboarding {
   display: flex;
   flex-direction: column;

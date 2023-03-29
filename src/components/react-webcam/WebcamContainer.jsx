@@ -1,38 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import Webcam from "react-webcam";
 import { useDispatch } from "react-redux";
 import { setUserImage } from "../../features/hospitality/hospitalitySlice";
 // import "../../createUserProfile.css";
 
 const videoConstraints = {
-  width: 400,
+  width: 300,
   height: 300,
   facingMode: "user",
 };
 
-const WebcamContainer = () => {
-  const [image, setImage] = useState();
+const WebcamContainer = (props) => {
   const dispatch = useDispatch();
 
   const onImageClick = (image) => {
-    setImage(image);
+    props.setImage(image);
   };
 
   const onSave = () => {
     //send to  store
     // console.log(image);
-    dispatch(setUserImage(image));
+    dispatch(setUserImage(props.image));
   };
 
   return (
     <>
       <div className="photoContainer text-center">
         <div>
-          {image && (
+          {props.image && (
             <>
               <img
                 className="photo rounded-circle border border-secondary"
-                src={image}
+                src={props.image}
                 alt="You"
               />{" "}
               {/* place the confirm on top of the  live image */}
@@ -56,7 +55,7 @@ const WebcamContainer = () => {
               audio={false}
               height={300}
               screenshotFormat="image/jpeg"
-              width={400}
+              width={300}
               videoConstraints={videoConstraints}
             >
               {({ getScreenshot }) => {
