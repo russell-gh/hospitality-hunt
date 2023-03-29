@@ -6,9 +6,11 @@ import {
 } from "../../features/hospitality/hospitalitySlice";
 import { searchForFreelancerListingText } from "../../language/english";
 import gsap from "gsap";
+import { calcLonLatDiff, getLongLat } from "../../location";
 
 const Controls = () => {
   const freelancers = useSelector(selectFreelancers);
+  const [freelancersWithDistance, setFreelancersWithDistance] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("position");
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
@@ -27,16 +29,40 @@ const Controls = () => {
     if (freelancers) inputBox.current.focus();
   }, [freelancers]);
 
+  useEffect(() => {
+    if (userSelect !== 'postCode') return;
+
+    const postCode = async () => {
+      let filtered = JSON.parse(JSON.stringify(freelancers)); //because the store can not be mutated
+      //location in long and lat of the current search term
+      const { lat, lon } = await getLongLat(userInput);
+
+      console.log(lat, lon);
+
+      //calc the difference between the above and the ones for each result
+      filtered.forEach((freelancer) => {
+        freelancer.distance = calcLonLatDiff(lat,
+          lon,
+          freelancer.location.lat,
+          freelancer.location.lon)
+      });
+
+      console.log(filtered);
+
+      setFreelancersWithDistance(filtered);
+    }
+    postCode();
+  }, [userInput])
+
   if (!freelancers) {
     return <p>Loading...</p>;
   }
 
-  let filtered = [...freelancers];
+  let filtered = [...freelancers]
   if (userSelect === "postCode") {
-    filtered = filtered.filter((freelancer) => {
-      return freelancer.postCode
-        .toLowerCase()
-        .startsWith(userInput.toLowerCase());
+    //filter the results to only show them if the distance is within the amount
+    filtered = freelancersWithDistance.filter((freelancer) => {
+      return freelancer.distance && freelancer.distance < 4000;
     });
   } else if (userSelect === "position") {
     filtered = filtered.filter((freelancer) => {
@@ -140,7 +166,9 @@ const Controls = () => {
                     item[0] === "id" ||
                     item[0] === "aboutYou" ||
                     item[0] === "experience" ||
-                    item[0] === "image"
+                    item[0] === "image" ||
+                    item[0] === 'location' ||
+                    item[0] === 'distance'
                   )
                     return null;
 

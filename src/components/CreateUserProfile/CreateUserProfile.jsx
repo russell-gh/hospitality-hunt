@@ -7,12 +7,13 @@ import { validate } from "../../validation/joi";
 import WebcamContainer from "../react-webcam/WebcamContainer";
 import { randomId } from "../../utils";
 import gsap from "gsap";
+import { getLongLat } from "../../location";
 
 const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("no image");
   const [hoverButton, setHoverButton] = useState(false);
 
   useLayoutEffect(() => {
@@ -52,6 +53,7 @@ const UserProfiles = (props) => {
     e.preventDefault();
     if (errors === true) {
       userData.id = randomId();
+      userData.location = await getLongLat(userData.postCode);
       dispatch(setFreelancerDetails(userData));
     }
   };
