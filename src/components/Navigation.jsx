@@ -4,6 +4,7 @@ import {
   selectLoggedIn,
   selectIsFreelancer,
   logout,
+  selectisProfileComplete,
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.scss";
@@ -11,6 +12,7 @@ import "./Navigation.scss";
 const Navigation = () => {
   const loggedIn = useSelector(selectLoggedIn);
   const isFreelancer = useSelector(selectIsFreelancer);
+  const isProfileComplete = useSelector(selectisProfileComplete);
   const dispatch = useDispatch();
 
   return (
@@ -42,7 +44,7 @@ const Navigation = () => {
           id="navbarNav"
         >
           <ul className="navbar-nav ms-3 mx-3">
-            {loggedIn && isFreelancer && (
+            {loggedIn && isFreelancer && isProfileComplete && (
               //Logged in and user is a freelancer
               <>
                 <li className="nav-item justify-content-end">
@@ -67,7 +69,7 @@ const Navigation = () => {
                 </li>
               </>
             )}
-            {loggedIn && isFreelancer === false && (
+            {loggedIn && isFreelancer === false && isProfileComplete && (
               //Logged in and user is a business
               <>
                 <li className="nav-item justify-content-end">
@@ -112,19 +114,21 @@ const Navigation = () => {
                 </li>
               </>
             )}
-            {loggedIn && typeof isFreelancer === "undefined" && (
-              //Logged in but user did not finish onboarding
-              <li className="nav-item justify-content-end">
-                <button
-                  className="nav-link"
-                  onClick={() => {
-                    dispatch(setScreenMode(3));
-                  }}
-                >
-                  Onboarding
-                </button>
-              </li>
-            )}
+            {loggedIn &&
+              (typeof isFreelancer === "undefined" ||
+                isProfileComplete === false) && (
+                //Logged in but user did not finish onboarding
+                <li className="nav-item justify-content-end">
+                  <button
+                    className="nav-link"
+                    onClick={() => {
+                      dispatch(setScreenMode(3));
+                    }}
+                  >
+                    Onboarding
+                  </button>
+                </li>
+              )}
             {!loggedIn && (
               //User is not logged in
               <>
