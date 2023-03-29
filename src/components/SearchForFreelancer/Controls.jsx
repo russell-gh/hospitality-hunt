@@ -36,7 +36,7 @@ const Controls = () => {
     filtered = filtered.filter((freelancer) => {
       return freelancer.postCode
         .toLowerCase()
-        .includes(userInput.toLowerCase());
+        .startsWith(userInput.toLowerCase());
     });
   } else if (userSelect === "position") {
     filtered = filtered.filter((freelancer) => {

@@ -13,7 +13,6 @@ const FreelancerDetails = () => {
   const localId = useSelector(selectLastClickedFreelancerId);
   const freelancers = useSelector(selectFreelancers);
   const dispatch = useDispatch();
-  // const [userData] = useState(freelancer);
 
   useLayoutEffect(() => {
     console.log("Use layout effect,");
@@ -24,29 +23,23 @@ const FreelancerDetails = () => {
     <>
       <h1 className="title">Freelancer profile:</h1>
       <div className="freelancerDetails">
-        {/* <img
-          className="userPhoto"
-          src={userData.image}
-          alt="freelancer image"
-        /> */}
         {freelancers.map((id) => {
           if (id.id === localId)
             return (
               <React.Fragment key={id}>
-                <p>{id.firstName}</p>
-                <p>{id.secondName}</p>
-                <p>{id.position}</p>
-                <p>{id.experience}</p>
-                <p>{id.skills}</p>
-                <p>{id.contract}</p>
-                <p>{id.postCode}</p>
-                <p>{id.email}</p>
-                <p>{id.phoneNumber}</p>
-                <p>{id.aboutYou}</p>
+                <p>First Name:{id.firstName}</p>
+                <p>Last Name:{id.secondName}</p>
+                <p>Position:{id.position}</p>
+                <p>Experience{id.experience}</p>
+                <p>Skills:{id.skills}</p>
+                <p>Contract:{id.contract}</p>
+                <p>Post Code:{id.postCode}</p>
+                <p>Email:{id.email}</p>
+                <p>Phone Number{id.phoneNumber}</p>
+                <p>About:{id.aboutYou}</p>
                 <button
                   className="back-btn"
                   onClick={() => {
-                    console.log("button-clicked");
                     dispatch(setBackToFreelancerListing());
                   }}
                 >

@@ -132,6 +132,7 @@ export const hospitalitySlice = createSlice({
     setBackToFreelancerListing: (state) => {
       state.screenMode = 7;
     },
+
     editJobData: (state, payload) => {
       const index = state.jobListings.findIndex(
         (job) => job.id === payload.payload.id
@@ -139,6 +140,10 @@ export const hospitalitySlice = createSlice({
       state.jobListings[index] = payload.payload;
 
       storeData("redux-store", state);
+
+    setBackToJobListing: (state) => {
+      state.screenmode = 8;
+
     },
   },
 });
@@ -164,6 +169,7 @@ export const {
   editedUserImage,
   editedBusinessData,
   setBackToFreelancerListing,
+  setBackToJobListing,
 } = hospitalitySlice.actions;
 
 export const selectJobListings = (state) => state.hospitality.jobListings;

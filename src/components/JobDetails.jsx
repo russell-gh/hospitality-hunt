@@ -1,13 +1,16 @@
 import React from "react";
-import { selectJobListings } from "../features/hospitality/hospitalitySlice";
-import { useSelector } from "react-redux";
+import {
+  selectJobListings,
+  setBackToJobListing,
+} from "../features/hospitality/hospitalitySlice";
+import { useSelector, useDispatch } from "react-redux";
 import "./JobDetails.css";
 import { selectLastClickedJobId } from "../features/hospitality/hospitalitySlice";
 
 const JobDetails = () => {
   const jobListings = useSelector(selectJobListings);
   const lastClickedJobId = useSelector(selectLastClickedJobId);
-  console.log(jobListings);
+  const dispatch = useDispatch();
   if (!jobListings) {
     return <p>Loading...</p>;
   }
@@ -29,7 +32,13 @@ const JobDetails = () => {
             </p>
           );
         })}
-        <button type="button" className="btn btn-primary btn-lg">
+        ;
+        <button
+          className="back-btn"
+          onClick={() => {
+            dispatch(setBackToJobListing());
+          }}
+        >
           Back to listing
         </button>
       </div>
