@@ -19,15 +19,14 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import EmployerJobListing from "./components/EmployerJobListing";
 import TestingNav from "./components/TestingNav";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
-import Online from './components/Online'
+import Online from "./components/Online";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
-  const debugModeOn = false;
+  const debugModeOn = true;
 
   return (
     <div>
-
       <Online />
 
       {debugModeOn && (
