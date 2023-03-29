@@ -31,7 +31,7 @@ const AddJob = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <main className=" mt-5 d-flex  justify-content-center">
       <form onInput={onJobPost} onSubmit={onSubmit}>
         <div className="row mb-2">
           <h5>Job Details</h5>
@@ -86,11 +86,13 @@ const AddJob = () => {
             <label>Business Sector</label>
             <select name="type" className="form-control">
               <option>Select Option</option>
-              <option>Restaurant</option>
-              <option>Bar</option>
-              <option>Hotel</option>
-              <option>Night-Club</option>
-              <option>Cinema</option>
+              <option value="hotel">Hotel</option>
+              <option value="pub">Pub</option>
+              <option value="bar">Bar</option>
+              <option value="club">Club</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="catering">Catering</option>
+              <option value="takeaway">Takeaway</option>
             </select>
             {errors.type && (
               <div className="alert alert-danger">
@@ -162,12 +164,13 @@ const AddJob = () => {
             )}
           </div>
         </div>
-
-        <button type="submit" className="btn btn-primary">
-          Post Job
-        </button>
+        <div className="text-center">
+          <button type="submit" className="btn btn-success">
+            Post Job
+          </button>
+        </div>
       </form>
-    </div>
+    </main>
   );
 };
 
