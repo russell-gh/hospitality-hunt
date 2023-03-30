@@ -1,3 +1,5 @@
+import userSampleImage from "../assets/userSampleImage.png";
+
 export const freelancers = [
   {
     id: 1,
@@ -9,6 +11,7 @@ export const freelancers = [
     contract: ["fullTime", "partTime"],
     postCode: "TW1 1AH",
     phoneNumber: "01426243645",
+    image: userSampleImage,
     location: { lon: 1, lat: 1 },
     aboutYou:
       "Creating new recipes, or adhering to specific food preparation and standards set by the restaurant and local laws.",
@@ -23,6 +26,7 @@ export const freelancers = [
     contract: ["partTime"],
     postCode: "E17 8PQ",
     phoneNumber: "01122332142",
+    image: userSampleImage,
     location: { lon: 1.8, lat: 2.2 },
     aboutYou: "Full-time student looking for part-time on weekend",
   },
@@ -36,6 +40,7 @@ export const freelancers = [
     contract: ["fullTime"],
     postCode: "SE16 5HL",
     phoneNumber: "09999777766",
+    image: userSampleImage,
     location: { lon: 3, lat: 15 },
     aboutYou:
       "I work directly with customers by mixing and serving drink orders. My responsibilities include verifying age requirements, knowing alcohol pairing and tastes, knowing how to make traditional and classy drinks, processing payments, managing inventory and cleaning bar supplies.",
@@ -50,6 +55,7 @@ export const freelancers = [
     contract: ["fullTime", "partTime"],
     postCode: "W2 3NJ",
     phoneNumber: "09977996657",
+    image: userSampleImage,
     location: { lon: 20, lat: 22 },
     aboutYou:
       "In charge of coordinating and supervising a restaurant's kitchen staff according to food safety standards. My duties include hiring, training and scheduling Cooks, performing quality control on food leaving the kitchen and ordering inventory to keep up with demand",
