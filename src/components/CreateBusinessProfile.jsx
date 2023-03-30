@@ -11,14 +11,23 @@ const BusinessProfile = (props) => {
   const [businessData, setBusinessData] = useState({});
   const [errors, setErrors] = useState({});
 
-  const onAddBusiness = (e) => {
-    setBusinessData({ ...businessData, [e.target.id]: e.target.value });
+  const onInput = (e) => {
+    const newBusinessData = { ...businessData, [e.target.id]: e.target.value };
+    setBusinessData(newBusinessData);
+    validateBusinessDate(newBusinessData);
+  };
+
+  const validateBusinessDate = async (newBusinessData) => {
+    const result = await validate("createBusinessProfile", newBusinessData);
+    setErrors(result);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    businessData.currentUserId = randomId();
-    dispatch(addBusiness(businessData));
+    if (errors === true) {
+      businessData.id = randomId();
+      dispatch(addBusiness(businessData));
+    }
   };
 
   return (
@@ -27,95 +36,78 @@ const BusinessProfile = (props) => {
       <p>Please fill in the information below:</p>
       <form
         className="createBusinessProfile"
-        onInput={onAddBusiness}
+        onInput={onInput}
         onSubmit={onSubmit}
       >
         <div className="form-group">
-          <label htmlFor="businessName">Business name: </label>
+          <label htmlFor="name">Business name: </label>
           <input
             type="text"
             className="form-control"
-            id="businesstName"
-            name="businesstName"
-            placeholder="Business name"
+            id="name"
+            name="name"
+            placeholder="..."
           />
-          {errors.busineesName && (
+          {errors.name && (
             <div className="alert alert-danger" role="alert">
-              {errors.businessName}
+              {errors.name}
             </div>
           )}
         </div>
 
         <div className="form-group">
-          <label htmlFor="businessNumber">Businees number : </label>
+          <label htmlFor="phoneNumber">Phone number: </label>
           <input
             type="number"
             className="form-control"
-            id="businessNumber"
-            name="businessNumber"
-            placeholder="00447111111111"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="..."
           ></input>
-          {errors.businessNumber && (
+          {errors.phoneNumber && (
             <div className="alert alert-danger" role="alert">
-              {errors.businessNumber}
+              {errors.phoneNumber}
             </div>
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="postcode">Postcode: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="postcode"
-            name="postcode"
-            placeholder="SW1A 2AA"
-          />
-          {errors.postcode && (
-            <div className="alert alert-danger" role="alert">
-              {errors.postcode}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="position">Type of position: </label>
+          <label htmlFor="type">Type of business: </label>
           <select
-            id="businessType"
+            id="type"
             className="form-control"
-            name="businessType"
+            name="type"
             size="6"
             multiple
           >
             <option value="hotel">Hotel</option>
             <option value="cleaning">Cleaning</option>
-            <option value="carwash">car Detailer</option>
+            <option value="carwash">Car Detailer</option>
             <option value="restaurant">Restaurant</option>
             <option value="cater">Catering</option>
+            <option value="it">IT Support</option>
           </select>
-          {errors.businessType && (
+          {errors.type && (
             <div className="alert alert-danger" role="alert">
-              {errors.businessType}
+              {errors.type}
             </div>
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="yourBusiness">
+          <label htmlFor="details">
             Please provide some details about your business:
           </label>
           <textarea
-            id="yourBusiness"
+            id="details"
             className="form-control"
-            name="yourbusiness"
+            name="details"
             placeholder="Information about your business"
           ></textarea>
-          {errors.yourBusiness && (
+          {errors.details && (
             <div className="alert alert-danger" role="alert">
-              {errors.yourBusiness}
+              {errors.details}
             </div>
           )}
         </div>
-
-        {/* asjkdbfkjdsa */}
 
         <div className="form-group">
           <input type="submit" className="btn btn-success" />
