@@ -12,16 +12,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-top: 20%;
+  align-items: space-between;
+  padding-top: 20px;
   margin: auto;
   font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
   max-width: 37%;
-  border: solid black 2px;
+  border: solid black 1px;
   border-radius: 30px;
   padding: 10px;
   padding-right: 10px;
   box-shadow: 6px 12px 4px grey;
+  margin-bottom: 20px;
 }
 .back-btn {
   background: #198754;
