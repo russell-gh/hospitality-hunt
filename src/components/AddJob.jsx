@@ -35,16 +35,16 @@ const AddJob = () => {
       <form onInput={onJobPost} onSubmit={onSubmit}>
         <div className="row mb-2">
           <h5>Job Details</h5>
-          <p>Please be detailed as possible describing the job opening.</p>
+          <p>Please be as detailed as possible describing the job opening</p>
         </div>
         <div className="row mb-2">
           <div className="col-md-6">
-            <label>Job Title </label>
+            <label>Job title: </label>
             <input
               name="title"
               type="text"
               className="form-control"
-              placeholder="Job Title"
+              placeholder="Job title"
             />
             {errors.title && (
               <div className="alert alert-danger"> Job title is required </div>
@@ -52,11 +52,11 @@ const AddJob = () => {
           </div>
 
           <div className="col-md-4">
-            <label>Select Duration</label>
+            <label>Select duration:</label>
             <select name="contract" className="form-control">
-              <option>Select Option</option>
-              <option>Full-Time</option>
-              <option>Part-Time</option>
+              <option>Select option</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
               <option>Contract</option>
             </select>
             {errors.contract && (
@@ -70,12 +70,12 @@ const AddJob = () => {
 
         <div className="row mb-2">
           <div className="col-md-6">
-            <label>PostCode</label>
+            <label>Postcode:</label>
             <input
               name="postCode"
               type="text"
               className="form-control"
-              placeholder="PostCode"
+              placeholder="Postcode"
             />
             {errors.postCode && (
               <div className="alert alert-danger"> PostCode is required </div>
@@ -83,16 +83,16 @@ const AddJob = () => {
           </div>
 
           <div className="col-md-4">
-            <label>Business Sector</label>
+            <label>Business sector:</label>
             <select name="type" className="form-control">
-              <option>Select Option</option>
+              <option>Select option</option>
               <option value="hotel">Hotel</option>
               <option value="pub">Pub</option>
               <option value="bar">Bar</option>
               <option value="club">Club</option>
               <option value="restaurant">Restaurant</option>
               <option value="catering">Catering</option>
-              <option value="takeaway">Takeaway</option>
+              <option value="takeaway">Take-away</option>
             </select>
             {errors.type && (
               <div className="alert alert-danger">
@@ -102,12 +102,12 @@ const AddJob = () => {
           </div>
 
           <div className="col-md-10 ">
-            <label>Salary </label>
+            <label>Salary: </label>
             <input
               name="salary"
               type="text"
               className="form-control"
-              placeholder="Enter Salary"
+              placeholder="Enter salary"
             />
             {errors.salary && (
               <div className="alert alert-danger"> Enter salary required </div>
@@ -117,12 +117,12 @@ const AddJob = () => {
 
         <div className="row mb-2">
           <div className="col-md-10">
-            <label>Business Email</label>
+            <label>Business email:</label>
             <input
               name="email"
               type="text"
               className="form-control"
-              placeholder="Enter Business Email"
+              placeholder="Enter business email"
             />
             {errors.email && (
               <div className="alert alert-danger">
@@ -134,12 +134,12 @@ const AddJob = () => {
 
         <div className="row mb-2">
           <div className="col-md-10">
-            <label>Business Phone Number</label>
+            <label>Business phone number:</label>
             <input
               name="phoneNumber"
               type="text"
               className="form-control"
-              placeholder="Enter Business Phone Numer"
+              placeholder="Enter business phone number"
             />
             {errors.phoneNumber && (
               <div className="alert alert-danger">
@@ -151,7 +151,7 @@ const AddJob = () => {
 
         <div className="row mb-2">
           <div className="col-md-10">
-            <label>Job Description</label>
+            <label>Job description:</label>
             <textarea
               name="description"
               className="form-control"
@@ -166,7 +166,7 @@ const AddJob = () => {
         </div>
         <div className="text-center">
           <button type="submit" className="btn btn-success">
-            Post Job
+            Post job
           </button>
         </div>
       </form>

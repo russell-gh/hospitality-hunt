@@ -39,10 +39,10 @@ const Signup = () => {
 
   return (
     <div className="signUpContainer">
-      <h1 className="signUpHeader">Signup!</h1>
+      <h1 className="signUpHeader">Sign up</h1>
       <form className="signUp" onInput={onInput} onSubmit={submitSignupDate}>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             className="form-control"
@@ -57,7 +57,7 @@ const Signup = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             className="form-control"
@@ -72,7 +72,7 @@ const Signup = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="repeat_password">Confirm your Password</label>
+          <label htmlFor="repeat_password">Confirm your password:</label>
           <input
             type="password"
             className="form-control"

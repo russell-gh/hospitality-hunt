@@ -30,7 +30,7 @@ const Controls = () => {
   }, [freelancers]);
 
   useEffect(() => {
-    if (userSelect !== 'postCode') return;
+    if (userSelect !== "postCode") return;
 
     const postCode = async () => {
       let filtered = JSON.parse(JSON.stringify(freelancers)); //because the store can not be mutated
@@ -41,24 +41,26 @@ const Controls = () => {
 
       //calc the difference between the above and the ones for each result
       filtered.forEach((freelancer) => {
-        freelancer.distance = calcLonLatDiff(lat,
+        freelancer.distance = calcLonLatDiff(
+          lat,
           lon,
           freelancer.location.lat,
-          freelancer.location.lon)
+          freelancer.location.lon
+        );
       });
 
       console.log(filtered);
 
       setFreelancersWithDistance(filtered);
-    }
+    };
     postCode();
-  }, [userInput])
+  }, [userInput]);
 
   if (!freelancers) {
     return <p>Loading...</p>;
   }
 
-  let filtered = [...freelancers]
+  let filtered = [...freelancers];
   if (userSelect === "postCode") {
     //filter the results to only show them if the distance is within the amount
     filtered = freelancersWithDistance.filter((freelancer) => {
@@ -92,7 +94,7 @@ const Controls = () => {
 
   return (
     <>
-      <h1 className="title">Search For Freelancer</h1>
+      <h1 className="title">Search for a freelancer</h1>
       <div className="contractBar">
         <button
           className="btn btn-success"
@@ -167,8 +169,8 @@ const Controls = () => {
                     item[0] === "aboutYou" ||
                     item[0] === "experience" ||
                     item[0] === "image" ||
-                    item[0] === 'location' ||
-                    item[0] === 'distance'
+                    item[0] === "location" ||
+                    item[0] === "distance"
                   )
                     return null;
 

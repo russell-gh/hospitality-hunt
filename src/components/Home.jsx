@@ -39,11 +39,10 @@ const Home = () => {
               dispatch(setScreenMode(2));
             }}
           >
-            LOGIN
+            Log in
           </button>
           <div className="bg image hover-zoom">
             <img className="logo" src={hh1} alt="logo" />
-
           </div>
           <button
             className="signUp_btn"
@@ -51,7 +50,7 @@ const Home = () => {
               dispatch(setScreenMode(1));
             }}
           >
-            SIGN UP
+            Sign up
           </button>
         </div>
       )}

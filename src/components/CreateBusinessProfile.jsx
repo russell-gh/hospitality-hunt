@@ -23,7 +23,7 @@ const BusinessProfile = (props) => {
 
   return (
     <div className="html">
-      <h1>Business profile</h1>
+      <h1>Create your business profile</h1>
       <p>Please fill in the information below:</p>
       <form
         className="createBusinessProfile"
@@ -47,7 +47,7 @@ const BusinessProfile = (props) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="businessNumber">Businees number : </label>
+          <label htmlFor="businessNumber">Business number: </label>
           <input
             type="number"
             className="form-control"

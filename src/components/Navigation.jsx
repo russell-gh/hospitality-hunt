@@ -52,7 +52,7 @@ const Navigation = () => {
                       dispatch(setScreenMode(8));
                     }}
                   >
-                    Job Search
+                    Job search
                   </button>
                 </li>
                 <li className="nav-item justify-content-end">
@@ -135,7 +135,7 @@ const Navigation = () => {
                       dispatch(setScreenMode(2));
                     }}
                   >
-                    Login
+                    Log in
                   </button>
                 </li>
                 <li className="nav-item justify-content-end">
@@ -145,7 +145,7 @@ const Navigation = () => {
                       dispatch(setScreenMode(1));
                     }}
                   >
-                    Signup
+                    Sign up
                   </button>
                 </li>
               </>
@@ -159,7 +159,7 @@ const Navigation = () => {
                     dispatch(logout());
                   }}
                 >
-                  Logout
+                  Log out
                 </button>
               </li>
             )}
