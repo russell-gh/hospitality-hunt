@@ -6,6 +6,9 @@
 .hh-logo {
   max-width: 150;
   max-height: 150;
+  border-radius: 30px;
+  margin: auto;
+  padding-bottom: 10px;
 }
 
 .freelancerDetails {
