@@ -30,12 +30,12 @@ const FreelancerDetails = () => {
                 <p>First Name:{id.firstName}</p>
                 <p>Last Name:{id.secondName}</p>
                 <p>Position:{id.position}</p>
-                <p>Experience{id.experience}</p>
+                <p>Experience:{id.experience}</p>
                 <p>Skills:{id.skills}</p>
                 <p>Contract:{id.contract}</p>
                 <p>Post Code:{id.postCode}</p>
                 <p>Email:{id.email}</p>
-                <p>Phone Number{id.phoneNumber}</p>
+                <p>Phone Number:{id.phoneNumber}</p>
                 <p>About:{id.aboutYou}</p>
                 <button
                   className="back-btn"
