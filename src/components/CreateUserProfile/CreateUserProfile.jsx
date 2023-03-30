@@ -13,7 +13,7 @@ const UserProfiles = (props) => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({});
-  const [image, setImage] = useState("no image");
+  const [image, setImage] = useState();
   const [hoverButton, setHoverButton] = useState(false);
 
   useLayoutEffect(() => {

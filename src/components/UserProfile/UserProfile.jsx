@@ -72,7 +72,6 @@ const UserProfile = () => {
   return (
     <div className="html">
       <h1 className="userProfileTitle">Your profile</h1>
-
       {isRetake ? (
         <>
           <WebcamForUserPofile handleSetIsRetake={handleSetIsRetake} />
