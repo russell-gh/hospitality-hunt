@@ -2,14 +2,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: space-between;
   padding-top: 20%;
   margin: auto;
   font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
-  max-width: 30%;
-  border: solid black 2px;
+  max-width: 37%;
+  border: solid black 1px;
   border-radius: 30px;
   padding: 10px;
+  box-shadow: 6px 12px 4px grey;
+  margin-bottom: 20px;
 }
 
 .btn {

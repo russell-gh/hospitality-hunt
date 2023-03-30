@@ -21,3 +21,15 @@ export const searchForJobListingText = {
   postCode: "Postcode",
   contract: "Contract",
 };
+
+export const jobDetailsText = {
+  name: "Name",
+  type: "Type",
+  title: "Title",
+  salary: "Salary",
+  contract: "Contract",
+  postCode: "Postcode",
+  email: "Email",
+  phoneNumber: "Phone Number",
+  description: "Description",
+};
