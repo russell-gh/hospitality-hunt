@@ -14,11 +14,11 @@ const Onboarding = () => {
 
   return (
     <div className="onboardingContainer">
-      <h1 className="onboardingHeader">Are you...</h1>
+      <h1 className="onboardingHeader">Are you ...</h1>
       <form className="onboarding" onSubmit={handleSubmit}>
         <div className="form-group">
           <button
-            className="btn btn-success"
+            className="btn btn-success lookingJob"
             type="submit"
             onClick={() => {
               setIsFreelancer(true);
@@ -27,10 +27,10 @@ const Onboarding = () => {
             Looking for a job?
           </button>
         </div>
-        <div> or wanting to..</div>
+        <div className="or"> or wanting to ...</div>
         <div className="form-group">
           <button
-            className="btn btn-success"
+            className="btn btn-success listJob"
             type="submit"
             onClick={() => {
               setIsFreelancer(false);

@@ -86,7 +86,7 @@ const Signup = () => {
         </div>
 
         <div className="form-group">
-          <input type="submit" className="btn btn-success" />
+          <input type="submit" className="btn btn-success submitSignUp" />
         </div>
       </form>
     </div>

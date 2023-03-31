@@ -45,6 +45,7 @@ const Loginpage = () => {
 
   return (
     <div className="login">
+
       <h1 className="logInHeader">Log in</h1>
       <form className="login__form" onSubmit={(e) => handleSubmit(e)}>
         <svg
@@ -61,6 +62,7 @@ const Loginpage = () => {
             your credentials are not correct
           </div>
         )}
+
         {/* <label htmlFor="email">Email:</label> */}
         <input
           type="email"
@@ -81,7 +83,8 @@ const Loginpage = () => {
           <div className="alert alert-danger">your password is not correct</div>
         )}
 
-        <button type="submit" className="btn btn-success">
+        <button type="submit" className="btn btn-success submit__btn">
+
           Log in
         </button>
       </form>

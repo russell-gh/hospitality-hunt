@@ -1,16 +1,29 @@
 .onboardingContainer {
   margin: 10px 0;
+  height: 87vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .onboardingHeader {
-  display: flex;
-  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .onboarding {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  row-gap: 10px;
+  row-gap: 12px;
   align-items: center;
+  padding: 25px;
+}
+
+.or {
+  font-size: 20px;
+}
+
+.lookingJob,
+.listJob {
+  width: 250px;
 }

@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectFreelancers,
-  freelancerClicked,
-} from "../../features/hospitality/hospitalitySlice";
-import { searchForFreelancerListingText } from "../../language/english";
+import { useSelector } from "react-redux";
+import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
 import gsap from "gsap";
 import { calcLonLatDiff, getLongLat } from "../../location";
+import Result from "../SearchForFreelancer/Result";
 
 const Controls = () => {
   const freelancers = useSelector(selectFreelancers);
@@ -15,7 +12,6 @@ const Controls = () => {
   const [userSelect, setUserSelect] = useState("position");
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
-  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     gsap.fromTo(
@@ -64,7 +60,7 @@ const Controls = () => {
   if (userSelect === "postCode") {
     //filter the results to only show them if the distance is within the amount
     filtered = freelancersWithDistance.filter((freelancer) => {
-      return freelancer.distance && freelancer.distance < 4000;
+      return freelancer.distance && freelancer.distance < 7700;
     });
   } else if (userSelect === "position") {
     filtered = filtered.filter((freelancer) => {
@@ -154,50 +150,7 @@ const Controls = () => {
         ></input>
       </div>
 
-      <div className="allResult">
-        {filtered.map((freelancer) => {
-          const quickViewFreelancer = Object.entries(freelancer);
-
-          return (
-            <div className="btn-outline-dark" key={freelancer.id}>
-              <form className="eachResult">
-                {quickViewFreelancer.map((item) => {
-                  if (
-                    item[0] === "email" ||
-                    item[0] === "phoneNumber" ||
-                    item[0] === "id" ||
-                    item[0] === "aboutYou" ||
-                    item[0] === "experience" ||
-                    item[0] === "image" ||
-                    item[0] === "location" ||
-                    item[0] === "distance"
-                  )
-                    return null;
-
-                  return (
-                    <div key={item[0]}>
-                      <p>
-                        {searchForFreelancerListingText[item[0]]}:{" "}
-                        {typeof item[1] === "string"
-                          ? item[1]
-                          : item[1].join(" ")}
-                      </p>
-                    </div>
-                  );
-                })}
-                <button
-                  className="moreInfo btn btn-outline-success"
-                  onClick={() => {
-                    dispatch(freelancerClicked(freelancer.id));
-                  }}
-                >
-                  more info
-                </button>
-              </form>
-            </div>
-          );
-        })}
-      </div>
+      <Result filtered={filtered} />
     </>
   );
 };

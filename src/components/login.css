@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 88vh;
+}
 
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+.loginTitle {
+  margin-bottom: 30px;
 }
 
 .login__form {
   display: flex;
-  margin-top: 40px;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -31,13 +32,15 @@
   margin-bottom: 20px;
   outline: none;
   border: 1px solid rgba(133, 131, 131, 0.24);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   border-radius: 10px;
   font-size: 12px;
   /* border-radius: 30px; */
 }
 
 .submit__btn {
+  width: 250px;
+}
+/* .submit__btn {
   padding: 10px 50px 10px 50px;
   margin-top: 10px;
   background: #0d6efd;
@@ -46,4 +49,4 @@
   font-size: 14px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   border-radius: 3px;
-}
+} */

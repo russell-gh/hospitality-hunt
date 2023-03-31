@@ -5,16 +5,18 @@ import {
   selectBusinesses,
   selectCurrentUserId,
   editedBusinessData,
-  selectUser,
 } from "../../features/hospitality/hospitalitySlice";
 import "./BusinessProfile.css";
 import { validate } from "../../validation/joi";
+import Name from "./Name";
+import Type from "./Type";
+import Email from "./Email";
+import PhoneNumber from "./PhoneNumber";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
   const businesses = useSelector(selectBusinesses);
   const currentUserId = useSelector(selectCurrentUserId);
-  const user = useSelector(selectUser);
   const business = businesses.find((item) => {
     return item.id === currentUserId;
   });
@@ -64,104 +66,10 @@ const BusinessProfile = () => {
       <h1 className="businessProfileTitle">Your profile</h1>
 
       <form className="businessProfile" onInput={onInput} onSubmit={submitData}>
-        <div className="form-group">
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={businessData.name}
-            disabled={!isEdit}
-          />
-          {errors.name && (
-            <div className="alert alert-danger" role="alert">
-              {errors.name}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="type">Type of business: </label>
-          {isEdit ? (
-            <select
-              id="type"
-              className="form-control"
-              name="type"
-              size="7"
-              multiple
-            >
-              <option value="hotel">Hotel</option>
-              <option value="pub">Pub</option>
-              <option value="bar">Bar</option>
-              <option value="club">Club</option>
-              <option value="restaurant">Restaurant</option>
-              <option value="catering">Catering</option>
-              <option value="takeaway">Takeaway</option>
-            </select>
-          ) : (
-            <input
-              type="text"
-              className="form-control"
-              id="type"
-              name="type"
-              placeholder="00447111111111"
-              disabled={!isEdit}
-              value={business.type}
-            ></input>
-          )}
-          {errors.position && (
-            <div className="alert alert-danger" role="alert">
-              {errors.type}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="email"
-            name="email"
-            disabled
-            value={user.email}
-          ></input>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phoneNumber">Phone number: </label>
-          <input
-            type="number"
-            className="form-control"
-            id="phoneNumber"
-            name="phoneNumber"
-            disabled={!isEdit}
-            value={businessData.phoneNumber}
-          ></input>
-          {errors.phoneNumber && (
-            <div className="alert alert-danger" role="alert">
-              {errors.phoneNumber}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="details">Details about your business:</label>
-          <textarea
-            id="details"
-            className="form-control"
-            name="details"
-            placeholder="Information about your business"
-            disabled={!isEdit}
-            value={businessData.details}
-          ></textarea>
-          {errors.details && (
-            <div className="alert alert-danger" role="alert">
-              {errors.details}
-            </div>
-          )}
-        </div>
+        <Name isEdit={isEdit} errors={errors} business={business} />
+        <Type isEdit={isEdit} errors={errors} business={business} />
+        <Email />
+        <PhoneNumber isEdit={isEdit} errors={errors} business={business} />
 
         <div className="buttons form-group">
           {isEdit ? (

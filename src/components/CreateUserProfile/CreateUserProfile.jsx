@@ -60,7 +60,7 @@ const UserProfiles = (props) => {
 
   return (
     <div className="html">
-      <h1>Create your job seeker profile</h1>
+      <h1 className="title">Create your job seeker profile</h1>
       <p>Please fill in the information below:</p>
       <form
         className="createUserProfile"
