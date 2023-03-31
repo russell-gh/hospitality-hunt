@@ -41,7 +41,7 @@ const EmployerJobListing = () => {
   );
   return (
     <main className="container  text-center ">
-      <h1>Job Listings</h1>
+      <h1>Job listings</h1>
       {currentUserJobs.map((job) => (
         <div key={job.id} className="job-details my-3">
           {isEdit && jobId === job.id ? (
@@ -117,7 +117,7 @@ const EmployerJobListing = () => {
                   className="btn btn-success btn-lg"
                 >
                   {" "}
-                  edit
+                  Edit
                 </button>
               </div>
             </>
@@ -132,7 +132,7 @@ const EmployerJobListing = () => {
         type="button"
         className="btn btn-success btn-lg  "
       >
-        Add New Job
+        Add new job
       </button>
     </main>
   );

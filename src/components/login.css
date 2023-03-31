@@ -13,7 +13,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border: 2px solid rgba(0, 0, 0, 0.24);
+  /* border: 2px solid rgba(0, 0, 0, 0.24); */
+  border: 1px solid black;
 }
 
 .login__form > svg {
@@ -33,7 +34,7 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   border-radius: 10px;
   font-size: 12px;
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 
 .submit__btn {

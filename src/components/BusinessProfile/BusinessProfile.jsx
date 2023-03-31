@@ -179,7 +179,7 @@ const BusinessProfile = () => {
             </>
           ) : (
             <div className="btn btn-secondary" onClick={() => setIsEdit(true)}>
-              Edit Profile
+              Edit profile
             </div>
           )}
         </div>
