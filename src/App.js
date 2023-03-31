@@ -9,7 +9,7 @@ import "./App.css";
 import { useSelector } from "react-redux";
 import { selectScreenMode } from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 import SearchForFreelancer from "./components/SearchForFreelancer";
 import FreelancerDetails from "./components/FreelancerDetails";
 import Onboarding from "./components/Onboarding";

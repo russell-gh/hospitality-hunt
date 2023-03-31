@@ -71,7 +71,7 @@ const BusinessProfile = () => {
             className="form-control"
             id="name"
             name="name"
-            value={business.name}
+            value={businessData.name}
             disabled={!isEdit}
           />
           {errors.name && (
@@ -137,7 +137,7 @@ const BusinessProfile = () => {
             id="phoneNumber"
             name="phoneNumber"
             disabled={!isEdit}
-            value={business.phoneNumber}
+            value={businessData.phoneNumber}
           ></input>
           {errors.phoneNumber && (
             <div className="alert alert-danger" role="alert">
@@ -154,7 +154,7 @@ const BusinessProfile = () => {
             name="details"
             placeholder="Information about your business"
             disabled={!isEdit}
-            value={business.details}
+            value={businessData.details}
           ></textarea>
           {errors.details && (
             <div className="alert alert-danger" role="alert">
