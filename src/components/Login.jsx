@@ -41,11 +41,11 @@ const Loginpage = () => {
     // dashbfaisjdb
 
     dispatch(login());
-
   };
 
   return (
     <div className="login">
+      <h1 className="logInHeader">Log in</h1>
       <form className="login__form" onSubmit={(e) => handleSubmit(e)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -61,9 +61,10 @@ const Loginpage = () => {
             your credentials are not correct
           </div>
         )}
+        {/* <label htmlFor="email">Email:</label> */}
         <input
           type="email"
-          placeholder="enter email"
+          placeholder="Email"
           value={email}
           onInput={(e) => setEmail(e.target.value)}
         />
@@ -80,7 +81,7 @@ const Loginpage = () => {
           <div className="alert alert-danger">your password is not correct</div>
         )}
 
-        <button type="submit" className="submit__btn">
+        <button type="submit" className="btn btn-success">
           Log in
         </button>
       </form>

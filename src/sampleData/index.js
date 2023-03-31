@@ -74,7 +74,7 @@ export const jobListings = [
     postCode: "N4 7HA",
     phoneNumber: "03232435342",
     description:
-      "this position is to fill in for a waiter on leave you will be covering weekend shifts and tuesday's",
+      "This position is to fill in for a waiter on leave. You will be covering weekend shifts and tuesdays",
   },
   {
     id: 2,

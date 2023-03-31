@@ -1,46 +1,41 @@
-# Getting Started with Create React App and Redux
+# Hospitality Hunt
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Description
 
-## Available Scripts
+Hospitality Hunt connects freelancers looking for hospitality jobs to businesses who have hospitality jobs to provide.
 
-In the project directory, you can run:
+## Application Link
 
-### `npm start`
+// Add Netlify link
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Hospitality Hunt allows freelancers to fill in a profile, including what sector they want to work in, what type of contract they are looking for and to take a photo of themselves through their webcam.
 
-### `npm test`
+Freelancers then have access to a list of available jobs matching their profile. They can search for jobs in a restricted perimeter around their area based on their postcode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Businesses can also fill in a profile detailing their activity and can post one or several job listings, which they can edit or delete when needed.
 
-### `npm run build`
+They have access to a list of freelancers who match their reseach criteria.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technology Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+HTML5, CSS3, JavaScript, React, Redux
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+- Clone this repository to your browser
+- Navigate to the top level of the repository
+- Open the file called index.html in your browser
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Authors
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project was built in the context of the 2023 full-time Software Engineering bootcamp run by The Jump (https://www.thejump.tech/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The authors of the project are:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+// Add list of names + links to GitHub profiles?
 
-## Learn More
+## Project Status
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+// To be completed based on project status at the end of the course
