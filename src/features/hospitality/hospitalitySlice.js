@@ -139,7 +139,7 @@ export const hospitalitySlice = createSlice({
     },
 
     setBackToJobListing: (state) => {
-      state.screenmode = 8;
+      state.screenMode = 8;
     },
   },
 });

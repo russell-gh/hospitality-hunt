@@ -6,7 +6,6 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./FreelancerDetails.css";
-import hh1 from "../assets/hh1.png";
 import gsap from "gsap";
 
 const FreelancerDetails = () => {
@@ -27,6 +26,13 @@ const FreelancerDetails = () => {
           if (id.id === localId)
             return (
               <React.Fragment key={id}>
+                <img
+                  className="hh-logo"
+                  src={id.image}
+                  alt="logo"
+                  height="150px"
+                  width="150px"
+                ></img>
                 <p>First name: {id.firstName}</p>
                 <p>Last name: {id.secondName}</p>
                 <p>Position: {id.position}</p>
@@ -45,13 +51,6 @@ const FreelancerDetails = () => {
                 >
                   Back to listing
                 </button>
-                <img
-                  className="hh-logo"
-                  src={hh1}
-                  alt="logo"
-                  height="100px"
-                  width="100px"
-                ></img>
               </React.Fragment>
             );
           else return null;
