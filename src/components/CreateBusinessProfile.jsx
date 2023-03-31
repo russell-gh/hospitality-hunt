@@ -56,7 +56,6 @@ const BusinessProfile = (props) => {
         </div>
 
         <div className="form-group">
-
           <label htmlFor="phoneNumber">Phone number: </label>
 
           <input
@@ -78,15 +77,16 @@ const BusinessProfile = (props) => {
             id="type"
             className="form-control"
             name="type"
-            size="6"
+            size="7"
             multiple
           >
             <option value="hotel">Hotel</option>
-            <option value="cleaning">Cleaning</option>
-            <option value="carwash">Car Detailer</option>
+            <option value="pub">Pub</option>
+            <option value="bar">Bar</option>
+            <option value="club">Club</option>
             <option value="restaurant">Restaurant</option>
-            <option value="cater">Catering</option>
-            <option value="it">IT Support</option>
+            <option value="catering">Catering</option>
+            <option value="takeaway">Takeaway</option>
           </select>
           {errors.type && (
             <div className="alert alert-danger" role="alert">

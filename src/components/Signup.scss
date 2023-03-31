@@ -1,20 +1,24 @@
 .signUpContainer {
   margin: 10px 0;
-
+  height: 87vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   .signUpHeader {
-    display: flex;
-    justify-content: center;
+    margin-bottom: 30px;
   }
 }
 
 .signUp {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  row-gap: 10px;
+  row-gap: 13px;
+  padding: 25px;
 
   .form-group:nth-child(4) {
     margin: auto;
+    margin-top: 10px;
   }
   .alert.alert-danger {
     margin: 0;

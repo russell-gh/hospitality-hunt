@@ -1,11 +1,8 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectJobListings,
-  jobClicked,
-} from "../../features/hospitality/hospitalitySlice";
-import { searchForJobListingText } from "../../language/english";
+import { useSelector } from "react-redux";
+import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
 import gsap from "gsap";
+import Result from "./Result";
 
 const Controls = () => {
   const jobListings = useSelector(selectJobListings);
@@ -13,7 +10,6 @@ const Controls = () => {
   const [userSelect, setUserSelect] = useState("type");
   const [contractButtonSelect, setContractButtonSelect] = useState("any");
   const inputBox = useRef();
-  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     gsap.fromTo(
@@ -125,48 +121,7 @@ const Controls = () => {
         ></input>
       </div>
 
-      <div className="allResult">
-        {filtered.map((job) => {
-          const quickViewJob = Object.entries(job);
-
-          return (
-            <div className="btn-outline-dark" key={job.id}>
-              <form className="eachResult">
-                {quickViewJob.map((item) => {
-                  if (
-                    item[0] === "email" ||
-                    item[0] === "phoneNumber" ||
-                    item[0] === "id" ||
-                    item[0] === "description" ||
-                    item[0] === "currentUserId" ||
-                    item[0] === "userId"
-                  )
-                    return null;
-
-                  return (
-                    <div key={item[0]}>
-                      <p>
-                        {searchForJobListingText[item[0]]}:
-                        {typeof item[1] === "string"
-                          ? item[1]
-                          : item[1].join(" ")}
-                      </p>
-                    </div>
-                  );
-                })}
-                <button
-                  className="btn btn-outline-success"
-                  onClick={() => {
-                    dispatch(jobClicked(job.id));
-                  }}
-                >
-                  more info
-                </button>
-              </form>
-            </div>
-          );
-        })}
-      </div>
+      <Result filtered={filtered} />
     </>
   );
 };

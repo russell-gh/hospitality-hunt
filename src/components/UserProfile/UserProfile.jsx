@@ -5,17 +5,24 @@ import {
   selectFreelancers,
   selectCurrentUserId,
   editedFreelancerData,
-  selectUser,
 } from "../../features/hospitality/hospitalitySlice";
 import "./UserProfile.css";
 import { validate } from "../../validation/joi";
 import WebcamForUserPofile from "./WebcamForUserPofile";
+import Name from "./Name";
+import Email from "./Email";
+import PhoneNumber from "./PhoneNumber";
+import PostCode from "./PostCode";
+import Contract from "./Contract";
+import Position from "./Position";
+import Experience from "./Experience";
+import Skills from "./Skills";
+import AboutYou from "./AboutYou";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
   const freelancers = useSelector(selectFreelancers);
   const currentUserId = useSelector(selectCurrentUserId);
-  const user = useSelector(selectUser);
   const freelancer = freelancers.find((item) => {
     return item.id === currentUserId;
   });
@@ -102,206 +109,15 @@ const UserProfile = () => {
       )}
 
       <form className="userProfile" onInput={onInput} onSubmit={submitData}>
-        <div>
-          <label htmlFor="firstName">First name: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="firstName"
-            name="firstName"
-            placeholder="e.g. Sam"
-            value={userData.firstName}
-            disabled={!isEdit}
-          />
-          {errors.firstName && (
-            <div className="alert alert-danger" role="alert">
-              {errors.firstName}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="secondName">Last name: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="secondName"
-            name="secondName"
-            placeholder="e.g. Smith"
-            value={userData.secondName}
-            disabled={!isEdit}
-          />
-          {errors.secondName && (
-            <div className="alert alert-danger" role="alert">
-              {errors.secondName}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="email"
-            name="email"
-            disabled
-            value={user.email}
-          ></input>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phoneNumber">Phone number: </label>
-          <input
-            type="number"
-            className="form-control"
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="0722334456"
-            disabled={!isEdit}
-            value={userData.phoneNumber}
-          ></input>
-          {errors.phoneNumber && (
-            <div className="alert alert-danger" role="alert">
-              {errors.phoneNumber}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="postCode">Postcode: </label>
-          <input
-            type="text"
-            className="form-control"
-            id="postCode"
-            name="postCode"
-            placeholder="SW1 2AA"
-            disabled={!isEdit}
-            value={userData.postCode}
-          />
-          {errors.postCode && (
-            <div className="alert alert-danger" role="alert">
-              {errors.postCode}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="contract">Type of contract: </label>
-          {isEdit ? (
-            <select
-              id="contract"
-              className="form-control"
-              name="contract"
-              size="2"
-              multiple
-            >
-              <option value="fullTime">Full-time</option>
-              <option value="partTime">Part-time</option>
-            </select>
-          ) : (
-            <input
-              type="text"
-              className="form-control"
-              id="contract"
-              name="contract"
-              placeholder="00447111111111"
-              disabled={!isEdit}
-              value={userData.contract}
-            ></input>
-          )}
-          {errors.contract && (
-            <div className="alert alert-danger" role="alert">
-              {errors.contract}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="position">Type of position: </label>
-          {isEdit ? (
-            <select
-              id="position"
-              className="form-control"
-              name="position"
-              size="6"
-              multiple
-            >
-              <option value="waiter/waitress">Waiter/waitress</option>
-              <option value="bartender">Bartender</option>
-              <option value="porter">Porter</option>
-              <option value="housekeeper">Housekeeper</option>
-              <option value="generalManager">General Manager</option>
-              <option value="chef">Chef</option>
-            </select>
-          ) : (
-            <input
-              type="text"
-              className="form-control"
-              id="position"
-              name="position"
-              placeholder="00447111111111"
-              disabled={!isEdit}
-              value={userData.position}
-            ></input>
-          )}
-          {errors.position && (
-            <div className="alert alert-danger" role="alert">
-              {errors.position}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="experience">Your experience in hospitality:</label>
-          <textarea
-            id="experience"
-            className="form-control"
-            name="experience"
-            placeholder="e.g. two years kitchen management"
-            disabled={!isEdit}
-            value={userData.experience}
-          ></textarea>
-          {errors.experience && (
-            <div className="alert alert-danger" role="alert">
-              {errors.experience}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="skills">Your skills:</label>
-          <textarea
-            id="skills"
-            className="form-control"
-            name="skills"
-            placeholder="e.g. strong knife skill"
-            disabled={!isEdit}
-            value={userData.skills}
-          ></textarea>
-          {errors.skills && (
-            <div className="alert alert-danger" role="alert">
-              {errors.skills}
-            </div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="aboutYou">About you:</label>
-          <textarea
-            id="aboutYou"
-            className="form-control"
-            name="aboutYou"
-            placeholder="Introduce yourself"
-            disabled={!isEdit}
-            value={userData.aboutYou}
-          ></textarea>
-          {errors.aboutYou && (
-            <div className="alert alert-danger" role="alert">
-              {errors.aboutYou}
-            </div>
-          )}
-        </div>
+        <Name isEdit={isEdit} userData={userData} errors={errors} />
+        <Email />
+        <PhoneNumber isEdit={isEdit} userData={userData} errors={errors} />
+        <PostCode isEdit={isEdit} userData={userData} errors={errors} />
+        <Contract isEdit={isEdit} userData={userData} errors={errors} />
+        <Position isEdit={isEdit} userData={userData} errors={errors} />
+        <Experience isEdit={isEdit} userData={userData} errors={errors} />
+        <Skills isEdit={isEdit} userData={userData} errors={errors} />
+        <AboutYou isEdit={isEdit} userData={userData} errors={errors} />
 
         <div className="editButtons form-group">
           {isEdit ? (
