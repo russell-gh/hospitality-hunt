@@ -89,7 +89,7 @@ const UserProfiles = (props) => {
             className="form-control"
             id="secondName"
             name="secondName"
-            placeholder="Second name"
+            placeholder="Last name"
           />
           {errors.secondName && (
             <div className="alert alert-danger" role="alert">
@@ -239,10 +239,6 @@ const UserProfiles = (props) => {
               Please fill out all required form elements before submitting
             </p>
           )}
-          {/* } */}
-
-          {/* }}} */}
-          {/* <input type="submit" className="btn btn-success" /> */}
         </div>
       </form>
     </div>

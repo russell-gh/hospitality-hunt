@@ -24,7 +24,7 @@ const JobDetails = () => {
 
   return (
     <>
-      <h1 className="title">Job Details:</h1>
+      <h1 className="title">Job details</h1>
       <div className="job-details">
         {bArray.map((item) => {
           if (item[0] === "id" || item[0] === "currrentUserId") return null;

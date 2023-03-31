@@ -45,7 +45,8 @@ const Loginpage = () => {
 
   return (
     <div className="login">
-      <h1 className="loginTitle">Login</h1>
+
+      <h1 className="logInHeader">Log in</h1>
       <form className="login__form" onSubmit={(e) => handleSubmit(e)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -62,9 +63,10 @@ const Loginpage = () => {
           </div>
         )}
 
+        {/* <label htmlFor="email">Email:</label> */}
         <input
           type="email"
-          placeholder="enter email"
+          placeholder="Email"
           value={email}
           onInput={(e) => setEmail(e.target.value)}
         />
@@ -82,6 +84,7 @@ const Loginpage = () => {
         )}
 
         <button type="submit" className="btn btn-success submit__btn">
+
           Log in
         </button>
       </form>

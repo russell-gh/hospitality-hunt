@@ -14,6 +14,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid rgba(0, 0, 0, 0.24); */
+  border: 1px solid black;
 }
 
 .login__form > svg {
@@ -32,7 +34,7 @@
   border: 1px solid rgba(133, 131, 131, 0.24);
   border-radius: 10px;
   font-size: 12px;
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 
 .submit__btn {

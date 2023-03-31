@@ -21,7 +21,7 @@ const FreelancerDetails = () => {
 
   return (
     <>
-      <h1 className="title">Freelancer profile:</h1>
+      <h1 className="title">Freelancer profile</h1>
       <div className="freelancerDetails">
         {freelancers.map((id) => {
           if (id.id === localId)
