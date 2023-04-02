@@ -1,15 +1,23 @@
-* {
-  font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
-}
-
-.title,
 .searchByBar,
 .contractBar,
 .inputBar,
 .allResult {
   display: flex;
   justify-content: center;
-  margin-top: 17px;
+  margin-top: 20px;
+}
+
+.searchJobTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.fullTimeButton,
+.partTimeButton,
+.allButton {
+  width: 100px;
+  margin: 5px;
 }
 
 .searchByBar > label {
@@ -26,11 +34,16 @@
   margin: 13px;
   display: grid;
   grid-template-rows: 1fr 1fr;
+  padding: 25px;
 }
 
 .allResult {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
+}
+
+.eachLineResult {
+  margin-left: 10px;
 }

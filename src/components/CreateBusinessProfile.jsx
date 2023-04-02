@@ -31,7 +31,7 @@ const BusinessProfile = (props) => {
   };
 
   return (
-    <div className="html">
+    <div className="html createBusinessProfileContainer">
       <h1>Create your business profile</h1>
       <p>Please fill in the information below:</p>
       <form
@@ -46,7 +46,7 @@ const BusinessProfile = (props) => {
             className="form-control"
             id="name"
             name="name"
-            placeholder="..."
+            placeholder="Name"
           />
           {errors.name && (
             <div className="alert alert-danger" role="alert">
@@ -63,7 +63,7 @@ const BusinessProfile = (props) => {
             className="form-control"
             id="phoneNumber"
             name="phoneNumber"
-            placeholder="..."
+            placeholder="Phone number"
           ></input>
           {errors.phoneNumber && (
             <div className="alert alert-danger" role="alert">
@@ -111,8 +111,11 @@ const BusinessProfile = (props) => {
           )}
         </div>
 
-        <div className="form-group">
-          <input type="submit" className="btn btn-success" />
+        <div className="text-center">
+          <input
+            type="submit"
+            className="btn btn-success createBusinessProfileSubmit"
+          />
         </div>
       </form>
     </div>

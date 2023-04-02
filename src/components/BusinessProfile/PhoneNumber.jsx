@@ -4,7 +4,7 @@ const PhoneNumber = (props) => {
   const { isEdit, errors, business } = props;
 
   return (
-    <div className="form-group">
+    <div className="form-group businessProfileEachResult">
       <label htmlFor="phoneNumber">Phone number: </label>
       <input
         type="number"

@@ -4,7 +4,7 @@ const Type = (props) => {
   const { isEdit, errors, business } = props;
 
   return (
-    <div className="form-group">
+    <div className="form-group businessProfileEachResult">
       <label htmlFor="type">Type of business: </label>
       {isEdit ? (
         <select

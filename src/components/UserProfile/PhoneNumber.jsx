@@ -8,7 +8,7 @@ const PhoneNumber = (props) => {
       <label htmlFor="phoneNumber">Phone number: </label>
       <input
         type="number"
-        className="form-control"
+        className="form-control userProfileEachResult"
         id="phoneNumber"
         name="phoneNumber"
         placeholder="0722334456"

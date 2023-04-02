@@ -122,19 +122,25 @@ const UserProfile = () => {
         <div className="editButtons form-group">
           {isEdit ? (
             <>
-              <button type="submit" className="btn btn-success">
+              <button
+                type="submit"
+                className="btn btn-success userProfileSubmit"
+              >
                 Submit
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-secondary userProfileCancel"
                 onClick={cancelClick}
               >
                 Cancel
               </button>
             </>
           ) : (
-            <div className="btn btn-secondary" onClick={() => setIsEdit(true)}>
+            <div
+              className="btn btn-secondary userProfileEdit"
+              onClick={() => setIsEdit(true)}
+            >
               Edit Profile
             </div>
           )}

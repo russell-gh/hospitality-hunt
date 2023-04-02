@@ -4,7 +4,7 @@ const Details = (props) => {
   const { isEdit, errors, business } = props;
 
   return (
-    <div className="form-group">
+    <div className="form-group businessProfileEachResult">
       <label htmlFor="details">Details about your business:</label>
       <textarea
         id="details"

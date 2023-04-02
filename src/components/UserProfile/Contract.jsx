@@ -9,7 +9,7 @@ const Contract = (props) => {
       {isEdit ? (
         <select
           id="contract"
-          className="form-control"
+          className="form-control userProfileEachResult"
           name="contract"
           size="2"
           multiple
@@ -20,7 +20,7 @@ const Contract = (props) => {
       ) : (
         <input
           type="text"
-          className="form-control"
+          className="form-control userProfileEachResult"
           id="contract"
           name="contract"
           placeholder="00447111111111"

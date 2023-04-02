@@ -15,24 +15,26 @@ const FreelancerDetails = () => {
 
   useLayoutEffect(() => {
     console.log("Use layout effect,");
-    gsap.to(".hh-logo", { duration: 2, rotation: 360 });
+    gsap.to(".hh-logo", { duration: 1.7, rotation: 360 });
   }, []);
 
   return (
     <>
-      <h1 className="title">Freelancer profile</h1>
-      <div className="freelancerDetails">
+      <h1 className="freelancerProfileTitle">Freelancer profile</h1>
+      <form className="freelancerDetails">
         {freelancers.map((id) => {
           if (id.id === localId)
             return (
               <React.Fragment key={id}>
-                <img
-                  className="hh-logo"
-                  src={id.image}
-                  alt="logo"
-                  height="150px"
-                  width="150px"
-                ></img>
+                <div className="freelancerProfilePhoto">
+                  <img
+                    className="hh-logo"
+                    src={id.image}
+                    alt="logo"
+                    height="150px"
+                    width="150px"
+                  ></img>
+                </div>
                 <p>First name: {id.firstName}</p>
                 <p>Last name: {id.secondName}</p>
                 <p>Position: {id.position}</p>
@@ -43,19 +45,21 @@ const FreelancerDetails = () => {
                 <p>Email: {id.email}</p>
                 <p>Phone number: {id.phoneNumber}</p>
                 <p>About: {id.aboutYou}</p>
-                <button
-                  className="back-btn"
-                  onClick={() => {
-                    dispatch(setBackToFreelancerListing());
-                  }}
-                >
-                  Back to listing
-                </button>
+                <div className="text-center">
+                  <button
+                    className="btn btn-outline-success freelancerDetailsBack"
+                    onClick={() => {
+                      dispatch(setBackToFreelancerListing());
+                    }}
+                  >
+                    Back to listing
+                  </button>
+                </div>
               </React.Fragment>
             );
           else return null;
         })}
-      </div>
+      </form>
       <div></div>
     </>
   );

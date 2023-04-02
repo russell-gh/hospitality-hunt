@@ -3,13 +3,11 @@ import {
   selectJobListings,
   selectCurrentUserId,
   editJobData,
-} from "../features/hospitality/hospitalitySlice";
-import { useSelector } from "react-redux";
-import {
   setScreenMode,
   setDeleteJob,
 } from "../features/hospitality/hospitalitySlice";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import "./EmployerJobListing.css";
 
 const EmployerJobListing = () => {
   const dispatch = useDispatch();
@@ -40,25 +38,29 @@ const EmployerJobListing = () => {
     (job) => job.currentUserId === currentUserId
   );
   return (
-    <main className="container  text-center ">
-      <h1>Job listings</h1>
+    <>
+      <h1 className="jobListingsTitle">Job listings</h1>
       {currentUserJobs.map((job) => (
-        <div key={job.id} className="job-details my-3">
+        <div key={job.id} className="job-details">
           {isEdit && jobId === job.id ? (
             <form
+              className="eachJobListings"
               onInput={onJobEdit}
               onSubmit={onSubmit}
               style={{ background: "white" }}
             >
               <label>Contract</label>
-              <select name="contract" className="form-control">
+              <select
+                name="contract"
+                className="form-control jobListingsEachInput"
+              >
                 <option>Select Option</option>
                 <option>Full-Time</option>
                 <option>Part-Time</option>
                 <option>Contract</option>
               </select>
               <label>Business Sector</label>
-              <select name="type" className="form-control">
+              <select name="type" className="form-control jobListingsEachInput">
                 <option value="hotel">Hotel</option>
                 <option value="pub">Pub</option>
                 <option value="bar">Bar</option>
@@ -71,7 +73,7 @@ const EmployerJobListing = () => {
               <input
                 name="title"
                 type="text"
-                className="form-control"
+                className="form-control jobListingsEachInput"
                 placeholder="Job Title"
               />
               <label>Job Description</label>
@@ -84,57 +86,63 @@ const EmployerJobListing = () => {
                 <button
                   onClick={() => setIsEdit(false)}
                   type="button"
-                  className="btn btn-danger btn-lg"
+                  className="btn btn-secondary jobListingsCancel"
                 >
                   cancel
                 </button>
-                <button type="submit" className="btn btn-success btn-lg">
+                <button
+                  type="submit"
+                  className="btn btn-success jobListingsSave"
+                >
                   save
                 </button>
               </div>
             </form>
           ) : (
             <>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">{job.contract}</li>
-                <li className="list-group-item">{job.type}</li>
-                <li className="list-group-item">{job.title}</li>
-                <li className="list-group-item">{job.description}</li>
-              </ul>
-              <div className="d-flex">
-                <button
-                  onClick={() => {
-                    dispatch(setDeleteJob(job));
-                  }}
-                  type="button"
-                  className="btn btn-danger btn-lg"
-                >
-                  X
-                </button>
-                <button
-                  onClick={() => onEdit(job.id)}
-                  type="button"
-                  className="btn btn-success btn-lg"
-                >
-                  {" "}
-                  Edit
-                </button>
-              </div>
+              <form className="eachJobListings">
+                <div>
+                  <p>Contract: {job.contract}</p>
+                  <p>Type: {job.type}</p>
+                  <p>Title: {job.title}</p>
+                  <p>Description: {job.description}</p>
+                </div>
+                <div className="text-center">
+                  <button
+                    onClick={() => {
+                      dispatch(setDeleteJob(job));
+                    }}
+                    type="button"
+                    className="btn btn-danger jobListingsX"
+                  >
+                    x
+                  </button>
+                  <button
+                    onClick={() => onEdit(job.id)}
+                    type="button"
+                    className="btn btn-secondary jobListingsEdit"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </form>
             </>
           )}
         </div>
       ))}
 
-      <button
-        onClick={() => {
-          dispatch(setScreenMode(6));
-        }}
-        type="button"
-        className="btn btn-success btn-lg  "
-      >
-        Add new job
-      </button>
-    </main>
+      <div className="text-center">
+        <button
+          onClick={() => {
+            dispatch(setScreenMode(6));
+          }}
+          type="button"
+          className="btn btn-success jobListingsAdd btn-lg"
+        >
+          Add new job
+        </button>
+      </div>
+    </>
   );
 };
 

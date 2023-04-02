@@ -1,11 +1,23 @@
-.title,
 .searchByBar,
 .contractBar,
 .inputBar,
 .allResult {
   display: flex;
   justify-content: center;
-  margin-top: 17px;
+  margin-top: 20px;
+}
+
+.searchFreelancerTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.fullTimeButton,
+.partTimeButton,
+.allButton {
+  width: 100px;
+  margin: 5px;
 }
 
 .searchByBar > label {
@@ -17,21 +29,22 @@
   font-size: 20px;
 }
 
-.btn {
-  margin: 3px;
-}
-
 .eachResult {
   width: 400px;
   margin: 13px;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  background-color: white;
+  background-color: rgb(248, 249, 250);
+  padding: 25px;
 }
 
 .allResult {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
+}
+
+.eachLineResult {
+  margin-left: 10px;
 }

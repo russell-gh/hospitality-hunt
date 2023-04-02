@@ -5,7 +5,7 @@
 }
 
 .userProfileTitle {
-  margin-top: 17px;
+  margin-top: 70px;
   margin-left: 0px;
 }
 
@@ -15,7 +15,8 @@
 }
 
 .userProfile {
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+  padding: 25px;
 }
 
 .photoButton {
@@ -40,25 +41,51 @@
 }
 
 .cancelRetakeButton {
+  margin-top: 7px;
   margin-bottom: 20px;
   margin-left: 11px;
+  width: 130px;
 }
 
 .retake {
   margin-bottom: 20px;
+  width: 130px;
 }
 
 .captureImgButton,
 .saveImgButton,
 .retakeImgButton {
-  width: 200px;
+  width: 130px;
   display: flex;
   justify-self: center;
+  margin-top: 7px;
 }
 
 .saveNotice {
+  margin-top: 7px;
   margin-left: 0px;
   margin-bottom: 0px;
   display: flex;
   justify-content: center;
+}
+
+.userProfileSubmit {
+  margin-right: 5px;
+  width: 130px;
+  margin-top: 10px;
+}
+
+.userProfileCancel {
+  margin-left: 5px;
+  width: 130px;
+  margin-top: 10px;
+}
+
+.userProfileEdit {
+  width: 130px;
+  margin-top: 10px;
+}
+
+.userProfileEachResult {
+  margin-bottom: 13px;
 }

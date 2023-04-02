@@ -4,10 +4,10 @@ import { freelancers, jobListings, businesses } from "../../sampleData";
 
 const dataFromDisk = getData("redux-store");
 const initialState = {
-  screenMode: 11,
+  screenMode: 9,
 
   currentUserId: 1,
-  user: { email: "", password: "" },
+  user: { email: "hospitalityhunt@email.com", password: "" },
   isFreelancer: undefined,
   isProfileComplete: false,
   freelancers,

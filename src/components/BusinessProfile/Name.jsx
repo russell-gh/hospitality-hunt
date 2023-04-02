@@ -3,7 +3,7 @@ import React from "react";
 const Name = (props) => {
   const { isEdit, errors, business } = props;
   return (
-    <div className="form-group">
+    <div className="form-group businessProfileEachResult">
       <label htmlFor="name">Name: </label>
       <input
         type="text"

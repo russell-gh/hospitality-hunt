@@ -9,7 +9,7 @@ const PostCode = (props) => {
         <label htmlFor="postCode">Postcode: </label>
         <input
           type="text"
-          className="form-control"
+          className="form-control userProfileEachResult"
           id="postCode"
           name="postCode"
           placeholder="SW1 2AA"

@@ -61,7 +61,7 @@ const WebcamContainer = (props) => {
               {({ getScreenshot }) => {
                 return (
                   <button
-                    className="btn btn-success"
+                    className="btn btn-success webcamCapture"
                     onClick={() => {
                       const imageSrc = getScreenshot();
                       onImageClick(imageSrc);

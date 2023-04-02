@@ -1,55 +1,20 @@
-.html {
+.createBusinessProfileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.createBusinessProfile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  row-gap: 13px;
+  padding: 25px;
 }
 
-p {
-  margin-left: 20px;
-}
-
-ul {
-  list-style: none;
-  font-weight: bold;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: row;
-}
-
-label {
-  display: inline-block;
-  width: 200px;
-}
-
-input {
+.createBusinessProfileSubmit {
+  margin-top: 10px;
   width: 250px;
-  border: 1px solid grey;
-}
-
-select {
-  width: 250px;
-  border: 1px solid grey;
-  vertical-align: top;
-}
-
-textarea {
-  height: 7em;
-  width: 250px;
-  vertical-align: top;
-}
-
-ul > li > button {
-  display: flex;
-  justify-content: center;
-}
-
-li > button {
-  font-weight: bold;
-  justify-content: center;
 }

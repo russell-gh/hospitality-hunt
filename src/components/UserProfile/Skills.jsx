@@ -8,7 +8,7 @@ const Skills = (props) => {
       <label htmlFor="skills">Your skills:</label>
       <textarea
         id="skills"
-        className="form-control"
+        className="form-control userProfileEachResult"
         name="skills"
         placeholder="e.g. strong knife skill"
         disabled={!isEdit}

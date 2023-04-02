@@ -1,12 +1,12 @@
+* {
+  font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
+}
+
 .html {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-p {
-  margin-left: 20px;
 }
 
 form {
@@ -16,19 +16,6 @@ form {
   width: 500px;
   box-shadow: 10px 10px 5px gray;
   background-color: rgb(248, 249, 250);
-}
-
-ul {
-  list-style: none;
-  font-weight: bold;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: row;
 }
 
 label {
@@ -53,16 +40,6 @@ textarea {
   vertical-align: top;
 }
 
-ul > li > button {
-  display: flex;
-  justify-content: center;
-}
-
-li > button {
-  font-weight: bold;
-  justify-content: center;
-}
-
 .webcamBox {
   display: flex;
   flex-direction: column;
@@ -82,11 +59,35 @@ li > button {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 49px;
-  margin-left: 73px;
+  margin-top: 59px;
+  margin-left: 64px;
 }
 
 .webcamButton {
-  margin: 30px;
+  margin: 13px;
   padding: 20px;
+  width: 100px;
+}
+
+.createUserProfile {
+  padding: 25px;
+  margin-bottom: 70px;
+}
+
+.userProfileEachInput {
+  margin-bottom: 13px;
+}
+
+.webcamCapture {
+  margin-top: 7px;
+  width: 130px;
+}
+
+.createUserProfileSubmit {
+  margin-bottom: 7px;
+  width: 250px;
+}
+
+.createUserProfileTitle {
+  margin-top: 70px;
 }

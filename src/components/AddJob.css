@@ -1,5 +1,17 @@
-h1,
-p {
-  display: flex;
-  justify-content: center;
+.jobDetails {
+  padding: 25px;
+  margin-bottom: 70px;
+}
+
+.addJobEachInput {
+  margin-bottom: 13px;
+}
+
+.addJobPost {
+  margin-top: 25px;
+  width: 250px;
+}
+
+.addJobTitle {
+  margin-top: 70px;
 }

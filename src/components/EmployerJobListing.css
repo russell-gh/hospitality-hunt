@@ -1,0 +1,54 @@
+.jobListingsTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 70px;
+}
+
+.eachJobListings {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 25px;
+  margin-bottom: 35px;
+  width: 450px;
+}
+
+.allJobListings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.jobListingsX {
+  margin-right: 5px;
+  margin-top: 7px;
+  width: 40px;
+}
+
+.jobListingsEdit {
+  margin-left: 5px;
+  margin-top: 7px;
+  width: 130px;
+}
+
+.jobListingsCancel {
+  margin-right: 5px;
+  margin-top: 25px;
+  width: 130px;
+}
+
+.jobListingsSave {
+  margin-left: 5px;
+  margin-top: 25px;
+  width: 130px;
+}
+
+.jobListingsEachInput {
+  margin-bottom: 13px;
+}
+
+.jobListingsAdd {
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
