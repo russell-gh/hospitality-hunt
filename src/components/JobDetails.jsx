@@ -23,9 +23,9 @@ const JobDetails = () => {
   const bArray = Object.entries(result[0]);
 
   return (
-    <>
-      <h1 className="title">Job details</h1>
-      <div className="job-details">
+    <div className="eachJobDetails">
+      <h1 className="eachJobDetailsTitle">Job details</h1>
+      <form className="eachJobDetailsResult">
         {bArray.map((item) => {
           if (item[0] === "id" || item[0] === "currentUserId") return null;
 
@@ -35,17 +35,19 @@ const JobDetails = () => {
             </p>
           );
         })}
-        <button
-          className="back-btn"
-          onClick={() => {
-            console.log("button-clicked");
-            dispatch(setBackToJobListing());
-          }}
-        >
-          Back to listing
-        </button>
-      </div>
-    </>
+        <div className="text-center">
+          <button
+            className="btn btn-outline-success eachJobDeatilsBack"
+            onClick={() => {
+              console.log("button-clicked");
+              dispatch(setBackToJobListing());
+            }}
+          >
+            Back to listing
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

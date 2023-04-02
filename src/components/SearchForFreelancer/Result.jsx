@@ -30,7 +30,7 @@ const Result = (props) => {
 
                 return (
                   <div key={item[0]}>
-                    <p>
+                    <p className="eachLineResult">
                       {searchForFreelancerListingText[item[0]]}:{" "}
                       {typeof item[1] === "string"
                         ? item[1]

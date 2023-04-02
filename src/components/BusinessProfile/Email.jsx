@@ -6,7 +6,7 @@ const Email = () => {
   const user = useSelector(selectUser);
 
   return (
-    <div className="form-group">
+    <div className="form-group businessProfileEachResult">
       <label htmlFor="email">Email: </label>
       <input
         type="text"

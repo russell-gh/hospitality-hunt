@@ -63,35 +63,46 @@ const BusinessProfile = () => {
 
   return (
     <div className="html">
-      <h1 className="businessProfileTitle">Your profile</h1>
+      <div className="businessProfileContainer">
+        <h1 className="businessProfileTitle">Your profile</h1>
+        <form
+          className="businessProfile"
+          onInput={onInput}
+          onSubmit={submitData}
+        >
+          <Name isEdit={isEdit} errors={errors} business={business} />
+          <Type isEdit={isEdit} errors={errors} business={business} />
+          <Email />
+          <PhoneNumber isEdit={isEdit} errors={errors} business={business} />
 
-      <form className="businessProfile" onInput={onInput} onSubmit={submitData}>
-        <Name isEdit={isEdit} errors={errors} business={business} />
-        <Type isEdit={isEdit} errors={errors} business={business} />
-        <Email />
-        <PhoneNumber isEdit={isEdit} errors={errors} business={business} />
-
-        <div className="buttons form-group">
-          {isEdit ? (
-            <>
-              <button type="submit" className="btn btn-success">
-                Submit
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={cancelClick}
+          <div className="businessProfileButtons form-group">
+            {isEdit ? (
+              <>
+                <button
+                  type="submit"
+                  className="btn btn-success businessProfileSubmit"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary businessProfileCancel"
+                  onClick={cancelClick}
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <div
+                className="btn btn-secondary businessProfileEdit"
+                onClick={() => setIsEdit(true)}
               >
-                Cancel
-              </button>
-            </>
-          ) : (
-            <div className="btn btn-secondary" onClick={() => setIsEdit(true)}>
-              Edit profile
-            </div>
-          )}
-        </div>
-      </form>
+                Edit profile
+              </div>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

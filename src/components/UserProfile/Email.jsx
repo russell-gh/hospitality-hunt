@@ -10,7 +10,7 @@ const Email = () => {
       <label htmlFor="email">Email: </label>
       <input
         type="text"
-        className="form-control"
+        className="form-control userProfileEachResult"
         id="email"
         name="email"
         disabled

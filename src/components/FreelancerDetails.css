@@ -1,14 +1,12 @@
-.title {
+.freelancerProfileTitle {
   text-align: center;
-  padding-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 70px;
 }
 
-.hh-logo {
-  max-width: 150;
-  max-height: 150;
-  border-radius: 30px;
+.freelancerProfilePhoto {
   margin: auto;
-  padding-bottom: 10px;
+  margin-bottom: 13px;
 }
 
 .freelancerDetails {
@@ -16,22 +14,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: space-between;
-  padding-top: 20px;
   margin: auto;
-  font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
-  max-width: 37%;
-  border: solid black 1px;
-  border-radius: 30px;
-  padding: 10px;
-  padding-right: 10px;
-  box-shadow: 6px 12px 4px grey;
-  margin-bottom: 20px;
+  padding: 25px;
+  margin-bottom: 70px;
 }
-.back-btn {
-  background: #198754;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  margin-bottom: 10px;
+
+.freelancerDetailsBack {
+  width: 250px;
+  margin-top: 7px;
 }

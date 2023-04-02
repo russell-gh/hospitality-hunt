@@ -45,7 +45,7 @@ const Signup = () => {
             type="email"
             className="form-control"
             id="email"
-            placeholder="Enter your email.."
+            placeholder="Enter your email..."
           />
           {errors.email && (
             <div className="alert alert-danger" role="alert">
@@ -60,7 +60,7 @@ const Signup = () => {
             type="password"
             className="form-control"
             id="password"
-            placeholder="..."
+            placeholder="......"
           />
           {errors.password && (
             <div className="alert alert-danger" role="alert">
@@ -75,7 +75,7 @@ const Signup = () => {
             type="password"
             className="form-control"
             id="repeat_password"
-            placeholder="..."
+            placeholder="......"
           />
 
           {errors.repeat_password && (

@@ -1,14 +1,41 @@
-.buttons {
+.businessProfileContainer {
+  height: 89vh;
   display: flex;
   justify-content: center;
-  margin-top: 12px;
-}
-
-.businessProfile {
-  margin-top: 20px;
-  margin-bottom: 50px;
+  align-items: center;
+  flex-direction: column;
 }
 
 .businessProfileTitle {
-  margin-top: 17px;
+  margin-bottom: 30px;
+}
+
+.businessProfile {
+  padding: 25px;
+}
+
+.businessProfileEachResult {
+  margin-bottom: 13px;
+}
+
+.businessProfileButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.businessProfileEdit {
+  margin-top: 13px;
+  width: 130px;
+}
+
+.businessProfileSubmit {
+  margin-right: 5px;
+  margin-top: 13px;
+  width: 130px;
+}
+
+.businessProfileCancel {
+  margin-left: 5px;
+  margin-top: 13px;
+  width: 130px;
 }

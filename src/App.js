@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Login from "./components/Login";
 import AddJob from "./components/AddJob";
 import Signup from "./components/Signup";
@@ -20,7 +20,7 @@ import EmployerJobListing from "./components/EmployerJobListing";
 import TestingNav from "./components/TestingNav";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 import Online from "./components/Online";
-import { calcLonLatDiff, getLongLat } from "./location";
+// import { calcLonLatDiff, getLongLat } from "./location";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
@@ -68,9 +68,3 @@ export default function App() {
     </div>
   );
 }
-//employer name.
-//location
-//type of business
-//number
-//emails
-//about...

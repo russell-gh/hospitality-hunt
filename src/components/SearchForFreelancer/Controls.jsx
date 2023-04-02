@@ -10,7 +10,7 @@ const Controls = () => {
   const [freelancersWithDistance, setFreelancersWithDistance] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [userSelect, setUserSelect] = useState("position");
-  const [contractButtonSelect, setContractButtonSelect] = useState("any");
+  const [contractButtonSelect, setContractButtonSelect] = useState("all");
   const inputBox = useRef();
 
   useLayoutEffect(() => {
@@ -90,20 +90,20 @@ const Controls = () => {
 
   return (
     <>
-      <h1 className="title">Search for a freelancer</h1>
+      <h1 className="searchFreelancerTitle">Search for a freelancer</h1>
       <div className="contractBar">
         <button
-          className="btn btn-success"
+          className="btn btn-success allButton"
           type="radio"
-          id="any"
+          id="all"
           name="contract"
-          value="any"
+          value="all"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
-          Any
+          All
         </button>
         <button
-          className="btn btn-success"
+          className="btn btn-success fullTimeButton"
           type="radio"
           id="fullTime"
           name="contract"
@@ -113,7 +113,7 @@ const Controls = () => {
           Full-time
         </button>
         <button
-          className="btn btn-success"
+          className="btn btn-success partTimeButton"
           type="radio"
           id="partTime"
           name="contract"

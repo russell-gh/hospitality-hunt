@@ -13,7 +13,6 @@ const AddJob = () => {
   const [postJob, setPostJob] = useState({});
   const [errors, setErrors] = useState({});
   const currentUserId = useSelector(selectCurrentUserId);
-  // console.log(errors);
   const onJobPost = (e) => {
     setPostJob({ ...postJob, [e.target.name]: e.target.value });
   };
@@ -32,14 +31,13 @@ const AddJob = () => {
   };
 
   return (
-    <>
-      <h1>Job details</h1>
+    <div className="html">
+      <h1 className="addJobTitle">Post job</h1>
       <p>Please be as detailed as possible describing the job opening:</p>
-      <main className=" mt-5 d-flex  justify-content-center">
-        <form onInput={onJobPost} onSubmit={onSubmit}>
-          <div className="row mb-2"></div>
-          <div className="row mb-2">
-            <div className="col-md-6">
+      <main>
+        <form className="jobDetails" onInput={onJobPost} onSubmit={onSubmit}>
+          <div className="row">
+            <div className="col-md-6 addJobEachInput">
               <label>Job title: </label>
               <input
                 name="title"
@@ -55,7 +53,7 @@ const AddJob = () => {
               )}
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-6">
               <label>Select duration:</label>
               <select name="contract" className="form-control">
                 <option>Select option</option>
@@ -72,8 +70,8 @@ const AddJob = () => {
             </div>
           </div>
 
-          <div className="row mb-2">
-            <div className="col-md-6">
+          <div className="row">
+            <div className="col-md-6 addJobEachInput">
               <label>Postcode:</label>
               <input
                 name="postCode"
@@ -86,7 +84,7 @@ const AddJob = () => {
               )}
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-6">
               <label>Business sector:</label>
               <select name="type" className="form-control">
                 <option>Select option</option>
@@ -105,7 +103,7 @@ const AddJob = () => {
               )}
             </div>
 
-            <div className="col-md-10 ">
+            <div className="col-md-12 addJobEachInput">
               <label>Salary: </label>
               <input
                 name="salary"
@@ -122,63 +120,57 @@ const AddJob = () => {
             </div>
           </div>
 
-          <div className="row mb-2">
-            <div className="col-md-10">
-              <label>Business email:</label>
-              <input
-                name="email"
-                type="text"
-                className="form-control"
-                placeholder="Enter business email"
-              />
-              {errors.email && (
-                <div className="alert alert-danger">
-                  Business email is required
-                </div>
-              )}
-            </div>
+          <div className="col-md-12 addJobEachInput">
+            <label>Business email:</label>
+            <input
+              name="email"
+              type="text"
+              className="form-control"
+              placeholder="Enter business email"
+            />
+            {errors.email && (
+              <div className="alert alert-danger">
+                Business email is required
+              </div>
+            )}
           </div>
 
-          <div className="row mb-2">
-            <div className="col-md-10">
-              <label>Business phone number:</label>
-              <input
-                name="phoneNumber"
-                type="text"
-                className="form-control"
-                placeholder="Enter business phone number"
-              />
-              {errors.phoneNumber && (
-                <div className="alert alert-danger">
-                  Business phone number is required
-                </div>
-              )}
-            </div>
+          <div className="col-md-12 addJobEachInput">
+            <label>Business phone number:</label>
+            <input
+              name="phoneNumber"
+              type="text"
+              className="form-control"
+              placeholder="Enter business phone number"
+            />
+            {errors.phoneNumber && (
+              <div className="alert alert-danger">
+                Business phone number is required
+              </div>
+            )}
           </div>
 
-          <div className="row mb-2">
-            <div className="col-md-10">
-              <label>Job description:</label>
-              <textarea
-                name="description"
-                className="form-control"
-                rows="5"
-              ></textarea>
-              {errors.description && (
-                <div className="alert alert-danger">
-                  Job description is required
-                </div>
-              )}
-            </div>
+          <div className="col-md-12">
+            <label>Job description:</label>
+            <textarea
+              name="description"
+              className="form-control"
+              rows="5"
+            ></textarea>
+            {errors.description && (
+              <div className="alert alert-danger">
+                Job description is required
+              </div>
+            )}
           </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-success">
-              Post job
+            <button type="submit" className="btn btn-success addJobPost">
+              Post
             </button>
           </div>
         </form>
       </main>
-    </>
+    </div>
   );
 };
 

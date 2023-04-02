@@ -8,7 +8,7 @@ const Experience = (props) => {
       <label htmlFor="experience">Your experience in hospitality:</label>
       <textarea
         id="experience"
-        className="form-control"
+        className="form-control userProfileEachResult"
         name="experience"
         placeholder="e.g. two years kitchen management"
         disabled={!isEdit}

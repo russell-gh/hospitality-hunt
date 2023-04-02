@@ -59,8 +59,8 @@ const UserProfiles = (props) => {
   };
 
   return (
-    <div className="html">
-      <h1 className="title">Create your job seeker profile</h1>
+    <div className="html ">
+      <h1 className="createUserProfileTitle">Create your job seeker profile</h1>
       <p>Please fill in the information below:</p>
       <form
         className="createUserProfile"
@@ -71,7 +71,7 @@ const UserProfiles = (props) => {
           <label htmlFor="firstName">First name: </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control userProfileEachInput "
             id="firstName"
             name="firstName"
             placeholder="First name"
@@ -86,7 +86,7 @@ const UserProfiles = (props) => {
           <label htmlFor="secondName">Last name: </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control userProfileEachInput "
             id="secondName"
             name="secondName"
             placeholder="Last name"
@@ -101,7 +101,7 @@ const UserProfiles = (props) => {
           <label htmlFor="phoneNumber">Phone number: </label>
           <input
             type="number"
-            className="form-control"
+            className="form-control userProfileEachInput "
             id="phoneNumber"
             name="phoneNumber"
             placeholder="00447111111111"
@@ -116,7 +116,7 @@ const UserProfiles = (props) => {
           <label htmlFor="postCode">Postcode: </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control userProfileEachInput "
             id="postCode"
             name="postCode"
             placeholder="SW1A 2AA"
@@ -132,7 +132,7 @@ const UserProfiles = (props) => {
           <label htmlFor="contract">Type of contract: </label>
           <select
             id="contract"
-            className="form-select"
+            className="form-select userProfileEachInput "
             name="contract"
             size="2"
             multiple
@@ -150,7 +150,7 @@ const UserProfiles = (props) => {
           <label htmlFor="position">Type of position: </label>
           <select
             id="position"
-            className="form-select"
+            className="form-select userProfileEachInput "
             name="position"
             size="6"
             multiple
@@ -174,7 +174,7 @@ const UserProfiles = (props) => {
           </label>
           <textarea
             id="experience"
-            className="form-control"
+            className="form-control userProfileEachInput "
             name="experience"
             placeholder="Your experience in hospitality"
           ></textarea>
@@ -190,7 +190,7 @@ const UserProfiles = (props) => {
           </label>
           <textarea
             id="skills"
-            className="form-control"
+            className="form-control userProfileEachInput "
             name="skills"
             placeholder="Your skills"
           ></textarea>
@@ -206,7 +206,7 @@ const UserProfiles = (props) => {
           </label>
           <textarea
             id="aboutYou"
-            className="form-control"
+            className="form-control userProfileEachInput "
             name="aboutYou"
             placeholder="About you"
           ></textarea>
@@ -219,7 +219,7 @@ const UserProfiles = (props) => {
         <div className="form-group text-center my-2">
           <input
             type="submit"
-            className="btn btn-success"
+            className="btn btn-success createUserProfileSubmit"
             disabled={image && errors === true ? false : true}
             onMouseEnter={() => {
               console.log("Hello");

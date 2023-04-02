@@ -101,7 +101,7 @@ const TestingNav = () => {
             dispatch(setScreenMode(13));
           }}
         >
-          13 EmployerJobListing
+          13 JobListings
         </button>
         <button
           onClick={() => {

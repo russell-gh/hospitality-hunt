@@ -9,7 +9,7 @@ const Position = (props) => {
       {isEdit ? (
         <select
           id="position"
-          className="form-control"
+          className="form-control userProfileEachResult"
           name="position"
           size="6"
           multiple
@@ -24,7 +24,7 @@ const Position = (props) => {
       ) : (
         <input
           type="text"
-          className="form-control"
+          className="form-control userProfileEachResult"
           id="position"
           name="position"
           placeholder="00447111111111"

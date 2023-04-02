@@ -8,7 +8,7 @@ const Name = (props) => {
         <label htmlFor="firstName">First name: </label>
         <input
           type="text"
-          className="form-control"
+          className="form-control userProfileEachResult"
           id="firstName"
           name="firstName"
           placeholder="e.g. Sam"
@@ -25,7 +25,7 @@ const Name = (props) => {
         <label htmlFor="secondName">Last name: </label>
         <input
           type="text"
-          className="form-control"
+          className="form-control userProfileEachResult"
           id="secondName"
           name="secondName"
           placeholder="e.g. Smith"

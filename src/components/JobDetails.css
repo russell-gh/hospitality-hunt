@@ -1,20 +1,27 @@
-.job-details {
+.eachJobDetailsResult {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: space-between;
-  padding-top: 20%;
-  margin: auto;
-  font-family: Impact, Haettenschweiler, “Arial Narrow Bold”, sans-serif;
-  max-width: 37%;
-  border: solid black 1px;
-  border-radius: 30px;
-  padding: 10px;
-  box-shadow: 6px 12px 4px grey;
-  margin-bottom: 20px;
+  justify-content: center;
+  padding: 25px;
+  width: 420px;
+  word-wrap: break-word;
 }
 
-.btn {
-  margin: auto;
-  text-align: center;
+.eachJobDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-bottom: 70px;
+}
+
+.eachJobDetailsTitle {
+  margin-bottom: 30px;
+  margin-top: 70px;
+}
+
+.eachJobDeatilsBack {
+  width: 250px;
+  margin-top: 7px;
 }
