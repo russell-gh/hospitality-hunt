@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./components/Login";
 import AddJob from "./components/AddJob";
 import Signup from "./components/Signup";
@@ -6,7 +6,7 @@ import CreateBusinessProfile from "./components/CreateBusinessProfile";
 import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile";
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectScreenMode } from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation/Navigation";
@@ -21,10 +21,23 @@ import TestingNav from "./components/TestingNav";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 import Online from "./components/Online";
 // import { calcLonLatDiff, getLongLat } from "./location";
+import axios from 'axios';
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
   const debugModeOn = true;
+  const dispatch = useDispatch();
+
+  const getInitialData = async () => {
+    const { data } = await axios.get("http://localhost:6001/getFreelancers");
+    console.log(data);
+
+    //send the data to the store to replace the data in the store
+  }
+
+  useEffect(() => {
+    getInitialData();
+  }, [])
 
   return (
     <div>
