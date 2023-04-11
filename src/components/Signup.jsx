@@ -13,7 +13,7 @@ const Signup = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
 
-  const submitSignupDate = (e) => {
+  const submitSignupData = (e) => {
     e.preventDefault();
     if (errors === true) {
       delete userData.repeat_password;
@@ -38,7 +38,7 @@ const Signup = () => {
   return (
     <div className="signUpContainer">
       <h1 className="signUpHeader">Sign up</h1>
-      <form className="signUp" onInput={onInput} onSubmit={submitSignupDate}>
+      <form className="signUp" onInput={onInput} onSubmit={submitSignupData}>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
