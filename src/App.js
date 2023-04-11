@@ -30,7 +30,6 @@ export default function App() {
 
   const getInitialData = async () => {
     const { data } = await axios.get("http://localhost:6001/getFreelancers");
-    console.log(data);
 
     //send the data to the store to replace the data in the store
   }
