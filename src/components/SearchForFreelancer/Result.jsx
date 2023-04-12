@@ -19,7 +19,7 @@ const Result = (props) => {
                 if (
                   item[0] === "email" ||
                   item[0] === "phoneNumber" ||
-                  item[0] === "id" ||
+                  item[0] === "user_id" ||
                   item[0] === "aboutYou" ||
                   item[0] === "experience" ||
                   item[0] === "image" ||

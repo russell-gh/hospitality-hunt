@@ -7,7 +7,7 @@ import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile"
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { selectScreenMode } from "./features/hospitality/hospitalitySlice";
+import { selectScreenMode, setAllFreelancers } from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation/Navigation";
 import SearchForFreelancer from "./components/SearchForFreelancer";
@@ -32,6 +32,8 @@ export default function App() {
     const { data } = await axios.get("http://localhost:6001/getFreelancers");
 
     //send the data to the store to replace the data in the store
+    console.log(data);
+    dispatch(setAllFreelancers(data));
   }
 
   useEffect(() => {
