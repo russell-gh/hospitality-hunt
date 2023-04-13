@@ -8,6 +8,8 @@ import {
 } from "../features/hospitality/hospitalitySlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./EmployerJobListing.css";
+import axios from "axios";
+import { apiURL } from "../config";
 
 const EmployerJobListing = () => {
   const dispatch = useDispatch();
@@ -32,6 +34,12 @@ const EmployerJobListing = () => {
     e.preventDefault();
     dispatch(editJobData(editJob));
     setIsEdit(false);
+  };
+
+  const deleteJob = (job) => {
+    console.log(job.id);
+    dispatch(setDeleteJob(job));
+    axios.delete(`${apiURL}/deleteJobListing/${job.id}`);
   };
 
   const currentUserJobs = jobListings.filter(
@@ -110,7 +118,7 @@ const EmployerJobListing = () => {
                 <div className="text-center">
                   <button
                     onClick={() => {
-                      dispatch(setDeleteJob(job));
+                      deleteJob(job);
                     }}
                     type="button"
                     className="btn btn-danger jobListingsX"
