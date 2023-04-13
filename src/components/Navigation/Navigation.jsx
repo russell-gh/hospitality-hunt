@@ -12,6 +12,7 @@ import "../Navigation/Navigation.scss";
 import ButtonSet1 from "./ButtonSet1";
 import ButtonSet2 from "./ButtonSet2";
 import ButtonSet3 from "./ButtonSet3";
+import api from "../../api";
 
 const Navigation = () => {
   const loggedIn = useSelector(selectLoggedIn);
@@ -82,6 +83,7 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={() => {
                     dispatch(logout());
+                    api("LOGOUT");
                   }}
                 >
                   Log out
