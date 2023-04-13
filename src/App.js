@@ -26,7 +26,7 @@ import { apiURL } from "./config";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
-  const debugModeOn = true;
+  const debugModeOn = false;
   const dispatch = useDispatch();
 
   const getInitialData = async () => {
