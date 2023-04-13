@@ -5,6 +5,8 @@ import { login, selectUser } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import { useSelector } from "react-redux";
 import sha256 from "sha256";
+import axios from 'axios';
+import { storeData } from "../storage";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +22,17 @@ const Loginpage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    //START USES SERVER
+    //ask the server
+    const { data } = await axios.post(`http://localhost:6001/login`, {
+      email, password
+    });
+    console.log(data);
+    if (data.status === 1) {
+      storeData("token", { token: data.token });
+    }
+    //END USES SERVER
+
     const result = await validate("logIn", {
       email: email,
       password: password,
@@ -34,11 +47,6 @@ const Loginpage = () => {
       setBadCred(true);
       return;
     }
-
-    //   //if everything passes, log user in
-
-    //   dispatch(login());
-    // dashbfaisjdb
 
     dispatch(login());
   };
