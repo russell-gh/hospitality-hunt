@@ -17,15 +17,19 @@ const Signup = () => {
   const submitSignupData = async (e) => {
     e.preventDefault();
     if (errors === true) {
+      //store the data in the backend
+      //START API
+      const result = await api("SIGNUP", { ...userData, isFreelancer: 0 });
+      console.log(result);
+      //END API
+
       delete userData.repeat_password;
       //swap the password for a sha 256 version
       userData.password = sha256(userData.password + "cohort-ft3");
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
 
-      //store the data in the backend
-      const result = await api("SIGNUP", { ...userData, isFreelancer: 0 });
-      console.log(result);
+
     }
   };
 

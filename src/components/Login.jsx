@@ -27,7 +27,7 @@ const Loginpage = () => {
     const { data } = await axios.post(`http://localhost:6001/login`, {
       email, password
     });
-    console.log(data);
+
     if (data.status === 1) {
       storeData("token", { token: data.token });
     }
