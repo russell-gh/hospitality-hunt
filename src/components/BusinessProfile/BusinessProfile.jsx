@@ -12,6 +12,8 @@ import Name from "./Name";
 import Type from "./Type";
 import Email from "./Email";
 import PhoneNumber from "./PhoneNumber";
+import Details from "./Details";
+import axios from "axios";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ const BusinessProfile = () => {
       dispatch(editedBusinessData(businessData));
       setIsEdit(false);
     }
+    axios.post("http://localhost:6001/updateBusiness", businessData);
   };
 
   const cancelClick = () => {
@@ -70,10 +73,15 @@ const BusinessProfile = () => {
           onInput={onInput}
           onSubmit={submitData}
         >
-          <Name isEdit={isEdit} errors={errors} business={business} />
-          <Type isEdit={isEdit} errors={errors} business={business} />
+          <Name isEdit={isEdit} errors={errors} business={businessData} />
+          <Type isEdit={isEdit} errors={errors} business={businessData} />
           <Email />
-          <PhoneNumber isEdit={isEdit} errors={errors} business={business} />
+          <PhoneNumber
+            isEdit={isEdit}
+            errors={errors}
+            business={businessData}
+          />
+          <Details isEdit={isEdit} errors={errors} business={businessData} />
 
           <div className="businessProfileButtons form-group">
             {isEdit ? (
