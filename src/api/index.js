@@ -1,11 +1,12 @@
 import axios from "axios";
 import { getData } from "../storage";
+import { apiURL } from "../config";
 
 async function api(type, payload) {
   switch (type) {
     case "SIGNUP":
       const { data } = await axios.post(
-        "http://localhost:6001/signup",
+        `${apiURL}/signup`,
         payload
       );
       return data;
@@ -20,7 +21,7 @@ async function api(type, payload) {
       const { token } = getData("token");
 
 
-      const { data } = await axios.delete("http://localhost:6001/logout", {
+      const { data } = await axios.delete(`${apiURL}/logout`, {
         headers: {
           token
         },

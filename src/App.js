@@ -22,6 +22,7 @@ import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 import Online from "./components/Online";
 // import { calcLonLatDiff, getLongLat } from "./location";
 import axios from 'axios';
+import { apiURL } from "./config";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
@@ -29,7 +30,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   const getInitialData = async () => {
-    const { data } = await axios.get("http://localhost:6001/getFreelancers");
+    const { data } = await axios.get(`${apiURL}/getFreelancers`);
 
     //send the data to the store to replace the data in the store
     console.log(data);

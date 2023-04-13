@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import sha256 from "sha256";
 import axios from 'axios';
 import { storeData } from "../storage";
+import { apiURL } from "../config";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ const Loginpage = () => {
 
     //START USES SERVER
     //ask the server
-    const { data } = await axios.post(`http://localhost:6001/login`, {
+    const { data } = await axios.post(`${apiURL}/login`, {
       email, password
     });
 
