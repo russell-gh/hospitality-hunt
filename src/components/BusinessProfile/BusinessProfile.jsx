@@ -14,6 +14,7 @@ import Email from "./Email";
 import PhoneNumber from "./PhoneNumber";
 import Details from "./Details";
 import axios from "axios";
+import { apiURL } from "../../config";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
@@ -55,8 +56,8 @@ const BusinessProfile = () => {
       console.log(errors);
       dispatch(editedBusinessData(businessData));
       setIsEdit(false);
+      axios.post(`${apiURL}/updateBusiness`, businessData);
     }
-    axios.post("http://localhost:6001/updateBusiness", businessData);
   };
 
   const cancelClick = () => {

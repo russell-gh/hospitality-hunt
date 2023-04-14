@@ -5,7 +5,6 @@ import { freelancers, jobListings, businesses } from "../../sampleData";
 const dataFromDisk = getData("redux-store");
 const initialState = {
   screenMode: 1,
-
   currentUserId: 1,
   user: { email: "hospitalityhunt@email.com", password: "" },
   isFreelancer: undefined,
@@ -149,6 +148,7 @@ export const hospitalitySlice = createSlice({
     setAllJobListings: (state, payload) => {
       state.jobListings = payload.payload;
     },
+
   },
 });
 
@@ -184,6 +184,7 @@ export const selectScreenMode = (state) => state.hospitality.screenMode;
 export const selectLastAddedJobId = (state) => state.hospitality.lastAddedJobId;
 export const selectCurrentUserId = (state) => state.hospitality.currentUserId;
 export const selectUser = (state) => state.hospitality.user;
+export const selectUserEmail = (state) => state.hospitality.user.email;
 export const selectLoggedIn = (state) => state.hospitality.loggedIn;
 export const selectLastClickedJobId = (state) =>
   state.hospitality.lastClickedJobId;

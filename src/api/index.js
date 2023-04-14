@@ -4,27 +4,28 @@ import { apiURL } from "../config";
 
 async function api(type, payload) {
   switch (type) {
-    case "SIGNUP":
+
+    case "SIGNUP": {
       const { data } = await axios.post(`${apiURL}/signup`, payload);
       return data;
+    }
 
-    default:
-      break;
-  }
-
-  switch (type) {
     case "LOGOUT":
       const { token } = getData("token");
 
-      const { data } = await axios.delete(`${apiURL}/logout`, {
-        headers: {
-          token,
-        },
-      });
-      return data;
+      {
+        const { data } = await axios.delete(`${apiURL}/logout`, {
+          headers: {
+            token,
+          },
+        });
+        return data;
+      }
 
-    default:
-      break;
+    case "ADDJOB": {
+      const { data } = await axios.post(`${apiURL}/createJobListing`, payload);
+      return data;
+    }
   }
 }
 
