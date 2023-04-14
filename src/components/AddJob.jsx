@@ -169,7 +169,7 @@ const AddJob = () => {
               type="submit"
               className="btn btn-success addJobPost"
               onClick={() => {
-                api("ADDJOB");
+                api("ADDJOB", postJob);
               }}
             >
               Post
