@@ -20,7 +20,7 @@ const FreelancerDetails = () => {
 
   return (
     <>
-      <h1 className="freelancerProfileTitle">Freelancer profile</h1>
+      <h1 className="freelancerProfileTitle">Freelancer details</h1>
       <form className="freelancerDetails">
         {freelancers.map((id) => {
           if (id.id === localId)
@@ -42,7 +42,7 @@ const FreelancerDetails = () => {
                 <p>Skills: {id.skills}</p>
                 <p>Contract: {id.contract}</p>
                 <p>Postcode: {id.postCode}</p>
-                <p>Email: {id.email}</p>
+                {/* <p>Email: {id.email}</p> */}
                 <p>Phone number: {id.phoneNumber}</p>
                 <p>About: {id.aboutYou}</p>
                 <div className="text-center">

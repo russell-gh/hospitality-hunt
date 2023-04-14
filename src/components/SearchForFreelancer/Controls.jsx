@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectFreelancers } from "../../features/hospitality/hospitalitySlice";
 import gsap from "gsap";
-import { calcLonLatDiff, getLongLat } from "../../location";
+import { calcLonLatDiff, getLongLat } from "../../location/index";
 import Result from "../SearchForFreelancer/Result";
 
 const Controls = () => {
@@ -60,7 +60,7 @@ const Controls = () => {
   if (userSelect === "postCode") {
     //filter the results to only show them if the distance is within the amount
     filtered = freelancersWithDistance.filter((freelancer) => {
-      return freelancer.distance && freelancer.distance < 7700;
+      return freelancer.distance && freelancer.distance < 100000;
     });
   } else if (userSelect === "position") {
     filtered = filtered.filter((freelancer) => {
@@ -74,11 +74,11 @@ const Controls = () => {
     });
   }
 
-  if (contractButtonSelect === "fullTime") {
+  if (contractButtonSelect === "Full-time") {
     filtered = filtered.filter((freelancer) => {
       return freelancer.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "partTime") {
+  } else if (contractButtonSelect === "Part-time") {
     filtered = filtered.filter((freelancer) => {
       return freelancer.contract.includes(contractButtonSelect);
     });
@@ -107,7 +107,7 @@ const Controls = () => {
           type="radio"
           id="fullTime"
           name="contract"
-          value="fullTime"
+          value="Full-time"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Full-time
@@ -117,7 +117,7 @@ const Controls = () => {
           type="radio"
           id="partTime"
           name="contract"
-          value="partTime"
+          value="Part-time"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Part-time

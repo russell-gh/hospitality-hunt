@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectScreenMode,
   setAllFreelancers,
+  setAllJobListings,
 } from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation/Navigation";
@@ -36,12 +37,22 @@ export default function App() {
     const { data } = await axios.get(`${apiURL}/getFreelancers`);
 
     //send the data to the store to replace the data in the store
-    console.log(data);
     dispatch(setAllFreelancers(data));
   };
 
   useEffect(() => {
     getInitialData();
+  }, []);
+
+  const getJobListingsData = async () => {
+    const { data } = await axios.get(`${apiURL}/getJobListings`);
+
+    //send the data to the store to replace the data in the store
+    dispatch(setAllJobListings(data));
+  };
+
+  useEffect(() => {
+    getJobListingsData();
   }, []);
 
   return (

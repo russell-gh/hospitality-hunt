@@ -22,7 +22,8 @@ const Result = (props) => {
                   item[0] === "id" ||
                   item[0] === "description" ||
                   item[0] === "currentUserId" ||
-                  item[0] === "userId"
+                  item[0] === "user_id" ||
+                  item[0] === "phone_number"
                 )
                   return null;
 

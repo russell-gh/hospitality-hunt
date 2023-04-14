@@ -24,7 +24,9 @@ const Result = (props) => {
                   item[0] === "experience" ||
                   item[0] === "image" ||
                   item[0] === "location" ||
-                  item[0] === "distance"
+                  item[0] === "distance" ||
+                  item[0] === "lat" ||
+                  item[0] === "lon"
                 )
                   return null;
 

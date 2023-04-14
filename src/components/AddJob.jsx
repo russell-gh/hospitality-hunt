@@ -41,12 +41,12 @@ const AddJob = () => {
             <div className="col-md-6 addJobEachInput">
               <label>Job title: </label>
               <input
-                name="title"
+                name="name"
                 type="text"
                 className="form-control"
                 placeholder="Job title"
               />
-              {errors.title && (
+              {errors.name && (
                 <div className="alert alert-danger">
                   {" "}
                   Job title is required{" "}
