@@ -222,7 +222,6 @@ const UserProfiles = (props) => {
             className="btn btn-success createUserProfileSubmit"
             disabled={image && errors === true ? false : true}
             onMouseEnter={() => {
-              console.log("Hello");
               setHoverButton(true);
             }}
             onMouseLeave={() => {

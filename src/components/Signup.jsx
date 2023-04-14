@@ -7,7 +7,7 @@ import {
 import { validate } from "../validation/joi";
 import "./Signup.scss";
 import sha256 from "sha256";
-import api from '../api'
+import api from "../api";
 
 const Signup = () => {
   const [userData, setUserData] = useState({});
@@ -20,7 +20,6 @@ const Signup = () => {
       //store the data in the backend
       //START API
       const result = await api("SIGNUP", { ...userData, isFreelancer: 0 });
-      console.log(result);
       //END API
 
       delete userData.repeat_password;
@@ -28,8 +27,6 @@ const Signup = () => {
       userData.password = sha256(userData.password + "cohort-ft3");
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
-
-
     }
   };
 

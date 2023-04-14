@@ -33,8 +33,6 @@ const Controls = () => {
       //location in long and lat of the current search term
       const { lat, lon } = await getLongLat(userInput);
 
-      console.log(lat, lon);
-
       //calc the difference between the above and the ones for each result
       filtered.forEach((freelancer) => {
         freelancer.distance = calcLonLatDiff(
@@ -44,8 +42,6 @@ const Controls = () => {
           freelancer.location.lon
         );
       });
-
-      console.log(filtered);
 
       setFreelancersWithDistance(filtered);
     };

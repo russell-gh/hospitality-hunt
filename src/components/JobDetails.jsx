@@ -42,7 +42,6 @@ const JobDetails = () => {
           <button
             className="btn btn-outline-success eachJobDeatilsBack"
             onClick={() => {
-              console.log("button-clicked");
               dispatch(setBackToJobListing());
             }}
           >

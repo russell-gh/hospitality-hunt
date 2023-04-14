@@ -13,7 +13,7 @@ const Result = (props) => {
         const quickViewFreelancer = Object.entries(freelancer);
 
         return (
-          <div className="btn-outline-dark" key={freelancer.id}>
+          <div className="btn-outline-dark" key={freelancer.user_id}>
             <form className="eachResult">
               {quickViewFreelancer.map((item) => {
                 if (
@@ -44,8 +44,6 @@ const Result = (props) => {
               <button
                 className="moreInfo btn btn-outline-success"
                 onClick={() => {
-                  console.log(freelancer);
-                  console.log(freelancer.id);
                   dispatch(freelancerClicked(freelancer.user_id));
                 }}
               >

@@ -53,7 +53,6 @@ const BusinessProfile = () => {
   const submitData = async (e) => {
     e.preventDefault();
     if (errors === true) {
-      console.log(errors);
       dispatch(editedBusinessData(businessData));
       setIsEdit(false);
       axios.post(`${apiURL}/updateBusiness`, businessData);

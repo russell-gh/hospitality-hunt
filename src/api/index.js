@@ -4,7 +4,6 @@ import { apiURL } from "../config";
 
 async function api(type, payload) {
   switch (type) {
-
     case "SIGNUP": {
       const { data } = await axios.post(`${apiURL}/signup`, payload);
       return data;

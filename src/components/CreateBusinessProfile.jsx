@@ -25,7 +25,6 @@ const BusinessProfile = (props) => {
   };
 
   const onSubmit = (e) => {
-    console.log(businessData);
     e.preventDefault();
     if (errors === true) {
       businessData.id = randomId();

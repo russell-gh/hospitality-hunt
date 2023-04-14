@@ -57,7 +57,6 @@ const UserProfile = () => {
   const submitData = async (e) => {
     e.preventDefault();
     if (errors === true) {
-      console.log(errors);
       dispatch(editedFreelancerData(userData));
       setIsEdit(false);
     }

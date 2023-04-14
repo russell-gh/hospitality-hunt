@@ -37,7 +37,6 @@ const EmployerJobListing = () => {
   };
 
   const deleteJob = (job) => {
-    console.log(job.id);
     dispatch(setDeleteJob(job));
     axios.delete(`${apiURL}/deleteJobListing/${job.id}`);
   };

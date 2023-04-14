@@ -10,12 +10,10 @@ import gsap from "gsap";
 
 const FreelancerDetails = () => {
   const localId = useSelector(selectLastClickedFreelancerId);
-  console.log(localId);
   const freelancers = useSelector(selectFreelancers);
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
-    console.log("Use layout effect,");
     gsap.to(".hh-logo", { duration: 1.7, rotation: 360 });
   }, []);
 
