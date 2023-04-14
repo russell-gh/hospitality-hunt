@@ -18,7 +18,6 @@ const JobDetails = () => {
   const result = jobListings.filter((item) => {
     return item.id === lastClickedJobId;
   });
-
   const bArray = Object.entries(result[0]);
 
   return (

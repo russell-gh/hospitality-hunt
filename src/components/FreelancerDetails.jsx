@@ -10,6 +10,7 @@ import gsap from "gsap";
 
 const FreelancerDetails = () => {
   const localId = useSelector(selectLastClickedFreelancerId);
+  console.log(localId);
   const freelancers = useSelector(selectFreelancers);
   const dispatch = useDispatch();
 
@@ -23,17 +24,19 @@ const FreelancerDetails = () => {
       <h1 className="freelancerProfileTitle">Freelancer details</h1>
       <form className="freelancerDetails">
         {freelancers.map((id) => {
-          if (id.id === localId)
+          if (id.user_id === localId)
             return (
               <React.Fragment key={id}>
                 <div className="freelancerProfilePhoto">
-                  <img
-                    className="hh-logo"
-                    src={id.image}
-                    alt="logo"
-                    height="150px"
-                    width="150px"
-                  ></img>
+                  {id.image && (
+                    <img
+                      className="hh-logo"
+                      src={id.image}
+                      alt="logo"
+                      height="150px"
+                      width="150px"
+                    ></img>
+                  )}
                 </div>
                 <p>First name: {id.firstName}</p>
                 <p>Last name: {id.secondName}</p>

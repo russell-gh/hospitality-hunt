@@ -44,7 +44,9 @@ const Result = (props) => {
               <button
                 className="moreInfo btn btn-outline-success"
                 onClick={() => {
-                  dispatch(freelancerClicked(freelancer.id));
+                  console.log(freelancer);
+                  console.log(freelancer.id);
+                  dispatch(freelancerClicked(freelancer.user_id));
                 }}
               >
                 more info
