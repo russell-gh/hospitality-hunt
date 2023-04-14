@@ -5,6 +5,8 @@ import { addBusiness } from "../features/hospitality/hospitalitySlice";
 import { validate } from "../validation/joi";
 import "./createBusinsessProfile.css";
 import { randomId } from "../utils";
+import axios from "axios";
+import { apiURL } from "../config";
 
 const BusinessProfile = (props) => {
   const dispatch = useDispatch();
@@ -23,10 +25,12 @@ const BusinessProfile = (props) => {
   };
 
   const onSubmit = (e) => {
+    console.log(businessData);
     e.preventDefault();
     if (errors === true) {
       businessData.id = randomId();
       dispatch(addBusiness(businessData));
+      axios.post(`${apiURL}/createBusiness`, businessData);
     }
   };
 

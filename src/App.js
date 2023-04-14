@@ -7,7 +7,10 @@ import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile"
 import SearchForJob from "./components/SearchForJob";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { selectScreenMode, setAllFreelancers } from "./features/hospitality/hospitalitySlice";
+import {
+  selectScreenMode,
+  setAllFreelancers,
+} from "./features/hospitality/hospitalitySlice";
 import JobDetails from "./components/JobDetails";
 import Navigation from "./components/Navigation/Navigation";
 import SearchForFreelancer from "./components/SearchForFreelancer";
@@ -21,12 +24,12 @@ import TestingNav from "./components/TestingNav";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 import Online from "./components/Online";
 // import { calcLonLatDiff, getLongLat } from "./location";
-import axios from 'axios';
+import axios from "axios";
 import { apiURL } from "./config";
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
-  const debugModeOn = false;
+  const debugModeOn = true;
   const dispatch = useDispatch();
 
   const getInitialData = async () => {
@@ -35,11 +38,11 @@ export default function App() {
     //send the data to the store to replace the data in the store
     console.log(data);
     dispatch(setAllFreelancers(data));
-  }
+  };
 
   useEffect(() => {
     getInitialData();
-  }, [])
+  }, []);
 
   return (
     <div>
