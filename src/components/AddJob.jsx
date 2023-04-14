@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import api from "../api";
 import {
   addJobListing,
   selectCurrentUserId,
@@ -164,7 +165,13 @@ const AddJob = () => {
             )}
           </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-success addJobPost">
+            <button
+              type="submit"
+              className="btn btn-success addJobPost"
+              onClick={() => {
+                api("ADDJOB", postJob);
+              }}
+            >
               Post
             </button>
           </div>
