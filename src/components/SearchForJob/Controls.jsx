@@ -44,7 +44,7 @@ const Controls = () => {
     });
   } else if (userSelect === "postCode") {
     filtered = filtered.filter((jobListing) => {
-      return jobListing.post_code
+      return jobListing.postCode
         .toLowerCase()
         .startsWith(userInput.toLowerCase());
     });

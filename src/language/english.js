@@ -20,8 +20,6 @@ export const searchForJobListingText = {
   postCode: "Postcode",
   contract: "Contract",
   phoneNumber: "Phone Number",
-  post_code: "Postcode",
-  phone_number: "Phone Number",
 };
 
 export const jobDetailsText = {
@@ -34,6 +32,4 @@ export const jobDetailsText = {
   email: "Email",
   phoneNumber: "Phone Number",
   description: "Description",
-  post_code: "Postcode",
-  phone_number: "Phone Number",
 };
