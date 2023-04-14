@@ -56,8 +56,8 @@ const BusinessProfile = () => {
       console.log(errors);
       dispatch(editedBusinessData(businessData));
       setIsEdit(false);
+      axios.post(`${apiURL}/updateBusiness`, businessData);
     }
-    axios.post(`${apiURL}/updateBusiness`, businessData);
   };
 
   const cancelClick = () => {
