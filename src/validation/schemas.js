@@ -10,7 +10,7 @@ const phoneNumberRegex = new RegExp(
 /* eslint-enable */
 
 export const addJob = {
-  title: Joi.string().required(),
+  name: Joi.string().required(),
   contract: Joi.string().required(),
   postCode: Joi.string()
     .regex(/^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i)

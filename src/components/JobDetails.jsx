@@ -18,7 +18,6 @@ const JobDetails = () => {
   const result = jobListings.filter((item) => {
     return item.id === lastClickedJobId;
   });
-  console.log(result[0]);
 
   const bArray = Object.entries(result[0]);
 
@@ -27,7 +26,12 @@ const JobDetails = () => {
       <h1 className="eachJobDetailsTitle">Job details</h1>
       <form className="eachJobDetailsResult">
         {bArray.map((item) => {
-          if (item[0] === "id" || item[0] === "currentUserId") return null;
+          if (
+            item[0] === "id" ||
+            item[0] === "currentUserId" ||
+            item[0] === "user_id"
+          )
+            return null;
 
           return (
             <p>

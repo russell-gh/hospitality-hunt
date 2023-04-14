@@ -30,26 +30,31 @@ const Controls = () => {
   let filtered = [...jobListings];
   if (userSelect === "type") {
     filtered = filtered.filter((jobListing) => {
-      return jobListing.type.toLowerCase().includes(userInput.toLowerCase());
-    });
-  } else if (userSelect === "title") {
-    filtered = filtered.filter((jobListing) => {
-      return jobListing.title.some((item) =>
+      // return jobListing.type.toLowerCase().includes(userInput.toLowerCase());
+      return jobListing.type.some((item) =>
         item.toLowerCase().includes(userInput.toLowerCase())
       );
     });
+  } else if (userSelect === "name") {
+    filtered = filtered.filter((jobListing) => {
+      // return jobListing.type.some((item) =>
+      //   item.toLowerCase().includes(userInput.toLowerCase())
+      // );
+      return jobListing.name.toLowerCase().includes(userInput.toLowerCase());
+    });
   } else if (userSelect === "postCode") {
     filtered = filtered.filter((jobListing) => {
-      return jobListing.postCode
+      return jobListing.post_code
         .toLowerCase()
         .startsWith(userInput.toLowerCase());
     });
   }
-  if (contractButtonSelect === "fullTime") {
+  if (contractButtonSelect === "Full-time") {
     filtered = filtered.filter((jobListing) => {
+      console.log(jobListing.title);
       return jobListing.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "partTime") {
+  } else if (contractButtonSelect === "Part-time") {
     filtered = filtered.filter((jobListing) => {
       return jobListing.contract.includes(contractButtonSelect);
     });
@@ -78,7 +83,7 @@ const Controls = () => {
           type="radio"
           id="fullTime"
           name="contract"
-          value="fullTime"
+          value="Full-time"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Full-time
@@ -88,7 +93,7 @@ const Controls = () => {
           type="radio"
           id="partTime"
           name="contract"
-          value="partTime"
+          value="Part-time"
           onClick={(e) => setContractButtonSelect(e.target.value)}
         >
           Part-time
@@ -104,7 +109,7 @@ const Controls = () => {
             }}
           >
             <option value="type">Type</option>
-            <option value="title">Title</option>
+            <option value="name">Name</option>
             <option value="postCode">Postcode</option>
           </select>
         </label>
