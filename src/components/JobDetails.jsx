@@ -33,7 +33,7 @@ const JobDetails = () => {
             return null;
 
           return (
-            <p>
+            <p key={item[0]}>
               {jobDetailsText[item[0]]}: {item[1]}
             </p>
           );
