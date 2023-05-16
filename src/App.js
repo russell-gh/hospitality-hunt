@@ -24,7 +24,6 @@ import EmployerJobListing from "./components/EmployerJobListing";
 import TestingNav from "./components/TestingNav";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 import Online from "./components/Online";
-// import { calcLonLatDiff, getLongLat } from "./location";
 import axios from "axios";
 import { apiURL } from "./config";
 
@@ -35,8 +34,6 @@ export default function App() {
 
   const getInitialData = async () => {
     const { data } = await axios.get(`${apiURL}/getFreelancers`);
-
-    //send the data to the store to replace the data in the store
     dispatch(setAllFreelancers(data));
   };
 
@@ -46,8 +43,6 @@ export default function App() {
 
   const getJobListingsData = async () => {
     const { data } = await axios.get(`${apiURL}/getJobListings`);
-
-    //send the data to the store to replace the data in the store
     dispatch(setAllJobListings(data));
   };
 
@@ -65,31 +60,22 @@ export default function App() {
         </button>
       )}
 
-      {/* <WebcamContainer /> */}
-      <Navigation /* Yahya */ />
+      <Navigation />
       {debugModeOn && <TestingNav />}
 
       <main>
-        {screenMode === 1 && <Signup /> /* Stuart tidy up*/}
-        {screenMode === 2 && <Login /> /* Yahya  tody up*/}
-        {screenMode === 3 && <Onboarding /> /* Stuart create this component */}
-        {
-          screenMode === 4 && (
-            <CreateUserProfile />
-          ) /* creating a user profile once signed up Amelia tidy up */
-        }
-        {
-          screenMode === 5 && (
-            <CreateBusinessProfile />
-          ) /* create a business profile once signed up, Luca */
-        }
-        {screenMode === 6 && <AddJob /> /* Yusuf add validation */}
-        {screenMode === 7 && <SearchForFreelancer /> /* Bernie this one */}
-        {screenMode === 8 && <SearchForJob /* Bernie tidy this up */ />}
-        {screenMode === 9 && <JobDetails /> /* Dan */}
-        {screenMode === 10 && <FreelancerDetails /> /* Yahya and Luca */}
+        {screenMode === 1 && <Signup />}
+        {screenMode === 2 && <Login />}
+        {screenMode === 3 && <Onboarding />}
+        {screenMode === 4 && <CreateUserProfile />}
+        {screenMode === 5 && <CreateBusinessProfile />}
+        {screenMode === 6 && <AddJob />}
+        {screenMode === 7 && <SearchForFreelancer />}
+        {screenMode === 8 && <SearchForJob />}
+        {screenMode === 9 && <JobDetails />}
+        {screenMode === 10 && <FreelancerDetails />}
         {screenMode === 11 && <Home />}
-        {screenMode === 12 && <UserProfile /> /* Bernie */}
+        {screenMode === 12 && <UserProfile />}
         {screenMode === 13 && <EmployerJobListing />}
         {screenMode === 14 && <BusinessProfile />}
       </main>
