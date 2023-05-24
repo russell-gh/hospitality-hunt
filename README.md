@@ -4,7 +4,7 @@ Hospitality Hunt connects freelancers and businesses in the hospitality industry
 
 ## Live link
 
-[Hospitality Hunt](https://hospitalityhunt.uk/)
+[Hospitality Hunt](https://hospitalityhunt.uk/) / [Backend](https://github.com/russell-gh/hospitality-hunt-back-end)
 
 ## Features
 
